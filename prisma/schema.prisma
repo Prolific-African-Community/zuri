@@ -1,0 +1,262 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum BrandStatus {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+}
+
+enum VoiceRuleType {
+  DO
+  DONT
+}
+
+enum ObservationStatus {
+  NEW
+  REVIEWED
+  ARCHIVED
+}
+
+model Workspace {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  brands    Brand[]
+}
+
+model Brand {
+  id             String          @id @default(cuid())
+  workspaceId    String
+  name           String
+  slug           String
+  websiteUrl     String?
+  description    String?
+  status         BrandStatus     @default(ACTIVE)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  workspace      Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  profile        BrandProfile?
+  audiences      Audience[]
+  voiceRules     VoiceRule[]
+  goldenExamples GoldenExample[]
+  observations   Observation[]
+  competitors    Competitor[]
+  marketSignals  MarketSignal[]
+  opportunities  Opportunity[]
+  contentAssets  ContentAsset[]
+  visualAssets   VisualAsset[]
+
+  @@unique([workspaceId, slug])
+  @@index([workspaceId])
+}
+
+model BrandProfile {
+  brandId          String   @id
+  mission          String
+  manifesto        String   @default("")
+  positioning      String   @default("")
+  valueProposition String   @default("")
+  voiceDescription String   @default("")
+  language         String   @default("")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  brand            Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+}
+
+model Audience {
+  id          String   @id @default(cuid())
+  brandId     String
+  name        String
+  description String
+  pains       String[]
+  motivations String[]
+  objections  String[]
+  vocabulary  String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  brand       Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+
+  @@index([brandId])
+}
+
+model VoiceRule {
+  id        String        @id @default(cuid())
+  brandId   String
+  type      VoiceRuleType
+  rule      String
+  createdAt DateTime      @default(now())
+  brand     Brand         @relation(fields: [brandId], references: [id], onDelete: Cascade)
+
+  @@index([brandId])
+}
+
+model GoldenExample {
+  id        String   @id @default(cuid())
+  brandId   String
+  title     String?
+  content   String
+  notes     String?
+  createdAt DateTime @default(now())
+  brand     Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+
+  @@index([brandId])
+}
+
+model Observation {
+  id        String            @id @default(cuid())
+  brandId   String
+  content   String
+  status    ObservationStatus @default(NEW)
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+  brand     Brand             @relation(fields: [brandId], references: [id], onDelete: Cascade)
+
+  @@index([brandId])
+}
+
+enum MarketSignalType {
+  NEWS
+  COMPETITOR
+  SEARCH
+  MARKET
+  INTERNAL
+}
+
+enum MarketSignalStatus {
+  NEW
+  REVIEWED
+  ARCHIVED
+}
+
+enum OpportunitySource {
+  MANUAL
+  OBSERVATION
+  SIGNAL
+  COMPETITOR
+}
+
+enum OpportunityStatus {
+  NEW
+  ACTIVE
+  ARCHIVED
+}
+
+model Competitor {
+  id          String   @id @default(cuid())
+  brandId     String
+  name        String
+  websiteUrl  String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  brand       Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+
+  @@index([brandId])
+}
+
+model MarketSignal {
+  id         String             @id @default(cuid())
+  brandId    String
+  title      String
+  summary    String
+  sourceUrl  String?
+  type       MarketSignalType   @default(MARKET)
+  status     MarketSignalStatus @default(NEW)
+  observedAt DateTime           @default(now())
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+  brand      Brand              @relation(fields: [brandId], references: [id], onDelete: Cascade)
+
+  @@index([brandId])
+}
+
+model Opportunity {
+  id          String            @id @default(cuid())
+  brandId     String
+  title       String
+  description String
+  source      OpportunitySource @default(MANUAL)
+  status      OpportunityStatus @default(NEW)
+  score       Int?
+  rationale   String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  brand       Brand             @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  contentAssets ContentAsset[]
+
+  @@index([brandId])
+}
+
+enum ContentChannel {
+  LINKEDIN
+}
+
+enum ContentType {
+  SOCIAL_POST
+}
+
+enum ContentStatus {
+  DRAFT
+  APPROVED
+  ARCHIVED
+}
+
+model ContentAsset {
+  id            String         @id @default(cuid())
+  brandId       String
+  opportunityId String?
+  channel       ContentChannel @default(LINKEDIN)
+  type          ContentType    @default(SOCIAL_POST)
+  status        ContentStatus  @default(DRAFT)
+  title         String?
+  content       String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  brand         Brand          @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  opportunity   Opportunity?   @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
+  visualAsset   VisualAsset?
+
+  @@index([brandId])
+  @@index([opportunityId])
+}
+
+enum VisualType {
+  NONE
+  STATEMENT
+  FAKE_DOCUMENT
+  EDITORIAL
+}
+
+enum VisualStatus {
+  DRAFT
+  APPROVED
+  ARCHIVED
+}
+
+model VisualAsset {
+  id             String        @id @default(cuid())
+  brandId        String
+  contentAssetId String?       @unique
+  type           VisualType    @default(NONE)
+  status         VisualStatus  @default(DRAFT)
+  // Why this type was chosen, and the concept it renders. Persisted so the
+  // recommendation survives a reload without calling the model again.
+  reason         String?
+  concept        String?
+  prompt         String?
+  imageUrl       String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  brand          Brand         @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  contentAsset   ContentAsset? @relation(fields: [contentAssetId], references: [id], onDelete: Cascade)
+
+  @@index([brandId])
+}
