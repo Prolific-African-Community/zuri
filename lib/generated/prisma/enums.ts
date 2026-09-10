@@ -35,6 +35,21 @@ export const ObservationStatus = {
 export type ObservationStatus = (typeof ObservationStatus)[keyof typeof ObservationStatus]
 
 
+export const ContentFormat = {
+  MDX: 'MDX',
+  MARKDOWN: 'MARKDOWN'
+} as const
+
+export type ContentFormat = (typeof ContentFormat)[keyof typeof ContentFormat]
+
+
+export const PublishingMode = {
+  GITHUB_PR: 'GITHUB_PR'
+} as const
+
+export type PublishingMode = (typeof PublishingMode)[keyof typeof PublishingMode]
+
+
 export const MarketSignalType = {
   NEWS: 'NEWS',
   COMPETITOR: 'COMPETITOR',
@@ -59,10 +74,21 @@ export const OpportunitySource = {
   MANUAL: 'MANUAL',
   OBSERVATION: 'OBSERVATION',
   SIGNAL: 'SIGNAL',
-  COMPETITOR: 'COMPETITOR'
+  COMPETITOR: 'COMPETITOR',
+  SEARCH: 'SEARCH'
 } as const
 
 export type OpportunitySource = (typeof OpportunitySource)[keyof typeof OpportunitySource]
+
+
+export const SeoActionType = {
+  CREATE_PAGE: 'CREATE_PAGE',
+  REFRESH_PAGE: 'REFRESH_PAGE',
+  TECHNICAL_FIX: 'TECHNICAL_FIX',
+  INTERNAL_LINK: 'INTERNAL_LINK'
+} as const
+
+export type SeoActionType = (typeof SeoActionType)[keyof typeof SeoActionType]
 
 
 export const OpportunityStatus = {
@@ -75,14 +101,23 @@ export type OpportunityStatus = (typeof OpportunityStatus)[keyof typeof Opportun
 
 
 export const ContentChannel = {
-  LINKEDIN: 'LINKEDIN'
+  LINKEDIN: 'LINKEDIN',
+  WEBSITE: 'WEBSITE',
+  GOOGLE_BUSINESS: 'GOOGLE_BUSINESS',
+  FACEBOOK: 'FACEBOOK',
+  INSTAGRAM: 'INSTAGRAM'
 } as const
 
 export type ContentChannel = (typeof ContentChannel)[keyof typeof ContentChannel]
 
 
 export const ContentType = {
-  SOCIAL_POST: 'SOCIAL_POST'
+  SOCIAL_POST: 'SOCIAL_POST',
+  SEO_CONTENT: 'SEO_CONTENT',
+  TEXT_POST: 'TEXT_POST',
+  MEME_CONCEPT: 'MEME_CONCEPT',
+  VIDEO_AD_BRIEF: 'VIDEO_AD_BRIEF',
+  TESTIMONIAL_VIDEO_BRIEF: 'TESTIMONIAL_VIDEO_BRIEF'
 } as const
 
 export type ContentType = (typeof ContentType)[keyof typeof ContentType]
@@ -95,6 +130,36 @@ export const ContentStatus = {
 } as const
 
 export type ContentStatus = (typeof ContentStatus)[keyof typeof ContentStatus]
+
+
+export const ArticleReviewStatus = {
+  DRAFT: 'DRAFT',
+  READY_FOR_REVIEW: 'READY_FOR_REVIEW',
+  PR_OPENED: 'PR_OPENED',
+  PUBLISHED: 'PUBLISHED',
+  NEEDS_UPDATE: 'NEEDS_UPDATE',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type ArticleReviewStatus = (typeof ArticleReviewStatus)[keyof typeof ArticleReviewStatus]
+
+
+export const ProductionStatus = {
+  NOT_DEPLOYED: 'NOT_DEPLOYED',
+  WAITING_FOR_DEPLOYMENT: 'WAITING_FOR_DEPLOYMENT',
+  LIVE: 'LIVE',
+  DEPLOYMENT_FAILED: 'DEPLOYMENT_FAILED'
+} as const
+
+export type ProductionStatus = (typeof ProductionStatus)[keyof typeof ProductionStatus]
+
+
+export const ArticleImageKind = {
+  COVER: 'COVER',
+  INLINE: 'INLINE'
+} as const
+
+export type ArticleImageKind = (typeof ArticleImageKind)[keyof typeof ArticleImageKind]
 
 
 export const VisualType = {
@@ -114,3 +179,72 @@ export const VisualStatus = {
 } as const
 
 export type VisualStatus = (typeof VisualStatus)[keyof typeof VisualStatus]
+
+
+export const ActionType = {
+  SEO: 'SEO',
+  CONTENT: 'CONTENT',
+  GOOGLE_ADS: 'GOOGLE_ADS',
+  SOCIAL: 'SOCIAL'
+} as const
+
+export type ActionType = (typeof ActionType)[keyof typeof ActionType]
+
+
+export const ActionStatus = {
+  PROPOSED: 'PROPOSED',
+  APPROVED: 'APPROVED',
+  EXECUTED: 'EXECUTED',
+  FAILED: 'FAILED',
+  MEASURED: 'MEASURED',
+  DISMISSED: 'DISMISSED'
+} as const
+
+export type ActionStatus = (typeof ActionStatus)[keyof typeof ActionStatus]
+
+
+export const VerificationOutcome = {
+  VERIFIED: 'VERIFIED',
+  DIVERGED: 'DIVERGED',
+  NOT_ENOUGH_DATA: 'NOT_ENOUGH_DATA',
+  NOT_VERIFIABLE: 'NOT_VERIFIABLE'
+} as const
+
+export type VerificationOutcome = (typeof VerificationOutcome)[keyof typeof VerificationOutcome]
+
+
+export const MeasurementOutcome = {
+  POSITIVE: 'POSITIVE',
+  NEUTRAL: 'NEUTRAL',
+  NEGATIVE: 'NEGATIVE',
+  NOT_ENOUGH_DATA: 'NOT_ENOUGH_DATA'
+} as const
+
+export type MeasurementOutcome = (typeof MeasurementOutcome)[keyof typeof MeasurementOutcome]
+
+
+export const RiskLevel = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+} as const
+
+export type RiskLevel = (typeof RiskLevel)[keyof typeof RiskLevel]
+
+
+export const SearchConsoleDimension = {
+  QUERY: 'QUERY',
+  PAGE: 'PAGE'
+} as const
+
+export type SearchConsoleDimension = (typeof SearchConsoleDimension)[keyof typeof SearchConsoleDimension]
+
+
+export const AdsLevel = {
+  CAMPAIGN: 'CAMPAIGN',
+  AD_GROUP: 'AD_GROUP',
+  KEYWORD: 'KEYWORD',
+  SEARCH_TERM: 'SEARCH_TERM'
+} as const
+
+export type AdsLevel = (typeof AdsLevel)[keyof typeof AdsLevel]

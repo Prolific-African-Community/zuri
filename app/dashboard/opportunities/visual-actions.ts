@@ -1,5 +1,7 @@
 "use server";
 
+import { requireSession } from "@/lib/session";
+
 import {
   generateImage,
   suggestVisual,
@@ -7,9 +9,8 @@ import {
 } from "@/lib/openai";
 import { getPrisma } from "@/lib/prisma";
 import { VisualType } from "@/lib/generated/prisma/enums";
+import { del, put } from "@vercel/blob";
 import { randomUUID } from "node:crypto";
-import { mkdir, writeFile } from "node:fs/promises";
-import path from "node:path";
 import { revalidatePath } from "next/cache";
 
 export type VisualState = {
@@ -25,6 +26,8 @@ export async function suggestVisualAction(
   _prevState: VisualState,
   formData: FormData,
 ): Promise<VisualState> {
+  await requireSession();
+
   const contentAssetId = String(formData.get("contentAssetId") ?? "").trim();
   if (!contentAssetId) {
     return { status: "error", message: "Missing draft." };
@@ -101,6 +104,8 @@ export async function generateVisualImageAction(
   _prevState: VisualState,
   formData: FormData,
 ): Promise<VisualState> {
+  await requireSession();
+
   const visualAssetId = String(formData.get("visualAssetId") ?? "").trim();
   if (!visualAssetId) return { status: "error", message: "Missing visual." };
 
@@ -117,17 +122,29 @@ export async function generateVisualImageAction(
       return { status: "error", message: "No image prompt. Suggest a visual first." };
     }
 
+    const previousUrl = visual.imageUrl;
     const bytes = await generateImage(visual.prompt);
 
-    const fileName = `${randomUUID()}.png`;
-    const directory = path.join(process.cwd(), "public", "generated");
-    await mkdir(directory, { recursive: true });
-    await writeFile(path.join(directory, fileName), bytes);
+    const blob = await put(`visuals/${randomUUID()}.png`, bytes, {
+      access: "public",
+      contentType: "image/png",
+    });
 
     await prisma.visualAsset.update({
       where: { id: visualAssetId },
-      data: { imageUrl: `/generated/${fileName}` },
+      data: { imageUrl: blob.url },
     });
+
+    // Only once the replacement is uploaded *and* persisted: a failure above
+    // leaves the old image in place rather than losing both.
+    if (previousUrl && previousUrl !== blob.url) {
+      try {
+        await del(previousUrl);
+      } catch (error) {
+        // An orphaned blob is not worth failing a successful generation over.
+        console.error("Could not delete the replaced blob", previousUrl, error);
+      }
+    }
 
     refresh();
     return { status: "done", message: "Image generated." };

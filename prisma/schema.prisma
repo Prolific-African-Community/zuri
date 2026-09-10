@@ -40,6 +40,21 @@ model Brand {
   websiteUrl     String?
   description    String?
   status         BrandStatus     @default(ACTIVE)
+  searchConsoleProperty String?
+  githubOwner    String?
+  githubRepo     String?
+  githubBranch   String?
+  contentFormat  ContentFormat   @default(MDX)
+  contentDirectory String?
+  publicRoute      String?
+  assetsDirectory  String?
+  defaultBranch    String?
+  publishingMode   PublishingMode @default(GITHUB_PR)
+  vercelProjectId  String?
+  googleAdsCustomerId String?
+  googleBusinessAccountId  String?
+  googleBusinessLocationId String?
+  googleBusinessLocationName String?
   createdAt      DateTime        @default(now())
   updatedAt      DateTime        @updatedAt
   workspace      Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
@@ -53,9 +68,30 @@ model Brand {
   opportunities  Opportunity[]
   contentAssets  ContentAsset[]
   visualAssets   VisualAsset[]
+  websitePages   WebsitePage[]
+  keywords       Keyword[]
+  serpCompetitors SerpCompetitor[]
+  seoBriefs      SeoBrief[]
+  growthWeekPlans GrowthWeekPlan[]
+  proposedActions ProposedAction[]
+  searchConsoleSyncs SearchConsoleSync[]
+  searchConsoleRows  SearchConsoleRow[]
+  adsSyncs           AdsSync[]
+  adsRows            AdsRow[]
 
   @@unique([workspaceId, slug])
   @@index([workspaceId])
+}
+
+/// How an article is written to a brand's repository.
+enum ContentFormat {
+  MDX
+  MARKDOWN
+}
+
+/// Only route for now: Zuri opens a pull request and never merges it.
+enum PublishingMode {
+  GITHUB_PR
 }
 
 model BrandProfile {
@@ -141,6 +177,14 @@ enum OpportunitySource {
   OBSERVATION
   SIGNAL
   COMPETITOR
+  SEARCH
+}
+
+enum SeoActionType {
+  CREATE_PAGE
+  REFRESH_PAGE
+  TECHNICAL_FIX
+  INTERNAL_LINK
 }
 
 enum OpportunityStatus {
@@ -187,20 +231,35 @@ model Opportunity {
   status      OpportunityStatus @default(NEW)
   score       Int?
   rationale   String?
+  actionType    SeoActionType?
+  targetUrl     String?
+  targetKeyword String?
   createdAt   DateTime          @default(now())
   updatedAt   DateTime          @updatedAt
   brand       Brand             @relation(fields: [brandId], references: [id], onDelete: Cascade)
   contentAssets ContentAsset[]
+  seoBrief      SeoBrief?
+  growthWeekItems GrowthWeekItem[]
+  proposedActions ProposedAction[]
 
   @@index([brandId])
 }
 
 enum ContentChannel {
   LINKEDIN
+  WEBSITE
+  GOOGLE_BUSINESS
+  FACEBOOK
+  INSTAGRAM
 }
 
 enum ContentType {
   SOCIAL_POST
+  SEO_CONTENT
+  TEXT_POST
+  MEME_CONCEPT
+  VIDEO_AD_BRIEF
+  TESTIMONIAL_VIDEO_BRIEF
 }
 
 enum ContentStatus {
@@ -218,14 +277,148 @@ model ContentAsset {
   status        ContentStatus  @default(DRAFT)
   title         String?
   content       String
+  scheduledAt   DateTime?
+  publishedAt   DateTime?
+  /// Google Business Profile publication, kept apart from the social status.
+  googleBusinessPostName String?
+  googleBusinessPublishedAt DateTime?
+  googleBusinessError    String?
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
   brand         Brand          @relation(fields: [brandId], references: [id], onDelete: Cascade)
   opportunity   Opportunity?   @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
   visualAsset   VisualAsset?
+  articleDraft  ArticleDraft?
+  metaCreative  MetaCreative?
+  growthWeekItems GrowthWeekItem[]
 
   @@index([brandId])
   @@index([opportunityId])
+}
+
+/// The editorial fields an ArticlePackage needs that a ContentAsset has no
+/// business carrying. Title, content, status and ownership stay on the asset.
+model ArticleDraft {
+  id              String       @id @default(cuid())
+  contentAssetId  String       @unique
+  slug            String
+  excerpt         String       @default("")
+  author          String       @default("")
+  publishedAt     DateTime?
+  category        String       @default("")
+  tags            String[]
+  targetKeyword   String       @default("")
+  metaTitle       String       @default("")
+  metaDescription String       @default("")
+  canonicalUrl    String?
+  reviewStatus    ArticleReviewStatus @default(DRAFT)
+  publishingBranch String?
+  prNumber         Int?
+  prUrl            String?
+  prOpenedAt       DateTime?
+  /// Fingerprint of the package that was pushed, so later edits are detectable.
+  prPackageHash    String?
+  prClosedWithoutMerge Boolean @default(false)
+  mergedAt         DateTime?
+  publishedUrl     String?
+  /// Fingerprint of what actually went live, so drift is detectable on read.
+  publishedPackageHash String?
+  mergeCommitSha   String?
+  productionStatus ProductionStatus @default(NOT_DEPLOYED)
+  productionDeploymentUrl String?
+  productionDeployedAt    DateTime?
+  coverImage      Json?
+  images          Json?
+  internalLinks   Json?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  contentAsset    ContentAsset @relation(fields: [contentAssetId], references: [id], onDelete: Cascade)
+  imageAssets     ArticleImageAsset[]
+  publications    ArticlePublication[]
+}
+
+/// One merged publication. Kept so an update never erases the trace of the
+/// pull request that put the previous version online.
+model ArticlePublication {
+  id             String       @id @default(cuid())
+  articleDraftId String
+  branch         String
+  prNumber       Int
+  prUrl          String
+  packageHash    String
+  publishedUrl   String
+  mergedAt       DateTime
+  createdAt      DateTime     @default(now())
+  draft          ArticleDraft @relation(fields: [articleDraftId], references: [id], onDelete: Cascade)
+
+  @@index([articleDraftId])
+}
+
+/// Editorial state of an article, kept apart from ContentStatus so the social
+/// workflow is untouched.
+enum ArticleReviewStatus {
+  DRAFT
+  READY_FOR_REVIEW
+  PR_OPENED
+  PUBLISHED
+  NEEDS_UPDATE
+  ARCHIVED
+}
+
+/// Merged is not live: the site still has to build and deploy.
+enum ProductionStatus {
+  NOT_DEPLOYED
+  WAITING_FOR_DEPLOYMENT
+  LIVE
+  DEPLOYMENT_FAILED
+}
+
+enum ArticleImageKind {
+  COVER
+  INLINE
+}
+
+/// An image generated for one article. It lives in Zuri (blob) plus the path it
+/// will occupy in the brand's repository once published — nothing is written
+/// there yet.
+model ArticleImageAsset {
+  id             String           @id @default(cuid())
+  articleDraftId String
+  kind           ArticleImageKind
+  order          Int              @default(0)
+  purpose        String           @default("")
+  insertionPoint String           @default("")
+  concept        String           @default("")
+  prompt         String           @default("")
+  alt            String           @default("")
+  caption        String?
+  blobUrl        String?
+  targetPath     String           @default("")
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  draft          ArticleDraft     @relation(fields: [articleDraftId], references: [id], onDelete: Cascade)
+
+  @@index([articleDraftId])
+}
+
+/// The production package behind one Meta draft: final copy for a post, or a
+/// full brief for a video. Editable by hand, and the edit is the truth.
+model MetaCreative {
+  id             String       @id @default(cuid())
+  contentAssetId String       @unique
+  hook           String       @default("")
+  copy           String       @default("")
+  cta            String       @default("")
+  /// NONE or STATIC — whether this post needs an image at all.
+  visualRecommendation String @default("NONE")
+  imagePrompt    String       @default("")
+  imageUrl       String?
+  /// Everything the format needs, rendered as labelled sections.
+  brief          Json?
+  productionPrompt String     @default("")
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  contentAsset   ContentAsset @relation(fields: [contentAssetId], references: [id], onDelete: Cascade)
 }
 
 enum VisualType {
@@ -259,4 +452,311 @@ model VisualAsset {
   contentAsset   ContentAsset? @relation(fields: [contentAssetId], references: [id], onDelete: Cascade)
 
   @@index([brandId])
+}
+
+model WebsitePage {
+  id              String   @id @default(cuid())
+  brandId         String
+  url             String
+  title           String?
+  metaDescription String?
+  h1              String?
+  statusCode      Int?
+  canonicalUrl    String?
+  wordCount       Int?
+  lastCrawledAt   DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  brand           Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  searchConsoleRows SearchConsoleRow[]
+
+  @@unique([brandId, url])
+  @@index([brandId])
+}
+
+model Keyword {
+  id              String           @id @default(cuid())
+  brandId         String
+  keyword         String
+  searchVolume    Int?
+  difficulty      Int?
+  intent          String?
+  priorityScore   Int?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  brand           Brand            @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  serpCompetitors SerpCompetitor[]
+  searchConsoleRows SearchConsoleRow[]
+  adsRows           AdsRow[]
+
+  @@unique([brandId, keyword])
+  @@index([brandId])
+}
+
+model SerpCompetitor {
+  id        String   @id @default(cuid())
+  brandId   String
+  keywordId String
+  domain    String
+  position  Int
+  url       String?
+  title     String?
+  checkedAt DateTime @default(now())
+  brand     Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  keyword   Keyword  @relation(fields: [keywordId], references: [id], onDelete: Cascade)
+
+  @@index([brandId])
+  @@index([keywordId])
+}
+
+model SeoBrief {
+  id                        String        @id @default(cuid())
+  brandId                   String
+  opportunityId             String        @unique
+  objective                 String
+  targetKeyword             String?
+  searchIntent              String?
+  recommendedAction         SeoActionType
+  actionJustification       String?
+  recommendedTitle          String?
+  recommendedMetaDescription String?
+  outline                   String[]
+  keyQuestions              String[]
+  internalLinks             String[]
+  competitorInsights        String[]
+  evidenceNeeded            String[]
+  createdAt                 DateTime      @default(now())
+  updatedAt                 DateTime      @updatedAt
+  brand                     Brand         @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  opportunity               Opportunity   @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+
+  @@index([brandId])
+}
+
+model GrowthWeekPlan {
+  id        String           @id @default(cuid())
+  brandId   String
+  weekStart DateTime
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  brand     Brand            @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  items     GrowthWeekItem[]
+
+  @@unique([brandId, weekStart])
+  @@index([brandId])
+}
+
+model GrowthWeekItem {
+  id              String         @id @default(cuid())
+  planId          String
+  day             String
+  action          String
+  channel         String
+  reason          String
+  priority        Int
+  opportunityId   String?
+  contentAssetId  String?
+  plan            GrowthWeekPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+  opportunity     Opportunity?   @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
+  contentAsset    ContentAsset?  @relation(fields: [contentAssetId], references: [id], onDelete: SetNull)
+
+  @@index([planId])
+}
+
+enum ActionType {
+  SEO
+  CONTENT
+  GOOGLE_ADS
+  SOCIAL
+}
+
+enum ActionStatus {
+  PROPOSED
+  APPROVED
+  EXECUTED
+  FAILED
+  MEASURED
+  DISMISSED
+}
+
+/// Whether the change Zuri asked for is really on the account.
+enum VerificationOutcome {
+  VERIFIED
+  DIVERGED
+  NOT_ENOUGH_DATA
+  NOT_VERIFIABLE
+}
+
+enum MeasurementOutcome {
+  POSITIVE
+  NEUTRAL
+  NEGATIVE
+  NOT_ENOUGH_DATA
+}
+
+/// One before/after reading of an executed action. Re-measuring adds a row, so
+/// the history of what an action did over time is never overwritten.
+model ActionMeasurement {
+  id            String             @id @default(cuid())
+  actionId      String
+  periodBefore  String
+  periodAfter   String
+  metricsBefore Json
+  metricsAfter  Json
+  outcome       MeasurementOutcome
+  headline      String
+  observation   String
+  createdAt     DateTime           @default(now())
+  action        ProposedAction     @relation(fields: [actionId], references: [id], onDelete: Cascade)
+
+  @@index([actionId])
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+model ProposedAction {
+  id            String       @id @default(cuid())
+  brandId       String
+  opportunityId String?
+  type          ActionType
+  status        ActionStatus @default(PROPOSED)
+  title         String
+  summary       String
+  rationale     String
+  target        String?
+  payload       Json?
+  riskLevel     RiskLevel    @default(LOW)
+  branch        String?
+  prNumber      Int?
+  prUrl         String?
+  createdAt     DateTime     @default(now())
+  approvedAt    DateTime?
+  executedAt    DateTime?
+  measuredAt    DateTime?
+  verifiedAt          DateTime?
+  verificationOutcome VerificationOutcome?
+  /// What Google Ads actually returned, in one readable line.
+  actualState         String?
+  verificationNote    String?
+  updatedAt     DateTime     @updatedAt
+  brand         Brand        @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  opportunity   Opportunity? @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
+  measurements  ActionMeasurement[]
+
+  @@index([brandId])
+  @@index([opportunityId])
+}
+
+/// One Google account for the whole workspace — this is a single-admin app.
+/// Tokens live here and are never sent to the browser.
+model GoogleConnection {
+  id           String   @id @default("google")
+  email        String?
+  scope        String
+  accessToken  String
+  refreshToken String
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+enum SearchConsoleDimension {
+  QUERY
+  PAGE
+}
+
+model SearchConsoleSync {
+  id          String             @id @default(cuid())
+  brandId     String
+  property    String
+  startDate   DateTime
+  endDate     DateTime
+  clicks      Int
+  impressions Int
+  ctr         Float
+  position    Float
+  syncedAt    DateTime           @default(now())
+  brand       Brand              @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  rows        SearchConsoleRow[]
+
+  @@unique([brandId, startDate, endDate])
+  @@index([brandId])
+}
+
+model SearchConsoleRow {
+  id            String                @id @default(cuid())
+  syncId        String
+  brandId       String
+  dimension     SearchConsoleDimension
+  value         String
+  clicks        Int
+  impressions   Int
+  ctr           Float
+  position      Float
+  keywordId     String?
+  websitePageId String?
+  sync          SearchConsoleSync     @relation(fields: [syncId], references: [id], onDelete: Cascade)
+  brand         Brand                 @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  keyword       Keyword?              @relation(fields: [keywordId], references: [id], onDelete: SetNull)
+  websitePage   WebsitePage?          @relation(fields: [websitePageId], references: [id], onDelete: SetNull)
+
+  @@index([syncId])
+  @@index([brandId])
+}
+
+enum AdsLevel {
+  CAMPAIGN
+  AD_GROUP
+  KEYWORD
+  SEARCH_TERM
+}
+
+/// One read-only snapshot of a Google Ads account over a date range.
+/// Raw counters only — CTR, CPC and conversion rate are derived when displayed.
+model AdsSync {
+  id          String   @id @default(cuid())
+  brandId     String
+  customerId  String
+  startDate   DateTime
+  endDate     DateTime
+  impressions Int
+  clicks      Int
+  costMicros  BigInt
+  conversions Float
+  syncedAt    DateTime @default(now())
+  brand       Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  rows        AdsRow[]
+
+  @@unique([brandId, customerId, startDate, endDate])
+  @@index([brandId])
+}
+
+model AdsRow {
+  id           String   @id @default(cuid())
+  syncId       String
+  brandId      String
+  level        AdsLevel
+  campaignId   String?
+  campaignName String?
+  adGroupId    String?
+  adGroupName  String?
+  text         String?
+  matchType    String?
+  status       String?
+  impressions  Int
+  clicks       Int
+  costMicros   BigInt
+  conversions  Float
+  keywordId    String?
+  sync         AdsSync  @relation(fields: [syncId], references: [id], onDelete: Cascade)
+  brand        Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  keyword      Keyword? @relation(fields: [keywordId], references: [id], onDelete: SetNull)
+
+  @@index([syncId])
+  @@index([brandId])
+  @@index([level])
 }

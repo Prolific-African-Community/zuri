@@ -1,4 +1,6 @@
 import {
+  ActionsIcon,
+  AdsIcon,
   AnalyticsIcon,
   BrandsIcon,
   CalendarIcon,
@@ -33,12 +35,14 @@ export const navigation: NavGroup[] = [
   {
     items: [
       { label: "Overview", href: "/dashboard", icon: OverviewIcon, enabled: true },
-      { label: "Growth Week", icon: WeekIcon, enabled: false },
+      { label: "Growth Week", href: "/dashboard/growth-week", icon: WeekIcon, enabled: true },
       { label: "Capture", href: "/dashboard/capture", icon: CaptureIcon, enabled: true },
       { label: "Opportunities", href: "/dashboard/opportunities", icon: OpportunitiesIcon, enabled: true },
-      { label: "Content", icon: ContentIcon, enabled: false },
-      { label: "Search", icon: SearchIcon, enabled: false },
-      { label: "Calendar", icon: CalendarIcon, enabled: false },
+      { label: "Actions", href: "/dashboard/actions", icon: ActionsIcon, enabled: true },
+      { label: "Content", href: "/dashboard/content", icon: ContentIcon, enabled: true },
+      { label: "Search", href: "/dashboard/search", icon: SearchIcon, enabled: true },
+      { label: "Ads", href: "/dashboard/ads", icon: AdsIcon, enabled: true },
+      { label: "Calendar", href: "/dashboard/calendar", icon: CalendarIcon, enabled: true },
       { label: "Analytics", icon: AnalyticsIcon, enabled: false },
     ],
   },

@@ -1,5 +1,7 @@
 "use server";
 
+import { requireSession } from "@/lib/session";
+
 import { OpportunitySource, OpportunityStatus } from "@/lib/generated/prisma/enums";
 import {
   generateLinkedInDrafts,
@@ -47,6 +49,8 @@ function opportunityData(formData: FormData) {
 }
 
 export async function createOpportunity(formData: FormData) {
+  await requireSession();
+
   await getPrisma().opportunity.create({ data: opportunityData(formData) });
   refresh();
 }
@@ -55,6 +59,8 @@ export async function updateOpportunity(
   opportunityId: string,
   formData: FormData,
 ) {
+  await requireSession();
+
   await getPrisma().opportunity.update({
     where: { id: opportunityId },
     data: opportunityData(formData),
@@ -63,6 +69,8 @@ export async function updateOpportunity(
 }
 
 export async function archiveOpportunity(opportunityId: string) {
+  await requireSession();
+
   await getPrisma().opportunity.update({
     where: { id: opportunityId },
     data: { status: OpportunityStatus.ARCHIVED },
@@ -71,6 +79,8 @@ export async function archiveOpportunity(opportunityId: string) {
 }
 
 export async function restoreOpportunity(opportunityId: string) {
+  await requireSession();
+
   await getPrisma().opportunity.update({
     where: { id: opportunityId },
     data: { status: OpportunityStatus.NEW },
@@ -100,6 +110,8 @@ export async function generateOpportunitiesAction(
   _prevState: GenerateState,
   formData: FormData,
 ): Promise<GenerateState> {
+  await requireSession();
+
   const brandId = String(formData.get("brandId") ?? "").trim();
   if (!brandId) return { status: "error", message: "Pick a brand first." };
 
@@ -233,6 +245,8 @@ export async function generateDraftsAction(
   _prevState: DraftsState,
   formData: FormData,
 ): Promise<DraftsState> {
+  await requireSession();
+
   const opportunityId = String(formData.get("opportunityId") ?? "").trim();
   if (!opportunityId) {
     return { ...emptyDraftsState, status: "error", message: "Missing opportunity." };
@@ -325,6 +339,8 @@ export async function generateDraftsAction(
 }
 
 export async function saveDraft(formData: FormData) {
+  await requireSession();
+
   const opportunityId = String(formData.get("opportunityId") ?? "").trim();
   const content = String(formData.get("content") ?? "").trim();
   const title = String(formData.get("title") ?? "").trim();

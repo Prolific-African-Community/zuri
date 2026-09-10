@@ -32,6 +32,21 @@ export type BrandMinAggregateOutputType = {
   websiteUrl: string | null
   description: string | null
   status: $Enums.BrandStatus | null
+  searchConsoleProperty: string | null
+  githubOwner: string | null
+  githubRepo: string | null
+  githubBranch: string | null
+  contentFormat: $Enums.ContentFormat | null
+  contentDirectory: string | null
+  publicRoute: string | null
+  assetsDirectory: string | null
+  defaultBranch: string | null
+  publishingMode: $Enums.PublishingMode | null
+  vercelProjectId: string | null
+  googleAdsCustomerId: string | null
+  googleBusinessAccountId: string | null
+  googleBusinessLocationId: string | null
+  googleBusinessLocationName: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -44,6 +59,21 @@ export type BrandMaxAggregateOutputType = {
   websiteUrl: string | null
   description: string | null
   status: $Enums.BrandStatus | null
+  searchConsoleProperty: string | null
+  githubOwner: string | null
+  githubRepo: string | null
+  githubBranch: string | null
+  contentFormat: $Enums.ContentFormat | null
+  contentDirectory: string | null
+  publicRoute: string | null
+  assetsDirectory: string | null
+  defaultBranch: string | null
+  publishingMode: $Enums.PublishingMode | null
+  vercelProjectId: string | null
+  googleAdsCustomerId: string | null
+  googleBusinessAccountId: string | null
+  googleBusinessLocationId: string | null
+  googleBusinessLocationName: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -56,6 +86,21 @@ export type BrandCountAggregateOutputType = {
   websiteUrl: number
   description: number
   status: number
+  searchConsoleProperty: number
+  githubOwner: number
+  githubRepo: number
+  githubBranch: number
+  contentFormat: number
+  contentDirectory: number
+  publicRoute: number
+  assetsDirectory: number
+  defaultBranch: number
+  publishingMode: number
+  vercelProjectId: number
+  googleAdsCustomerId: number
+  googleBusinessAccountId: number
+  googleBusinessLocationId: number
+  googleBusinessLocationName: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -70,6 +115,21 @@ export type BrandMinAggregateInputType = {
   websiteUrl?: true
   description?: true
   status?: true
+  searchConsoleProperty?: true
+  githubOwner?: true
+  githubRepo?: true
+  githubBranch?: true
+  contentFormat?: true
+  contentDirectory?: true
+  publicRoute?: true
+  assetsDirectory?: true
+  defaultBranch?: true
+  publishingMode?: true
+  vercelProjectId?: true
+  googleAdsCustomerId?: true
+  googleBusinessAccountId?: true
+  googleBusinessLocationId?: true
+  googleBusinessLocationName?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -82,6 +142,21 @@ export type BrandMaxAggregateInputType = {
   websiteUrl?: true
   description?: true
   status?: true
+  searchConsoleProperty?: true
+  githubOwner?: true
+  githubRepo?: true
+  githubBranch?: true
+  contentFormat?: true
+  contentDirectory?: true
+  publicRoute?: true
+  assetsDirectory?: true
+  defaultBranch?: true
+  publishingMode?: true
+  vercelProjectId?: true
+  googleAdsCustomerId?: true
+  googleBusinessAccountId?: true
+  googleBusinessLocationId?: true
+  googleBusinessLocationName?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -94,6 +169,21 @@ export type BrandCountAggregateInputType = {
   websiteUrl?: true
   description?: true
   status?: true
+  searchConsoleProperty?: true
+  githubOwner?: true
+  githubRepo?: true
+  githubBranch?: true
+  contentFormat?: true
+  contentDirectory?: true
+  publicRoute?: true
+  assetsDirectory?: true
+  defaultBranch?: true
+  publishingMode?: true
+  vercelProjectId?: true
+  googleAdsCustomerId?: true
+  googleBusinessAccountId?: true
+  googleBusinessLocationId?: true
+  googleBusinessLocationName?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -179,6 +269,21 @@ export type BrandGroupByOutputType = {
   websiteUrl: string | null
   description: string | null
   status: $Enums.BrandStatus
+  searchConsoleProperty: string | null
+  githubOwner: string | null
+  githubRepo: string | null
+  githubBranch: string | null
+  contentFormat: $Enums.ContentFormat
+  contentDirectory: string | null
+  publicRoute: string | null
+  assetsDirectory: string | null
+  defaultBranch: string | null
+  publishingMode: $Enums.PublishingMode
+  vercelProjectId: string | null
+  googleAdsCustomerId: string | null
+  googleBusinessAccountId: string | null
+  googleBusinessLocationId: string | null
+  googleBusinessLocationName: string | null
   createdAt: Date
   updatedAt: Date
   _count: BrandCountAggregateOutputType | null
@@ -212,6 +317,21 @@ export type BrandWhereInput = {
   websiteUrl?: Prisma.StringNullableFilter<"Brand"> | string | null
   description?: Prisma.StringNullableFilter<"Brand"> | string | null
   status?: Prisma.EnumBrandStatusFilter<"Brand"> | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.StringNullableFilter<"Brand"> | string | null
+  githubOwner?: Prisma.StringNullableFilter<"Brand"> | string | null
+  githubRepo?: Prisma.StringNullableFilter<"Brand"> | string | null
+  githubBranch?: Prisma.StringNullableFilter<"Brand"> | string | null
+  contentFormat?: Prisma.EnumContentFormatFilter<"Brand"> | $Enums.ContentFormat
+  contentDirectory?: Prisma.StringNullableFilter<"Brand"> | string | null
+  publicRoute?: Prisma.StringNullableFilter<"Brand"> | string | null
+  assetsDirectory?: Prisma.StringNullableFilter<"Brand"> | string | null
+  defaultBranch?: Prisma.StringNullableFilter<"Brand"> | string | null
+  publishingMode?: Prisma.EnumPublishingModeFilter<"Brand"> | $Enums.PublishingMode
+  vercelProjectId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleAdsCustomerId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleBusinessAccountId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleBusinessLocationId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleBusinessLocationName?: Prisma.StringNullableFilter<"Brand"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
   workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
@@ -225,6 +345,16 @@ export type BrandWhereInput = {
   opportunities?: Prisma.OpportunityListRelationFilter
   contentAssets?: Prisma.ContentAssetListRelationFilter
   visualAssets?: Prisma.VisualAssetListRelationFilter
+  websitePages?: Prisma.WebsitePageListRelationFilter
+  keywords?: Prisma.KeywordListRelationFilter
+  serpCompetitors?: Prisma.SerpCompetitorListRelationFilter
+  seoBriefs?: Prisma.SeoBriefListRelationFilter
+  growthWeekPlans?: Prisma.GrowthWeekPlanListRelationFilter
+  proposedActions?: Prisma.ProposedActionListRelationFilter
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncListRelationFilter
+  searchConsoleRows?: Prisma.SearchConsoleRowListRelationFilter
+  adsSyncs?: Prisma.AdsSyncListRelationFilter
+  adsRows?: Prisma.AdsRowListRelationFilter
 }
 
 export type BrandOrderByWithRelationInput = {
@@ -235,6 +365,21 @@ export type BrandOrderByWithRelationInput = {
   websiteUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
+  searchConsoleProperty?: Prisma.SortOrderInput | Prisma.SortOrder
+  githubOwner?: Prisma.SortOrderInput | Prisma.SortOrder
+  githubRepo?: Prisma.SortOrderInput | Prisma.SortOrder
+  githubBranch?: Prisma.SortOrderInput | Prisma.SortOrder
+  contentFormat?: Prisma.SortOrder
+  contentDirectory?: Prisma.SortOrderInput | Prisma.SortOrder
+  publicRoute?: Prisma.SortOrderInput | Prisma.SortOrder
+  assetsDirectory?: Prisma.SortOrderInput | Prisma.SortOrder
+  defaultBranch?: Prisma.SortOrderInput | Prisma.SortOrder
+  publishingMode?: Prisma.SortOrder
+  vercelProjectId?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleAdsCustomerId?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessAccountId?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessLocationName?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   workspace?: Prisma.WorkspaceOrderByWithRelationInput
@@ -248,6 +393,16 @@ export type BrandOrderByWithRelationInput = {
   opportunities?: Prisma.OpportunityOrderByRelationAggregateInput
   contentAssets?: Prisma.ContentAssetOrderByRelationAggregateInput
   visualAssets?: Prisma.VisualAssetOrderByRelationAggregateInput
+  websitePages?: Prisma.WebsitePageOrderByRelationAggregateInput
+  keywords?: Prisma.KeywordOrderByRelationAggregateInput
+  serpCompetitors?: Prisma.SerpCompetitorOrderByRelationAggregateInput
+  seoBriefs?: Prisma.SeoBriefOrderByRelationAggregateInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanOrderByRelationAggregateInput
+  proposedActions?: Prisma.ProposedActionOrderByRelationAggregateInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncOrderByRelationAggregateInput
+  searchConsoleRows?: Prisma.SearchConsoleRowOrderByRelationAggregateInput
+  adsSyncs?: Prisma.AdsSyncOrderByRelationAggregateInput
+  adsRows?: Prisma.AdsRowOrderByRelationAggregateInput
 }
 
 export type BrandWhereUniqueInput = Prisma.AtLeast<{
@@ -262,6 +417,21 @@ export type BrandWhereUniqueInput = Prisma.AtLeast<{
   websiteUrl?: Prisma.StringNullableFilter<"Brand"> | string | null
   description?: Prisma.StringNullableFilter<"Brand"> | string | null
   status?: Prisma.EnumBrandStatusFilter<"Brand"> | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.StringNullableFilter<"Brand"> | string | null
+  githubOwner?: Prisma.StringNullableFilter<"Brand"> | string | null
+  githubRepo?: Prisma.StringNullableFilter<"Brand"> | string | null
+  githubBranch?: Prisma.StringNullableFilter<"Brand"> | string | null
+  contentFormat?: Prisma.EnumContentFormatFilter<"Brand"> | $Enums.ContentFormat
+  contentDirectory?: Prisma.StringNullableFilter<"Brand"> | string | null
+  publicRoute?: Prisma.StringNullableFilter<"Brand"> | string | null
+  assetsDirectory?: Prisma.StringNullableFilter<"Brand"> | string | null
+  defaultBranch?: Prisma.StringNullableFilter<"Brand"> | string | null
+  publishingMode?: Prisma.EnumPublishingModeFilter<"Brand"> | $Enums.PublishingMode
+  vercelProjectId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleAdsCustomerId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleBusinessAccountId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleBusinessLocationId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleBusinessLocationName?: Prisma.StringNullableFilter<"Brand"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
   workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
@@ -275,6 +445,16 @@ export type BrandWhereUniqueInput = Prisma.AtLeast<{
   opportunities?: Prisma.OpportunityListRelationFilter
   contentAssets?: Prisma.ContentAssetListRelationFilter
   visualAssets?: Prisma.VisualAssetListRelationFilter
+  websitePages?: Prisma.WebsitePageListRelationFilter
+  keywords?: Prisma.KeywordListRelationFilter
+  serpCompetitors?: Prisma.SerpCompetitorListRelationFilter
+  seoBriefs?: Prisma.SeoBriefListRelationFilter
+  growthWeekPlans?: Prisma.GrowthWeekPlanListRelationFilter
+  proposedActions?: Prisma.ProposedActionListRelationFilter
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncListRelationFilter
+  searchConsoleRows?: Prisma.SearchConsoleRowListRelationFilter
+  adsSyncs?: Prisma.AdsSyncListRelationFilter
+  adsRows?: Prisma.AdsRowListRelationFilter
 }, "id" | "workspaceId_slug">
 
 export type BrandOrderByWithAggregationInput = {
@@ -285,6 +465,21 @@ export type BrandOrderByWithAggregationInput = {
   websiteUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
+  searchConsoleProperty?: Prisma.SortOrderInput | Prisma.SortOrder
+  githubOwner?: Prisma.SortOrderInput | Prisma.SortOrder
+  githubRepo?: Prisma.SortOrderInput | Prisma.SortOrder
+  githubBranch?: Prisma.SortOrderInput | Prisma.SortOrder
+  contentFormat?: Prisma.SortOrder
+  contentDirectory?: Prisma.SortOrderInput | Prisma.SortOrder
+  publicRoute?: Prisma.SortOrderInput | Prisma.SortOrder
+  assetsDirectory?: Prisma.SortOrderInput | Prisma.SortOrder
+  defaultBranch?: Prisma.SortOrderInput | Prisma.SortOrder
+  publishingMode?: Prisma.SortOrder
+  vercelProjectId?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleAdsCustomerId?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessAccountId?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessLocationName?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.BrandCountOrderByAggregateInput
@@ -303,6 +498,21 @@ export type BrandScalarWhereWithAggregatesInput = {
   websiteUrl?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
   description?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
   status?: Prisma.EnumBrandStatusWithAggregatesFilter<"Brand"> | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  githubOwner?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  githubRepo?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  githubBranch?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  contentFormat?: Prisma.EnumContentFormatWithAggregatesFilter<"Brand"> | $Enums.ContentFormat
+  contentDirectory?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  publicRoute?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  assetsDirectory?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  defaultBranch?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  publishingMode?: Prisma.EnumPublishingModeWithAggregatesFilter<"Brand"> | $Enums.PublishingMode
+  vercelProjectId?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  googleAdsCustomerId?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  googleBusinessAccountId?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  googleBusinessLocationId?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  googleBusinessLocationName?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Brand"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Brand"> | Date | string
 }
@@ -314,6 +524,21 @@ export type BrandCreateInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -327,6 +552,16 @@ export type BrandCreateInput = {
   opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateInput = {
@@ -337,6 +572,21 @@ export type BrandUncheckedCreateInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -349,6 +599,16 @@ export type BrandUncheckedCreateInput = {
   opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUpdateInput = {
@@ -358,6 +618,21 @@ export type BrandUpdateInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -371,6 +646,16 @@ export type BrandUpdateInput = {
   opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateInput = {
@@ -381,6 +666,21 @@ export type BrandUncheckedUpdateInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -393,6 +693,16 @@ export type BrandUncheckedUpdateInput = {
   opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateManyInput = {
@@ -403,6 +713,21 @@ export type BrandCreateManyInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -414,6 +739,21 @@ export type BrandUpdateManyMutationInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -426,6 +766,21 @@ export type BrandUncheckedUpdateManyInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -453,6 +808,21 @@ export type BrandCountOrderByAggregateInput = {
   websiteUrl?: Prisma.SortOrder
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  searchConsoleProperty?: Prisma.SortOrder
+  githubOwner?: Prisma.SortOrder
+  githubRepo?: Prisma.SortOrder
+  githubBranch?: Prisma.SortOrder
+  contentFormat?: Prisma.SortOrder
+  contentDirectory?: Prisma.SortOrder
+  publicRoute?: Prisma.SortOrder
+  assetsDirectory?: Prisma.SortOrder
+  defaultBranch?: Prisma.SortOrder
+  publishingMode?: Prisma.SortOrder
+  vercelProjectId?: Prisma.SortOrder
+  googleAdsCustomerId?: Prisma.SortOrder
+  googleBusinessAccountId?: Prisma.SortOrder
+  googleBusinessLocationId?: Prisma.SortOrder
+  googleBusinessLocationName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -465,6 +835,21 @@ export type BrandMaxOrderByAggregateInput = {
   websiteUrl?: Prisma.SortOrder
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  searchConsoleProperty?: Prisma.SortOrder
+  githubOwner?: Prisma.SortOrder
+  githubRepo?: Prisma.SortOrder
+  githubBranch?: Prisma.SortOrder
+  contentFormat?: Prisma.SortOrder
+  contentDirectory?: Prisma.SortOrder
+  publicRoute?: Prisma.SortOrder
+  assetsDirectory?: Prisma.SortOrder
+  defaultBranch?: Prisma.SortOrder
+  publishingMode?: Prisma.SortOrder
+  vercelProjectId?: Prisma.SortOrder
+  googleAdsCustomerId?: Prisma.SortOrder
+  googleBusinessAccountId?: Prisma.SortOrder
+  googleBusinessLocationId?: Prisma.SortOrder
+  googleBusinessLocationName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -477,6 +862,21 @@ export type BrandMinOrderByAggregateInput = {
   websiteUrl?: Prisma.SortOrder
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  searchConsoleProperty?: Prisma.SortOrder
+  githubOwner?: Prisma.SortOrder
+  githubRepo?: Prisma.SortOrder
+  githubBranch?: Prisma.SortOrder
+  contentFormat?: Prisma.SortOrder
+  contentDirectory?: Prisma.SortOrder
+  publicRoute?: Prisma.SortOrder
+  assetsDirectory?: Prisma.SortOrder
+  defaultBranch?: Prisma.SortOrder
+  publishingMode?: Prisma.SortOrder
+  vercelProjectId?: Prisma.SortOrder
+  googleAdsCustomerId?: Prisma.SortOrder
+  googleBusinessAccountId?: Prisma.SortOrder
+  googleBusinessLocationId?: Prisma.SortOrder
+  googleBusinessLocationName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -534,6 +934,14 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type EnumBrandStatusFieldUpdateOperationsInput = {
   set?: $Enums.BrandStatus
+}
+
+export type EnumContentFormatFieldUpdateOperationsInput = {
+  set?: $Enums.ContentFormat
+}
+
+export type EnumPublishingModeFieldUpdateOperationsInput = {
+  set?: $Enums.PublishingMode
 }
 
 export type BrandCreateNestedOneWithoutProfileInput = {
@@ -676,6 +1084,146 @@ export type BrandUpdateOneRequiredWithoutVisualAssetsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutVisualAssetsInput, Prisma.BrandUpdateWithoutVisualAssetsInput>, Prisma.BrandUncheckedUpdateWithoutVisualAssetsInput>
 }
 
+export type BrandCreateNestedOneWithoutWebsitePagesInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutWebsitePagesInput, Prisma.BrandUncheckedCreateWithoutWebsitePagesInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutWebsitePagesInput
+  connect?: Prisma.BrandWhereUniqueInput
+}
+
+export type BrandUpdateOneRequiredWithoutWebsitePagesNestedInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutWebsitePagesInput, Prisma.BrandUncheckedCreateWithoutWebsitePagesInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutWebsitePagesInput
+  upsert?: Prisma.BrandUpsertWithoutWebsitePagesInput
+  connect?: Prisma.BrandWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutWebsitePagesInput, Prisma.BrandUpdateWithoutWebsitePagesInput>, Prisma.BrandUncheckedUpdateWithoutWebsitePagesInput>
+}
+
+export type BrandCreateNestedOneWithoutKeywordsInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutKeywordsInput, Prisma.BrandUncheckedCreateWithoutKeywordsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutKeywordsInput
+  connect?: Prisma.BrandWhereUniqueInput
+}
+
+export type BrandUpdateOneRequiredWithoutKeywordsNestedInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutKeywordsInput, Prisma.BrandUncheckedCreateWithoutKeywordsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutKeywordsInput
+  upsert?: Prisma.BrandUpsertWithoutKeywordsInput
+  connect?: Prisma.BrandWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutKeywordsInput, Prisma.BrandUpdateWithoutKeywordsInput>, Prisma.BrandUncheckedUpdateWithoutKeywordsInput>
+}
+
+export type BrandCreateNestedOneWithoutSerpCompetitorsInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutSerpCompetitorsInput, Prisma.BrandUncheckedCreateWithoutSerpCompetitorsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutSerpCompetitorsInput
+  connect?: Prisma.BrandWhereUniqueInput
+}
+
+export type BrandUpdateOneRequiredWithoutSerpCompetitorsNestedInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutSerpCompetitorsInput, Prisma.BrandUncheckedCreateWithoutSerpCompetitorsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutSerpCompetitorsInput
+  upsert?: Prisma.BrandUpsertWithoutSerpCompetitorsInput
+  connect?: Prisma.BrandWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutSerpCompetitorsInput, Prisma.BrandUpdateWithoutSerpCompetitorsInput>, Prisma.BrandUncheckedUpdateWithoutSerpCompetitorsInput>
+}
+
+export type BrandCreateNestedOneWithoutSeoBriefsInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutSeoBriefsInput, Prisma.BrandUncheckedCreateWithoutSeoBriefsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutSeoBriefsInput
+  connect?: Prisma.BrandWhereUniqueInput
+}
+
+export type BrandUpdateOneRequiredWithoutSeoBriefsNestedInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutSeoBriefsInput, Prisma.BrandUncheckedCreateWithoutSeoBriefsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutSeoBriefsInput
+  upsert?: Prisma.BrandUpsertWithoutSeoBriefsInput
+  connect?: Prisma.BrandWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutSeoBriefsInput, Prisma.BrandUpdateWithoutSeoBriefsInput>, Prisma.BrandUncheckedUpdateWithoutSeoBriefsInput>
+}
+
+export type BrandCreateNestedOneWithoutGrowthWeekPlansInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutGrowthWeekPlansInput, Prisma.BrandUncheckedCreateWithoutGrowthWeekPlansInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutGrowthWeekPlansInput
+  connect?: Prisma.BrandWhereUniqueInput
+}
+
+export type BrandUpdateOneRequiredWithoutGrowthWeekPlansNestedInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutGrowthWeekPlansInput, Prisma.BrandUncheckedCreateWithoutGrowthWeekPlansInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutGrowthWeekPlansInput
+  upsert?: Prisma.BrandUpsertWithoutGrowthWeekPlansInput
+  connect?: Prisma.BrandWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutGrowthWeekPlansInput, Prisma.BrandUpdateWithoutGrowthWeekPlansInput>, Prisma.BrandUncheckedUpdateWithoutGrowthWeekPlansInput>
+}
+
+export type BrandCreateNestedOneWithoutProposedActionsInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutProposedActionsInput, Prisma.BrandUncheckedCreateWithoutProposedActionsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutProposedActionsInput
+  connect?: Prisma.BrandWhereUniqueInput
+}
+
+export type BrandUpdateOneRequiredWithoutProposedActionsNestedInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutProposedActionsInput, Prisma.BrandUncheckedCreateWithoutProposedActionsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutProposedActionsInput
+  upsert?: Prisma.BrandUpsertWithoutProposedActionsInput
+  connect?: Prisma.BrandWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutProposedActionsInput, Prisma.BrandUpdateWithoutProposedActionsInput>, Prisma.BrandUncheckedUpdateWithoutProposedActionsInput>
+}
+
+export type BrandCreateNestedOneWithoutSearchConsoleSyncsInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutSearchConsoleSyncsInput, Prisma.BrandUncheckedCreateWithoutSearchConsoleSyncsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutSearchConsoleSyncsInput
+  connect?: Prisma.BrandWhereUniqueInput
+}
+
+export type BrandUpdateOneRequiredWithoutSearchConsoleSyncsNestedInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutSearchConsoleSyncsInput, Prisma.BrandUncheckedCreateWithoutSearchConsoleSyncsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutSearchConsoleSyncsInput
+  upsert?: Prisma.BrandUpsertWithoutSearchConsoleSyncsInput
+  connect?: Prisma.BrandWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutSearchConsoleSyncsInput, Prisma.BrandUpdateWithoutSearchConsoleSyncsInput>, Prisma.BrandUncheckedUpdateWithoutSearchConsoleSyncsInput>
+}
+
+export type BrandCreateNestedOneWithoutSearchConsoleRowsInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutSearchConsoleRowsInput, Prisma.BrandUncheckedCreateWithoutSearchConsoleRowsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutSearchConsoleRowsInput
+  connect?: Prisma.BrandWhereUniqueInput
+}
+
+export type BrandUpdateOneRequiredWithoutSearchConsoleRowsNestedInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutSearchConsoleRowsInput, Prisma.BrandUncheckedCreateWithoutSearchConsoleRowsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutSearchConsoleRowsInput
+  upsert?: Prisma.BrandUpsertWithoutSearchConsoleRowsInput
+  connect?: Prisma.BrandWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutSearchConsoleRowsInput, Prisma.BrandUpdateWithoutSearchConsoleRowsInput>, Prisma.BrandUncheckedUpdateWithoutSearchConsoleRowsInput>
+}
+
+export type BrandCreateNestedOneWithoutAdsSyncsInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutAdsSyncsInput, Prisma.BrandUncheckedCreateWithoutAdsSyncsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutAdsSyncsInput
+  connect?: Prisma.BrandWhereUniqueInput
+}
+
+export type BrandUpdateOneRequiredWithoutAdsSyncsNestedInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutAdsSyncsInput, Prisma.BrandUncheckedCreateWithoutAdsSyncsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutAdsSyncsInput
+  upsert?: Prisma.BrandUpsertWithoutAdsSyncsInput
+  connect?: Prisma.BrandWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutAdsSyncsInput, Prisma.BrandUpdateWithoutAdsSyncsInput>, Prisma.BrandUncheckedUpdateWithoutAdsSyncsInput>
+}
+
+export type BrandCreateNestedOneWithoutAdsRowsInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutAdsRowsInput, Prisma.BrandUncheckedCreateWithoutAdsRowsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutAdsRowsInput
+  connect?: Prisma.BrandWhereUniqueInput
+}
+
+export type BrandUpdateOneRequiredWithoutAdsRowsNestedInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutAdsRowsInput, Prisma.BrandUncheckedCreateWithoutAdsRowsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutAdsRowsInput
+  upsert?: Prisma.BrandUpsertWithoutAdsRowsInput
+  connect?: Prisma.BrandWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutAdsRowsInput, Prisma.BrandUpdateWithoutAdsRowsInput>, Prisma.BrandUncheckedUpdateWithoutAdsRowsInput>
+}
+
 export type BrandCreateWithoutWorkspaceInput = {
   id?: string
   name: string
@@ -683,6 +1231,21 @@ export type BrandCreateWithoutWorkspaceInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
@@ -695,6 +1258,16 @@ export type BrandCreateWithoutWorkspaceInput = {
   opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutWorkspaceInput = {
@@ -704,6 +1277,21 @@ export type BrandUncheckedCreateWithoutWorkspaceInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -716,6 +1304,16 @@ export type BrandUncheckedCreateWithoutWorkspaceInput = {
   opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutWorkspaceInput = {
@@ -755,6 +1353,21 @@ export type BrandScalarWhereInput = {
   websiteUrl?: Prisma.StringNullableFilter<"Brand"> | string | null
   description?: Prisma.StringNullableFilter<"Brand"> | string | null
   status?: Prisma.EnumBrandStatusFilter<"Brand"> | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.StringNullableFilter<"Brand"> | string | null
+  githubOwner?: Prisma.StringNullableFilter<"Brand"> | string | null
+  githubRepo?: Prisma.StringNullableFilter<"Brand"> | string | null
+  githubBranch?: Prisma.StringNullableFilter<"Brand"> | string | null
+  contentFormat?: Prisma.EnumContentFormatFilter<"Brand"> | $Enums.ContentFormat
+  contentDirectory?: Prisma.StringNullableFilter<"Brand"> | string | null
+  publicRoute?: Prisma.StringNullableFilter<"Brand"> | string | null
+  assetsDirectory?: Prisma.StringNullableFilter<"Brand"> | string | null
+  defaultBranch?: Prisma.StringNullableFilter<"Brand"> | string | null
+  publishingMode?: Prisma.EnumPublishingModeFilter<"Brand"> | $Enums.PublishingMode
+  vercelProjectId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleAdsCustomerId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleBusinessAccountId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleBusinessLocationId?: Prisma.StringNullableFilter<"Brand"> | string | null
+  googleBusinessLocationName?: Prisma.StringNullableFilter<"Brand"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
 }
@@ -766,6 +1379,21 @@ export type BrandCreateWithoutProfileInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -778,6 +1406,16 @@ export type BrandCreateWithoutProfileInput = {
   opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutProfileInput = {
@@ -788,6 +1426,21 @@ export type BrandUncheckedCreateWithoutProfileInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
@@ -799,6 +1452,16 @@ export type BrandUncheckedCreateWithoutProfileInput = {
   opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutProfileInput = {
@@ -824,6 +1487,21 @@ export type BrandUpdateWithoutProfileInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -836,6 +1514,16 @@ export type BrandUpdateWithoutProfileInput = {
   opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutProfileInput = {
@@ -846,6 +1534,21 @@ export type BrandUncheckedUpdateWithoutProfileInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
@@ -857,6 +1560,16 @@ export type BrandUncheckedUpdateWithoutProfileInput = {
   opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutAudiencesInput = {
@@ -866,6 +1579,21 @@ export type BrandCreateWithoutAudiencesInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -878,6 +1606,16 @@ export type BrandCreateWithoutAudiencesInput = {
   opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutAudiencesInput = {
@@ -888,6 +1626,21 @@ export type BrandUncheckedCreateWithoutAudiencesInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -899,6 +1652,16 @@ export type BrandUncheckedCreateWithoutAudiencesInput = {
   opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutAudiencesInput = {
@@ -924,6 +1687,21 @@ export type BrandUpdateWithoutAudiencesInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -936,6 +1714,16 @@ export type BrandUpdateWithoutAudiencesInput = {
   opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutAudiencesInput = {
@@ -946,6 +1734,21 @@ export type BrandUncheckedUpdateWithoutAudiencesInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -957,6 +1760,16 @@ export type BrandUncheckedUpdateWithoutAudiencesInput = {
   opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutVoiceRulesInput = {
@@ -966,6 +1779,21 @@ export type BrandCreateWithoutVoiceRulesInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -978,6 +1806,16 @@ export type BrandCreateWithoutVoiceRulesInput = {
   opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutVoiceRulesInput = {
@@ -988,6 +1826,21 @@ export type BrandUncheckedCreateWithoutVoiceRulesInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -999,6 +1852,16 @@ export type BrandUncheckedCreateWithoutVoiceRulesInput = {
   opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutVoiceRulesInput = {
@@ -1024,6 +1887,21 @@ export type BrandUpdateWithoutVoiceRulesInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -1036,6 +1914,16 @@ export type BrandUpdateWithoutVoiceRulesInput = {
   opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutVoiceRulesInput = {
@@ -1046,6 +1934,21 @@ export type BrandUncheckedUpdateWithoutVoiceRulesInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -1057,6 +1960,16 @@ export type BrandUncheckedUpdateWithoutVoiceRulesInput = {
   opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutGoldenExamplesInput = {
@@ -1066,6 +1979,21 @@ export type BrandCreateWithoutGoldenExamplesInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -1078,6 +2006,16 @@ export type BrandCreateWithoutGoldenExamplesInput = {
   opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutGoldenExamplesInput = {
@@ -1088,6 +2026,21 @@ export type BrandUncheckedCreateWithoutGoldenExamplesInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -1099,6 +2052,16 @@ export type BrandUncheckedCreateWithoutGoldenExamplesInput = {
   opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutGoldenExamplesInput = {
@@ -1124,6 +2087,21 @@ export type BrandUpdateWithoutGoldenExamplesInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -1136,6 +2114,16 @@ export type BrandUpdateWithoutGoldenExamplesInput = {
   opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutGoldenExamplesInput = {
@@ -1146,6 +2134,21 @@ export type BrandUncheckedUpdateWithoutGoldenExamplesInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -1157,6 +2160,16 @@ export type BrandUncheckedUpdateWithoutGoldenExamplesInput = {
   opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutObservationsInput = {
@@ -1166,6 +2179,21 @@ export type BrandCreateWithoutObservationsInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -1178,6 +2206,16 @@ export type BrandCreateWithoutObservationsInput = {
   opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutObservationsInput = {
@@ -1188,6 +2226,21 @@ export type BrandUncheckedCreateWithoutObservationsInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -1199,6 +2252,16 @@ export type BrandUncheckedCreateWithoutObservationsInput = {
   opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutObservationsInput = {
@@ -1224,6 +2287,21 @@ export type BrandUpdateWithoutObservationsInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -1236,6 +2314,16 @@ export type BrandUpdateWithoutObservationsInput = {
   opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutObservationsInput = {
@@ -1246,6 +2334,21 @@ export type BrandUncheckedUpdateWithoutObservationsInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -1257,6 +2360,16 @@ export type BrandUncheckedUpdateWithoutObservationsInput = {
   opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutCompetitorsInput = {
@@ -1266,6 +2379,21 @@ export type BrandCreateWithoutCompetitorsInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -1278,6 +2406,16 @@ export type BrandCreateWithoutCompetitorsInput = {
   opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutCompetitorsInput = {
@@ -1288,6 +2426,21 @@ export type BrandUncheckedCreateWithoutCompetitorsInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -1299,6 +2452,16 @@ export type BrandUncheckedCreateWithoutCompetitorsInput = {
   opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutCompetitorsInput = {
@@ -1324,6 +2487,21 @@ export type BrandUpdateWithoutCompetitorsInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -1336,6 +2514,16 @@ export type BrandUpdateWithoutCompetitorsInput = {
   opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutCompetitorsInput = {
@@ -1346,6 +2534,21 @@ export type BrandUncheckedUpdateWithoutCompetitorsInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -1357,6 +2560,16 @@ export type BrandUncheckedUpdateWithoutCompetitorsInput = {
   opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutMarketSignalsInput = {
@@ -1366,6 +2579,21 @@ export type BrandCreateWithoutMarketSignalsInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -1378,6 +2606,16 @@ export type BrandCreateWithoutMarketSignalsInput = {
   opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutMarketSignalsInput = {
@@ -1388,6 +2626,21 @@ export type BrandUncheckedCreateWithoutMarketSignalsInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -1399,6 +2652,16 @@ export type BrandUncheckedCreateWithoutMarketSignalsInput = {
   opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutMarketSignalsInput = {
@@ -1424,6 +2687,21 @@ export type BrandUpdateWithoutMarketSignalsInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -1436,6 +2714,16 @@ export type BrandUpdateWithoutMarketSignalsInput = {
   opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutMarketSignalsInput = {
@@ -1446,6 +2734,21 @@ export type BrandUncheckedUpdateWithoutMarketSignalsInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -1457,6 +2760,16 @@ export type BrandUncheckedUpdateWithoutMarketSignalsInput = {
   opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutOpportunitiesInput = {
@@ -1466,6 +2779,21 @@ export type BrandCreateWithoutOpportunitiesInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -1478,6 +2806,16 @@ export type BrandCreateWithoutOpportunitiesInput = {
   marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutOpportunitiesInput = {
@@ -1488,6 +2826,21 @@ export type BrandUncheckedCreateWithoutOpportunitiesInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -1499,6 +2852,16 @@ export type BrandUncheckedCreateWithoutOpportunitiesInput = {
   marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutOpportunitiesInput = {
@@ -1524,6 +2887,21 @@ export type BrandUpdateWithoutOpportunitiesInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -1536,6 +2914,16 @@ export type BrandUpdateWithoutOpportunitiesInput = {
   marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutOpportunitiesInput = {
@@ -1546,6 +2934,21 @@ export type BrandUncheckedUpdateWithoutOpportunitiesInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -1557,6 +2960,16 @@ export type BrandUncheckedUpdateWithoutOpportunitiesInput = {
   marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutContentAssetsInput = {
@@ -1566,6 +2979,21 @@ export type BrandCreateWithoutContentAssetsInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -1578,6 +3006,16 @@ export type BrandCreateWithoutContentAssetsInput = {
   marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
   opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutContentAssetsInput = {
@@ -1588,6 +3026,21 @@ export type BrandUncheckedCreateWithoutContentAssetsInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -1599,6 +3052,16 @@ export type BrandUncheckedCreateWithoutContentAssetsInput = {
   marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
   opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
   visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutContentAssetsInput = {
@@ -1624,6 +3087,21 @@ export type BrandUpdateWithoutContentAssetsInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -1636,6 +3114,16 @@ export type BrandUpdateWithoutContentAssetsInput = {
   marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
   opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutContentAssetsInput = {
@@ -1646,6 +3134,21 @@ export type BrandUncheckedUpdateWithoutContentAssetsInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -1657,6 +3160,16 @@ export type BrandUncheckedUpdateWithoutContentAssetsInput = {
   marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
   opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutVisualAssetsInput = {
@@ -1666,6 +3179,21 @@ export type BrandCreateWithoutVisualAssetsInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -1678,6 +3206,16 @@ export type BrandCreateWithoutVisualAssetsInput = {
   marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
   opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutVisualAssetsInput = {
@@ -1688,6 +3226,21 @@ export type BrandUncheckedCreateWithoutVisualAssetsInput = {
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -1699,6 +3252,16 @@ export type BrandUncheckedCreateWithoutVisualAssetsInput = {
   marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
   opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutVisualAssetsInput = {
@@ -1724,6 +3287,21 @@ export type BrandUpdateWithoutVisualAssetsInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -1736,6 +3314,16 @@ export type BrandUpdateWithoutVisualAssetsInput = {
   marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
   opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutVisualAssetsInput = {
@@ -1746,6 +3334,21 @@ export type BrandUncheckedUpdateWithoutVisualAssetsInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -1757,28 +3360,151 @@ export type BrandUncheckedUpdateWithoutVisualAssetsInput = {
   marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
   opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
-export type BrandCreateManyWorkspaceInput = {
+export type BrandCreateWithoutWebsitePagesInput = {
   id?: string
   name: string
   slug: string
   websiteUrl?: string | null
   description?: string | null
   status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
+  profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
 }
 
-export type BrandUpdateWithoutWorkspaceInput = {
+export type BrandUncheckedCreateWithoutWebsitePagesInput = {
+  id?: string
+  workspaceId: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleUncheckedCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationUncheckedCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorUncheckedCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
+}
+
+export type BrandCreateOrConnectWithoutWebsitePagesInput = {
+  where: Prisma.BrandWhereUniqueInput
+  create: Prisma.XOR<Prisma.BrandCreateWithoutWebsitePagesInput, Prisma.BrandUncheckedCreateWithoutWebsitePagesInput>
+}
+
+export type BrandUpsertWithoutWebsitePagesInput = {
+  update: Prisma.XOR<Prisma.BrandUpdateWithoutWebsitePagesInput, Prisma.BrandUncheckedUpdateWithoutWebsitePagesInput>
+  create: Prisma.XOR<Prisma.BrandCreateWithoutWebsitePagesInput, Prisma.BrandUncheckedCreateWithoutWebsitePagesInput>
+  where?: Prisma.BrandWhereInput
+}
+
+export type BrandUpdateToOneWithWhereWithoutWebsitePagesInput = {
+  where?: Prisma.BrandWhereInput
+  data: Prisma.XOR<Prisma.BrandUpdateWithoutWebsitePagesInput, Prisma.BrandUncheckedUpdateWithoutWebsitePagesInput>
+}
+
+export type BrandUpdateWithoutWebsitePagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
   profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
   audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
   voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
@@ -1789,15 +3515,40 @@ export type BrandUpdateWithoutWorkspaceInput = {
   opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
 }
 
-export type BrandUncheckedUpdateWithoutWorkspaceInput = {
+export type BrandUncheckedUpdateWithoutWebsitePagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -1810,6 +3561,1933 @@ export type BrandUncheckedUpdateWithoutWorkspaceInput = {
   opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
   visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandCreateWithoutKeywordsInput = {
+  id?: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
+  profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
+}
+
+export type BrandUncheckedCreateWithoutKeywordsInput = {
+  id?: string
+  workspaceId: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleUncheckedCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationUncheckedCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorUncheckedCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
+}
+
+export type BrandCreateOrConnectWithoutKeywordsInput = {
+  where: Prisma.BrandWhereUniqueInput
+  create: Prisma.XOR<Prisma.BrandCreateWithoutKeywordsInput, Prisma.BrandUncheckedCreateWithoutKeywordsInput>
+}
+
+export type BrandUpsertWithoutKeywordsInput = {
+  update: Prisma.XOR<Prisma.BrandUpdateWithoutKeywordsInput, Prisma.BrandUncheckedUpdateWithoutKeywordsInput>
+  create: Prisma.XOR<Prisma.BrandCreateWithoutKeywordsInput, Prisma.BrandUncheckedCreateWithoutKeywordsInput>
+  where?: Prisma.BrandWhereInput
+}
+
+export type BrandUpdateToOneWithWhereWithoutKeywordsInput = {
+  where?: Prisma.BrandWhereInput
+  data: Prisma.XOR<Prisma.BrandUpdateWithoutKeywordsInput, Prisma.BrandUncheckedUpdateWithoutKeywordsInput>
+}
+
+export type BrandUpdateWithoutKeywordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
+  profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandUncheckedUpdateWithoutKeywordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUncheckedUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUncheckedUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandCreateWithoutSerpCompetitorsInput = {
+  id?: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
+  profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
+}
+
+export type BrandUncheckedCreateWithoutSerpCompetitorsInput = {
+  id?: string
+  workspaceId: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleUncheckedCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationUncheckedCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorUncheckedCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
+}
+
+export type BrandCreateOrConnectWithoutSerpCompetitorsInput = {
+  where: Prisma.BrandWhereUniqueInput
+  create: Prisma.XOR<Prisma.BrandCreateWithoutSerpCompetitorsInput, Prisma.BrandUncheckedCreateWithoutSerpCompetitorsInput>
+}
+
+export type BrandUpsertWithoutSerpCompetitorsInput = {
+  update: Prisma.XOR<Prisma.BrandUpdateWithoutSerpCompetitorsInput, Prisma.BrandUncheckedUpdateWithoutSerpCompetitorsInput>
+  create: Prisma.XOR<Prisma.BrandCreateWithoutSerpCompetitorsInput, Prisma.BrandUncheckedCreateWithoutSerpCompetitorsInput>
+  where?: Prisma.BrandWhereInput
+}
+
+export type BrandUpdateToOneWithWhereWithoutSerpCompetitorsInput = {
+  where?: Prisma.BrandWhereInput
+  data: Prisma.XOR<Prisma.BrandUpdateWithoutSerpCompetitorsInput, Prisma.BrandUncheckedUpdateWithoutSerpCompetitorsInput>
+}
+
+export type BrandUpdateWithoutSerpCompetitorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
+  profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandUncheckedUpdateWithoutSerpCompetitorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUncheckedUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUncheckedUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandCreateWithoutSeoBriefsInput = {
+  id?: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
+  profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
+}
+
+export type BrandUncheckedCreateWithoutSeoBriefsInput = {
+  id?: string
+  workspaceId: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleUncheckedCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationUncheckedCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorUncheckedCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
+}
+
+export type BrandCreateOrConnectWithoutSeoBriefsInput = {
+  where: Prisma.BrandWhereUniqueInput
+  create: Prisma.XOR<Prisma.BrandCreateWithoutSeoBriefsInput, Prisma.BrandUncheckedCreateWithoutSeoBriefsInput>
+}
+
+export type BrandUpsertWithoutSeoBriefsInput = {
+  update: Prisma.XOR<Prisma.BrandUpdateWithoutSeoBriefsInput, Prisma.BrandUncheckedUpdateWithoutSeoBriefsInput>
+  create: Prisma.XOR<Prisma.BrandCreateWithoutSeoBriefsInput, Prisma.BrandUncheckedCreateWithoutSeoBriefsInput>
+  where?: Prisma.BrandWhereInput
+}
+
+export type BrandUpdateToOneWithWhereWithoutSeoBriefsInput = {
+  where?: Prisma.BrandWhereInput
+  data: Prisma.XOR<Prisma.BrandUpdateWithoutSeoBriefsInput, Prisma.BrandUncheckedUpdateWithoutSeoBriefsInput>
+}
+
+export type BrandUpdateWithoutSeoBriefsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
+  profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandUncheckedUpdateWithoutSeoBriefsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUncheckedUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUncheckedUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandCreateWithoutGrowthWeekPlansInput = {
+  id?: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
+  profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
+}
+
+export type BrandUncheckedCreateWithoutGrowthWeekPlansInput = {
+  id?: string
+  workspaceId: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleUncheckedCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationUncheckedCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorUncheckedCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
+}
+
+export type BrandCreateOrConnectWithoutGrowthWeekPlansInput = {
+  where: Prisma.BrandWhereUniqueInput
+  create: Prisma.XOR<Prisma.BrandCreateWithoutGrowthWeekPlansInput, Prisma.BrandUncheckedCreateWithoutGrowthWeekPlansInput>
+}
+
+export type BrandUpsertWithoutGrowthWeekPlansInput = {
+  update: Prisma.XOR<Prisma.BrandUpdateWithoutGrowthWeekPlansInput, Prisma.BrandUncheckedUpdateWithoutGrowthWeekPlansInput>
+  create: Prisma.XOR<Prisma.BrandCreateWithoutGrowthWeekPlansInput, Prisma.BrandUncheckedCreateWithoutGrowthWeekPlansInput>
+  where?: Prisma.BrandWhereInput
+}
+
+export type BrandUpdateToOneWithWhereWithoutGrowthWeekPlansInput = {
+  where?: Prisma.BrandWhereInput
+  data: Prisma.XOR<Prisma.BrandUpdateWithoutGrowthWeekPlansInput, Prisma.BrandUncheckedUpdateWithoutGrowthWeekPlansInput>
+}
+
+export type BrandUpdateWithoutGrowthWeekPlansInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
+  profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandUncheckedUpdateWithoutGrowthWeekPlansInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUncheckedUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUncheckedUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandCreateWithoutProposedActionsInput = {
+  id?: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
+  profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
+}
+
+export type BrandUncheckedCreateWithoutProposedActionsInput = {
+  id?: string
+  workspaceId: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleUncheckedCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationUncheckedCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorUncheckedCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
+}
+
+export type BrandCreateOrConnectWithoutProposedActionsInput = {
+  where: Prisma.BrandWhereUniqueInput
+  create: Prisma.XOR<Prisma.BrandCreateWithoutProposedActionsInput, Prisma.BrandUncheckedCreateWithoutProposedActionsInput>
+}
+
+export type BrandUpsertWithoutProposedActionsInput = {
+  update: Prisma.XOR<Prisma.BrandUpdateWithoutProposedActionsInput, Prisma.BrandUncheckedUpdateWithoutProposedActionsInput>
+  create: Prisma.XOR<Prisma.BrandCreateWithoutProposedActionsInput, Prisma.BrandUncheckedCreateWithoutProposedActionsInput>
+  where?: Prisma.BrandWhereInput
+}
+
+export type BrandUpdateToOneWithWhereWithoutProposedActionsInput = {
+  where?: Prisma.BrandWhereInput
+  data: Prisma.XOR<Prisma.BrandUpdateWithoutProposedActionsInput, Prisma.BrandUncheckedUpdateWithoutProposedActionsInput>
+}
+
+export type BrandUpdateWithoutProposedActionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
+  profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandUncheckedUpdateWithoutProposedActionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUncheckedUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUncheckedUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandCreateWithoutSearchConsoleSyncsInput = {
+  id?: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
+  profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
+}
+
+export type BrandUncheckedCreateWithoutSearchConsoleSyncsInput = {
+  id?: string
+  workspaceId: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleUncheckedCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationUncheckedCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorUncheckedCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
+}
+
+export type BrandCreateOrConnectWithoutSearchConsoleSyncsInput = {
+  where: Prisma.BrandWhereUniqueInput
+  create: Prisma.XOR<Prisma.BrandCreateWithoutSearchConsoleSyncsInput, Prisma.BrandUncheckedCreateWithoutSearchConsoleSyncsInput>
+}
+
+export type BrandUpsertWithoutSearchConsoleSyncsInput = {
+  update: Prisma.XOR<Prisma.BrandUpdateWithoutSearchConsoleSyncsInput, Prisma.BrandUncheckedUpdateWithoutSearchConsoleSyncsInput>
+  create: Prisma.XOR<Prisma.BrandCreateWithoutSearchConsoleSyncsInput, Prisma.BrandUncheckedCreateWithoutSearchConsoleSyncsInput>
+  where?: Prisma.BrandWhereInput
+}
+
+export type BrandUpdateToOneWithWhereWithoutSearchConsoleSyncsInput = {
+  where?: Prisma.BrandWhereInput
+  data: Prisma.XOR<Prisma.BrandUpdateWithoutSearchConsoleSyncsInput, Prisma.BrandUncheckedUpdateWithoutSearchConsoleSyncsInput>
+}
+
+export type BrandUpdateWithoutSearchConsoleSyncsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
+  profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandUncheckedUpdateWithoutSearchConsoleSyncsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUncheckedUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUncheckedUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandCreateWithoutSearchConsoleRowsInput = {
+  id?: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
+  profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
+}
+
+export type BrandUncheckedCreateWithoutSearchConsoleRowsInput = {
+  id?: string
+  workspaceId: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleUncheckedCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationUncheckedCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorUncheckedCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
+}
+
+export type BrandCreateOrConnectWithoutSearchConsoleRowsInput = {
+  where: Prisma.BrandWhereUniqueInput
+  create: Prisma.XOR<Prisma.BrandCreateWithoutSearchConsoleRowsInput, Prisma.BrandUncheckedCreateWithoutSearchConsoleRowsInput>
+}
+
+export type BrandUpsertWithoutSearchConsoleRowsInput = {
+  update: Prisma.XOR<Prisma.BrandUpdateWithoutSearchConsoleRowsInput, Prisma.BrandUncheckedUpdateWithoutSearchConsoleRowsInput>
+  create: Prisma.XOR<Prisma.BrandCreateWithoutSearchConsoleRowsInput, Prisma.BrandUncheckedCreateWithoutSearchConsoleRowsInput>
+  where?: Prisma.BrandWhereInput
+}
+
+export type BrandUpdateToOneWithWhereWithoutSearchConsoleRowsInput = {
+  where?: Prisma.BrandWhereInput
+  data: Prisma.XOR<Prisma.BrandUpdateWithoutSearchConsoleRowsInput, Prisma.BrandUncheckedUpdateWithoutSearchConsoleRowsInput>
+}
+
+export type BrandUpdateWithoutSearchConsoleRowsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
+  profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandUncheckedUpdateWithoutSearchConsoleRowsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUncheckedUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUncheckedUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandCreateWithoutAdsSyncsInput = {
+  id?: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
+  profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
+}
+
+export type BrandUncheckedCreateWithoutAdsSyncsInput = {
+  id?: string
+  workspaceId: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleUncheckedCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationUncheckedCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorUncheckedCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
+}
+
+export type BrandCreateOrConnectWithoutAdsSyncsInput = {
+  where: Prisma.BrandWhereUniqueInput
+  create: Prisma.XOR<Prisma.BrandCreateWithoutAdsSyncsInput, Prisma.BrandUncheckedCreateWithoutAdsSyncsInput>
+}
+
+export type BrandUpsertWithoutAdsSyncsInput = {
+  update: Prisma.XOR<Prisma.BrandUpdateWithoutAdsSyncsInput, Prisma.BrandUncheckedUpdateWithoutAdsSyncsInput>
+  create: Prisma.XOR<Prisma.BrandCreateWithoutAdsSyncsInput, Prisma.BrandUncheckedCreateWithoutAdsSyncsInput>
+  where?: Prisma.BrandWhereInput
+}
+
+export type BrandUpdateToOneWithWhereWithoutAdsSyncsInput = {
+  where?: Prisma.BrandWhereInput
+  data: Prisma.XOR<Prisma.BrandUpdateWithoutAdsSyncsInput, Prisma.BrandUncheckedUpdateWithoutAdsSyncsInput>
+}
+
+export type BrandUpdateWithoutAdsSyncsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
+  profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandUncheckedUpdateWithoutAdsSyncsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUncheckedUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUncheckedUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandCreateWithoutAdsRowsInput = {
+  id?: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
+  profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+}
+
+export type BrandUncheckedCreateWithoutAdsRowsInput = {
+  id?: string
+  workspaceId: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleUncheckedCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationUncheckedCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorUncheckedCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+}
+
+export type BrandCreateOrConnectWithoutAdsRowsInput = {
+  where: Prisma.BrandWhereUniqueInput
+  create: Prisma.XOR<Prisma.BrandCreateWithoutAdsRowsInput, Prisma.BrandUncheckedCreateWithoutAdsRowsInput>
+}
+
+export type BrandUpsertWithoutAdsRowsInput = {
+  update: Prisma.XOR<Prisma.BrandUpdateWithoutAdsRowsInput, Prisma.BrandUncheckedUpdateWithoutAdsRowsInput>
+  create: Prisma.XOR<Prisma.BrandCreateWithoutAdsRowsInput, Prisma.BrandUncheckedCreateWithoutAdsRowsInput>
+  where?: Prisma.BrandWhereInput
+}
+
+export type BrandUpdateToOneWithWhereWithoutAdsRowsInput = {
+  where?: Prisma.BrandWhereInput
+  data: Prisma.XOR<Prisma.BrandUpdateWithoutAdsRowsInput, Prisma.BrandUncheckedUpdateWithoutAdsRowsInput>
+}
+
+export type BrandUpdateWithoutAdsRowsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
+  profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandUncheckedUpdateWithoutAdsRowsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUncheckedUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUncheckedUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandCreateManyWorkspaceInput = {
+  id?: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type BrandUpdateWithoutWorkspaceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandUncheckedUpdateWithoutWorkspaceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUncheckedUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUncheckedUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateManyWithoutWorkspaceInput = {
@@ -1819,6 +5497,21 @@ export type BrandUncheckedUpdateManyWithoutWorkspaceInput = {
   websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1838,6 +5531,16 @@ export type BrandCountOutputType = {
   opportunities: number
   contentAssets: number
   visualAssets: number
+  websitePages: number
+  keywords: number
+  serpCompetitors: number
+  seoBriefs: number
+  growthWeekPlans: number
+  proposedActions: number
+  searchConsoleSyncs: number
+  searchConsoleRows: number
+  adsSyncs: number
+  adsRows: number
 }
 
 export type BrandCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1850,6 +5553,16 @@ export type BrandCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   opportunities?: boolean | BrandCountOutputTypeCountOpportunitiesArgs
   contentAssets?: boolean | BrandCountOutputTypeCountContentAssetsArgs
   visualAssets?: boolean | BrandCountOutputTypeCountVisualAssetsArgs
+  websitePages?: boolean | BrandCountOutputTypeCountWebsitePagesArgs
+  keywords?: boolean | BrandCountOutputTypeCountKeywordsArgs
+  serpCompetitors?: boolean | BrandCountOutputTypeCountSerpCompetitorsArgs
+  seoBriefs?: boolean | BrandCountOutputTypeCountSeoBriefsArgs
+  growthWeekPlans?: boolean | BrandCountOutputTypeCountGrowthWeekPlansArgs
+  proposedActions?: boolean | BrandCountOutputTypeCountProposedActionsArgs
+  searchConsoleSyncs?: boolean | BrandCountOutputTypeCountSearchConsoleSyncsArgs
+  searchConsoleRows?: boolean | BrandCountOutputTypeCountSearchConsoleRowsArgs
+  adsSyncs?: boolean | BrandCountOutputTypeCountAdsSyncsArgs
+  adsRows?: boolean | BrandCountOutputTypeCountAdsRowsArgs
 }
 
 /**
@@ -1925,6 +5638,76 @@ export type BrandCountOutputTypeCountVisualAssetsArgs<ExtArgs extends runtime.Ty
   where?: Prisma.VisualAssetWhereInput
 }
 
+/**
+ * BrandCountOutputType without action
+ */
+export type BrandCountOutputTypeCountWebsitePagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WebsitePageWhereInput
+}
+
+/**
+ * BrandCountOutputType without action
+ */
+export type BrandCountOutputTypeCountKeywordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.KeywordWhereInput
+}
+
+/**
+ * BrandCountOutputType without action
+ */
+export type BrandCountOutputTypeCountSerpCompetitorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SerpCompetitorWhereInput
+}
+
+/**
+ * BrandCountOutputType without action
+ */
+export type BrandCountOutputTypeCountSeoBriefsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SeoBriefWhereInput
+}
+
+/**
+ * BrandCountOutputType without action
+ */
+export type BrandCountOutputTypeCountGrowthWeekPlansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GrowthWeekPlanWhereInput
+}
+
+/**
+ * BrandCountOutputType without action
+ */
+export type BrandCountOutputTypeCountProposedActionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProposedActionWhereInput
+}
+
+/**
+ * BrandCountOutputType without action
+ */
+export type BrandCountOutputTypeCountSearchConsoleSyncsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SearchConsoleSyncWhereInput
+}
+
+/**
+ * BrandCountOutputType without action
+ */
+export type BrandCountOutputTypeCountSearchConsoleRowsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SearchConsoleRowWhereInput
+}
+
+/**
+ * BrandCountOutputType without action
+ */
+export type BrandCountOutputTypeCountAdsSyncsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AdsSyncWhereInput
+}
+
+/**
+ * BrandCountOutputType without action
+ */
+export type BrandCountOutputTypeCountAdsRowsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AdsRowWhereInput
+}
+
 
 export type BrandSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1934,6 +5717,21 @@ export type BrandSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   websiteUrl?: boolean
   description?: boolean
   status?: boolean
+  searchConsoleProperty?: boolean
+  githubOwner?: boolean
+  githubRepo?: boolean
+  githubBranch?: boolean
+  contentFormat?: boolean
+  contentDirectory?: boolean
+  publicRoute?: boolean
+  assetsDirectory?: boolean
+  defaultBranch?: boolean
+  publishingMode?: boolean
+  vercelProjectId?: boolean
+  googleAdsCustomerId?: boolean
+  googleBusinessAccountId?: boolean
+  googleBusinessLocationId?: boolean
+  googleBusinessLocationName?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
@@ -1947,6 +5745,16 @@ export type BrandSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   opportunities?: boolean | Prisma.Brand$opportunitiesArgs<ExtArgs>
   contentAssets?: boolean | Prisma.Brand$contentAssetsArgs<ExtArgs>
   visualAssets?: boolean | Prisma.Brand$visualAssetsArgs<ExtArgs>
+  websitePages?: boolean | Prisma.Brand$websitePagesArgs<ExtArgs>
+  keywords?: boolean | Prisma.Brand$keywordsArgs<ExtArgs>
+  serpCompetitors?: boolean | Prisma.Brand$serpCompetitorsArgs<ExtArgs>
+  seoBriefs?: boolean | Prisma.Brand$seoBriefsArgs<ExtArgs>
+  growthWeekPlans?: boolean | Prisma.Brand$growthWeekPlansArgs<ExtArgs>
+  proposedActions?: boolean | Prisma.Brand$proposedActionsArgs<ExtArgs>
+  searchConsoleSyncs?: boolean | Prisma.Brand$searchConsoleSyncsArgs<ExtArgs>
+  searchConsoleRows?: boolean | Prisma.Brand$searchConsoleRowsArgs<ExtArgs>
+  adsSyncs?: boolean | Prisma.Brand$adsSyncsArgs<ExtArgs>
+  adsRows?: boolean | Prisma.Brand$adsRowsArgs<ExtArgs>
   _count?: boolean | Prisma.BrandCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["brand"]>
 
@@ -1958,6 +5766,21 @@ export type BrandSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   websiteUrl?: boolean
   description?: boolean
   status?: boolean
+  searchConsoleProperty?: boolean
+  githubOwner?: boolean
+  githubRepo?: boolean
+  githubBranch?: boolean
+  contentFormat?: boolean
+  contentDirectory?: boolean
+  publicRoute?: boolean
+  assetsDirectory?: boolean
+  defaultBranch?: boolean
+  publishingMode?: boolean
+  vercelProjectId?: boolean
+  googleAdsCustomerId?: boolean
+  googleBusinessAccountId?: boolean
+  googleBusinessLocationId?: boolean
+  googleBusinessLocationName?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
@@ -1971,6 +5794,21 @@ export type BrandSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   websiteUrl?: boolean
   description?: boolean
   status?: boolean
+  searchConsoleProperty?: boolean
+  githubOwner?: boolean
+  githubRepo?: boolean
+  githubBranch?: boolean
+  contentFormat?: boolean
+  contentDirectory?: boolean
+  publicRoute?: boolean
+  assetsDirectory?: boolean
+  defaultBranch?: boolean
+  publishingMode?: boolean
+  vercelProjectId?: boolean
+  googleAdsCustomerId?: boolean
+  googleBusinessAccountId?: boolean
+  googleBusinessLocationId?: boolean
+  googleBusinessLocationName?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
@@ -1984,11 +5822,26 @@ export type BrandSelectScalar = {
   websiteUrl?: boolean
   description?: boolean
   status?: boolean
+  searchConsoleProperty?: boolean
+  githubOwner?: boolean
+  githubRepo?: boolean
+  githubBranch?: boolean
+  contentFormat?: boolean
+  contentDirectory?: boolean
+  publicRoute?: boolean
+  assetsDirectory?: boolean
+  defaultBranch?: boolean
+  publishingMode?: boolean
+  vercelProjectId?: boolean
+  googleAdsCustomerId?: boolean
+  googleBusinessAccountId?: boolean
+  googleBusinessLocationId?: boolean
+  googleBusinessLocationName?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BrandOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspaceId" | "name" | "slug" | "websiteUrl" | "description" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["brand"]>
+export type BrandOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspaceId" | "name" | "slug" | "websiteUrl" | "description" | "status" | "searchConsoleProperty" | "githubOwner" | "githubRepo" | "githubBranch" | "contentFormat" | "contentDirectory" | "publicRoute" | "assetsDirectory" | "defaultBranch" | "publishingMode" | "vercelProjectId" | "googleAdsCustomerId" | "googleBusinessAccountId" | "googleBusinessLocationId" | "googleBusinessLocationName" | "createdAt" | "updatedAt", ExtArgs["result"]["brand"]>
 export type BrandInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.Brand$profileArgs<ExtArgs>
@@ -2001,6 +5854,16 @@ export type BrandInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   opportunities?: boolean | Prisma.Brand$opportunitiesArgs<ExtArgs>
   contentAssets?: boolean | Prisma.Brand$contentAssetsArgs<ExtArgs>
   visualAssets?: boolean | Prisma.Brand$visualAssetsArgs<ExtArgs>
+  websitePages?: boolean | Prisma.Brand$websitePagesArgs<ExtArgs>
+  keywords?: boolean | Prisma.Brand$keywordsArgs<ExtArgs>
+  serpCompetitors?: boolean | Prisma.Brand$serpCompetitorsArgs<ExtArgs>
+  seoBriefs?: boolean | Prisma.Brand$seoBriefsArgs<ExtArgs>
+  growthWeekPlans?: boolean | Prisma.Brand$growthWeekPlansArgs<ExtArgs>
+  proposedActions?: boolean | Prisma.Brand$proposedActionsArgs<ExtArgs>
+  searchConsoleSyncs?: boolean | Prisma.Brand$searchConsoleSyncsArgs<ExtArgs>
+  searchConsoleRows?: boolean | Prisma.Brand$searchConsoleRowsArgs<ExtArgs>
+  adsSyncs?: boolean | Prisma.Brand$adsSyncsArgs<ExtArgs>
+  adsRows?: boolean | Prisma.Brand$adsRowsArgs<ExtArgs>
   _count?: boolean | Prisma.BrandCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BrandIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2024,6 +5887,16 @@ export type $BrandPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     opportunities: Prisma.$OpportunityPayload<ExtArgs>[]
     contentAssets: Prisma.$ContentAssetPayload<ExtArgs>[]
     visualAssets: Prisma.$VisualAssetPayload<ExtArgs>[]
+    websitePages: Prisma.$WebsitePagePayload<ExtArgs>[]
+    keywords: Prisma.$KeywordPayload<ExtArgs>[]
+    serpCompetitors: Prisma.$SerpCompetitorPayload<ExtArgs>[]
+    seoBriefs: Prisma.$SeoBriefPayload<ExtArgs>[]
+    growthWeekPlans: Prisma.$GrowthWeekPlanPayload<ExtArgs>[]
+    proposedActions: Prisma.$ProposedActionPayload<ExtArgs>[]
+    searchConsoleSyncs: Prisma.$SearchConsoleSyncPayload<ExtArgs>[]
+    searchConsoleRows: Prisma.$SearchConsoleRowPayload<ExtArgs>[]
+    adsSyncs: Prisma.$AdsSyncPayload<ExtArgs>[]
+    adsRows: Prisma.$AdsRowPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2033,6 +5906,21 @@ export type $BrandPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     websiteUrl: string | null
     description: string | null
     status: $Enums.BrandStatus
+    searchConsoleProperty: string | null
+    githubOwner: string | null
+    githubRepo: string | null
+    githubBranch: string | null
+    contentFormat: $Enums.ContentFormat
+    contentDirectory: string | null
+    publicRoute: string | null
+    assetsDirectory: string | null
+    defaultBranch: string | null
+    publishingMode: $Enums.PublishingMode
+    vercelProjectId: string | null
+    googleAdsCustomerId: string | null
+    googleBusinessAccountId: string | null
+    googleBusinessLocationId: string | null
+    googleBusinessLocationName: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["brand"]>
@@ -2440,6 +6328,16 @@ export interface Prisma__BrandClient<T, Null = never, ExtArgs extends runtime.Ty
   opportunities<T extends Prisma.Brand$opportunitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$opportunitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OpportunityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   contentAssets<T extends Prisma.Brand$contentAssetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$contentAssetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContentAssetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   visualAssets<T extends Prisma.Brand$visualAssetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$visualAssetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisualAssetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  websitePages<T extends Prisma.Brand$websitePagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$websitePagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WebsitePagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  keywords<T extends Prisma.Brand$keywordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$keywordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$KeywordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  serpCompetitors<T extends Prisma.Brand$serpCompetitorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$serpCompetitorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SerpCompetitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  seoBriefs<T extends Prisma.Brand$seoBriefsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$seoBriefsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SeoBriefPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  growthWeekPlans<T extends Prisma.Brand$growthWeekPlansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$growthWeekPlansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GrowthWeekPlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  proposedActions<T extends Prisma.Brand$proposedActionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$proposedActionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProposedActionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  searchConsoleSyncs<T extends Prisma.Brand$searchConsoleSyncsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$searchConsoleSyncsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SearchConsoleSyncPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  searchConsoleRows<T extends Prisma.Brand$searchConsoleRowsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$searchConsoleRowsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SearchConsoleRowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  adsSyncs<T extends Prisma.Brand$adsSyncsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$adsSyncsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AdsSyncPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  adsRows<T extends Prisma.Brand$adsRowsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$adsRowsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AdsRowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2476,6 +6374,21 @@ export interface BrandFieldRefs {
   readonly websiteUrl: Prisma.FieldRef<"Brand", 'String'>
   readonly description: Prisma.FieldRef<"Brand", 'String'>
   readonly status: Prisma.FieldRef<"Brand", 'BrandStatus'>
+  readonly searchConsoleProperty: Prisma.FieldRef<"Brand", 'String'>
+  readonly githubOwner: Prisma.FieldRef<"Brand", 'String'>
+  readonly githubRepo: Prisma.FieldRef<"Brand", 'String'>
+  readonly githubBranch: Prisma.FieldRef<"Brand", 'String'>
+  readonly contentFormat: Prisma.FieldRef<"Brand", 'ContentFormat'>
+  readonly contentDirectory: Prisma.FieldRef<"Brand", 'String'>
+  readonly publicRoute: Prisma.FieldRef<"Brand", 'String'>
+  readonly assetsDirectory: Prisma.FieldRef<"Brand", 'String'>
+  readonly defaultBranch: Prisma.FieldRef<"Brand", 'String'>
+  readonly publishingMode: Prisma.FieldRef<"Brand", 'PublishingMode'>
+  readonly vercelProjectId: Prisma.FieldRef<"Brand", 'String'>
+  readonly googleAdsCustomerId: Prisma.FieldRef<"Brand", 'String'>
+  readonly googleBusinessAccountId: Prisma.FieldRef<"Brand", 'String'>
+  readonly googleBusinessLocationId: Prisma.FieldRef<"Brand", 'String'>
+  readonly googleBusinessLocationName: Prisma.FieldRef<"Brand", 'String'>
   readonly createdAt: Prisma.FieldRef<"Brand", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Brand", 'DateTime'>
 }
@@ -3111,6 +7024,246 @@ export type Brand$visualAssetsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.VisualAssetScalarFieldEnum | Prisma.VisualAssetScalarFieldEnum[]
+}
+
+/**
+ * Brand.websitePages
+ */
+export type Brand$websitePagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WebsitePage
+   */
+  select?: Prisma.WebsitePageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WebsitePage
+   */
+  omit?: Prisma.WebsitePageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WebsitePageInclude<ExtArgs> | null
+  where?: Prisma.WebsitePageWhereInput
+  orderBy?: Prisma.WebsitePageOrderByWithRelationInput | Prisma.WebsitePageOrderByWithRelationInput[]
+  cursor?: Prisma.WebsitePageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.WebsitePageScalarFieldEnum | Prisma.WebsitePageScalarFieldEnum[]
+}
+
+/**
+ * Brand.keywords
+ */
+export type Brand$keywordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Keyword
+   */
+  select?: Prisma.KeywordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Keyword
+   */
+  omit?: Prisma.KeywordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.KeywordInclude<ExtArgs> | null
+  where?: Prisma.KeywordWhereInput
+  orderBy?: Prisma.KeywordOrderByWithRelationInput | Prisma.KeywordOrderByWithRelationInput[]
+  cursor?: Prisma.KeywordWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.KeywordScalarFieldEnum | Prisma.KeywordScalarFieldEnum[]
+}
+
+/**
+ * Brand.serpCompetitors
+ */
+export type Brand$serpCompetitorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SerpCompetitor
+   */
+  select?: Prisma.SerpCompetitorSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SerpCompetitor
+   */
+  omit?: Prisma.SerpCompetitorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SerpCompetitorInclude<ExtArgs> | null
+  where?: Prisma.SerpCompetitorWhereInput
+  orderBy?: Prisma.SerpCompetitorOrderByWithRelationInput | Prisma.SerpCompetitorOrderByWithRelationInput[]
+  cursor?: Prisma.SerpCompetitorWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SerpCompetitorScalarFieldEnum | Prisma.SerpCompetitorScalarFieldEnum[]
+}
+
+/**
+ * Brand.seoBriefs
+ */
+export type Brand$seoBriefsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SeoBrief
+   */
+  select?: Prisma.SeoBriefSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SeoBrief
+   */
+  omit?: Prisma.SeoBriefOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SeoBriefInclude<ExtArgs> | null
+  where?: Prisma.SeoBriefWhereInput
+  orderBy?: Prisma.SeoBriefOrderByWithRelationInput | Prisma.SeoBriefOrderByWithRelationInput[]
+  cursor?: Prisma.SeoBriefWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SeoBriefScalarFieldEnum | Prisma.SeoBriefScalarFieldEnum[]
+}
+
+/**
+ * Brand.growthWeekPlans
+ */
+export type Brand$growthWeekPlansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GrowthWeekPlan
+   */
+  select?: Prisma.GrowthWeekPlanSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GrowthWeekPlan
+   */
+  omit?: Prisma.GrowthWeekPlanOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GrowthWeekPlanInclude<ExtArgs> | null
+  where?: Prisma.GrowthWeekPlanWhereInput
+  orderBy?: Prisma.GrowthWeekPlanOrderByWithRelationInput | Prisma.GrowthWeekPlanOrderByWithRelationInput[]
+  cursor?: Prisma.GrowthWeekPlanWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GrowthWeekPlanScalarFieldEnum | Prisma.GrowthWeekPlanScalarFieldEnum[]
+}
+
+/**
+ * Brand.proposedActions
+ */
+export type Brand$proposedActionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProposedAction
+   */
+  select?: Prisma.ProposedActionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProposedAction
+   */
+  omit?: Prisma.ProposedActionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProposedActionInclude<ExtArgs> | null
+  where?: Prisma.ProposedActionWhereInput
+  orderBy?: Prisma.ProposedActionOrderByWithRelationInput | Prisma.ProposedActionOrderByWithRelationInput[]
+  cursor?: Prisma.ProposedActionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProposedActionScalarFieldEnum | Prisma.ProposedActionScalarFieldEnum[]
+}
+
+/**
+ * Brand.searchConsoleSyncs
+ */
+export type Brand$searchConsoleSyncsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SearchConsoleSync
+   */
+  select?: Prisma.SearchConsoleSyncSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SearchConsoleSync
+   */
+  omit?: Prisma.SearchConsoleSyncOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SearchConsoleSyncInclude<ExtArgs> | null
+  where?: Prisma.SearchConsoleSyncWhereInput
+  orderBy?: Prisma.SearchConsoleSyncOrderByWithRelationInput | Prisma.SearchConsoleSyncOrderByWithRelationInput[]
+  cursor?: Prisma.SearchConsoleSyncWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SearchConsoleSyncScalarFieldEnum | Prisma.SearchConsoleSyncScalarFieldEnum[]
+}
+
+/**
+ * Brand.searchConsoleRows
+ */
+export type Brand$searchConsoleRowsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SearchConsoleRow
+   */
+  select?: Prisma.SearchConsoleRowSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SearchConsoleRow
+   */
+  omit?: Prisma.SearchConsoleRowOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SearchConsoleRowInclude<ExtArgs> | null
+  where?: Prisma.SearchConsoleRowWhereInput
+  orderBy?: Prisma.SearchConsoleRowOrderByWithRelationInput | Prisma.SearchConsoleRowOrderByWithRelationInput[]
+  cursor?: Prisma.SearchConsoleRowWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SearchConsoleRowScalarFieldEnum | Prisma.SearchConsoleRowScalarFieldEnum[]
+}
+
+/**
+ * Brand.adsSyncs
+ */
+export type Brand$adsSyncsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AdsSync
+   */
+  select?: Prisma.AdsSyncSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AdsSync
+   */
+  omit?: Prisma.AdsSyncOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdsSyncInclude<ExtArgs> | null
+  where?: Prisma.AdsSyncWhereInput
+  orderBy?: Prisma.AdsSyncOrderByWithRelationInput | Prisma.AdsSyncOrderByWithRelationInput[]
+  cursor?: Prisma.AdsSyncWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AdsSyncScalarFieldEnum | Prisma.AdsSyncScalarFieldEnum[]
+}
+
+/**
+ * Brand.adsRows
+ */
+export type Brand$adsRowsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AdsRow
+   */
+  select?: Prisma.AdsRowSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AdsRow
+   */
+  omit?: Prisma.AdsRowOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdsRowInclude<ExtArgs> | null
+  where?: Prisma.AdsRowWhereInput
+  orderBy?: Prisma.AdsRowOrderByWithRelationInput | Prisma.AdsRowOrderByWithRelationInput[]
+  cursor?: Prisma.AdsRowWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AdsRowScalarFieldEnum | Prisma.AdsRowScalarFieldEnum[]
 }
 
 /**

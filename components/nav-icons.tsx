@@ -52,6 +52,13 @@ export const OpportunitiesIcon = (p: IconProps) => (
   </Icon>
 );
 
+export const ActionsIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <circle cx="10" cy="10" r="7" />
+    <path d="m6.8 10.2 2.1 2.1 4.3-4.5" />
+  </Icon>
+);
+
 export const ContentIcon = (p: IconProps) => (
   <Icon {...p}>
     <rect x="4" y="3.2" width="12" height="13.6" rx="2.2" />
@@ -63,6 +70,13 @@ export const SearchIcon = (p: IconProps) => (
   <Icon {...p}>
     <circle cx="9" cy="9" r="5.2" />
     <path d="m13 13 3.4 3.4" />
+  </Icon>
+);
+
+export const AdsIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M4.2 7.5h2.6l5.4-3.1v11.2l-5.4-3.1H4.2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1Z" />
+    <path d="M15.4 8.2a2.6 2.6 0 0 1 0 3.6" />
   </Icon>
 );
 

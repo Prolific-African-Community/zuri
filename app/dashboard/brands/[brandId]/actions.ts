@@ -1,5 +1,7 @@
 "use server";
 
+import { requireSession } from "@/lib/session";
+
 import { optionalText, textList } from "@/lib/brands";
 import { VoiceRuleType } from "@/lib/generated/prisma/enums";
 import { getPrisma } from "@/lib/prisma";
@@ -18,6 +20,8 @@ function text(formData: FormData, key: string) {
 /* -------------------------------------------------------------------------- */
 
 export async function updateBrandProfile(brandId: string, formData: FormData) {
+  await requireSession();
+
   const mission = text(formData, "mission");
   if (!mission) throw new Error("Mission is required.");
 
@@ -58,6 +62,8 @@ function audienceData(formData: FormData) {
 }
 
 export async function createAudience(brandId: string, formData: FormData) {
+  await requireSession();
+
   await getPrisma().audience.create({
     data: { brandId, ...audienceData(formData) },
   });
@@ -69,6 +75,8 @@ export async function updateAudience(
   audienceId: string,
   formData: FormData,
 ) {
+  await requireSession();
+
   await getPrisma().audience.update({
     where: { id: audienceId },
     data: audienceData(formData),
@@ -77,6 +85,8 @@ export async function updateAudience(
 }
 
 export async function deleteAudience(brandId: string, audienceId: string) {
+  await requireSession();
+
   await getPrisma().audience.delete({ where: { id: audienceId } });
   refresh(brandId);
 }
@@ -94,6 +104,8 @@ function voiceRuleType(formData: FormData) {
 }
 
 export async function createVoiceRule(brandId: string, formData: FormData) {
+  await requireSession();
+
   const rule = text(formData, "rule");
   if (!rule) throw new Error("A voice rule needs content.");
 
@@ -108,6 +120,8 @@ export async function updateVoiceRule(
   voiceRuleId: string,
   formData: FormData,
 ) {
+  await requireSession();
+
   const rule = text(formData, "rule");
   if (!rule) throw new Error("A voice rule needs content.");
 
@@ -119,6 +133,8 @@ export async function updateVoiceRule(
 }
 
 export async function deleteVoiceRule(brandId: string, voiceRuleId: string) {
+  await requireSession();
+
   await getPrisma().voiceRule.delete({ where: { id: voiceRuleId } });
   refresh(brandId);
 }
@@ -138,6 +154,8 @@ function goldenExampleData(formData: FormData) {
 }
 
 export async function createGoldenExample(brandId: string, formData: FormData) {
+  await requireSession();
+
   await getPrisma().goldenExample.create({
     data: { brandId, ...goldenExampleData(formData) },
   });
@@ -149,6 +167,8 @@ export async function updateGoldenExample(
   goldenExampleId: string,
   formData: FormData,
 ) {
+  await requireSession();
+
   await getPrisma().goldenExample.update({
     where: { id: goldenExampleId },
     data: goldenExampleData(formData),
@@ -160,6 +180,8 @@ export async function deleteGoldenExample(
   brandId: string,
   goldenExampleId: string,
 ) {
+  await requireSession();
+
   await getPrisma().goldenExample.delete({ where: { id: goldenExampleId } });
   refresh(brandId);
 }
@@ -180,6 +202,8 @@ function competitorData(formData: FormData) {
 }
 
 export async function createCompetitor(brandId: string, formData: FormData) {
+  await requireSession();
+
   await getPrisma().competitor.create({
     data: { brandId, ...competitorData(formData) },
   });
@@ -191,6 +215,8 @@ export async function updateCompetitor(
   competitorId: string,
   formData: FormData,
 ) {
+  await requireSession();
+
   await getPrisma().competitor.update({
     where: { id: competitorId },
     data: competitorData(formData),
@@ -199,6 +225,8 @@ export async function updateCompetitor(
 }
 
 export async function deleteCompetitor(brandId: string, competitorId: string) {
+  await requireSession();
+
   await getPrisma().competitor.delete({ where: { id: competitorId } });
   refresh(brandId);
 }

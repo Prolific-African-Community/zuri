@@ -1,5 +1,6 @@
 "use client";
 
+import { logout } from "@/app/login/actions";
 import { navigation, type NavItem } from "@/components/dashboard-nav";
 import { ZuriLogo } from "@/components/zuri-logo";
 import { cn } from "@/lib/cn";
@@ -163,6 +164,14 @@ export function DashboardSidebar() {
             className="absolute inset-x-0 top-[57px] max-h-[calc(100svh-57px)] animate-rise overflow-y-auto border-b border-line bg-canvas px-4 pt-4 pb-6 shadow-[0_24px_64px_-24px_rgba(12,12,17,0.28)]"
           >
             <NavList onNavigate={() => setOpen(false)} />
+            <form action={logout} className="mt-4 border-t border-line pt-4">
+              <button
+                type="submit"
+                className="w-full rounded-md px-2.5 py-2 text-left text-[0.8125rem] text-ink-3 transition-colors duration-200 hover:bg-sunken hover:text-ink"
+              >
+                Sign out
+              </button>
+            </form>
           </div>
         </div>
       ) : null}
@@ -178,6 +187,14 @@ export function DashboardSidebar() {
         <div className="mt-9 min-h-0 flex-1 overflow-y-auto">
           <NavList />
         </div>
+        <form action={logout} className="mt-4 border-t border-line pt-4">
+          <button
+            type="submit"
+            className="w-full rounded-md px-2.5 py-2 text-left text-[0.8125rem] text-ink-3 transition-colors duration-200 hover:bg-sunken hover:text-ink"
+          >
+            Sign out
+          </button>
+        </form>
       </aside>
     </>
   );

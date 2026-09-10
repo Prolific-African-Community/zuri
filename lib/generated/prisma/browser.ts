@@ -73,7 +73,100 @@ export type Opportunity = Prisma.OpportunityModel
  */
 export type ContentAsset = Prisma.ContentAssetModel
 /**
+ * Model ArticleDraft
+ * The editorial fields an ArticlePackage needs that a ContentAsset has no
+ * business carrying. Title, content, status and ownership stay on the asset.
+ */
+export type ArticleDraft = Prisma.ArticleDraftModel
+/**
+ * Model ArticlePublication
+ * One merged publication. Kept so an update never erases the trace of the
+ * pull request that put the previous version online.
+ */
+export type ArticlePublication = Prisma.ArticlePublicationModel
+/**
+ * Model ArticleImageAsset
+ * An image generated for one article. It lives in Zuri (blob) plus the path it
+ * will occupy in the brand's repository once published — nothing is written
+ * there yet.
+ */
+export type ArticleImageAsset = Prisma.ArticleImageAssetModel
+/**
+ * Model MetaCreative
+ * The production package behind one Meta draft: final copy for a post, or a
+ * full brief for a video. Editable by hand, and the edit is the truth.
+ */
+export type MetaCreative = Prisma.MetaCreativeModel
+/**
  * Model VisualAsset
  * 
  */
 export type VisualAsset = Prisma.VisualAssetModel
+/**
+ * Model WebsitePage
+ * 
+ */
+export type WebsitePage = Prisma.WebsitePageModel
+/**
+ * Model Keyword
+ * 
+ */
+export type Keyword = Prisma.KeywordModel
+/**
+ * Model SerpCompetitor
+ * 
+ */
+export type SerpCompetitor = Prisma.SerpCompetitorModel
+/**
+ * Model SeoBrief
+ * 
+ */
+export type SeoBrief = Prisma.SeoBriefModel
+/**
+ * Model GrowthWeekPlan
+ * 
+ */
+export type GrowthWeekPlan = Prisma.GrowthWeekPlanModel
+/**
+ * Model GrowthWeekItem
+ * 
+ */
+export type GrowthWeekItem = Prisma.GrowthWeekItemModel
+/**
+ * Model ActionMeasurement
+ * One before/after reading of an executed action. Re-measuring adds a row, so
+ * the history of what an action did over time is never overwritten.
+ */
+export type ActionMeasurement = Prisma.ActionMeasurementModel
+/**
+ * Model ProposedAction
+ * 
+ */
+export type ProposedAction = Prisma.ProposedActionModel
+/**
+ * Model GoogleConnection
+ * One Google account for the whole workspace — this is a single-admin app.
+ * Tokens live here and are never sent to the browser.
+ */
+export type GoogleConnection = Prisma.GoogleConnectionModel
+/**
+ * Model SearchConsoleSync
+ * 
+ */
+export type SearchConsoleSync = Prisma.SearchConsoleSyncModel
+/**
+ * Model SearchConsoleRow
+ * 
+ */
+export type SearchConsoleRow = Prisma.SearchConsoleRowModel
+/**
+ * Model AdsSync
+ * One read-only snapshot of a Google Ads account over a date range.
+ * Raw counters only — CTR, CPC and conversion rate are derived when displayed.
+ */
+export type AdsSync = Prisma.AdsSyncModel
+/**
+ * Model AdsRow
+ * 
+ */
+export type AdsRow = Prisma.AdsRowModel

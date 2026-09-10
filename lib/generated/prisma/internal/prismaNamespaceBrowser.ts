@@ -62,7 +62,24 @@ export const ModelName = {
   MarketSignal: 'MarketSignal',
   Opportunity: 'Opportunity',
   ContentAsset: 'ContentAsset',
-  VisualAsset: 'VisualAsset'
+  ArticleDraft: 'ArticleDraft',
+  ArticlePublication: 'ArticlePublication',
+  ArticleImageAsset: 'ArticleImageAsset',
+  MetaCreative: 'MetaCreative',
+  VisualAsset: 'VisualAsset',
+  WebsitePage: 'WebsitePage',
+  Keyword: 'Keyword',
+  SerpCompetitor: 'SerpCompetitor',
+  SeoBrief: 'SeoBrief',
+  GrowthWeekPlan: 'GrowthWeekPlan',
+  GrowthWeekItem: 'GrowthWeekItem',
+  ActionMeasurement: 'ActionMeasurement',
+  ProposedAction: 'ProposedAction',
+  GoogleConnection: 'GoogleConnection',
+  SearchConsoleSync: 'SearchConsoleSync',
+  SearchConsoleRow: 'SearchConsoleRow',
+  AdsSync: 'AdsSync',
+  AdsRow: 'AdsRow'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -99,6 +116,21 @@ export const BrandScalarFieldEnum = {
   websiteUrl: 'websiteUrl',
   description: 'description',
   status: 'status',
+  searchConsoleProperty: 'searchConsoleProperty',
+  githubOwner: 'githubOwner',
+  githubRepo: 'githubRepo',
+  githubBranch: 'githubBranch',
+  contentFormat: 'contentFormat',
+  contentDirectory: 'contentDirectory',
+  publicRoute: 'publicRoute',
+  assetsDirectory: 'assetsDirectory',
+  defaultBranch: 'defaultBranch',
+  publishingMode: 'publishingMode',
+  vercelProjectId: 'vercelProjectId',
+  googleAdsCustomerId: 'googleAdsCustomerId',
+  googleBusinessAccountId: 'googleBusinessAccountId',
+  googleBusinessLocationId: 'googleBusinessLocationId',
+  googleBusinessLocationName: 'googleBusinessLocationName',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -210,6 +242,9 @@ export const OpportunityScalarFieldEnum = {
   status: 'status',
   score: 'score',
   rationale: 'rationale',
+  actionType: 'actionType',
+  targetUrl: 'targetUrl',
+  targetKeyword: 'targetKeyword',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -226,11 +261,106 @@ export const ContentAssetScalarFieldEnum = {
   status: 'status',
   title: 'title',
   content: 'content',
+  scheduledAt: 'scheduledAt',
+  publishedAt: 'publishedAt',
+  googleBusinessPostName: 'googleBusinessPostName',
+  googleBusinessPublishedAt: 'googleBusinessPublishedAt',
+  googleBusinessError: 'googleBusinessError',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type ContentAssetScalarFieldEnum = (typeof ContentAssetScalarFieldEnum)[keyof typeof ContentAssetScalarFieldEnum]
+
+
+export const ArticleDraftScalarFieldEnum = {
+  id: 'id',
+  contentAssetId: 'contentAssetId',
+  slug: 'slug',
+  excerpt: 'excerpt',
+  author: 'author',
+  publishedAt: 'publishedAt',
+  category: 'category',
+  tags: 'tags',
+  targetKeyword: 'targetKeyword',
+  metaTitle: 'metaTitle',
+  metaDescription: 'metaDescription',
+  canonicalUrl: 'canonicalUrl',
+  reviewStatus: 'reviewStatus',
+  publishingBranch: 'publishingBranch',
+  prNumber: 'prNumber',
+  prUrl: 'prUrl',
+  prOpenedAt: 'prOpenedAt',
+  prPackageHash: 'prPackageHash',
+  prClosedWithoutMerge: 'prClosedWithoutMerge',
+  mergedAt: 'mergedAt',
+  publishedUrl: 'publishedUrl',
+  publishedPackageHash: 'publishedPackageHash',
+  mergeCommitSha: 'mergeCommitSha',
+  productionStatus: 'productionStatus',
+  productionDeploymentUrl: 'productionDeploymentUrl',
+  productionDeployedAt: 'productionDeployedAt',
+  coverImage: 'coverImage',
+  images: 'images',
+  internalLinks: 'internalLinks',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ArticleDraftScalarFieldEnum = (typeof ArticleDraftScalarFieldEnum)[keyof typeof ArticleDraftScalarFieldEnum]
+
+
+export const ArticlePublicationScalarFieldEnum = {
+  id: 'id',
+  articleDraftId: 'articleDraftId',
+  branch: 'branch',
+  prNumber: 'prNumber',
+  prUrl: 'prUrl',
+  packageHash: 'packageHash',
+  publishedUrl: 'publishedUrl',
+  mergedAt: 'mergedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type ArticlePublicationScalarFieldEnum = (typeof ArticlePublicationScalarFieldEnum)[keyof typeof ArticlePublicationScalarFieldEnum]
+
+
+export const ArticleImageAssetScalarFieldEnum = {
+  id: 'id',
+  articleDraftId: 'articleDraftId',
+  kind: 'kind',
+  order: 'order',
+  purpose: 'purpose',
+  insertionPoint: 'insertionPoint',
+  concept: 'concept',
+  prompt: 'prompt',
+  alt: 'alt',
+  caption: 'caption',
+  blobUrl: 'blobUrl',
+  targetPath: 'targetPath',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ArticleImageAssetScalarFieldEnum = (typeof ArticleImageAssetScalarFieldEnum)[keyof typeof ArticleImageAssetScalarFieldEnum]
+
+
+export const MetaCreativeScalarFieldEnum = {
+  id: 'id',
+  contentAssetId: 'contentAssetId',
+  hook: 'hook',
+  copy: 'copy',
+  cta: 'cta',
+  visualRecommendation: 'visualRecommendation',
+  imagePrompt: 'imagePrompt',
+  imageUrl: 'imageUrl',
+  brief: 'brief',
+  productionPrompt: 'productionPrompt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MetaCreativeScalarFieldEnum = (typeof MetaCreativeScalarFieldEnum)[keyof typeof MetaCreativeScalarFieldEnum]
 
 
 export const VisualAssetScalarFieldEnum = {
@@ -250,12 +380,253 @@ export const VisualAssetScalarFieldEnum = {
 export type VisualAssetScalarFieldEnum = (typeof VisualAssetScalarFieldEnum)[keyof typeof VisualAssetScalarFieldEnum]
 
 
+export const WebsitePageScalarFieldEnum = {
+  id: 'id',
+  brandId: 'brandId',
+  url: 'url',
+  title: 'title',
+  metaDescription: 'metaDescription',
+  h1: 'h1',
+  statusCode: 'statusCode',
+  canonicalUrl: 'canonicalUrl',
+  wordCount: 'wordCount',
+  lastCrawledAt: 'lastCrawledAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WebsitePageScalarFieldEnum = (typeof WebsitePageScalarFieldEnum)[keyof typeof WebsitePageScalarFieldEnum]
+
+
+export const KeywordScalarFieldEnum = {
+  id: 'id',
+  brandId: 'brandId',
+  keyword: 'keyword',
+  searchVolume: 'searchVolume',
+  difficulty: 'difficulty',
+  intent: 'intent',
+  priorityScore: 'priorityScore',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type KeywordScalarFieldEnum = (typeof KeywordScalarFieldEnum)[keyof typeof KeywordScalarFieldEnum]
+
+
+export const SerpCompetitorScalarFieldEnum = {
+  id: 'id',
+  brandId: 'brandId',
+  keywordId: 'keywordId',
+  domain: 'domain',
+  position: 'position',
+  url: 'url',
+  title: 'title',
+  checkedAt: 'checkedAt'
+} as const
+
+export type SerpCompetitorScalarFieldEnum = (typeof SerpCompetitorScalarFieldEnum)[keyof typeof SerpCompetitorScalarFieldEnum]
+
+
+export const SeoBriefScalarFieldEnum = {
+  id: 'id',
+  brandId: 'brandId',
+  opportunityId: 'opportunityId',
+  objective: 'objective',
+  targetKeyword: 'targetKeyword',
+  searchIntent: 'searchIntent',
+  recommendedAction: 'recommendedAction',
+  actionJustification: 'actionJustification',
+  recommendedTitle: 'recommendedTitle',
+  recommendedMetaDescription: 'recommendedMetaDescription',
+  outline: 'outline',
+  keyQuestions: 'keyQuestions',
+  internalLinks: 'internalLinks',
+  competitorInsights: 'competitorInsights',
+  evidenceNeeded: 'evidenceNeeded',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SeoBriefScalarFieldEnum = (typeof SeoBriefScalarFieldEnum)[keyof typeof SeoBriefScalarFieldEnum]
+
+
+export const GrowthWeekPlanScalarFieldEnum = {
+  id: 'id',
+  brandId: 'brandId',
+  weekStart: 'weekStart',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GrowthWeekPlanScalarFieldEnum = (typeof GrowthWeekPlanScalarFieldEnum)[keyof typeof GrowthWeekPlanScalarFieldEnum]
+
+
+export const GrowthWeekItemScalarFieldEnum = {
+  id: 'id',
+  planId: 'planId',
+  day: 'day',
+  action: 'action',
+  channel: 'channel',
+  reason: 'reason',
+  priority: 'priority',
+  opportunityId: 'opportunityId',
+  contentAssetId: 'contentAssetId'
+} as const
+
+export type GrowthWeekItemScalarFieldEnum = (typeof GrowthWeekItemScalarFieldEnum)[keyof typeof GrowthWeekItemScalarFieldEnum]
+
+
+export const ActionMeasurementScalarFieldEnum = {
+  id: 'id',
+  actionId: 'actionId',
+  periodBefore: 'periodBefore',
+  periodAfter: 'periodAfter',
+  metricsBefore: 'metricsBefore',
+  metricsAfter: 'metricsAfter',
+  outcome: 'outcome',
+  headline: 'headline',
+  observation: 'observation',
+  createdAt: 'createdAt'
+} as const
+
+export type ActionMeasurementScalarFieldEnum = (typeof ActionMeasurementScalarFieldEnum)[keyof typeof ActionMeasurementScalarFieldEnum]
+
+
+export const ProposedActionScalarFieldEnum = {
+  id: 'id',
+  brandId: 'brandId',
+  opportunityId: 'opportunityId',
+  type: 'type',
+  status: 'status',
+  title: 'title',
+  summary: 'summary',
+  rationale: 'rationale',
+  target: 'target',
+  payload: 'payload',
+  riskLevel: 'riskLevel',
+  branch: 'branch',
+  prNumber: 'prNumber',
+  prUrl: 'prUrl',
+  createdAt: 'createdAt',
+  approvedAt: 'approvedAt',
+  executedAt: 'executedAt',
+  measuredAt: 'measuredAt',
+  verifiedAt: 'verifiedAt',
+  verificationOutcome: 'verificationOutcome',
+  actualState: 'actualState',
+  verificationNote: 'verificationNote',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProposedActionScalarFieldEnum = (typeof ProposedActionScalarFieldEnum)[keyof typeof ProposedActionScalarFieldEnum]
+
+
+export const GoogleConnectionScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  scope: 'scope',
+  accessToken: 'accessToken',
+  refreshToken: 'refreshToken',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GoogleConnectionScalarFieldEnum = (typeof GoogleConnectionScalarFieldEnum)[keyof typeof GoogleConnectionScalarFieldEnum]
+
+
+export const SearchConsoleSyncScalarFieldEnum = {
+  id: 'id',
+  brandId: 'brandId',
+  property: 'property',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  clicks: 'clicks',
+  impressions: 'impressions',
+  ctr: 'ctr',
+  position: 'position',
+  syncedAt: 'syncedAt'
+} as const
+
+export type SearchConsoleSyncScalarFieldEnum = (typeof SearchConsoleSyncScalarFieldEnum)[keyof typeof SearchConsoleSyncScalarFieldEnum]
+
+
+export const SearchConsoleRowScalarFieldEnum = {
+  id: 'id',
+  syncId: 'syncId',
+  brandId: 'brandId',
+  dimension: 'dimension',
+  value: 'value',
+  clicks: 'clicks',
+  impressions: 'impressions',
+  ctr: 'ctr',
+  position: 'position',
+  keywordId: 'keywordId',
+  websitePageId: 'websitePageId'
+} as const
+
+export type SearchConsoleRowScalarFieldEnum = (typeof SearchConsoleRowScalarFieldEnum)[keyof typeof SearchConsoleRowScalarFieldEnum]
+
+
+export const AdsSyncScalarFieldEnum = {
+  id: 'id',
+  brandId: 'brandId',
+  customerId: 'customerId',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  impressions: 'impressions',
+  clicks: 'clicks',
+  costMicros: 'costMicros',
+  conversions: 'conversions',
+  syncedAt: 'syncedAt'
+} as const
+
+export type AdsSyncScalarFieldEnum = (typeof AdsSyncScalarFieldEnum)[keyof typeof AdsSyncScalarFieldEnum]
+
+
+export const AdsRowScalarFieldEnum = {
+  id: 'id',
+  syncId: 'syncId',
+  brandId: 'brandId',
+  level: 'level',
+  campaignId: 'campaignId',
+  campaignName: 'campaignName',
+  adGroupId: 'adGroupId',
+  adGroupName: 'adGroupName',
+  text: 'text',
+  matchType: 'matchType',
+  status: 'status',
+  impressions: 'impressions',
+  clicks: 'clicks',
+  costMicros: 'costMicros',
+  conversions: 'conversions',
+  keywordId: 'keywordId'
+} as const
+
+export type AdsRowScalarFieldEnum = (typeof AdsRowScalarFieldEnum)[keyof typeof AdsRowScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -272,4 +643,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

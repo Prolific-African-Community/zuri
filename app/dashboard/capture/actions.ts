@@ -1,5 +1,7 @@
 "use server";
 
+import { requireSession } from "@/lib/session";
+
 import { ObservationStatus } from "@/lib/generated/prisma/enums";
 import { getPrisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
@@ -21,6 +23,8 @@ function brandId(formData: FormData) {
 }
 
 export async function createObservation(formData: FormData) {
+  await requireSession();
+
   await getPrisma().observation.create({
     data: { brandId: brandId(formData), content: content(formData) },
   });
@@ -31,6 +35,8 @@ export async function updateObservation(
   observationId: string,
   formData: FormData,
 ) {
+  await requireSession();
+
   const rawStatus = String(formData.get("status") ?? ObservationStatus.NEW);
   if (!Object.values(ObservationStatus).includes(rawStatus as ObservationStatus)) {
     throw new Error("Unknown observation status.");
@@ -51,6 +57,8 @@ export async function setObservationStatus(
   observationId: string,
   status: ObservationStatus,
 ) {
+  await requireSession();
+
   await getPrisma().observation.update({
     where: { id: observationId },
     data: { status },
@@ -59,14 +67,20 @@ export async function setObservationStatus(
 }
 
 export async function archiveObservation(observationId: string) {
+  await requireSession();
+
   await setObservationStatus(observationId, ObservationStatus.ARCHIVED);
 }
 
 export async function restoreObservation(observationId: string) {
+  await requireSession();
+
   await setObservationStatus(observationId, ObservationStatus.NEW);
 }
 
 export async function deleteObservation(observationId: string) {
+  await requireSession();
+
   await getPrisma().observation.delete({ where: { id: observationId } });
   refresh();
 }

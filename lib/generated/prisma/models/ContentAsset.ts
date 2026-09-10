@@ -33,6 +33,11 @@ export type ContentAssetMinAggregateOutputType = {
   status: $Enums.ContentStatus | null
   title: string | null
   content: string | null
+  scheduledAt: Date | null
+  publishedAt: Date | null
+  googleBusinessPostName: string | null
+  googleBusinessPublishedAt: Date | null
+  googleBusinessError: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -46,6 +51,11 @@ export type ContentAssetMaxAggregateOutputType = {
   status: $Enums.ContentStatus | null
   title: string | null
   content: string | null
+  scheduledAt: Date | null
+  publishedAt: Date | null
+  googleBusinessPostName: string | null
+  googleBusinessPublishedAt: Date | null
+  googleBusinessError: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -59,6 +69,11 @@ export type ContentAssetCountAggregateOutputType = {
   status: number
   title: number
   content: number
+  scheduledAt: number
+  publishedAt: number
+  googleBusinessPostName: number
+  googleBusinessPublishedAt: number
+  googleBusinessError: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -74,6 +89,11 @@ export type ContentAssetMinAggregateInputType = {
   status?: true
   title?: true
   content?: true
+  scheduledAt?: true
+  publishedAt?: true
+  googleBusinessPostName?: true
+  googleBusinessPublishedAt?: true
+  googleBusinessError?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -87,6 +107,11 @@ export type ContentAssetMaxAggregateInputType = {
   status?: true
   title?: true
   content?: true
+  scheduledAt?: true
+  publishedAt?: true
+  googleBusinessPostName?: true
+  googleBusinessPublishedAt?: true
+  googleBusinessError?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -100,6 +125,11 @@ export type ContentAssetCountAggregateInputType = {
   status?: true
   title?: true
   content?: true
+  scheduledAt?: true
+  publishedAt?: true
+  googleBusinessPostName?: true
+  googleBusinessPublishedAt?: true
+  googleBusinessError?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -186,6 +216,11 @@ export type ContentAssetGroupByOutputType = {
   status: $Enums.ContentStatus
   title: string | null
   content: string
+  scheduledAt: Date | null
+  publishedAt: Date | null
+  googleBusinessPostName: string | null
+  googleBusinessPublishedAt: Date | null
+  googleBusinessError: string | null
   createdAt: Date
   updatedAt: Date
   _count: ContentAssetCountAggregateOutputType | null
@@ -220,11 +255,19 @@ export type ContentAssetWhereInput = {
   status?: Prisma.EnumContentStatusFilter<"ContentAsset"> | $Enums.ContentStatus
   title?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
   content?: Prisma.StringFilter<"ContentAsset"> | string
+  scheduledAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
+  publishedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
+  googleBusinessPostName?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
+  googleBusinessPublishedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
+  googleBusinessError?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
   brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
   opportunity?: Prisma.XOR<Prisma.OpportunityNullableScalarRelationFilter, Prisma.OpportunityWhereInput> | null
   visualAsset?: Prisma.XOR<Prisma.VisualAssetNullableScalarRelationFilter, Prisma.VisualAssetWhereInput> | null
+  articleDraft?: Prisma.XOR<Prisma.ArticleDraftNullableScalarRelationFilter, Prisma.ArticleDraftWhereInput> | null
+  metaCreative?: Prisma.XOR<Prisma.MetaCreativeNullableScalarRelationFilter, Prisma.MetaCreativeWhereInput> | null
+  growthWeekItems?: Prisma.GrowthWeekItemListRelationFilter
 }
 
 export type ContentAssetOrderByWithRelationInput = {
@@ -236,11 +279,19 @@ export type ContentAssetOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   title?: Prisma.SortOrderInput | Prisma.SortOrder
   content?: Prisma.SortOrder
+  scheduledAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessPostName?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessPublishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessError?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   brand?: Prisma.BrandOrderByWithRelationInput
   opportunity?: Prisma.OpportunityOrderByWithRelationInput
   visualAsset?: Prisma.VisualAssetOrderByWithRelationInput
+  articleDraft?: Prisma.ArticleDraftOrderByWithRelationInput
+  metaCreative?: Prisma.MetaCreativeOrderByWithRelationInput
+  growthWeekItems?: Prisma.GrowthWeekItemOrderByRelationAggregateInput
 }
 
 export type ContentAssetWhereUniqueInput = Prisma.AtLeast<{
@@ -255,11 +306,19 @@ export type ContentAssetWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumContentStatusFilter<"ContentAsset"> | $Enums.ContentStatus
   title?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
   content?: Prisma.StringFilter<"ContentAsset"> | string
+  scheduledAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
+  publishedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
+  googleBusinessPostName?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
+  googleBusinessPublishedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
+  googleBusinessError?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
   brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
   opportunity?: Prisma.XOR<Prisma.OpportunityNullableScalarRelationFilter, Prisma.OpportunityWhereInput> | null
   visualAsset?: Prisma.XOR<Prisma.VisualAssetNullableScalarRelationFilter, Prisma.VisualAssetWhereInput> | null
+  articleDraft?: Prisma.XOR<Prisma.ArticleDraftNullableScalarRelationFilter, Prisma.ArticleDraftWhereInput> | null
+  metaCreative?: Prisma.XOR<Prisma.MetaCreativeNullableScalarRelationFilter, Prisma.MetaCreativeWhereInput> | null
+  growthWeekItems?: Prisma.GrowthWeekItemListRelationFilter
 }, "id">
 
 export type ContentAssetOrderByWithAggregationInput = {
@@ -271,6 +330,11 @@ export type ContentAssetOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   title?: Prisma.SortOrderInput | Prisma.SortOrder
   content?: Prisma.SortOrder
+  scheduledAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessPostName?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessPublishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  googleBusinessError?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ContentAssetCountOrderByAggregateInput
@@ -290,6 +354,11 @@ export type ContentAssetScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumContentStatusWithAggregatesFilter<"ContentAsset"> | $Enums.ContentStatus
   title?: Prisma.StringNullableWithAggregatesFilter<"ContentAsset"> | string | null
   content?: Prisma.StringWithAggregatesFilter<"ContentAsset"> | string
+  scheduledAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ContentAsset"> | Date | string | null
+  publishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ContentAsset"> | Date | string | null
+  googleBusinessPostName?: Prisma.StringNullableWithAggregatesFilter<"ContentAsset"> | string | null
+  googleBusinessPublishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ContentAsset"> | Date | string | null
+  googleBusinessError?: Prisma.StringNullableWithAggregatesFilter<"ContentAsset"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ContentAsset"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ContentAsset"> | Date | string
 }
@@ -301,11 +370,19 @@ export type ContentAssetCreateInput = {
   status?: $Enums.ContentStatus
   title?: string | null
   content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
   opportunity?: Prisma.OpportunityCreateNestedOneWithoutContentAssetsInput
   visualAsset?: Prisma.VisualAssetCreateNestedOneWithoutContentAssetInput
+  articleDraft?: Prisma.ArticleDraftCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemCreateNestedManyWithoutContentAssetInput
 }
 
 export type ContentAssetUncheckedCreateInput = {
@@ -317,9 +394,17 @@ export type ContentAssetUncheckedCreateInput = {
   status?: $Enums.ContentStatus
   title?: string | null
   content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
+  articleDraft?: Prisma.ArticleDraftUncheckedCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeUncheckedCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedCreateNestedManyWithoutContentAssetInput
 }
 
 export type ContentAssetUpdateInput = {
@@ -329,11 +414,19 @@ export type ContentAssetUpdateInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
   opportunity?: Prisma.OpportunityUpdateOneWithoutContentAssetsNestedInput
   visualAsset?: Prisma.VisualAssetUpdateOneWithoutContentAssetNestedInput
+  articleDraft?: Prisma.ArticleDraftUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUpdateManyWithoutContentAssetNestedInput
 }
 
 export type ContentAssetUncheckedUpdateInput = {
@@ -345,9 +438,17 @@ export type ContentAssetUncheckedUpdateInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
+  articleDraft?: Prisma.ArticleDraftUncheckedUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUncheckedUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedUpdateManyWithoutContentAssetNestedInput
 }
 
 export type ContentAssetCreateManyInput = {
@@ -359,6 +460,11 @@ export type ContentAssetCreateManyInput = {
   status?: $Enums.ContentStatus
   title?: string | null
   content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -370,6 +476,11 @@ export type ContentAssetUpdateManyMutationInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -383,6 +494,11 @@ export type ContentAssetUncheckedUpdateManyInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -406,6 +522,11 @@ export type ContentAssetCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   title?: Prisma.SortOrder
   content?: Prisma.SortOrder
+  scheduledAt?: Prisma.SortOrder
+  publishedAt?: Prisma.SortOrder
+  googleBusinessPostName?: Prisma.SortOrder
+  googleBusinessPublishedAt?: Prisma.SortOrder
+  googleBusinessError?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -419,6 +540,11 @@ export type ContentAssetMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   title?: Prisma.SortOrder
   content?: Prisma.SortOrder
+  scheduledAt?: Prisma.SortOrder
+  publishedAt?: Prisma.SortOrder
+  googleBusinessPostName?: Prisma.SortOrder
+  googleBusinessPublishedAt?: Prisma.SortOrder
+  googleBusinessError?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -432,8 +558,18 @@ export type ContentAssetMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   title?: Prisma.SortOrder
   content?: Prisma.SortOrder
+  scheduledAt?: Prisma.SortOrder
+  publishedAt?: Prisma.SortOrder
+  googleBusinessPostName?: Prisma.SortOrder
+  googleBusinessPublishedAt?: Prisma.SortOrder
+  googleBusinessError?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type ContentAssetScalarRelationFilter = {
+  is?: Prisma.ContentAssetWhereInput
+  isNot?: Prisma.ContentAssetWhereInput
 }
 
 export type ContentAssetNullableScalarRelationFilter = {
@@ -537,6 +673,38 @@ export type EnumContentStatusFieldUpdateOperationsInput = {
   set?: $Enums.ContentStatus
 }
 
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
+export type ContentAssetCreateNestedOneWithoutArticleDraftInput = {
+  create?: Prisma.XOR<Prisma.ContentAssetCreateWithoutArticleDraftInput, Prisma.ContentAssetUncheckedCreateWithoutArticleDraftInput>
+  connectOrCreate?: Prisma.ContentAssetCreateOrConnectWithoutArticleDraftInput
+  connect?: Prisma.ContentAssetWhereUniqueInput
+}
+
+export type ContentAssetUpdateOneRequiredWithoutArticleDraftNestedInput = {
+  create?: Prisma.XOR<Prisma.ContentAssetCreateWithoutArticleDraftInput, Prisma.ContentAssetUncheckedCreateWithoutArticleDraftInput>
+  connectOrCreate?: Prisma.ContentAssetCreateOrConnectWithoutArticleDraftInput
+  upsert?: Prisma.ContentAssetUpsertWithoutArticleDraftInput
+  connect?: Prisma.ContentAssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ContentAssetUpdateToOneWithWhereWithoutArticleDraftInput, Prisma.ContentAssetUpdateWithoutArticleDraftInput>, Prisma.ContentAssetUncheckedUpdateWithoutArticleDraftInput>
+}
+
+export type ContentAssetCreateNestedOneWithoutMetaCreativeInput = {
+  create?: Prisma.XOR<Prisma.ContentAssetCreateWithoutMetaCreativeInput, Prisma.ContentAssetUncheckedCreateWithoutMetaCreativeInput>
+  connectOrCreate?: Prisma.ContentAssetCreateOrConnectWithoutMetaCreativeInput
+  connect?: Prisma.ContentAssetWhereUniqueInput
+}
+
+export type ContentAssetUpdateOneRequiredWithoutMetaCreativeNestedInput = {
+  create?: Prisma.XOR<Prisma.ContentAssetCreateWithoutMetaCreativeInput, Prisma.ContentAssetUncheckedCreateWithoutMetaCreativeInput>
+  connectOrCreate?: Prisma.ContentAssetCreateOrConnectWithoutMetaCreativeInput
+  upsert?: Prisma.ContentAssetUpsertWithoutMetaCreativeInput
+  connect?: Prisma.ContentAssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ContentAssetUpdateToOneWithWhereWithoutMetaCreativeInput, Prisma.ContentAssetUpdateWithoutMetaCreativeInput>, Prisma.ContentAssetUncheckedUpdateWithoutMetaCreativeInput>
+}
+
 export type ContentAssetCreateNestedOneWithoutVisualAssetInput = {
   create?: Prisma.XOR<Prisma.ContentAssetCreateWithoutVisualAssetInput, Prisma.ContentAssetUncheckedCreateWithoutVisualAssetInput>
   connectOrCreate?: Prisma.ContentAssetCreateOrConnectWithoutVisualAssetInput
@@ -553,6 +721,22 @@ export type ContentAssetUpdateOneWithoutVisualAssetNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ContentAssetUpdateToOneWithWhereWithoutVisualAssetInput, Prisma.ContentAssetUpdateWithoutVisualAssetInput>, Prisma.ContentAssetUncheckedUpdateWithoutVisualAssetInput>
 }
 
+export type ContentAssetCreateNestedOneWithoutGrowthWeekItemsInput = {
+  create?: Prisma.XOR<Prisma.ContentAssetCreateWithoutGrowthWeekItemsInput, Prisma.ContentAssetUncheckedCreateWithoutGrowthWeekItemsInput>
+  connectOrCreate?: Prisma.ContentAssetCreateOrConnectWithoutGrowthWeekItemsInput
+  connect?: Prisma.ContentAssetWhereUniqueInput
+}
+
+export type ContentAssetUpdateOneWithoutGrowthWeekItemsNestedInput = {
+  create?: Prisma.XOR<Prisma.ContentAssetCreateWithoutGrowthWeekItemsInput, Prisma.ContentAssetUncheckedCreateWithoutGrowthWeekItemsInput>
+  connectOrCreate?: Prisma.ContentAssetCreateOrConnectWithoutGrowthWeekItemsInput
+  upsert?: Prisma.ContentAssetUpsertWithoutGrowthWeekItemsInput
+  disconnect?: Prisma.ContentAssetWhereInput | boolean
+  delete?: Prisma.ContentAssetWhereInput | boolean
+  connect?: Prisma.ContentAssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ContentAssetUpdateToOneWithWhereWithoutGrowthWeekItemsInput, Prisma.ContentAssetUpdateWithoutGrowthWeekItemsInput>, Prisma.ContentAssetUncheckedUpdateWithoutGrowthWeekItemsInput>
+}
+
 export type ContentAssetCreateWithoutBrandInput = {
   id?: string
   channel?: $Enums.ContentChannel
@@ -560,10 +744,18 @@ export type ContentAssetCreateWithoutBrandInput = {
   status?: $Enums.ContentStatus
   title?: string | null
   content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   opportunity?: Prisma.OpportunityCreateNestedOneWithoutContentAssetsInput
   visualAsset?: Prisma.VisualAssetCreateNestedOneWithoutContentAssetInput
+  articleDraft?: Prisma.ArticleDraftCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemCreateNestedManyWithoutContentAssetInput
 }
 
 export type ContentAssetUncheckedCreateWithoutBrandInput = {
@@ -574,9 +766,17 @@ export type ContentAssetUncheckedCreateWithoutBrandInput = {
   status?: $Enums.ContentStatus
   title?: string | null
   content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
+  articleDraft?: Prisma.ArticleDraftUncheckedCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeUncheckedCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedCreateNestedManyWithoutContentAssetInput
 }
 
 export type ContentAssetCreateOrConnectWithoutBrandInput = {
@@ -617,6 +817,11 @@ export type ContentAssetScalarWhereInput = {
   status?: Prisma.EnumContentStatusFilter<"ContentAsset"> | $Enums.ContentStatus
   title?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
   content?: Prisma.StringFilter<"ContentAsset"> | string
+  scheduledAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
+  publishedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
+  googleBusinessPostName?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
+  googleBusinessPublishedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
+  googleBusinessError?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
 }
@@ -628,10 +833,18 @@ export type ContentAssetCreateWithoutOpportunityInput = {
   status?: $Enums.ContentStatus
   title?: string | null
   content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
   visualAsset?: Prisma.VisualAssetCreateNestedOneWithoutContentAssetInput
+  articleDraft?: Prisma.ArticleDraftCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemCreateNestedManyWithoutContentAssetInput
 }
 
 export type ContentAssetUncheckedCreateWithoutOpportunityInput = {
@@ -642,9 +855,17 @@ export type ContentAssetUncheckedCreateWithoutOpportunityInput = {
   status?: $Enums.ContentStatus
   title?: string | null
   content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
+  articleDraft?: Prisma.ArticleDraftUncheckedCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeUncheckedCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedCreateNestedManyWithoutContentAssetInput
 }
 
 export type ContentAssetCreateOrConnectWithoutOpportunityInput = {
@@ -673,6 +894,206 @@ export type ContentAssetUpdateManyWithWhereWithoutOpportunityInput = {
   data: Prisma.XOR<Prisma.ContentAssetUpdateManyMutationInput, Prisma.ContentAssetUncheckedUpdateManyWithoutOpportunityInput>
 }
 
+export type ContentAssetCreateWithoutArticleDraftInput = {
+  id?: string
+  channel?: $Enums.ContentChannel
+  type?: $Enums.ContentType
+  status?: $Enums.ContentStatus
+  title?: string | null
+  content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
+  opportunity?: Prisma.OpportunityCreateNestedOneWithoutContentAssetsInput
+  visualAsset?: Prisma.VisualAssetCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemCreateNestedManyWithoutContentAssetInput
+}
+
+export type ContentAssetUncheckedCreateWithoutArticleDraftInput = {
+  id?: string
+  brandId: string
+  opportunityId?: string | null
+  channel?: $Enums.ContentChannel
+  type?: $Enums.ContentType
+  status?: $Enums.ContentStatus
+  title?: string | null
+  content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeUncheckedCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedCreateNestedManyWithoutContentAssetInput
+}
+
+export type ContentAssetCreateOrConnectWithoutArticleDraftInput = {
+  where: Prisma.ContentAssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.ContentAssetCreateWithoutArticleDraftInput, Prisma.ContentAssetUncheckedCreateWithoutArticleDraftInput>
+}
+
+export type ContentAssetUpsertWithoutArticleDraftInput = {
+  update: Prisma.XOR<Prisma.ContentAssetUpdateWithoutArticleDraftInput, Prisma.ContentAssetUncheckedUpdateWithoutArticleDraftInput>
+  create: Prisma.XOR<Prisma.ContentAssetCreateWithoutArticleDraftInput, Prisma.ContentAssetUncheckedCreateWithoutArticleDraftInput>
+  where?: Prisma.ContentAssetWhereInput
+}
+
+export type ContentAssetUpdateToOneWithWhereWithoutArticleDraftInput = {
+  where?: Prisma.ContentAssetWhereInput
+  data: Prisma.XOR<Prisma.ContentAssetUpdateWithoutArticleDraftInput, Prisma.ContentAssetUncheckedUpdateWithoutArticleDraftInput>
+}
+
+export type ContentAssetUpdateWithoutArticleDraftInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.EnumContentChannelFieldUpdateOperationsInput | $Enums.ContentChannel
+  type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
+  opportunity?: Prisma.OpportunityUpdateOneWithoutContentAssetsNestedInput
+  visualAsset?: Prisma.VisualAssetUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUpdateManyWithoutContentAssetNestedInput
+}
+
+export type ContentAssetUncheckedUpdateWithoutArticleDraftInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  brandId?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  channel?: Prisma.EnumContentChannelFieldUpdateOperationsInput | $Enums.ContentChannel
+  type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUncheckedUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedUpdateManyWithoutContentAssetNestedInput
+}
+
+export type ContentAssetCreateWithoutMetaCreativeInput = {
+  id?: string
+  channel?: $Enums.ContentChannel
+  type?: $Enums.ContentType
+  status?: $Enums.ContentStatus
+  title?: string | null
+  content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
+  opportunity?: Prisma.OpportunityCreateNestedOneWithoutContentAssetsInput
+  visualAsset?: Prisma.VisualAssetCreateNestedOneWithoutContentAssetInput
+  articleDraft?: Prisma.ArticleDraftCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemCreateNestedManyWithoutContentAssetInput
+}
+
+export type ContentAssetUncheckedCreateWithoutMetaCreativeInput = {
+  id?: string
+  brandId: string
+  opportunityId?: string | null
+  channel?: $Enums.ContentChannel
+  type?: $Enums.ContentType
+  status?: $Enums.ContentStatus
+  title?: string | null
+  content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
+  articleDraft?: Prisma.ArticleDraftUncheckedCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedCreateNestedManyWithoutContentAssetInput
+}
+
+export type ContentAssetCreateOrConnectWithoutMetaCreativeInput = {
+  where: Prisma.ContentAssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.ContentAssetCreateWithoutMetaCreativeInput, Prisma.ContentAssetUncheckedCreateWithoutMetaCreativeInput>
+}
+
+export type ContentAssetUpsertWithoutMetaCreativeInput = {
+  update: Prisma.XOR<Prisma.ContentAssetUpdateWithoutMetaCreativeInput, Prisma.ContentAssetUncheckedUpdateWithoutMetaCreativeInput>
+  create: Prisma.XOR<Prisma.ContentAssetCreateWithoutMetaCreativeInput, Prisma.ContentAssetUncheckedCreateWithoutMetaCreativeInput>
+  where?: Prisma.ContentAssetWhereInput
+}
+
+export type ContentAssetUpdateToOneWithWhereWithoutMetaCreativeInput = {
+  where?: Prisma.ContentAssetWhereInput
+  data: Prisma.XOR<Prisma.ContentAssetUpdateWithoutMetaCreativeInput, Prisma.ContentAssetUncheckedUpdateWithoutMetaCreativeInput>
+}
+
+export type ContentAssetUpdateWithoutMetaCreativeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.EnumContentChannelFieldUpdateOperationsInput | $Enums.ContentChannel
+  type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
+  opportunity?: Prisma.OpportunityUpdateOneWithoutContentAssetsNestedInput
+  visualAsset?: Prisma.VisualAssetUpdateOneWithoutContentAssetNestedInput
+  articleDraft?: Prisma.ArticleDraftUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUpdateManyWithoutContentAssetNestedInput
+}
+
+export type ContentAssetUncheckedUpdateWithoutMetaCreativeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  brandId?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  channel?: Prisma.EnumContentChannelFieldUpdateOperationsInput | $Enums.ContentChannel
+  type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
+  articleDraft?: Prisma.ArticleDraftUncheckedUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedUpdateManyWithoutContentAssetNestedInput
+}
+
 export type ContentAssetCreateWithoutVisualAssetInput = {
   id?: string
   channel?: $Enums.ContentChannel
@@ -680,10 +1101,18 @@ export type ContentAssetCreateWithoutVisualAssetInput = {
   status?: $Enums.ContentStatus
   title?: string | null
   content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
   opportunity?: Prisma.OpportunityCreateNestedOneWithoutContentAssetsInput
+  articleDraft?: Prisma.ArticleDraftCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemCreateNestedManyWithoutContentAssetInput
 }
 
 export type ContentAssetUncheckedCreateWithoutVisualAssetInput = {
@@ -695,8 +1124,16 @@ export type ContentAssetUncheckedCreateWithoutVisualAssetInput = {
   status?: $Enums.ContentStatus
   title?: string | null
   content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  articleDraft?: Prisma.ArticleDraftUncheckedCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeUncheckedCreateNestedOneWithoutContentAssetInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedCreateNestedManyWithoutContentAssetInput
 }
 
 export type ContentAssetCreateOrConnectWithoutVisualAssetInput = {
@@ -722,10 +1159,18 @@ export type ContentAssetUpdateWithoutVisualAssetInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
   opportunity?: Prisma.OpportunityUpdateOneWithoutContentAssetsNestedInput
+  articleDraft?: Prisma.ArticleDraftUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUpdateManyWithoutContentAssetNestedInput
 }
 
 export type ContentAssetUncheckedUpdateWithoutVisualAssetInput = {
@@ -737,8 +1182,116 @@ export type ContentAssetUncheckedUpdateWithoutVisualAssetInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  articleDraft?: Prisma.ArticleDraftUncheckedUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUncheckedUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedUpdateManyWithoutContentAssetNestedInput
+}
+
+export type ContentAssetCreateWithoutGrowthWeekItemsInput = {
+  id?: string
+  channel?: $Enums.ContentChannel
+  type?: $Enums.ContentType
+  status?: $Enums.ContentStatus
+  title?: string | null
+  content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
+  opportunity?: Prisma.OpportunityCreateNestedOneWithoutContentAssetsInput
+  visualAsset?: Prisma.VisualAssetCreateNestedOneWithoutContentAssetInput
+  articleDraft?: Prisma.ArticleDraftCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeCreateNestedOneWithoutContentAssetInput
+}
+
+export type ContentAssetUncheckedCreateWithoutGrowthWeekItemsInput = {
+  id?: string
+  brandId: string
+  opportunityId?: string | null
+  channel?: $Enums.ContentChannel
+  type?: $Enums.ContentType
+  status?: $Enums.ContentStatus
+  title?: string | null
+  content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
+  articleDraft?: Prisma.ArticleDraftUncheckedCreateNestedOneWithoutContentAssetInput
+  metaCreative?: Prisma.MetaCreativeUncheckedCreateNestedOneWithoutContentAssetInput
+}
+
+export type ContentAssetCreateOrConnectWithoutGrowthWeekItemsInput = {
+  where: Prisma.ContentAssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.ContentAssetCreateWithoutGrowthWeekItemsInput, Prisma.ContentAssetUncheckedCreateWithoutGrowthWeekItemsInput>
+}
+
+export type ContentAssetUpsertWithoutGrowthWeekItemsInput = {
+  update: Prisma.XOR<Prisma.ContentAssetUpdateWithoutGrowthWeekItemsInput, Prisma.ContentAssetUncheckedUpdateWithoutGrowthWeekItemsInput>
+  create: Prisma.XOR<Prisma.ContentAssetCreateWithoutGrowthWeekItemsInput, Prisma.ContentAssetUncheckedCreateWithoutGrowthWeekItemsInput>
+  where?: Prisma.ContentAssetWhereInput
+}
+
+export type ContentAssetUpdateToOneWithWhereWithoutGrowthWeekItemsInput = {
+  where?: Prisma.ContentAssetWhereInput
+  data: Prisma.XOR<Prisma.ContentAssetUpdateWithoutGrowthWeekItemsInput, Prisma.ContentAssetUncheckedUpdateWithoutGrowthWeekItemsInput>
+}
+
+export type ContentAssetUpdateWithoutGrowthWeekItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.EnumContentChannelFieldUpdateOperationsInput | $Enums.ContentChannel
+  type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
+  opportunity?: Prisma.OpportunityUpdateOneWithoutContentAssetsNestedInput
+  visualAsset?: Prisma.VisualAssetUpdateOneWithoutContentAssetNestedInput
+  articleDraft?: Prisma.ArticleDraftUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUpdateOneWithoutContentAssetNestedInput
+}
+
+export type ContentAssetUncheckedUpdateWithoutGrowthWeekItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  brandId?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  channel?: Prisma.EnumContentChannelFieldUpdateOperationsInput | $Enums.ContentChannel
+  type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
+  status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
+  articleDraft?: Prisma.ArticleDraftUncheckedUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUncheckedUpdateOneWithoutContentAssetNestedInput
 }
 
 export type ContentAssetCreateManyBrandInput = {
@@ -749,6 +1302,11 @@ export type ContentAssetCreateManyBrandInput = {
   status?: $Enums.ContentStatus
   title?: string | null
   content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -760,10 +1318,18 @@ export type ContentAssetUpdateWithoutBrandInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   opportunity?: Prisma.OpportunityUpdateOneWithoutContentAssetsNestedInput
   visualAsset?: Prisma.VisualAssetUpdateOneWithoutContentAssetNestedInput
+  articleDraft?: Prisma.ArticleDraftUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUpdateManyWithoutContentAssetNestedInput
 }
 
 export type ContentAssetUncheckedUpdateWithoutBrandInput = {
@@ -774,9 +1340,17 @@ export type ContentAssetUncheckedUpdateWithoutBrandInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
+  articleDraft?: Prisma.ArticleDraftUncheckedUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUncheckedUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedUpdateManyWithoutContentAssetNestedInput
 }
 
 export type ContentAssetUncheckedUpdateManyWithoutBrandInput = {
@@ -787,6 +1361,11 @@ export type ContentAssetUncheckedUpdateManyWithoutBrandInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -799,6 +1378,11 @@ export type ContentAssetCreateManyOpportunityInput = {
   status?: $Enums.ContentStatus
   title?: string | null
   content: string
+  scheduledAt?: Date | string | null
+  publishedAt?: Date | string | null
+  googleBusinessPostName?: string | null
+  googleBusinessPublishedAt?: Date | string | null
+  googleBusinessError?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -810,10 +1394,18 @@ export type ContentAssetUpdateWithoutOpportunityInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
   visualAsset?: Prisma.VisualAssetUpdateOneWithoutContentAssetNestedInput
+  articleDraft?: Prisma.ArticleDraftUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUpdateManyWithoutContentAssetNestedInput
 }
 
 export type ContentAssetUncheckedUpdateWithoutOpportunityInput = {
@@ -824,9 +1416,17 @@ export type ContentAssetUncheckedUpdateWithoutOpportunityInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
+  articleDraft?: Prisma.ArticleDraftUncheckedUpdateOneWithoutContentAssetNestedInput
+  metaCreative?: Prisma.MetaCreativeUncheckedUpdateOneWithoutContentAssetNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedUpdateManyWithoutContentAssetNestedInput
 }
 
 export type ContentAssetUncheckedUpdateManyWithoutOpportunityInput = {
@@ -837,10 +1437,44 @@ export type ContentAssetUncheckedUpdateManyWithoutOpportunityInput = {
   status?: Prisma.EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+
+/**
+ * Count Type ContentAssetCountOutputType
+ */
+
+export type ContentAssetCountOutputType = {
+  growthWeekItems: number
+}
+
+export type ContentAssetCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  growthWeekItems?: boolean | ContentAssetCountOutputTypeCountGrowthWeekItemsArgs
+}
+
+/**
+ * ContentAssetCountOutputType without action
+ */
+export type ContentAssetCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ContentAssetCountOutputType
+   */
+  select?: Prisma.ContentAssetCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ContentAssetCountOutputType without action
+ */
+export type ContentAssetCountOutputTypeCountGrowthWeekItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GrowthWeekItemWhereInput
+}
 
 
 export type ContentAssetSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -852,11 +1486,20 @@ export type ContentAssetSelect<ExtArgs extends runtime.Types.Extensions.Internal
   status?: boolean
   title?: boolean
   content?: boolean
+  scheduledAt?: boolean
+  publishedAt?: boolean
+  googleBusinessPostName?: boolean
+  googleBusinessPublishedAt?: boolean
+  googleBusinessError?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   opportunity?: boolean | Prisma.ContentAsset$opportunityArgs<ExtArgs>
   visualAsset?: boolean | Prisma.ContentAsset$visualAssetArgs<ExtArgs>
+  articleDraft?: boolean | Prisma.ContentAsset$articleDraftArgs<ExtArgs>
+  metaCreative?: boolean | Prisma.ContentAsset$metaCreativeArgs<ExtArgs>
+  growthWeekItems?: boolean | Prisma.ContentAsset$growthWeekItemsArgs<ExtArgs>
+  _count?: boolean | Prisma.ContentAssetCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["contentAsset"]>
 
 export type ContentAssetSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -868,6 +1511,11 @@ export type ContentAssetSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   status?: boolean
   title?: boolean
   content?: boolean
+  scheduledAt?: boolean
+  publishedAt?: boolean
+  googleBusinessPostName?: boolean
+  googleBusinessPublishedAt?: boolean
+  googleBusinessError?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
@@ -883,6 +1531,11 @@ export type ContentAssetSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   status?: boolean
   title?: boolean
   content?: boolean
+  scheduledAt?: boolean
+  publishedAt?: boolean
+  googleBusinessPostName?: boolean
+  googleBusinessPublishedAt?: boolean
+  googleBusinessError?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
@@ -898,15 +1551,24 @@ export type ContentAssetSelectScalar = {
   status?: boolean
   title?: boolean
   content?: boolean
+  scheduledAt?: boolean
+  publishedAt?: boolean
+  googleBusinessPostName?: boolean
+  googleBusinessPublishedAt?: boolean
+  googleBusinessError?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ContentAssetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "brandId" | "opportunityId" | "channel" | "type" | "status" | "title" | "content" | "createdAt" | "updatedAt", ExtArgs["result"]["contentAsset"]>
+export type ContentAssetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "brandId" | "opportunityId" | "channel" | "type" | "status" | "title" | "content" | "scheduledAt" | "publishedAt" | "googleBusinessPostName" | "googleBusinessPublishedAt" | "googleBusinessError" | "createdAt" | "updatedAt", ExtArgs["result"]["contentAsset"]>
 export type ContentAssetInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   opportunity?: boolean | Prisma.ContentAsset$opportunityArgs<ExtArgs>
   visualAsset?: boolean | Prisma.ContentAsset$visualAssetArgs<ExtArgs>
+  articleDraft?: boolean | Prisma.ContentAsset$articleDraftArgs<ExtArgs>
+  metaCreative?: boolean | Prisma.ContentAsset$metaCreativeArgs<ExtArgs>
+  growthWeekItems?: boolean | Prisma.ContentAsset$growthWeekItemsArgs<ExtArgs>
+  _count?: boolean | Prisma.ContentAssetCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ContentAssetIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
@@ -923,6 +1585,9 @@ export type $ContentAssetPayload<ExtArgs extends runtime.Types.Extensions.Intern
     brand: Prisma.$BrandPayload<ExtArgs>
     opportunity: Prisma.$OpportunityPayload<ExtArgs> | null
     visualAsset: Prisma.$VisualAssetPayload<ExtArgs> | null
+    articleDraft: Prisma.$ArticleDraftPayload<ExtArgs> | null
+    metaCreative: Prisma.$MetaCreativePayload<ExtArgs> | null
+    growthWeekItems: Prisma.$GrowthWeekItemPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -933,6 +1598,14 @@ export type $ContentAssetPayload<ExtArgs extends runtime.Types.Extensions.Intern
     status: $Enums.ContentStatus
     title: string | null
     content: string
+    scheduledAt: Date | null
+    publishedAt: Date | null
+    /**
+     * Google Business Profile publication, kept apart from the social status.
+     */
+    googleBusinessPostName: string | null
+    googleBusinessPublishedAt: Date | null
+    googleBusinessError: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["contentAsset"]>
@@ -1332,6 +2005,9 @@ export interface Prisma__ContentAssetClient<T, Null = never, ExtArgs extends run
   brand<T extends Prisma.BrandDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandDefaultArgs<ExtArgs>>): Prisma.Prisma__BrandClient<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   opportunity<T extends Prisma.ContentAsset$opportunityArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ContentAsset$opportunityArgs<ExtArgs>>): Prisma.Prisma__OpportunityClient<runtime.Types.Result.GetResult<Prisma.$OpportunityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   visualAsset<T extends Prisma.ContentAsset$visualAssetArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ContentAsset$visualAssetArgs<ExtArgs>>): Prisma.Prisma__VisualAssetClient<runtime.Types.Result.GetResult<Prisma.$VisualAssetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  articleDraft<T extends Prisma.ContentAsset$articleDraftArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ContentAsset$articleDraftArgs<ExtArgs>>): Prisma.Prisma__ArticleDraftClient<runtime.Types.Result.GetResult<Prisma.$ArticleDraftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  metaCreative<T extends Prisma.ContentAsset$metaCreativeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ContentAsset$metaCreativeArgs<ExtArgs>>): Prisma.Prisma__MetaCreativeClient<runtime.Types.Result.GetResult<Prisma.$MetaCreativePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  growthWeekItems<T extends Prisma.ContentAsset$growthWeekItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ContentAsset$growthWeekItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GrowthWeekItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1369,6 +2045,11 @@ export interface ContentAssetFieldRefs {
   readonly status: Prisma.FieldRef<"ContentAsset", 'ContentStatus'>
   readonly title: Prisma.FieldRef<"ContentAsset", 'String'>
   readonly content: Prisma.FieldRef<"ContentAsset", 'String'>
+  readonly scheduledAt: Prisma.FieldRef<"ContentAsset", 'DateTime'>
+  readonly publishedAt: Prisma.FieldRef<"ContentAsset", 'DateTime'>
+  readonly googleBusinessPostName: Prisma.FieldRef<"ContentAsset", 'String'>
+  readonly googleBusinessPublishedAt: Prisma.FieldRef<"ContentAsset", 'DateTime'>
+  readonly googleBusinessError: Prisma.FieldRef<"ContentAsset", 'String'>
   readonly createdAt: Prisma.FieldRef<"ContentAsset", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ContentAsset", 'DateTime'>
 }
@@ -1807,6 +2488,68 @@ export type ContentAsset$visualAssetArgs<ExtArgs extends runtime.Types.Extension
    */
   include?: Prisma.VisualAssetInclude<ExtArgs> | null
   where?: Prisma.VisualAssetWhereInput
+}
+
+/**
+ * ContentAsset.articleDraft
+ */
+export type ContentAsset$articleDraftArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ArticleDraft
+   */
+  select?: Prisma.ArticleDraftSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ArticleDraft
+   */
+  omit?: Prisma.ArticleDraftOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ArticleDraftInclude<ExtArgs> | null
+  where?: Prisma.ArticleDraftWhereInput
+}
+
+/**
+ * ContentAsset.metaCreative
+ */
+export type ContentAsset$metaCreativeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MetaCreative
+   */
+  select?: Prisma.MetaCreativeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MetaCreative
+   */
+  omit?: Prisma.MetaCreativeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MetaCreativeInclude<ExtArgs> | null
+  where?: Prisma.MetaCreativeWhereInput
+}
+
+/**
+ * ContentAsset.growthWeekItems
+ */
+export type ContentAsset$growthWeekItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GrowthWeekItem
+   */
+  select?: Prisma.GrowthWeekItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GrowthWeekItem
+   */
+  omit?: Prisma.GrowthWeekItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GrowthWeekItemInclude<ExtArgs> | null
+  where?: Prisma.GrowthWeekItemWhereInput
+  orderBy?: Prisma.GrowthWeekItemOrderByWithRelationInput | Prisma.GrowthWeekItemOrderByWithRelationInput[]
+  cursor?: Prisma.GrowthWeekItemWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GrowthWeekItemScalarFieldEnum | Prisma.GrowthWeekItemScalarFieldEnum[]
 }
 
 /**

@@ -43,6 +43,9 @@ export type OpportunityMinAggregateOutputType = {
   status: $Enums.OpportunityStatus | null
   score: number | null
   rationale: string | null
+  actionType: $Enums.SeoActionType | null
+  targetUrl: string | null
+  targetKeyword: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -56,6 +59,9 @@ export type OpportunityMaxAggregateOutputType = {
   status: $Enums.OpportunityStatus | null
   score: number | null
   rationale: string | null
+  actionType: $Enums.SeoActionType | null
+  targetUrl: string | null
+  targetKeyword: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -69,6 +75,9 @@ export type OpportunityCountAggregateOutputType = {
   status: number
   score: number
   rationale: number
+  actionType: number
+  targetUrl: number
+  targetKeyword: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -92,6 +101,9 @@ export type OpportunityMinAggregateInputType = {
   status?: true
   score?: true
   rationale?: true
+  actionType?: true
+  targetUrl?: true
+  targetKeyword?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -105,6 +117,9 @@ export type OpportunityMaxAggregateInputType = {
   status?: true
   score?: true
   rationale?: true
+  actionType?: true
+  targetUrl?: true
+  targetKeyword?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -118,6 +133,9 @@ export type OpportunityCountAggregateInputType = {
   status?: true
   score?: true
   rationale?: true
+  actionType?: true
+  targetUrl?: true
+  targetKeyword?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -218,6 +236,9 @@ export type OpportunityGroupByOutputType = {
   status: $Enums.OpportunityStatus
   score: number | null
   rationale: string | null
+  actionType: $Enums.SeoActionType | null
+  targetUrl: string | null
+  targetKeyword: string | null
   createdAt: Date
   updatedAt: Date
   _count: OpportunityCountAggregateOutputType | null
@@ -254,10 +275,16 @@ export type OpportunityWhereInput = {
   status?: Prisma.EnumOpportunityStatusFilter<"Opportunity"> | $Enums.OpportunityStatus
   score?: Prisma.IntNullableFilter<"Opportunity"> | number | null
   rationale?: Prisma.StringNullableFilter<"Opportunity"> | string | null
+  actionType?: Prisma.EnumSeoActionTypeNullableFilter<"Opportunity"> | $Enums.SeoActionType | null
+  targetUrl?: Prisma.StringNullableFilter<"Opportunity"> | string | null
+  targetKeyword?: Prisma.StringNullableFilter<"Opportunity"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Opportunity"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Opportunity"> | Date | string
   brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
   contentAssets?: Prisma.ContentAssetListRelationFilter
+  seoBrief?: Prisma.XOR<Prisma.SeoBriefNullableScalarRelationFilter, Prisma.SeoBriefWhereInput> | null
+  growthWeekItems?: Prisma.GrowthWeekItemListRelationFilter
+  proposedActions?: Prisma.ProposedActionListRelationFilter
 }
 
 export type OpportunityOrderByWithRelationInput = {
@@ -269,10 +296,16 @@ export type OpportunityOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   score?: Prisma.SortOrderInput | Prisma.SortOrder
   rationale?: Prisma.SortOrderInput | Prisma.SortOrder
+  actionType?: Prisma.SortOrderInput | Prisma.SortOrder
+  targetUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  targetKeyword?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   brand?: Prisma.BrandOrderByWithRelationInput
   contentAssets?: Prisma.ContentAssetOrderByRelationAggregateInput
+  seoBrief?: Prisma.SeoBriefOrderByWithRelationInput
+  growthWeekItems?: Prisma.GrowthWeekItemOrderByRelationAggregateInput
+  proposedActions?: Prisma.ProposedActionOrderByRelationAggregateInput
 }
 
 export type OpportunityWhereUniqueInput = Prisma.AtLeast<{
@@ -287,10 +320,16 @@ export type OpportunityWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumOpportunityStatusFilter<"Opportunity"> | $Enums.OpportunityStatus
   score?: Prisma.IntNullableFilter<"Opportunity"> | number | null
   rationale?: Prisma.StringNullableFilter<"Opportunity"> | string | null
+  actionType?: Prisma.EnumSeoActionTypeNullableFilter<"Opportunity"> | $Enums.SeoActionType | null
+  targetUrl?: Prisma.StringNullableFilter<"Opportunity"> | string | null
+  targetKeyword?: Prisma.StringNullableFilter<"Opportunity"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Opportunity"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Opportunity"> | Date | string
   brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
   contentAssets?: Prisma.ContentAssetListRelationFilter
+  seoBrief?: Prisma.XOR<Prisma.SeoBriefNullableScalarRelationFilter, Prisma.SeoBriefWhereInput> | null
+  growthWeekItems?: Prisma.GrowthWeekItemListRelationFilter
+  proposedActions?: Prisma.ProposedActionListRelationFilter
 }, "id">
 
 export type OpportunityOrderByWithAggregationInput = {
@@ -302,6 +341,9 @@ export type OpportunityOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   score?: Prisma.SortOrderInput | Prisma.SortOrder
   rationale?: Prisma.SortOrderInput | Prisma.SortOrder
+  actionType?: Prisma.SortOrderInput | Prisma.SortOrder
+  targetUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  targetKeyword?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.OpportunityCountOrderByAggregateInput
@@ -323,6 +365,9 @@ export type OpportunityScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumOpportunityStatusWithAggregatesFilter<"Opportunity"> | $Enums.OpportunityStatus
   score?: Prisma.IntNullableWithAggregatesFilter<"Opportunity"> | number | null
   rationale?: Prisma.StringNullableWithAggregatesFilter<"Opportunity"> | string | null
+  actionType?: Prisma.EnumSeoActionTypeNullableWithAggregatesFilter<"Opportunity"> | $Enums.SeoActionType | null
+  targetUrl?: Prisma.StringNullableWithAggregatesFilter<"Opportunity"> | string | null
+  targetKeyword?: Prisma.StringNullableWithAggregatesFilter<"Opportunity"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Opportunity"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Opportunity"> | Date | string
 }
@@ -335,10 +380,16 @@ export type OpportunityCreateInput = {
   status?: $Enums.OpportunityStatus
   score?: number | null
   rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutOpportunitiesInput
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutOpportunityInput
+  seoBrief?: Prisma.SeoBriefCreateNestedOneWithoutOpportunityInput
+  growthWeekItems?: Prisma.GrowthWeekItemCreateNestedManyWithoutOpportunityInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutOpportunityInput
 }
 
 export type OpportunityUncheckedCreateInput = {
@@ -350,9 +401,15 @@ export type OpportunityUncheckedCreateInput = {
   status?: $Enums.OpportunityStatus
   score?: number | null
   rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutOpportunityInput
+  seoBrief?: Prisma.SeoBriefUncheckedCreateNestedOneWithoutOpportunityInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedCreateNestedManyWithoutOpportunityInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutOpportunityInput
 }
 
 export type OpportunityUpdateInput = {
@@ -363,10 +420,16 @@ export type OpportunityUpdateInput = {
   status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
   score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutOpportunitiesNestedInput
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutOpportunityNestedInput
+  seoBrief?: Prisma.SeoBriefUpdateOneWithoutOpportunityNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUpdateManyWithoutOpportunityNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutOpportunityNestedInput
 }
 
 export type OpportunityUncheckedUpdateInput = {
@@ -378,9 +441,15 @@ export type OpportunityUncheckedUpdateInput = {
   status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
   score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutOpportunityNestedInput
+  seoBrief?: Prisma.SeoBriefUncheckedUpdateOneWithoutOpportunityNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedUpdateManyWithoutOpportunityNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutOpportunityNestedInput
 }
 
 export type OpportunityCreateManyInput = {
@@ -392,6 +461,9 @@ export type OpportunityCreateManyInput = {
   status?: $Enums.OpportunityStatus
   score?: number | null
   rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -404,6 +476,9 @@ export type OpportunityUpdateManyMutationInput = {
   status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
   score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -417,6 +492,9 @@ export type OpportunityUncheckedUpdateManyInput = {
   status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
   score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -440,6 +518,9 @@ export type OpportunityCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   score?: Prisma.SortOrder
   rationale?: Prisma.SortOrder
+  actionType?: Prisma.SortOrder
+  targetUrl?: Prisma.SortOrder
+  targetKeyword?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -457,6 +538,9 @@ export type OpportunityMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   score?: Prisma.SortOrder
   rationale?: Prisma.SortOrder
+  actionType?: Prisma.SortOrder
+  targetUrl?: Prisma.SortOrder
+  targetKeyword?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -470,6 +554,9 @@ export type OpportunityMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   score?: Prisma.SortOrder
   rationale?: Prisma.SortOrder
+  actionType?: Prisma.SortOrder
+  targetUrl?: Prisma.SortOrder
+  targetKeyword?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -481,6 +568,11 @@ export type OpportunitySumOrderByAggregateInput = {
 export type OpportunityNullableScalarRelationFilter = {
   is?: Prisma.OpportunityWhereInput | null
   isNot?: Prisma.OpportunityWhereInput | null
+}
+
+export type OpportunityScalarRelationFilter = {
+  is?: Prisma.OpportunityWhereInput
+  isNot?: Prisma.OpportunityWhereInput
 }
 
 export type OpportunityCreateNestedManyWithoutBrandInput = {
@@ -541,6 +633,10 @@ export type NullableIntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type NullableEnumSeoActionTypeFieldUpdateOperationsInput = {
+  set?: $Enums.SeoActionType | null
+}
+
 export type OpportunityCreateNestedOneWithoutContentAssetsInput = {
   create?: Prisma.XOR<Prisma.OpportunityCreateWithoutContentAssetsInput, Prisma.OpportunityUncheckedCreateWithoutContentAssetsInput>
   connectOrCreate?: Prisma.OpportunityCreateOrConnectWithoutContentAssetsInput
@@ -557,6 +653,52 @@ export type OpportunityUpdateOneWithoutContentAssetsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OpportunityUpdateToOneWithWhereWithoutContentAssetsInput, Prisma.OpportunityUpdateWithoutContentAssetsInput>, Prisma.OpportunityUncheckedUpdateWithoutContentAssetsInput>
 }
 
+export type OpportunityCreateNestedOneWithoutSeoBriefInput = {
+  create?: Prisma.XOR<Prisma.OpportunityCreateWithoutSeoBriefInput, Prisma.OpportunityUncheckedCreateWithoutSeoBriefInput>
+  connectOrCreate?: Prisma.OpportunityCreateOrConnectWithoutSeoBriefInput
+  connect?: Prisma.OpportunityWhereUniqueInput
+}
+
+export type OpportunityUpdateOneRequiredWithoutSeoBriefNestedInput = {
+  create?: Prisma.XOR<Prisma.OpportunityCreateWithoutSeoBriefInput, Prisma.OpportunityUncheckedCreateWithoutSeoBriefInput>
+  connectOrCreate?: Prisma.OpportunityCreateOrConnectWithoutSeoBriefInput
+  upsert?: Prisma.OpportunityUpsertWithoutSeoBriefInput
+  connect?: Prisma.OpportunityWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OpportunityUpdateToOneWithWhereWithoutSeoBriefInput, Prisma.OpportunityUpdateWithoutSeoBriefInput>, Prisma.OpportunityUncheckedUpdateWithoutSeoBriefInput>
+}
+
+export type OpportunityCreateNestedOneWithoutGrowthWeekItemsInput = {
+  create?: Prisma.XOR<Prisma.OpportunityCreateWithoutGrowthWeekItemsInput, Prisma.OpportunityUncheckedCreateWithoutGrowthWeekItemsInput>
+  connectOrCreate?: Prisma.OpportunityCreateOrConnectWithoutGrowthWeekItemsInput
+  connect?: Prisma.OpportunityWhereUniqueInput
+}
+
+export type OpportunityUpdateOneWithoutGrowthWeekItemsNestedInput = {
+  create?: Prisma.XOR<Prisma.OpportunityCreateWithoutGrowthWeekItemsInput, Prisma.OpportunityUncheckedCreateWithoutGrowthWeekItemsInput>
+  connectOrCreate?: Prisma.OpportunityCreateOrConnectWithoutGrowthWeekItemsInput
+  upsert?: Prisma.OpportunityUpsertWithoutGrowthWeekItemsInput
+  disconnect?: Prisma.OpportunityWhereInput | boolean
+  delete?: Prisma.OpportunityWhereInput | boolean
+  connect?: Prisma.OpportunityWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OpportunityUpdateToOneWithWhereWithoutGrowthWeekItemsInput, Prisma.OpportunityUpdateWithoutGrowthWeekItemsInput>, Prisma.OpportunityUncheckedUpdateWithoutGrowthWeekItemsInput>
+}
+
+export type OpportunityCreateNestedOneWithoutProposedActionsInput = {
+  create?: Prisma.XOR<Prisma.OpportunityCreateWithoutProposedActionsInput, Prisma.OpportunityUncheckedCreateWithoutProposedActionsInput>
+  connectOrCreate?: Prisma.OpportunityCreateOrConnectWithoutProposedActionsInput
+  connect?: Prisma.OpportunityWhereUniqueInput
+}
+
+export type OpportunityUpdateOneWithoutProposedActionsNestedInput = {
+  create?: Prisma.XOR<Prisma.OpportunityCreateWithoutProposedActionsInput, Prisma.OpportunityUncheckedCreateWithoutProposedActionsInput>
+  connectOrCreate?: Prisma.OpportunityCreateOrConnectWithoutProposedActionsInput
+  upsert?: Prisma.OpportunityUpsertWithoutProposedActionsInput
+  disconnect?: Prisma.OpportunityWhereInput | boolean
+  delete?: Prisma.OpportunityWhereInput | boolean
+  connect?: Prisma.OpportunityWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OpportunityUpdateToOneWithWhereWithoutProposedActionsInput, Prisma.OpportunityUpdateWithoutProposedActionsInput>, Prisma.OpportunityUncheckedUpdateWithoutProposedActionsInput>
+}
+
 export type OpportunityCreateWithoutBrandInput = {
   id?: string
   title: string
@@ -565,9 +707,15 @@ export type OpportunityCreateWithoutBrandInput = {
   status?: $Enums.OpportunityStatus
   score?: number | null
   rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutOpportunityInput
+  seoBrief?: Prisma.SeoBriefCreateNestedOneWithoutOpportunityInput
+  growthWeekItems?: Prisma.GrowthWeekItemCreateNestedManyWithoutOpportunityInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutOpportunityInput
 }
 
 export type OpportunityUncheckedCreateWithoutBrandInput = {
@@ -578,9 +726,15 @@ export type OpportunityUncheckedCreateWithoutBrandInput = {
   status?: $Enums.OpportunityStatus
   score?: number | null
   rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutOpportunityInput
+  seoBrief?: Prisma.SeoBriefUncheckedCreateNestedOneWithoutOpportunityInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedCreateNestedManyWithoutOpportunityInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutOpportunityInput
 }
 
 export type OpportunityCreateOrConnectWithoutBrandInput = {
@@ -621,6 +775,9 @@ export type OpportunityScalarWhereInput = {
   status?: Prisma.EnumOpportunityStatusFilter<"Opportunity"> | $Enums.OpportunityStatus
   score?: Prisma.IntNullableFilter<"Opportunity"> | number | null
   rationale?: Prisma.StringNullableFilter<"Opportunity"> | string | null
+  actionType?: Prisma.EnumSeoActionTypeNullableFilter<"Opportunity"> | $Enums.SeoActionType | null
+  targetUrl?: Prisma.StringNullableFilter<"Opportunity"> | string | null
+  targetKeyword?: Prisma.StringNullableFilter<"Opportunity"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Opportunity"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Opportunity"> | Date | string
 }
@@ -633,9 +790,15 @@ export type OpportunityCreateWithoutContentAssetsInput = {
   status?: $Enums.OpportunityStatus
   score?: number | null
   rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutOpportunitiesInput
+  seoBrief?: Prisma.SeoBriefCreateNestedOneWithoutOpportunityInput
+  growthWeekItems?: Prisma.GrowthWeekItemCreateNestedManyWithoutOpportunityInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutOpportunityInput
 }
 
 export type OpportunityUncheckedCreateWithoutContentAssetsInput = {
@@ -647,8 +810,14 @@ export type OpportunityUncheckedCreateWithoutContentAssetsInput = {
   status?: $Enums.OpportunityStatus
   score?: number | null
   rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  seoBrief?: Prisma.SeoBriefUncheckedCreateNestedOneWithoutOpportunityInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedCreateNestedManyWithoutOpportunityInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutOpportunityInput
 }
 
 export type OpportunityCreateOrConnectWithoutContentAssetsInput = {
@@ -675,9 +844,15 @@ export type OpportunityUpdateWithoutContentAssetsInput = {
   status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
   score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutOpportunitiesNestedInput
+  seoBrief?: Prisma.SeoBriefUpdateOneWithoutOpportunityNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUpdateManyWithoutOpportunityNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutOpportunityNestedInput
 }
 
 export type OpportunityUncheckedUpdateWithoutContentAssetsInput = {
@@ -689,8 +864,290 @@ export type OpportunityUncheckedUpdateWithoutContentAssetsInput = {
   status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
   score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  seoBrief?: Prisma.SeoBriefUncheckedUpdateOneWithoutOpportunityNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedUpdateManyWithoutOpportunityNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutOpportunityNestedInput
+}
+
+export type OpportunityCreateWithoutSeoBriefInput = {
+  id?: string
+  title: string
+  description: string
+  source?: $Enums.OpportunitySource
+  status?: $Enums.OpportunityStatus
+  score?: number | null
+  rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brand: Prisma.BrandCreateNestedOneWithoutOpportunitiesInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutOpportunityInput
+  growthWeekItems?: Prisma.GrowthWeekItemCreateNestedManyWithoutOpportunityInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutOpportunityInput
+}
+
+export type OpportunityUncheckedCreateWithoutSeoBriefInput = {
+  id?: string
+  brandId: string
+  title: string
+  description: string
+  source?: $Enums.OpportunitySource
+  status?: $Enums.OpportunityStatus
+  score?: number | null
+  rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutOpportunityInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedCreateNestedManyWithoutOpportunityInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutOpportunityInput
+}
+
+export type OpportunityCreateOrConnectWithoutSeoBriefInput = {
+  where: Prisma.OpportunityWhereUniqueInput
+  create: Prisma.XOR<Prisma.OpportunityCreateWithoutSeoBriefInput, Prisma.OpportunityUncheckedCreateWithoutSeoBriefInput>
+}
+
+export type OpportunityUpsertWithoutSeoBriefInput = {
+  update: Prisma.XOR<Prisma.OpportunityUpdateWithoutSeoBriefInput, Prisma.OpportunityUncheckedUpdateWithoutSeoBriefInput>
+  create: Prisma.XOR<Prisma.OpportunityCreateWithoutSeoBriefInput, Prisma.OpportunityUncheckedCreateWithoutSeoBriefInput>
+  where?: Prisma.OpportunityWhereInput
+}
+
+export type OpportunityUpdateToOneWithWhereWithoutSeoBriefInput = {
+  where?: Prisma.OpportunityWhereInput
+  data: Prisma.XOR<Prisma.OpportunityUpdateWithoutSeoBriefInput, Prisma.OpportunityUncheckedUpdateWithoutSeoBriefInput>
+}
+
+export type OpportunityUpdateWithoutSeoBriefInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.EnumOpportunitySourceFieldUpdateOperationsInput | $Enums.OpportunitySource
+  status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brand?: Prisma.BrandUpdateOneRequiredWithoutOpportunitiesNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutOpportunityNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUpdateManyWithoutOpportunityNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutOpportunityNestedInput
+}
+
+export type OpportunityUncheckedUpdateWithoutSeoBriefInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  brandId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.EnumOpportunitySourceFieldUpdateOperationsInput | $Enums.OpportunitySource
+  status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutOpportunityNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedUpdateManyWithoutOpportunityNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutOpportunityNestedInput
+}
+
+export type OpportunityCreateWithoutGrowthWeekItemsInput = {
+  id?: string
+  title: string
+  description: string
+  source?: $Enums.OpportunitySource
+  status?: $Enums.OpportunityStatus
+  score?: number | null
+  rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brand: Prisma.BrandCreateNestedOneWithoutOpportunitiesInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutOpportunityInput
+  seoBrief?: Prisma.SeoBriefCreateNestedOneWithoutOpportunityInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutOpportunityInput
+}
+
+export type OpportunityUncheckedCreateWithoutGrowthWeekItemsInput = {
+  id?: string
+  brandId: string
+  title: string
+  description: string
+  source?: $Enums.OpportunitySource
+  status?: $Enums.OpportunityStatus
+  score?: number | null
+  rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutOpportunityInput
+  seoBrief?: Prisma.SeoBriefUncheckedCreateNestedOneWithoutOpportunityInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutOpportunityInput
+}
+
+export type OpportunityCreateOrConnectWithoutGrowthWeekItemsInput = {
+  where: Prisma.OpportunityWhereUniqueInput
+  create: Prisma.XOR<Prisma.OpportunityCreateWithoutGrowthWeekItemsInput, Prisma.OpportunityUncheckedCreateWithoutGrowthWeekItemsInput>
+}
+
+export type OpportunityUpsertWithoutGrowthWeekItemsInput = {
+  update: Prisma.XOR<Prisma.OpportunityUpdateWithoutGrowthWeekItemsInput, Prisma.OpportunityUncheckedUpdateWithoutGrowthWeekItemsInput>
+  create: Prisma.XOR<Prisma.OpportunityCreateWithoutGrowthWeekItemsInput, Prisma.OpportunityUncheckedCreateWithoutGrowthWeekItemsInput>
+  where?: Prisma.OpportunityWhereInput
+}
+
+export type OpportunityUpdateToOneWithWhereWithoutGrowthWeekItemsInput = {
+  where?: Prisma.OpportunityWhereInput
+  data: Prisma.XOR<Prisma.OpportunityUpdateWithoutGrowthWeekItemsInput, Prisma.OpportunityUncheckedUpdateWithoutGrowthWeekItemsInput>
+}
+
+export type OpportunityUpdateWithoutGrowthWeekItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.EnumOpportunitySourceFieldUpdateOperationsInput | $Enums.OpportunitySource
+  status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brand?: Prisma.BrandUpdateOneRequiredWithoutOpportunitiesNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutOpportunityNestedInput
+  seoBrief?: Prisma.SeoBriefUpdateOneWithoutOpportunityNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutOpportunityNestedInput
+}
+
+export type OpportunityUncheckedUpdateWithoutGrowthWeekItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  brandId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.EnumOpportunitySourceFieldUpdateOperationsInput | $Enums.OpportunitySource
+  status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutOpportunityNestedInput
+  seoBrief?: Prisma.SeoBriefUncheckedUpdateOneWithoutOpportunityNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutOpportunityNestedInput
+}
+
+export type OpportunityCreateWithoutProposedActionsInput = {
+  id?: string
+  title: string
+  description: string
+  source?: $Enums.OpportunitySource
+  status?: $Enums.OpportunityStatus
+  score?: number | null
+  rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brand: Prisma.BrandCreateNestedOneWithoutOpportunitiesInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutOpportunityInput
+  seoBrief?: Prisma.SeoBriefCreateNestedOneWithoutOpportunityInput
+  growthWeekItems?: Prisma.GrowthWeekItemCreateNestedManyWithoutOpportunityInput
+}
+
+export type OpportunityUncheckedCreateWithoutProposedActionsInput = {
+  id?: string
+  brandId: string
+  title: string
+  description: string
+  source?: $Enums.OpportunitySource
+  status?: $Enums.OpportunityStatus
+  score?: number | null
+  rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutOpportunityInput
+  seoBrief?: Prisma.SeoBriefUncheckedCreateNestedOneWithoutOpportunityInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedCreateNestedManyWithoutOpportunityInput
+}
+
+export type OpportunityCreateOrConnectWithoutProposedActionsInput = {
+  where: Prisma.OpportunityWhereUniqueInput
+  create: Prisma.XOR<Prisma.OpportunityCreateWithoutProposedActionsInput, Prisma.OpportunityUncheckedCreateWithoutProposedActionsInput>
+}
+
+export type OpportunityUpsertWithoutProposedActionsInput = {
+  update: Prisma.XOR<Prisma.OpportunityUpdateWithoutProposedActionsInput, Prisma.OpportunityUncheckedUpdateWithoutProposedActionsInput>
+  create: Prisma.XOR<Prisma.OpportunityCreateWithoutProposedActionsInput, Prisma.OpportunityUncheckedCreateWithoutProposedActionsInput>
+  where?: Prisma.OpportunityWhereInput
+}
+
+export type OpportunityUpdateToOneWithWhereWithoutProposedActionsInput = {
+  where?: Prisma.OpportunityWhereInput
+  data: Prisma.XOR<Prisma.OpportunityUpdateWithoutProposedActionsInput, Prisma.OpportunityUncheckedUpdateWithoutProposedActionsInput>
+}
+
+export type OpportunityUpdateWithoutProposedActionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.EnumOpportunitySourceFieldUpdateOperationsInput | $Enums.OpportunitySource
+  status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brand?: Prisma.BrandUpdateOneRequiredWithoutOpportunitiesNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutOpportunityNestedInput
+  seoBrief?: Prisma.SeoBriefUpdateOneWithoutOpportunityNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUpdateManyWithoutOpportunityNestedInput
+}
+
+export type OpportunityUncheckedUpdateWithoutProposedActionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  brandId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.EnumOpportunitySourceFieldUpdateOperationsInput | $Enums.OpportunitySource
+  status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutOpportunityNestedInput
+  seoBrief?: Prisma.SeoBriefUncheckedUpdateOneWithoutOpportunityNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedUpdateManyWithoutOpportunityNestedInput
 }
 
 export type OpportunityCreateManyBrandInput = {
@@ -701,6 +1158,9 @@ export type OpportunityCreateManyBrandInput = {
   status?: $Enums.OpportunityStatus
   score?: number | null
   rationale?: string | null
+  actionType?: $Enums.SeoActionType | null
+  targetUrl?: string | null
+  targetKeyword?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -713,9 +1173,15 @@ export type OpportunityUpdateWithoutBrandInput = {
   status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
   score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   contentAssets?: Prisma.ContentAssetUpdateManyWithoutOpportunityNestedInput
+  seoBrief?: Prisma.SeoBriefUpdateOneWithoutOpportunityNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUpdateManyWithoutOpportunityNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutOpportunityNestedInput
 }
 
 export type OpportunityUncheckedUpdateWithoutBrandInput = {
@@ -726,9 +1192,15 @@ export type OpportunityUncheckedUpdateWithoutBrandInput = {
   status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
   score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutOpportunityNestedInput
+  seoBrief?: Prisma.SeoBriefUncheckedUpdateOneWithoutOpportunityNestedInput
+  growthWeekItems?: Prisma.GrowthWeekItemUncheckedUpdateManyWithoutOpportunityNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutOpportunityNestedInput
 }
 
 export type OpportunityUncheckedUpdateManyWithoutBrandInput = {
@@ -739,6 +1211,9 @@ export type OpportunityUncheckedUpdateManyWithoutBrandInput = {
   status?: Prisma.EnumOpportunityStatusFieldUpdateOperationsInput | $Enums.OpportunityStatus
   score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rationale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actionType?: Prisma.NullableEnumSeoActionTypeFieldUpdateOperationsInput | $Enums.SeoActionType | null
+  targetUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  targetKeyword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -750,10 +1225,14 @@ export type OpportunityUncheckedUpdateManyWithoutBrandInput = {
 
 export type OpportunityCountOutputType = {
   contentAssets: number
+  growthWeekItems: number
+  proposedActions: number
 }
 
 export type OpportunityCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   contentAssets?: boolean | OpportunityCountOutputTypeCountContentAssetsArgs
+  growthWeekItems?: boolean | OpportunityCountOutputTypeCountGrowthWeekItemsArgs
+  proposedActions?: boolean | OpportunityCountOutputTypeCountProposedActionsArgs
 }
 
 /**
@@ -773,6 +1252,20 @@ export type OpportunityCountOutputTypeCountContentAssetsArgs<ExtArgs extends run
   where?: Prisma.ContentAssetWhereInput
 }
 
+/**
+ * OpportunityCountOutputType without action
+ */
+export type OpportunityCountOutputTypeCountGrowthWeekItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GrowthWeekItemWhereInput
+}
+
+/**
+ * OpportunityCountOutputType without action
+ */
+export type OpportunityCountOutputTypeCountProposedActionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProposedActionWhereInput
+}
+
 
 export type OpportunitySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -783,10 +1276,16 @@ export type OpportunitySelect<ExtArgs extends runtime.Types.Extensions.InternalA
   status?: boolean
   score?: boolean
   rationale?: boolean
+  actionType?: boolean
+  targetUrl?: boolean
+  targetKeyword?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   contentAssets?: boolean | Prisma.Opportunity$contentAssetsArgs<ExtArgs>
+  seoBrief?: boolean | Prisma.Opportunity$seoBriefArgs<ExtArgs>
+  growthWeekItems?: boolean | Prisma.Opportunity$growthWeekItemsArgs<ExtArgs>
+  proposedActions?: boolean | Prisma.Opportunity$proposedActionsArgs<ExtArgs>
   _count?: boolean | Prisma.OpportunityCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["opportunity"]>
 
@@ -799,6 +1298,9 @@ export type OpportunitySelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   status?: boolean
   score?: boolean
   rationale?: boolean
+  actionType?: boolean
+  targetUrl?: boolean
+  targetKeyword?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
@@ -813,6 +1315,9 @@ export type OpportunitySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   status?: boolean
   score?: boolean
   rationale?: boolean
+  actionType?: boolean
+  targetUrl?: boolean
+  targetKeyword?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
@@ -827,14 +1332,20 @@ export type OpportunitySelectScalar = {
   status?: boolean
   score?: boolean
   rationale?: boolean
+  actionType?: boolean
+  targetUrl?: boolean
+  targetKeyword?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type OpportunityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "brandId" | "title" | "description" | "source" | "status" | "score" | "rationale" | "createdAt" | "updatedAt", ExtArgs["result"]["opportunity"]>
+export type OpportunityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "brandId" | "title" | "description" | "source" | "status" | "score" | "rationale" | "actionType" | "targetUrl" | "targetKeyword" | "createdAt" | "updatedAt", ExtArgs["result"]["opportunity"]>
 export type OpportunityInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   contentAssets?: boolean | Prisma.Opportunity$contentAssetsArgs<ExtArgs>
+  seoBrief?: boolean | Prisma.Opportunity$seoBriefArgs<ExtArgs>
+  growthWeekItems?: boolean | Prisma.Opportunity$growthWeekItemsArgs<ExtArgs>
+  proposedActions?: boolean | Prisma.Opportunity$proposedActionsArgs<ExtArgs>
   _count?: boolean | Prisma.OpportunityCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OpportunityIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -849,6 +1360,9 @@ export type $OpportunityPayload<ExtArgs extends runtime.Types.Extensions.Interna
   objects: {
     brand: Prisma.$BrandPayload<ExtArgs>
     contentAssets: Prisma.$ContentAssetPayload<ExtArgs>[]
+    seoBrief: Prisma.$SeoBriefPayload<ExtArgs> | null
+    growthWeekItems: Prisma.$GrowthWeekItemPayload<ExtArgs>[]
+    proposedActions: Prisma.$ProposedActionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -859,6 +1373,9 @@ export type $OpportunityPayload<ExtArgs extends runtime.Types.Extensions.Interna
     status: $Enums.OpportunityStatus
     score: number | null
     rationale: string | null
+    actionType: $Enums.SeoActionType | null
+    targetUrl: string | null
+    targetKeyword: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["opportunity"]>
@@ -1257,6 +1774,9 @@ export interface Prisma__OpportunityClient<T, Null = never, ExtArgs extends runt
   readonly [Symbol.toStringTag]: "PrismaPromise"
   brand<T extends Prisma.BrandDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandDefaultArgs<ExtArgs>>): Prisma.Prisma__BrandClient<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   contentAssets<T extends Prisma.Opportunity$contentAssetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Opportunity$contentAssetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContentAssetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  seoBrief<T extends Prisma.Opportunity$seoBriefArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Opportunity$seoBriefArgs<ExtArgs>>): Prisma.Prisma__SeoBriefClient<runtime.Types.Result.GetResult<Prisma.$SeoBriefPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  growthWeekItems<T extends Prisma.Opportunity$growthWeekItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Opportunity$growthWeekItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GrowthWeekItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  proposedActions<T extends Prisma.Opportunity$proposedActionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Opportunity$proposedActionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProposedActionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1294,6 +1814,9 @@ export interface OpportunityFieldRefs {
   readonly status: Prisma.FieldRef<"Opportunity", 'OpportunityStatus'>
   readonly score: Prisma.FieldRef<"Opportunity", 'Int'>
   readonly rationale: Prisma.FieldRef<"Opportunity", 'String'>
+  readonly actionType: Prisma.FieldRef<"Opportunity", 'SeoActionType'>
+  readonly targetUrl: Prisma.FieldRef<"Opportunity", 'String'>
+  readonly targetKeyword: Prisma.FieldRef<"Opportunity", 'String'>
   readonly createdAt: Prisma.FieldRef<"Opportunity", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Opportunity", 'DateTime'>
 }
@@ -1718,6 +2241,73 @@ export type Opportunity$contentAssetsArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.ContentAssetScalarFieldEnum | Prisma.ContentAssetScalarFieldEnum[]
+}
+
+/**
+ * Opportunity.seoBrief
+ */
+export type Opportunity$seoBriefArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SeoBrief
+   */
+  select?: Prisma.SeoBriefSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SeoBrief
+   */
+  omit?: Prisma.SeoBriefOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SeoBriefInclude<ExtArgs> | null
+  where?: Prisma.SeoBriefWhereInput
+}
+
+/**
+ * Opportunity.growthWeekItems
+ */
+export type Opportunity$growthWeekItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GrowthWeekItem
+   */
+  select?: Prisma.GrowthWeekItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GrowthWeekItem
+   */
+  omit?: Prisma.GrowthWeekItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GrowthWeekItemInclude<ExtArgs> | null
+  where?: Prisma.GrowthWeekItemWhereInput
+  orderBy?: Prisma.GrowthWeekItemOrderByWithRelationInput | Prisma.GrowthWeekItemOrderByWithRelationInput[]
+  cursor?: Prisma.GrowthWeekItemWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GrowthWeekItemScalarFieldEnum | Prisma.GrowthWeekItemScalarFieldEnum[]
+}
+
+/**
+ * Opportunity.proposedActions
+ */
+export type Opportunity$proposedActionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProposedAction
+   */
+  select?: Prisma.ProposedActionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProposedAction
+   */
+  omit?: Prisma.ProposedActionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProposedActionInclude<ExtArgs> | null
+  where?: Prisma.ProposedActionWhereInput
+  orderBy?: Prisma.ProposedActionOrderByWithRelationInput | Prisma.ProposedActionOrderByWithRelationInput[]
+  cursor?: Prisma.ProposedActionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProposedActionScalarFieldEnum | Prisma.ProposedActionScalarFieldEnum[]
 }
 
 /**
