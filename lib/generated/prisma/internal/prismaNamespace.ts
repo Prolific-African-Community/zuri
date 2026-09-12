@@ -2663,6 +2663,7 @@ export const BrandScalarFieldEnum = {
   googleBusinessAccountId: 'googleBusinessAccountId',
   googleBusinessLocationId: 'googleBusinessLocationId',
   googleBusinessLocationName: 'googleBusinessLocationName',
+  contextUpdatedAt: 'contextUpdatedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2798,6 +2799,7 @@ export const ContentAssetScalarFieldEnum = {
   googleBusinessPostName: 'googleBusinessPostName',
   googleBusinessPublishedAt: 'googleBusinessPublishedAt',
   googleBusinessError: 'googleBusinessError',
+  archivedAt: 'archivedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2818,6 +2820,7 @@ export const ArticleDraftScalarFieldEnum = {
   metaTitle: 'metaTitle',
   metaDescription: 'metaDescription',
   canonicalUrl: 'canonicalUrl',
+  publicationState: 'publicationState',
   reviewStatus: 'reviewStatus',
   publishingBranch: 'publishingBranch',
   prNumber: 'prNumber',
@@ -2829,9 +2832,17 @@ export const ArticleDraftScalarFieldEnum = {
   publishedUrl: 'publishedUrl',
   publishedPackageHash: 'publishedPackageHash',
   mergeCommitSha: 'mergeCommitSha',
+  lastPublishMergeCommitSha: 'lastPublishMergeCommitSha',
+  lastUnpublishMergeCommitSha: 'lastUnpublishMergeCommitSha',
   productionStatus: 'productionStatus',
   productionDeploymentUrl: 'productionDeploymentUrl',
   productionDeployedAt: 'productionDeployedAt',
+  unpublishRequestedAt: 'unpublishRequestedAt',
+  unpublishedAt: 'unpublishedAt',
+  unpublishBranch: 'unpublishBranch',
+  unpublishPrNumber: 'unpublishPrNumber',
+  unpublishPrUrl: 'unpublishPrUrl',
+  unpublishUrlStatus: 'unpublishUrlStatus',
   coverImage: 'coverImage',
   images: 'images',
   internalLinks: 'internalLinks',
@@ -3413,6 +3424,20 @@ export type EnumContentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'ContentStatus[]'
  */
 export type ListEnumContentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContentStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ArticlePublicationState'
+ */
+export type EnumArticlePublicationStateFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ArticlePublicationState'>
+    
+
+
+/**
+ * Reference to a field of type 'ArticlePublicationState[]'
+ */
+export type ListEnumArticlePublicationStateFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ArticlePublicationState[]'>
     
 
 

@@ -257,6 +257,8 @@ export async function generateSeoOpportunitiesAction(
 
     const generated = await generateSeoOpportunities({
       brandName: brand.name,
+      // The brand's current setting drives the output, not the crawled pages.
+      outputLanguage: brand.profile?.language?.trim() || "English",
       profile: brand.profile
         ? {
             mission: brand.profile.mission,

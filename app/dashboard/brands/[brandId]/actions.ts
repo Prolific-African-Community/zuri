@@ -2,6 +2,7 @@
 
 import { requireSession } from "@/lib/session";
 
+import { contextChanged } from "@/lib/brand-freshness";
 import { optionalText, textList } from "@/lib/brands";
 import { VoiceRuleType } from "@/lib/generated/prisma/enums";
 import { getPrisma } from "@/lib/prisma";
@@ -34,11 +35,23 @@ export async function updateBrandProfile(brandId: string, formData: FormData) {
     language: text(formData, "language"),
   };
 
-  await getPrisma().brandProfile.upsert({
+  const prisma = getPrisma();
+  const before = await prisma.brandProfile.findUnique({ where: { brandId } });
+
+  await prisma.brandProfile.upsert({
     where: { brandId },
     update: profile,
     create: { brandId, ...profile },
   });
+
+  // A new language, positioning, value proposition or voice makes everything
+  // collected before it history.
+  if (contextChanged(before ?? {}, profile)) {
+    await prisma.brand.update({
+      where: { id: brandId },
+      data: { contextUpdatedAt: new Date() },
+    });
+  }
 
   revalidatePath("/dashboard");
   refresh(brandId);

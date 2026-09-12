@@ -29,10 +29,14 @@ export type AggregateArticleDraft = {
 
 export type ArticleDraftAvgAggregateOutputType = {
   prNumber: number | null
+  unpublishPrNumber: number | null
+  unpublishUrlStatus: number | null
 }
 
 export type ArticleDraftSumAggregateOutputType = {
   prNumber: number | null
+  unpublishPrNumber: number | null
+  unpublishUrlStatus: number | null
 }
 
 export type ArticleDraftMinAggregateOutputType = {
@@ -47,6 +51,7 @@ export type ArticleDraftMinAggregateOutputType = {
   metaTitle: string | null
   metaDescription: string | null
   canonicalUrl: string | null
+  publicationState: $Enums.ArticlePublicationState | null
   reviewStatus: $Enums.ArticleReviewStatus | null
   publishingBranch: string | null
   prNumber: number | null
@@ -58,9 +63,17 @@ export type ArticleDraftMinAggregateOutputType = {
   publishedUrl: string | null
   publishedPackageHash: string | null
   mergeCommitSha: string | null
+  lastPublishMergeCommitSha: string | null
+  lastUnpublishMergeCommitSha: string | null
   productionStatus: $Enums.ProductionStatus | null
   productionDeploymentUrl: string | null
   productionDeployedAt: Date | null
+  unpublishRequestedAt: Date | null
+  unpublishedAt: Date | null
+  unpublishBranch: string | null
+  unpublishPrNumber: number | null
+  unpublishPrUrl: string | null
+  unpublishUrlStatus: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -77,6 +90,7 @@ export type ArticleDraftMaxAggregateOutputType = {
   metaTitle: string | null
   metaDescription: string | null
   canonicalUrl: string | null
+  publicationState: $Enums.ArticlePublicationState | null
   reviewStatus: $Enums.ArticleReviewStatus | null
   publishingBranch: string | null
   prNumber: number | null
@@ -88,9 +102,17 @@ export type ArticleDraftMaxAggregateOutputType = {
   publishedUrl: string | null
   publishedPackageHash: string | null
   mergeCommitSha: string | null
+  lastPublishMergeCommitSha: string | null
+  lastUnpublishMergeCommitSha: string | null
   productionStatus: $Enums.ProductionStatus | null
   productionDeploymentUrl: string | null
   productionDeployedAt: Date | null
+  unpublishRequestedAt: Date | null
+  unpublishedAt: Date | null
+  unpublishBranch: string | null
+  unpublishPrNumber: number | null
+  unpublishPrUrl: string | null
+  unpublishUrlStatus: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -108,6 +130,7 @@ export type ArticleDraftCountAggregateOutputType = {
   metaTitle: number
   metaDescription: number
   canonicalUrl: number
+  publicationState: number
   reviewStatus: number
   publishingBranch: number
   prNumber: number
@@ -119,9 +142,17 @@ export type ArticleDraftCountAggregateOutputType = {
   publishedUrl: number
   publishedPackageHash: number
   mergeCommitSha: number
+  lastPublishMergeCommitSha: number
+  lastUnpublishMergeCommitSha: number
   productionStatus: number
   productionDeploymentUrl: number
   productionDeployedAt: number
+  unpublishRequestedAt: number
+  unpublishedAt: number
+  unpublishBranch: number
+  unpublishPrNumber: number
+  unpublishPrUrl: number
+  unpublishUrlStatus: number
   coverImage: number
   images: number
   internalLinks: number
@@ -133,10 +164,14 @@ export type ArticleDraftCountAggregateOutputType = {
 
 export type ArticleDraftAvgAggregateInputType = {
   prNumber?: true
+  unpublishPrNumber?: true
+  unpublishUrlStatus?: true
 }
 
 export type ArticleDraftSumAggregateInputType = {
   prNumber?: true
+  unpublishPrNumber?: true
+  unpublishUrlStatus?: true
 }
 
 export type ArticleDraftMinAggregateInputType = {
@@ -151,6 +186,7 @@ export type ArticleDraftMinAggregateInputType = {
   metaTitle?: true
   metaDescription?: true
   canonicalUrl?: true
+  publicationState?: true
   reviewStatus?: true
   publishingBranch?: true
   prNumber?: true
@@ -162,9 +198,17 @@ export type ArticleDraftMinAggregateInputType = {
   publishedUrl?: true
   publishedPackageHash?: true
   mergeCommitSha?: true
+  lastPublishMergeCommitSha?: true
+  lastUnpublishMergeCommitSha?: true
   productionStatus?: true
   productionDeploymentUrl?: true
   productionDeployedAt?: true
+  unpublishRequestedAt?: true
+  unpublishedAt?: true
+  unpublishBranch?: true
+  unpublishPrNumber?: true
+  unpublishPrUrl?: true
+  unpublishUrlStatus?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -181,6 +225,7 @@ export type ArticleDraftMaxAggregateInputType = {
   metaTitle?: true
   metaDescription?: true
   canonicalUrl?: true
+  publicationState?: true
   reviewStatus?: true
   publishingBranch?: true
   prNumber?: true
@@ -192,9 +237,17 @@ export type ArticleDraftMaxAggregateInputType = {
   publishedUrl?: true
   publishedPackageHash?: true
   mergeCommitSha?: true
+  lastPublishMergeCommitSha?: true
+  lastUnpublishMergeCommitSha?: true
   productionStatus?: true
   productionDeploymentUrl?: true
   productionDeployedAt?: true
+  unpublishRequestedAt?: true
+  unpublishedAt?: true
+  unpublishBranch?: true
+  unpublishPrNumber?: true
+  unpublishPrUrl?: true
+  unpublishUrlStatus?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -212,6 +265,7 @@ export type ArticleDraftCountAggregateInputType = {
   metaTitle?: true
   metaDescription?: true
   canonicalUrl?: true
+  publicationState?: true
   reviewStatus?: true
   publishingBranch?: true
   prNumber?: true
@@ -223,9 +277,17 @@ export type ArticleDraftCountAggregateInputType = {
   publishedUrl?: true
   publishedPackageHash?: true
   mergeCommitSha?: true
+  lastPublishMergeCommitSha?: true
+  lastUnpublishMergeCommitSha?: true
   productionStatus?: true
   productionDeploymentUrl?: true
   productionDeployedAt?: true
+  unpublishRequestedAt?: true
+  unpublishedAt?: true
+  unpublishBranch?: true
+  unpublishPrNumber?: true
+  unpublishPrUrl?: true
+  unpublishUrlStatus?: true
   coverImage?: true
   images?: true
   internalLinks?: true
@@ -333,6 +395,7 @@ export type ArticleDraftGroupByOutputType = {
   metaTitle: string
   metaDescription: string
   canonicalUrl: string | null
+  publicationState: $Enums.ArticlePublicationState
   reviewStatus: $Enums.ArticleReviewStatus
   publishingBranch: string | null
   prNumber: number | null
@@ -344,9 +407,17 @@ export type ArticleDraftGroupByOutputType = {
   publishedUrl: string | null
   publishedPackageHash: string | null
   mergeCommitSha: string | null
+  lastPublishMergeCommitSha: string | null
+  lastUnpublishMergeCommitSha: string | null
   productionStatus: $Enums.ProductionStatus
   productionDeploymentUrl: string | null
   productionDeployedAt: Date | null
+  unpublishRequestedAt: Date | null
+  unpublishedAt: Date | null
+  unpublishBranch: string | null
+  unpublishPrNumber: number | null
+  unpublishPrUrl: string | null
+  unpublishUrlStatus: number | null
   coverImage: runtime.JsonValue | null
   images: runtime.JsonValue | null
   internalLinks: runtime.JsonValue | null
@@ -390,6 +461,7 @@ export type ArticleDraftWhereInput = {
   metaTitle?: Prisma.StringFilter<"ArticleDraft"> | string
   metaDescription?: Prisma.StringFilter<"ArticleDraft"> | string
   canonicalUrl?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFilter<"ArticleDraft"> | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFilter<"ArticleDraft"> | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
   prNumber?: Prisma.IntNullableFilter<"ArticleDraft"> | number | null
@@ -401,9 +473,17 @@ export type ArticleDraftWhereInput = {
   publishedUrl?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
   publishedPackageHash?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
   mergeCommitSha?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
+  lastPublishMergeCommitSha?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
+  lastUnpublishMergeCommitSha?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
   productionStatus?: Prisma.EnumProductionStatusFilter<"ArticleDraft"> | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
   productionDeployedAt?: Prisma.DateTimeNullableFilter<"ArticleDraft"> | Date | string | null
+  unpublishRequestedAt?: Prisma.DateTimeNullableFilter<"ArticleDraft"> | Date | string | null
+  unpublishedAt?: Prisma.DateTimeNullableFilter<"ArticleDraft"> | Date | string | null
+  unpublishBranch?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
+  unpublishPrNumber?: Prisma.IntNullableFilter<"ArticleDraft"> | number | null
+  unpublishPrUrl?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
+  unpublishUrlStatus?: Prisma.IntNullableFilter<"ArticleDraft"> | number | null
   coverImage?: Prisma.JsonNullableFilter<"ArticleDraft">
   images?: Prisma.JsonNullableFilter<"ArticleDraft">
   internalLinks?: Prisma.JsonNullableFilter<"ArticleDraft">
@@ -427,6 +507,7 @@ export type ArticleDraftOrderByWithRelationInput = {
   metaTitle?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   canonicalUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  publicationState?: Prisma.SortOrder
   reviewStatus?: Prisma.SortOrder
   publishingBranch?: Prisma.SortOrderInput | Prisma.SortOrder
   prNumber?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -438,9 +519,17 @@ export type ArticleDraftOrderByWithRelationInput = {
   publishedUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   publishedPackageHash?: Prisma.SortOrderInput | Prisma.SortOrder
   mergeCommitSha?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastPublishMergeCommitSha?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastUnpublishMergeCommitSha?: Prisma.SortOrderInput | Prisma.SortOrder
   productionStatus?: Prisma.SortOrder
   productionDeploymentUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   productionDeployedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishRequestedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishBranch?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishPrNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishPrUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishUrlStatus?: Prisma.SortOrderInput | Prisma.SortOrder
   coverImage?: Prisma.SortOrderInput | Prisma.SortOrder
   images?: Prisma.SortOrderInput | Prisma.SortOrder
   internalLinks?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -467,6 +556,7 @@ export type ArticleDraftWhereUniqueInput = Prisma.AtLeast<{
   metaTitle?: Prisma.StringFilter<"ArticleDraft"> | string
   metaDescription?: Prisma.StringFilter<"ArticleDraft"> | string
   canonicalUrl?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFilter<"ArticleDraft"> | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFilter<"ArticleDraft"> | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
   prNumber?: Prisma.IntNullableFilter<"ArticleDraft"> | number | null
@@ -478,9 +568,17 @@ export type ArticleDraftWhereUniqueInput = Prisma.AtLeast<{
   publishedUrl?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
   publishedPackageHash?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
   mergeCommitSha?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
+  lastPublishMergeCommitSha?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
+  lastUnpublishMergeCommitSha?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
   productionStatus?: Prisma.EnumProductionStatusFilter<"ArticleDraft"> | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
   productionDeployedAt?: Prisma.DateTimeNullableFilter<"ArticleDraft"> | Date | string | null
+  unpublishRequestedAt?: Prisma.DateTimeNullableFilter<"ArticleDraft"> | Date | string | null
+  unpublishedAt?: Prisma.DateTimeNullableFilter<"ArticleDraft"> | Date | string | null
+  unpublishBranch?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
+  unpublishPrNumber?: Prisma.IntNullableFilter<"ArticleDraft"> | number | null
+  unpublishPrUrl?: Prisma.StringNullableFilter<"ArticleDraft"> | string | null
+  unpublishUrlStatus?: Prisma.IntNullableFilter<"ArticleDraft"> | number | null
   coverImage?: Prisma.JsonNullableFilter<"ArticleDraft">
   images?: Prisma.JsonNullableFilter<"ArticleDraft">
   internalLinks?: Prisma.JsonNullableFilter<"ArticleDraft">
@@ -504,6 +602,7 @@ export type ArticleDraftOrderByWithAggregationInput = {
   metaTitle?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   canonicalUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  publicationState?: Prisma.SortOrder
   reviewStatus?: Prisma.SortOrder
   publishingBranch?: Prisma.SortOrderInput | Prisma.SortOrder
   prNumber?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -515,9 +614,17 @@ export type ArticleDraftOrderByWithAggregationInput = {
   publishedUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   publishedPackageHash?: Prisma.SortOrderInput | Prisma.SortOrder
   mergeCommitSha?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastPublishMergeCommitSha?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastUnpublishMergeCommitSha?: Prisma.SortOrderInput | Prisma.SortOrder
   productionStatus?: Prisma.SortOrder
   productionDeploymentUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   productionDeployedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishRequestedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishBranch?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishPrNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishPrUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  unpublishUrlStatus?: Prisma.SortOrderInput | Prisma.SortOrder
   coverImage?: Prisma.SortOrderInput | Prisma.SortOrder
   images?: Prisma.SortOrderInput | Prisma.SortOrder
   internalLinks?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -546,6 +653,7 @@ export type ArticleDraftScalarWhereWithAggregatesInput = {
   metaTitle?: Prisma.StringWithAggregatesFilter<"ArticleDraft"> | string
   metaDescription?: Prisma.StringWithAggregatesFilter<"ArticleDraft"> | string
   canonicalUrl?: Prisma.StringNullableWithAggregatesFilter<"ArticleDraft"> | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateWithAggregatesFilter<"ArticleDraft"> | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusWithAggregatesFilter<"ArticleDraft"> | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.StringNullableWithAggregatesFilter<"ArticleDraft"> | string | null
   prNumber?: Prisma.IntNullableWithAggregatesFilter<"ArticleDraft"> | number | null
@@ -557,9 +665,17 @@ export type ArticleDraftScalarWhereWithAggregatesInput = {
   publishedUrl?: Prisma.StringNullableWithAggregatesFilter<"ArticleDraft"> | string | null
   publishedPackageHash?: Prisma.StringNullableWithAggregatesFilter<"ArticleDraft"> | string | null
   mergeCommitSha?: Prisma.StringNullableWithAggregatesFilter<"ArticleDraft"> | string | null
+  lastPublishMergeCommitSha?: Prisma.StringNullableWithAggregatesFilter<"ArticleDraft"> | string | null
+  lastUnpublishMergeCommitSha?: Prisma.StringNullableWithAggregatesFilter<"ArticleDraft"> | string | null
   productionStatus?: Prisma.EnumProductionStatusWithAggregatesFilter<"ArticleDraft"> | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.StringNullableWithAggregatesFilter<"ArticleDraft"> | string | null
   productionDeployedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ArticleDraft"> | Date | string | null
+  unpublishRequestedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ArticleDraft"> | Date | string | null
+  unpublishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ArticleDraft"> | Date | string | null
+  unpublishBranch?: Prisma.StringNullableWithAggregatesFilter<"ArticleDraft"> | string | null
+  unpublishPrNumber?: Prisma.IntNullableWithAggregatesFilter<"ArticleDraft"> | number | null
+  unpublishPrUrl?: Prisma.StringNullableWithAggregatesFilter<"ArticleDraft"> | string | null
+  unpublishUrlStatus?: Prisma.IntNullableWithAggregatesFilter<"ArticleDraft"> | number | null
   coverImage?: Prisma.JsonNullableWithAggregatesFilter<"ArticleDraft">
   images?: Prisma.JsonNullableWithAggregatesFilter<"ArticleDraft">
   internalLinks?: Prisma.JsonNullableWithAggregatesFilter<"ArticleDraft">
@@ -579,6 +695,7 @@ export type ArticleDraftCreateInput = {
   metaTitle?: string
   metaDescription?: string
   canonicalUrl?: string | null
+  publicationState?: $Enums.ArticlePublicationState
   reviewStatus?: $Enums.ArticleReviewStatus
   publishingBranch?: string | null
   prNumber?: number | null
@@ -590,9 +707,17 @@ export type ArticleDraftCreateInput = {
   publishedUrl?: string | null
   publishedPackageHash?: string | null
   mergeCommitSha?: string | null
+  lastPublishMergeCommitSha?: string | null
+  lastUnpublishMergeCommitSha?: string | null
   productionStatus?: $Enums.ProductionStatus
   productionDeploymentUrl?: string | null
   productionDeployedAt?: Date | string | null
+  unpublishRequestedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  unpublishBranch?: string | null
+  unpublishPrNumber?: number | null
+  unpublishPrUrl?: string | null
+  unpublishUrlStatus?: number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -616,6 +741,7 @@ export type ArticleDraftUncheckedCreateInput = {
   metaTitle?: string
   metaDescription?: string
   canonicalUrl?: string | null
+  publicationState?: $Enums.ArticlePublicationState
   reviewStatus?: $Enums.ArticleReviewStatus
   publishingBranch?: string | null
   prNumber?: number | null
@@ -627,9 +753,17 @@ export type ArticleDraftUncheckedCreateInput = {
   publishedUrl?: string | null
   publishedPackageHash?: string | null
   mergeCommitSha?: string | null
+  lastPublishMergeCommitSha?: string | null
+  lastUnpublishMergeCommitSha?: string | null
   productionStatus?: $Enums.ProductionStatus
   productionDeploymentUrl?: string | null
   productionDeployedAt?: Date | string | null
+  unpublishRequestedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  unpublishBranch?: string | null
+  unpublishPrNumber?: number | null
+  unpublishPrUrl?: string | null
+  unpublishUrlStatus?: number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -651,6 +785,7 @@ export type ArticleDraftUpdateInput = {
   metaTitle?: Prisma.StringFieldUpdateOperationsInput | string
   metaDescription?: Prisma.StringFieldUpdateOperationsInput | string
   canonicalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFieldUpdateOperationsInput | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFieldUpdateOperationsInput | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -662,9 +797,17 @@ export type ArticleDraftUpdateInput = {
   publishedUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   publishedPackageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastPublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastUnpublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionStatus?: Prisma.EnumProductionStatusFieldUpdateOperationsInput | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionDeployedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishRequestedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishPrNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpublishPrUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishUrlStatus?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -688,6 +831,7 @@ export type ArticleDraftUncheckedUpdateInput = {
   metaTitle?: Prisma.StringFieldUpdateOperationsInput | string
   metaDescription?: Prisma.StringFieldUpdateOperationsInput | string
   canonicalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFieldUpdateOperationsInput | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFieldUpdateOperationsInput | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -699,9 +843,17 @@ export type ArticleDraftUncheckedUpdateInput = {
   publishedUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   publishedPackageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastPublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastUnpublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionStatus?: Prisma.EnumProductionStatusFieldUpdateOperationsInput | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionDeployedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishRequestedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishPrNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpublishPrUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishUrlStatus?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -724,6 +876,7 @@ export type ArticleDraftCreateManyInput = {
   metaTitle?: string
   metaDescription?: string
   canonicalUrl?: string | null
+  publicationState?: $Enums.ArticlePublicationState
   reviewStatus?: $Enums.ArticleReviewStatus
   publishingBranch?: string | null
   prNumber?: number | null
@@ -735,9 +888,17 @@ export type ArticleDraftCreateManyInput = {
   publishedUrl?: string | null
   publishedPackageHash?: string | null
   mergeCommitSha?: string | null
+  lastPublishMergeCommitSha?: string | null
+  lastUnpublishMergeCommitSha?: string | null
   productionStatus?: $Enums.ProductionStatus
   productionDeploymentUrl?: string | null
   productionDeployedAt?: Date | string | null
+  unpublishRequestedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  unpublishBranch?: string | null
+  unpublishPrNumber?: number | null
+  unpublishPrUrl?: string | null
+  unpublishUrlStatus?: number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -757,6 +918,7 @@ export type ArticleDraftUpdateManyMutationInput = {
   metaTitle?: Prisma.StringFieldUpdateOperationsInput | string
   metaDescription?: Prisma.StringFieldUpdateOperationsInput | string
   canonicalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFieldUpdateOperationsInput | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFieldUpdateOperationsInput | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -768,9 +930,17 @@ export type ArticleDraftUpdateManyMutationInput = {
   publishedUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   publishedPackageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastPublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastUnpublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionStatus?: Prisma.EnumProductionStatusFieldUpdateOperationsInput | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionDeployedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishRequestedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishPrNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpublishPrUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishUrlStatus?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -791,6 +961,7 @@ export type ArticleDraftUncheckedUpdateManyInput = {
   metaTitle?: Prisma.StringFieldUpdateOperationsInput | string
   metaDescription?: Prisma.StringFieldUpdateOperationsInput | string
   canonicalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFieldUpdateOperationsInput | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFieldUpdateOperationsInput | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -802,9 +973,17 @@ export type ArticleDraftUncheckedUpdateManyInput = {
   publishedUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   publishedPackageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastPublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastUnpublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionStatus?: Prisma.EnumProductionStatusFieldUpdateOperationsInput | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionDeployedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishRequestedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishPrNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpublishPrUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishUrlStatus?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -830,6 +1009,7 @@ export type ArticleDraftCountOrderByAggregateInput = {
   metaTitle?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   canonicalUrl?: Prisma.SortOrder
+  publicationState?: Prisma.SortOrder
   reviewStatus?: Prisma.SortOrder
   publishingBranch?: Prisma.SortOrder
   prNumber?: Prisma.SortOrder
@@ -841,9 +1021,17 @@ export type ArticleDraftCountOrderByAggregateInput = {
   publishedUrl?: Prisma.SortOrder
   publishedPackageHash?: Prisma.SortOrder
   mergeCommitSha?: Prisma.SortOrder
+  lastPublishMergeCommitSha?: Prisma.SortOrder
+  lastUnpublishMergeCommitSha?: Prisma.SortOrder
   productionStatus?: Prisma.SortOrder
   productionDeploymentUrl?: Prisma.SortOrder
   productionDeployedAt?: Prisma.SortOrder
+  unpublishRequestedAt?: Prisma.SortOrder
+  unpublishedAt?: Prisma.SortOrder
+  unpublishBranch?: Prisma.SortOrder
+  unpublishPrNumber?: Prisma.SortOrder
+  unpublishPrUrl?: Prisma.SortOrder
+  unpublishUrlStatus?: Prisma.SortOrder
   coverImage?: Prisma.SortOrder
   images?: Prisma.SortOrder
   internalLinks?: Prisma.SortOrder
@@ -853,6 +1041,8 @@ export type ArticleDraftCountOrderByAggregateInput = {
 
 export type ArticleDraftAvgOrderByAggregateInput = {
   prNumber?: Prisma.SortOrder
+  unpublishPrNumber?: Prisma.SortOrder
+  unpublishUrlStatus?: Prisma.SortOrder
 }
 
 export type ArticleDraftMaxOrderByAggregateInput = {
@@ -867,6 +1057,7 @@ export type ArticleDraftMaxOrderByAggregateInput = {
   metaTitle?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   canonicalUrl?: Prisma.SortOrder
+  publicationState?: Prisma.SortOrder
   reviewStatus?: Prisma.SortOrder
   publishingBranch?: Prisma.SortOrder
   prNumber?: Prisma.SortOrder
@@ -878,9 +1069,17 @@ export type ArticleDraftMaxOrderByAggregateInput = {
   publishedUrl?: Prisma.SortOrder
   publishedPackageHash?: Prisma.SortOrder
   mergeCommitSha?: Prisma.SortOrder
+  lastPublishMergeCommitSha?: Prisma.SortOrder
+  lastUnpublishMergeCommitSha?: Prisma.SortOrder
   productionStatus?: Prisma.SortOrder
   productionDeploymentUrl?: Prisma.SortOrder
   productionDeployedAt?: Prisma.SortOrder
+  unpublishRequestedAt?: Prisma.SortOrder
+  unpublishedAt?: Prisma.SortOrder
+  unpublishBranch?: Prisma.SortOrder
+  unpublishPrNumber?: Prisma.SortOrder
+  unpublishPrUrl?: Prisma.SortOrder
+  unpublishUrlStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -897,6 +1096,7 @@ export type ArticleDraftMinOrderByAggregateInput = {
   metaTitle?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   canonicalUrl?: Prisma.SortOrder
+  publicationState?: Prisma.SortOrder
   reviewStatus?: Prisma.SortOrder
   publishingBranch?: Prisma.SortOrder
   prNumber?: Prisma.SortOrder
@@ -908,15 +1108,25 @@ export type ArticleDraftMinOrderByAggregateInput = {
   publishedUrl?: Prisma.SortOrder
   publishedPackageHash?: Prisma.SortOrder
   mergeCommitSha?: Prisma.SortOrder
+  lastPublishMergeCommitSha?: Prisma.SortOrder
+  lastUnpublishMergeCommitSha?: Prisma.SortOrder
   productionStatus?: Prisma.SortOrder
   productionDeploymentUrl?: Prisma.SortOrder
   productionDeployedAt?: Prisma.SortOrder
+  unpublishRequestedAt?: Prisma.SortOrder
+  unpublishedAt?: Prisma.SortOrder
+  unpublishBranch?: Prisma.SortOrder
+  unpublishPrNumber?: Prisma.SortOrder
+  unpublishPrUrl?: Prisma.SortOrder
+  unpublishUrlStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type ArticleDraftSumOrderByAggregateInput = {
   prNumber?: Prisma.SortOrder
+  unpublishPrNumber?: Prisma.SortOrder
+  unpublishUrlStatus?: Prisma.SortOrder
 }
 
 export type ArticleDraftScalarRelationFilter = {
@@ -963,6 +1173,10 @@ export type ArticleDraftCreatetagsInput = {
 export type ArticleDraftUpdatetagsInput = {
   set?: string[]
   push?: string | string[]
+}
+
+export type EnumArticlePublicationStateFieldUpdateOperationsInput = {
+  set?: $Enums.ArticlePublicationState
 }
 
 export type EnumArticleReviewStatusFieldUpdateOperationsInput = {
@@ -1017,6 +1231,7 @@ export type ArticleDraftCreateWithoutContentAssetInput = {
   metaTitle?: string
   metaDescription?: string
   canonicalUrl?: string | null
+  publicationState?: $Enums.ArticlePublicationState
   reviewStatus?: $Enums.ArticleReviewStatus
   publishingBranch?: string | null
   prNumber?: number | null
@@ -1028,9 +1243,17 @@ export type ArticleDraftCreateWithoutContentAssetInput = {
   publishedUrl?: string | null
   publishedPackageHash?: string | null
   mergeCommitSha?: string | null
+  lastPublishMergeCommitSha?: string | null
+  lastUnpublishMergeCommitSha?: string | null
   productionStatus?: $Enums.ProductionStatus
   productionDeploymentUrl?: string | null
   productionDeployedAt?: Date | string | null
+  unpublishRequestedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  unpublishBranch?: string | null
+  unpublishPrNumber?: number | null
+  unpublishPrUrl?: string | null
+  unpublishUrlStatus?: number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1052,6 +1275,7 @@ export type ArticleDraftUncheckedCreateWithoutContentAssetInput = {
   metaTitle?: string
   metaDescription?: string
   canonicalUrl?: string | null
+  publicationState?: $Enums.ArticlePublicationState
   reviewStatus?: $Enums.ArticleReviewStatus
   publishingBranch?: string | null
   prNumber?: number | null
@@ -1063,9 +1287,17 @@ export type ArticleDraftUncheckedCreateWithoutContentAssetInput = {
   publishedUrl?: string | null
   publishedPackageHash?: string | null
   mergeCommitSha?: string | null
+  lastPublishMergeCommitSha?: string | null
+  lastUnpublishMergeCommitSha?: string | null
   productionStatus?: $Enums.ProductionStatus
   productionDeploymentUrl?: string | null
   productionDeployedAt?: Date | string | null
+  unpublishRequestedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  unpublishBranch?: string | null
+  unpublishPrNumber?: number | null
+  unpublishPrUrl?: string | null
+  unpublishUrlStatus?: number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1103,6 +1335,7 @@ export type ArticleDraftUpdateWithoutContentAssetInput = {
   metaTitle?: Prisma.StringFieldUpdateOperationsInput | string
   metaDescription?: Prisma.StringFieldUpdateOperationsInput | string
   canonicalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFieldUpdateOperationsInput | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFieldUpdateOperationsInput | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1114,9 +1347,17 @@ export type ArticleDraftUpdateWithoutContentAssetInput = {
   publishedUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   publishedPackageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastPublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastUnpublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionStatus?: Prisma.EnumProductionStatusFieldUpdateOperationsInput | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionDeployedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishRequestedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishPrNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpublishPrUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishUrlStatus?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1138,6 +1379,7 @@ export type ArticleDraftUncheckedUpdateWithoutContentAssetInput = {
   metaTitle?: Prisma.StringFieldUpdateOperationsInput | string
   metaDescription?: Prisma.StringFieldUpdateOperationsInput | string
   canonicalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFieldUpdateOperationsInput | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFieldUpdateOperationsInput | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1149,9 +1391,17 @@ export type ArticleDraftUncheckedUpdateWithoutContentAssetInput = {
   publishedUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   publishedPackageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastPublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastUnpublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionStatus?: Prisma.EnumProductionStatusFieldUpdateOperationsInput | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionDeployedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishRequestedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishPrNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpublishPrUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishUrlStatus?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1173,6 +1423,7 @@ export type ArticleDraftCreateWithoutPublicationsInput = {
   metaTitle?: string
   metaDescription?: string
   canonicalUrl?: string | null
+  publicationState?: $Enums.ArticlePublicationState
   reviewStatus?: $Enums.ArticleReviewStatus
   publishingBranch?: string | null
   prNumber?: number | null
@@ -1184,9 +1435,17 @@ export type ArticleDraftCreateWithoutPublicationsInput = {
   publishedUrl?: string | null
   publishedPackageHash?: string | null
   mergeCommitSha?: string | null
+  lastPublishMergeCommitSha?: string | null
+  lastUnpublishMergeCommitSha?: string | null
   productionStatus?: $Enums.ProductionStatus
   productionDeploymentUrl?: string | null
   productionDeployedAt?: Date | string | null
+  unpublishRequestedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  unpublishBranch?: string | null
+  unpublishPrNumber?: number | null
+  unpublishPrUrl?: string | null
+  unpublishUrlStatus?: number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1209,6 +1468,7 @@ export type ArticleDraftUncheckedCreateWithoutPublicationsInput = {
   metaTitle?: string
   metaDescription?: string
   canonicalUrl?: string | null
+  publicationState?: $Enums.ArticlePublicationState
   reviewStatus?: $Enums.ArticleReviewStatus
   publishingBranch?: string | null
   prNumber?: number | null
@@ -1220,9 +1480,17 @@ export type ArticleDraftUncheckedCreateWithoutPublicationsInput = {
   publishedUrl?: string | null
   publishedPackageHash?: string | null
   mergeCommitSha?: string | null
+  lastPublishMergeCommitSha?: string | null
+  lastUnpublishMergeCommitSha?: string | null
   productionStatus?: $Enums.ProductionStatus
   productionDeploymentUrl?: string | null
   productionDeployedAt?: Date | string | null
+  unpublishRequestedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  unpublishBranch?: string | null
+  unpublishPrNumber?: number | null
+  unpublishPrUrl?: string | null
+  unpublishUrlStatus?: number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1259,6 +1527,7 @@ export type ArticleDraftUpdateWithoutPublicationsInput = {
   metaTitle?: Prisma.StringFieldUpdateOperationsInput | string
   metaDescription?: Prisma.StringFieldUpdateOperationsInput | string
   canonicalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFieldUpdateOperationsInput | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFieldUpdateOperationsInput | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1270,9 +1539,17 @@ export type ArticleDraftUpdateWithoutPublicationsInput = {
   publishedUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   publishedPackageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastPublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastUnpublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionStatus?: Prisma.EnumProductionStatusFieldUpdateOperationsInput | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionDeployedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishRequestedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishPrNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpublishPrUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishUrlStatus?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1295,6 +1572,7 @@ export type ArticleDraftUncheckedUpdateWithoutPublicationsInput = {
   metaTitle?: Prisma.StringFieldUpdateOperationsInput | string
   metaDescription?: Prisma.StringFieldUpdateOperationsInput | string
   canonicalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFieldUpdateOperationsInput | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFieldUpdateOperationsInput | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1306,9 +1584,17 @@ export type ArticleDraftUncheckedUpdateWithoutPublicationsInput = {
   publishedUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   publishedPackageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastPublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastUnpublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionStatus?: Prisma.EnumProductionStatusFieldUpdateOperationsInput | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionDeployedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishRequestedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishPrNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpublishPrUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishUrlStatus?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1329,6 +1615,7 @@ export type ArticleDraftCreateWithoutImageAssetsInput = {
   metaTitle?: string
   metaDescription?: string
   canonicalUrl?: string | null
+  publicationState?: $Enums.ArticlePublicationState
   reviewStatus?: $Enums.ArticleReviewStatus
   publishingBranch?: string | null
   prNumber?: number | null
@@ -1340,9 +1627,17 @@ export type ArticleDraftCreateWithoutImageAssetsInput = {
   publishedUrl?: string | null
   publishedPackageHash?: string | null
   mergeCommitSha?: string | null
+  lastPublishMergeCommitSha?: string | null
+  lastUnpublishMergeCommitSha?: string | null
   productionStatus?: $Enums.ProductionStatus
   productionDeploymentUrl?: string | null
   productionDeployedAt?: Date | string | null
+  unpublishRequestedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  unpublishBranch?: string | null
+  unpublishPrNumber?: number | null
+  unpublishPrUrl?: string | null
+  unpublishUrlStatus?: number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1365,6 +1660,7 @@ export type ArticleDraftUncheckedCreateWithoutImageAssetsInput = {
   metaTitle?: string
   metaDescription?: string
   canonicalUrl?: string | null
+  publicationState?: $Enums.ArticlePublicationState
   reviewStatus?: $Enums.ArticleReviewStatus
   publishingBranch?: string | null
   prNumber?: number | null
@@ -1376,9 +1672,17 @@ export type ArticleDraftUncheckedCreateWithoutImageAssetsInput = {
   publishedUrl?: string | null
   publishedPackageHash?: string | null
   mergeCommitSha?: string | null
+  lastPublishMergeCommitSha?: string | null
+  lastUnpublishMergeCommitSha?: string | null
   productionStatus?: $Enums.ProductionStatus
   productionDeploymentUrl?: string | null
   productionDeployedAt?: Date | string | null
+  unpublishRequestedAt?: Date | string | null
+  unpublishedAt?: Date | string | null
+  unpublishBranch?: string | null
+  unpublishPrNumber?: number | null
+  unpublishPrUrl?: string | null
+  unpublishUrlStatus?: number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1415,6 +1719,7 @@ export type ArticleDraftUpdateWithoutImageAssetsInput = {
   metaTitle?: Prisma.StringFieldUpdateOperationsInput | string
   metaDescription?: Prisma.StringFieldUpdateOperationsInput | string
   canonicalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFieldUpdateOperationsInput | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFieldUpdateOperationsInput | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1426,9 +1731,17 @@ export type ArticleDraftUpdateWithoutImageAssetsInput = {
   publishedUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   publishedPackageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastPublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastUnpublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionStatus?: Prisma.EnumProductionStatusFieldUpdateOperationsInput | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionDeployedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishRequestedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishPrNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpublishPrUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishUrlStatus?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1451,6 +1764,7 @@ export type ArticleDraftUncheckedUpdateWithoutImageAssetsInput = {
   metaTitle?: Prisma.StringFieldUpdateOperationsInput | string
   metaDescription?: Prisma.StringFieldUpdateOperationsInput | string
   canonicalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicationState?: Prisma.EnumArticlePublicationStateFieldUpdateOperationsInput | $Enums.ArticlePublicationState
   reviewStatus?: Prisma.EnumArticleReviewStatusFieldUpdateOperationsInput | $Enums.ArticleReviewStatus
   publishingBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1462,9 +1776,17 @@ export type ArticleDraftUncheckedUpdateWithoutImageAssetsInput = {
   publishedUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   publishedPackageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastPublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastUnpublishMergeCommitSha?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionStatus?: Prisma.EnumProductionStatusFieldUpdateOperationsInput | $Enums.ProductionStatus
   productionDeploymentUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productionDeployedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishRequestedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  unpublishBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishPrNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpublishPrUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unpublishUrlStatus?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   internalLinks?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1526,6 +1848,7 @@ export type ArticleDraftSelect<ExtArgs extends runtime.Types.Extensions.Internal
   metaTitle?: boolean
   metaDescription?: boolean
   canonicalUrl?: boolean
+  publicationState?: boolean
   reviewStatus?: boolean
   publishingBranch?: boolean
   prNumber?: boolean
@@ -1537,9 +1860,17 @@ export type ArticleDraftSelect<ExtArgs extends runtime.Types.Extensions.Internal
   publishedUrl?: boolean
   publishedPackageHash?: boolean
   mergeCommitSha?: boolean
+  lastPublishMergeCommitSha?: boolean
+  lastUnpublishMergeCommitSha?: boolean
   productionStatus?: boolean
   productionDeploymentUrl?: boolean
   productionDeployedAt?: boolean
+  unpublishRequestedAt?: boolean
+  unpublishedAt?: boolean
+  unpublishBranch?: boolean
+  unpublishPrNumber?: boolean
+  unpublishPrUrl?: boolean
+  unpublishUrlStatus?: boolean
   coverImage?: boolean
   images?: boolean
   internalLinks?: boolean
@@ -1564,6 +1895,7 @@ export type ArticleDraftSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   metaTitle?: boolean
   metaDescription?: boolean
   canonicalUrl?: boolean
+  publicationState?: boolean
   reviewStatus?: boolean
   publishingBranch?: boolean
   prNumber?: boolean
@@ -1575,9 +1907,17 @@ export type ArticleDraftSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   publishedUrl?: boolean
   publishedPackageHash?: boolean
   mergeCommitSha?: boolean
+  lastPublishMergeCommitSha?: boolean
+  lastUnpublishMergeCommitSha?: boolean
   productionStatus?: boolean
   productionDeploymentUrl?: boolean
   productionDeployedAt?: boolean
+  unpublishRequestedAt?: boolean
+  unpublishedAt?: boolean
+  unpublishBranch?: boolean
+  unpublishPrNumber?: boolean
+  unpublishPrUrl?: boolean
+  unpublishUrlStatus?: boolean
   coverImage?: boolean
   images?: boolean
   internalLinks?: boolean
@@ -1599,6 +1939,7 @@ export type ArticleDraftSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   metaTitle?: boolean
   metaDescription?: boolean
   canonicalUrl?: boolean
+  publicationState?: boolean
   reviewStatus?: boolean
   publishingBranch?: boolean
   prNumber?: boolean
@@ -1610,9 +1951,17 @@ export type ArticleDraftSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   publishedUrl?: boolean
   publishedPackageHash?: boolean
   mergeCommitSha?: boolean
+  lastPublishMergeCommitSha?: boolean
+  lastUnpublishMergeCommitSha?: boolean
   productionStatus?: boolean
   productionDeploymentUrl?: boolean
   productionDeployedAt?: boolean
+  unpublishRequestedAt?: boolean
+  unpublishedAt?: boolean
+  unpublishBranch?: boolean
+  unpublishPrNumber?: boolean
+  unpublishPrUrl?: boolean
+  unpublishUrlStatus?: boolean
   coverImage?: boolean
   images?: boolean
   internalLinks?: boolean
@@ -1634,6 +1983,7 @@ export type ArticleDraftSelectScalar = {
   metaTitle?: boolean
   metaDescription?: boolean
   canonicalUrl?: boolean
+  publicationState?: boolean
   reviewStatus?: boolean
   publishingBranch?: boolean
   prNumber?: boolean
@@ -1645,9 +1995,17 @@ export type ArticleDraftSelectScalar = {
   publishedUrl?: boolean
   publishedPackageHash?: boolean
   mergeCommitSha?: boolean
+  lastPublishMergeCommitSha?: boolean
+  lastUnpublishMergeCommitSha?: boolean
   productionStatus?: boolean
   productionDeploymentUrl?: boolean
   productionDeployedAt?: boolean
+  unpublishRequestedAt?: boolean
+  unpublishedAt?: boolean
+  unpublishBranch?: boolean
+  unpublishPrNumber?: boolean
+  unpublishPrUrl?: boolean
+  unpublishUrlStatus?: boolean
   coverImage?: boolean
   images?: boolean
   internalLinks?: boolean
@@ -1655,7 +2013,7 @@ export type ArticleDraftSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ArticleDraftOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "contentAssetId" | "slug" | "excerpt" | "author" | "publishedAt" | "category" | "tags" | "targetKeyword" | "metaTitle" | "metaDescription" | "canonicalUrl" | "reviewStatus" | "publishingBranch" | "prNumber" | "prUrl" | "prOpenedAt" | "prPackageHash" | "prClosedWithoutMerge" | "mergedAt" | "publishedUrl" | "publishedPackageHash" | "mergeCommitSha" | "productionStatus" | "productionDeploymentUrl" | "productionDeployedAt" | "coverImage" | "images" | "internalLinks" | "createdAt" | "updatedAt", ExtArgs["result"]["articleDraft"]>
+export type ArticleDraftOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "contentAssetId" | "slug" | "excerpt" | "author" | "publishedAt" | "category" | "tags" | "targetKeyword" | "metaTitle" | "metaDescription" | "canonicalUrl" | "publicationState" | "reviewStatus" | "publishingBranch" | "prNumber" | "prUrl" | "prOpenedAt" | "prPackageHash" | "prClosedWithoutMerge" | "mergedAt" | "publishedUrl" | "publishedPackageHash" | "mergeCommitSha" | "lastPublishMergeCommitSha" | "lastUnpublishMergeCommitSha" | "productionStatus" | "productionDeploymentUrl" | "productionDeployedAt" | "unpublishRequestedAt" | "unpublishedAt" | "unpublishBranch" | "unpublishPrNumber" | "unpublishPrUrl" | "unpublishUrlStatus" | "coverImage" | "images" | "internalLinks" | "createdAt" | "updatedAt", ExtArgs["result"]["articleDraft"]>
 export type ArticleDraftInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   contentAsset?: boolean | Prisma.ContentAssetDefaultArgs<ExtArgs>
   imageAssets?: boolean | Prisma.ArticleDraft$imageAssetsArgs<ExtArgs>
@@ -1689,6 +2047,11 @@ export type $ArticleDraftPayload<ExtArgs extends runtime.Types.Extensions.Intern
     metaTitle: string
     metaDescription: string
     canonicalUrl: string | null
+    /**
+     * The single source of truth for whether the article is public. Never infer
+     * it from publishedUrl, mergedAt, reviewStatus or the asset status.
+     */
+    publicationState: $Enums.ArticlePublicationState
     reviewStatus: $Enums.ArticleReviewStatus
     publishingBranch: string | null
     prNumber: number | null
@@ -1705,10 +2068,28 @@ export type $ArticleDraftPayload<ExtArgs extends runtime.Types.Extensions.Intern
      * Fingerprint of what actually went live, so drift is detectable on read.
      */
     publishedPackageHash: string | null
+    /**
+     * Legacy: overwritten by whichever merge happened last. The two fields
+     * below keep the publish and unpublish commits apart.
+     */
     mergeCommitSha: string | null
+    lastPublishMergeCommitSha: string | null
+    lastUnpublishMergeCommitSha: string | null
     productionStatus: $Enums.ProductionStatus
     productionDeploymentUrl: string | null
     productionDeployedAt: Date | null
+    /**
+     * Taking an article back off the site: requested, then confirmed live.
+     */
+    unpublishRequestedAt: Date | null
+    unpublishedAt: Date | null
+    unpublishBranch: string | null
+    unpublishPrNumber: number | null
+    unpublishPrUrl: string | null
+    /**
+     * What the public URL answered once the removal was deployed.
+     */
+    unpublishUrlStatus: number | null
     coverImage: runtime.JsonValue | null
     images: runtime.JsonValue | null
     internalLinks: runtime.JsonValue | null
@@ -2152,6 +2533,7 @@ export interface ArticleDraftFieldRefs {
   readonly metaTitle: Prisma.FieldRef<"ArticleDraft", 'String'>
   readonly metaDescription: Prisma.FieldRef<"ArticleDraft", 'String'>
   readonly canonicalUrl: Prisma.FieldRef<"ArticleDraft", 'String'>
+  readonly publicationState: Prisma.FieldRef<"ArticleDraft", 'ArticlePublicationState'>
   readonly reviewStatus: Prisma.FieldRef<"ArticleDraft", 'ArticleReviewStatus'>
   readonly publishingBranch: Prisma.FieldRef<"ArticleDraft", 'String'>
   readonly prNumber: Prisma.FieldRef<"ArticleDraft", 'Int'>
@@ -2163,9 +2545,17 @@ export interface ArticleDraftFieldRefs {
   readonly publishedUrl: Prisma.FieldRef<"ArticleDraft", 'String'>
   readonly publishedPackageHash: Prisma.FieldRef<"ArticleDraft", 'String'>
   readonly mergeCommitSha: Prisma.FieldRef<"ArticleDraft", 'String'>
+  readonly lastPublishMergeCommitSha: Prisma.FieldRef<"ArticleDraft", 'String'>
+  readonly lastUnpublishMergeCommitSha: Prisma.FieldRef<"ArticleDraft", 'String'>
   readonly productionStatus: Prisma.FieldRef<"ArticleDraft", 'ProductionStatus'>
   readonly productionDeploymentUrl: Prisma.FieldRef<"ArticleDraft", 'String'>
   readonly productionDeployedAt: Prisma.FieldRef<"ArticleDraft", 'DateTime'>
+  readonly unpublishRequestedAt: Prisma.FieldRef<"ArticleDraft", 'DateTime'>
+  readonly unpublishedAt: Prisma.FieldRef<"ArticleDraft", 'DateTime'>
+  readonly unpublishBranch: Prisma.FieldRef<"ArticleDraft", 'String'>
+  readonly unpublishPrNumber: Prisma.FieldRef<"ArticleDraft", 'Int'>
+  readonly unpublishPrUrl: Prisma.FieldRef<"ArticleDraft", 'String'>
+  readonly unpublishUrlStatus: Prisma.FieldRef<"ArticleDraft", 'Int'>
   readonly coverImage: Prisma.FieldRef<"ArticleDraft", 'Json'>
   readonly images: Prisma.FieldRef<"ArticleDraft", 'Json'>
   readonly internalLinks: Prisma.FieldRef<"ArticleDraft", 'Json'>

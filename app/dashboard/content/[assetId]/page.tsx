@@ -51,7 +51,12 @@ export default async function ContentAssetPage({
   });
   if (!asset) notFound();
 
-  const archived = asset.status === "ARCHIVED";
+  const archived = asset.archivedAt !== null;
+  // Live or mid-flight: the archive shelf is closed until publication settles.
+  const livePublication =
+    asset.articleDraft?.publicationState === "PUBLISHED" ||
+    asset.articleDraft?.publicationState === "PUBLISHING" ||
+    asset.articleDraft?.publicationState === "UNPUBLISHING";
   const article = asset.articleDraft;
   const meta = asset.channel === "FACEBOOK" || asset.channel === "INSTAGRAM";
   const creative = asset.metaCreative
@@ -107,10 +112,12 @@ export default async function ContentAssetPage({
     !!articlePackage &&
     packageFingerprint(articlePackage) !== draftRow.publishedPackageHash;
 
+  // Only the publication axis decides what the Publish tab shows.
+  const publicationState = draftRow?.publicationState ?? "NEVER_PUBLISHED";
+
   const published =
     draftRow &&
-    (draftRow.reviewStatus === "PUBLISHED" ||
-      draftRow.reviewStatus === "NEEDS_UPDATE") &&
+    (publicationState === "PUBLISHED" || publicationState === "PUBLISHING") &&
     draftRow.publishedUrl
       ? {
           url: draftRow.publishedUrl,
@@ -158,7 +165,7 @@ export default async function ContentAssetPage({
           brandId: asset.brandId,
           channel: "GOOGLE_BUSINESS",
           opportunityId: asset.opportunityId,
-          status: { not: "ARCHIVED" },
+          archivedAt: null,
         },
         orderBy: { createdAt: "desc" },
         select: {
@@ -224,17 +231,29 @@ export default async function ContentAssetPage({
               </Button>
             </form>
           )}
-          <form
-            action={
-              archived
-                ? restoreContentAsset.bind(null, asset.id)
-                : archiveContentAsset.bind(null, asset.id)
-            }
-          >
-            <Button type="submit" variant="secondary" size="sm">
-              {archived ? "Restore" : "Archive"}
-            </Button>
-          </form>
+          {archived || !livePublication ? (
+            <form
+              action={
+                archived
+                  ? restoreContentAsset.bind(null, asset.id)
+                  : archiveContentAsset.bind(null, asset.id)
+              }
+            >
+              <Button type="submit" variant="secondary" size="sm">
+                {archived ? "Restore" : "Archive"}
+              </Button>
+            </form>
+          ) : (
+            // Taking a live article off the shelf means taking it off the site:
+            // that is Unpublish, in the Publish tab, never a quiet archive.
+            <p className="type-meta text-ink-3">
+              {publicationState === "PUBLISHING"
+                ? "Publishing — waiting for the live deployment to be confirmed."
+                : publicationState === "UNPUBLISHING"
+                  ? "Unpublishing — waiting for the site removal to be confirmed."
+                  : "Live — unpublish it in Publish before archiving."}
+            </p>
+          )}
           {asset.opportunity ? (
             <Link
               href="/dashboard/opportunities"
@@ -300,9 +319,19 @@ export default async function ContentAssetPage({
           images={articleImages}
           publishing={articlePackage!}
           reviewStatus={asset.articleDraft.reviewStatus}
+          publicationState={publicationState}
+          archived={archived}
           pullRequest={pullRequest}
           published={published}
           publications={publications}
+          unpublish={{
+            requestedAt: draftRow?.unpublishRequestedAt?.toISOString() ?? null,
+            unpublishedAt: draftRow?.unpublishedAt?.toISOString() ?? null,
+            prNumber: draftRow?.unpublishPrNumber ?? null,
+            prUrl: draftRow?.unpublishPrUrl ?? null,
+            branch: draftRow?.unpublishBranch ?? null,
+            urlStatus: draftRow?.unpublishUrlStatus ?? null,
+          }}
           businessPost={
             businessPost
               ? {

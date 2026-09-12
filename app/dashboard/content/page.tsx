@@ -9,6 +9,8 @@ import Link from "next/link";
 export const metadata = { title: "Content" };
 export const dynamic = "force-dynamic";
 
+const EDITORIAL_STATUSES = [ContentStatus.DRAFT, ContentStatus.APPROVED] as const;
+
 const chip =
   "rounded-full px-3 py-1.5 text-[0.8125rem] transition-colors duration-200";
 const chipActive = "bg-accent-soft font-medium text-accent-ink";
@@ -45,11 +47,15 @@ type Filterable = {
   channel: string;
   type: string;
   status: string;
-  articleDraft?: { reviewStatus: string } | null;
+  archivedAt: Date | null;
+  articleDraft?: { publicationState: string } | null;
 };
 
 /** One rule per tab, read from the data the models already carry. */
 function inTab(asset: Filterable, tab: (typeof TABS)[number]) {
+  // The shelf is its own place: only `archivedAt` decides, never the status.
+  if (asset.archivedAt !== null) return tab === "archived";
+
   switch (tab) {
     case "articles":
       return asset.type === "SEO_CONTENT" && asset.channel === "WEBSITE";
@@ -58,15 +64,13 @@ function inTab(asset: Filterable, tab: (typeof TABS)[number]) {
     case "drafts":
       return asset.status === "DRAFT";
     case "published":
-      return (
-        asset.status === "APPROVED" ||
-        Boolean(
-          asset.articleDraft &&
-            ["PUBLISHED", "NEEDS_UPDATE"].includes(asset.articleDraft.reviewStatus),
-        )
-      );
+      // An article is published when publication says so; other content when
+      // it has been approved.
+      return asset.articleDraft
+        ? asset.articleDraft.publicationState === "PUBLISHED"
+        : asset.status === "APPROVED";
     case "archived":
-      return asset.status === "ARCHIVED";
+      return false;
     default:
       return true;
   }
@@ -119,7 +123,7 @@ export default async function ContentPage({
   const brand = brands.some((item) => item.id === brandParam) ? brandParam : "all";
 
   const statusParam = readParam(params.status) ?? "all";
-  const status = (Object.values(ContentStatus) as string[]).includes(statusParam)
+  const status = (EDITORIAL_STATUSES as readonly string[]).includes(statusParam)
     ? statusParam
     : "all";
 
@@ -140,7 +144,7 @@ export default async function ContentPage({
     orderBy: { createdAt: "desc" },
     include: {
       brand: { select: { name: true } },
-      articleDraft: { select: { reviewStatus: true } },
+      articleDraft: { select: { publicationState: true, reviewStatus: true } },
       opportunity: { select: { id: true, title: true } },
       visualAsset: { select: { type: true, imageUrl: true } },
     },
@@ -209,8 +213,10 @@ export default async function ContentPage({
             hrefFor={(value) => hrefWith({ status: value })}
             options={[
               { label: "All", value: "all" },
-              ...Object.values(ContentStatus).map((value) => ({
-                label: value.charAt(0) + value.slice(1).toLowerCase().replace(/_/g, " "),
+              // Archive is `archivedAt` and has its own tab; the status chip
+              // only filters the editorial axis.
+              ...EDITORIAL_STATUSES.map((value) => ({
+                label: value.charAt(0) + value.slice(1).toLowerCase(),
                 value,
               })),
             ]}
@@ -232,7 +238,16 @@ export default async function ContentPage({
         {visible.length ? (
           <ul className="divide-y divide-line">
             {visible.map((asset) => (
-              <ContentRow key={asset.id} asset={asset as ContentRowData} />
+              <ContentRow
+                key={asset.id}
+                asset={
+                  {
+                    ...asset,
+                    articlePublicationState:
+                      asset.articleDraft?.publicationState ?? null,
+                  } as ContentRowData
+                }
+              />
             ))}
           </ul>
         ) : (

@@ -3,17 +3,17 @@ import { MetaIdeas } from "@/components/content/meta-ideas";
 import { GenerateArticle } from "@/components/opportunities/generate-article";
 import { GenerateOpportunities } from "@/components/opportunities/generate-button";
 import { LinkedInDrafts } from "@/components/opportunities/linkedin-drafts";
-import { SavedDrafts } from "@/components/opportunities/saved-drafts";
 import { SeoBrief } from "@/components/opportunities/seo-brief";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonLink } from "@/components/ui/button";
 import { Disclosure } from "@/components/ui/disclosure";
 import { Field, Select, TextArea } from "@/components/ui/field";
 import { EmptyState, Page, PageHeader, Panel, Section } from "@/components/ui/layout";
 import { cn } from "@/lib/cn";
 import { OpportunitySource, OpportunityStatus } from "@/lib/generated/prisma/enums";
+import { ArchiveCross } from "@/components/ui/archive-cross";
 import { TabNav, type TabItem } from "@/components/ui/tab-nav";
 import { getPrisma } from "@/lib/prisma";
+import { summarizeOutputs } from "@/lib/opportunity-outputs";
 import { publishingConfig } from "@/lib/publishing";
 import Link from "next/link";
 import {
@@ -28,22 +28,22 @@ export const dynamic = "force-dynamic";
 
 const statusFilters = [
   { label: "All", value: "all" },
-  { label: "New", value: OpportunityStatus.NEW },
-  { label: "Active", value: OpportunityStatus.ACTIVE },
+  { label: "To review", value: OpportunityStatus.NEW },
+  { label: "In progress", value: OpportunityStatus.ACTIVE },
   { label: "Archived", value: OpportunityStatus.ARCHIVED },
 ] as const;
 
 const sourceLabels: Record<OpportunitySource, string> = {
-  MANUAL: "Manual",
-  OBSERVATION: "Observation",
+  MANUAL: "Added by user",
+  OBSERVATION: "From an observation",
   SIGNAL: "Market signal",
-  COMPETITOR: "Competitor",
-  SEARCH: "Search",
+  COMPETITOR: "Competitor insight",
+  SEARCH: "Search opportunity",
 };
 
 const statusLabels: Record<OpportunityStatus, string> = {
-  NEW: "New",
-  ACTIVE: "Active",
+  NEW: "To review",
+  ACTIVE: "In progress",
   ARCHIVED: "Archived",
 };
 
@@ -52,34 +52,36 @@ const chip =
 const chipActive = "bg-accent-soft font-medium text-accent-ink";
 const chipIdle = "text-ink-3 hover:bg-sunken hover:text-ink";
 
-const TABS = ["all", "search", "social", "market", "archived"] as const;
+const TABS = ["all", "search", "market", "archived"] as const;
 type Tab = (typeof TABS)[number];
 
 const TAB_LABELS: Record<Tab, string> = {
   all: "All",
   search: "Search / SEO",
-  social: "Social",
   market: "Market",
   archived: "Archived",
+};
+
+/** What to do next when a tab is empty, rather than a dead end. */
+const TAB_NEXT: Record<Tab, string> = {
+  all: "Generate opportunities from this brand's own knowledge, or add one by hand.",
+  search: "Crawl the site and discover keywords, then generate SEO opportunities from Search.",
+  market: "Capture an observation or a market signal, then generate opportunities.",
+  archived: "Anything you archive lands here, and can be restored.",
 };
 
 const TAB_EMPTY: Record<Tab, string> = {
   all: "No opportunities",
   search: "No SEO opportunities",
-  social: "No social opportunities",
   market: "No market opportunities",
   archived: "Nothing archived",
 };
 
-type Sortable = {
-  source: string;
-  status: string;
-  contentAssets: { channel: string }[];
-};
+type Sortable = { source: string; status: string };
 
 /**
- * The tabs partition the list: an opportunity belongs to exactly one of them,
- * so nothing is counted twice or hidden in two places.
+ * The tabs partition the list on the opportunity's own source, so it belongs
+ * to exactly one of them and nothing is counted twice.
  */
 function inTab(opportunity: Sortable, tab: Tab) {
   const archived = opportunity.status === "ARCHIVED";
@@ -87,13 +89,9 @@ function inTab(opportunity: Sortable, tab: Tab) {
   if (archived) return false;
   if (tab === "all") return true;
 
-  if (opportunity.source === "SEARCH") return tab === "search";
-  const social = opportunity.contentAssets.some(
-    (asset) => asset.channel === "LINKEDIN",
-  );
-  if (tab === "social") return social;
-  if (tab === "market") return !social;
-  return false;
+  // The source is the only stable thing to group on: a draft that happens to
+  // exist says nothing about what the opportunity is.
+  return opportunity.source === "SEARCH" ? tab === "search" : tab === "market";
 }
 
 function readParam(value: string | string[] | undefined) {
@@ -367,153 +365,240 @@ export default async function OpportunitiesPage({
         </div>
 
         {visible.length ? (
-          <ul className="divide-y divide-line">
+          <ul className="space-y-3">
             {visible.map((opportunity) => {
               const archived = opportunity.status === OpportunityStatus.ARCHIVED;
+              const outputs = summarizeOutputs(opportunity.contentAssets);
+              const openActions = opportunity.proposedActions.length;
+              // Work started is work in progress, whatever the stored status says.
+              const inProgress =
+                !archived &&
+                (opportunity.status === OpportunityStatus.ACTIVE ||
+                  outputs.activeCount > 0 ||
+                  openActions > 0);
+              const statusLabel = archived
+                ? statusLabels.ARCHIVED
+                : inProgress
+                  ? statusLabels.ACTIVE
+                  : statusLabels.NEW;
+
+              const isSearch = opportunity.source === OpportunitySource.SEARCH;
+              const canPublish = publishingConfig(opportunity.brand).ok;
+              // One dominant next step. Everything else moves under More actions.
+              const primary = archived
+                ? "none"
+                : outputs.primary
+                  ? "open"
+                  : isSearch && !opportunity.seoBrief
+                    ? "brief"
+                    : canPublish
+                      ? "article"
+                      : "meta";
+
               return (
-                <li key={opportunity.id} className="py-5 first:pt-0">
+                <li
+                  key={opportunity.id}
+                  className={cn(
+                    "rounded-xl border border-line px-5 py-4 transition-colors duration-200 sm:px-6 sm:py-5",
+                    archived ? "bg-subtle" : "bg-surface shadow-[var(--shadow-subtle)]",
+                  )}
+                >
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
                       <h3
                         className={cn(
-                          "text-[0.9375rem] font-medium tracking-[-0.01em]",
-                          archived && "text-ink-4",
+                          "text-[1.0625rem] leading-snug font-medium tracking-[-0.015em]",
+                          archived && "text-ink-3",
                         )}
                       >
                         {opportunity.title}
                       </h3>
                       {opportunity.description ? (
-                        <p className="type-body mt-1.5 max-w-2xl text-ink-3">
+                        // Two lines keep every card the same shape; the whole
+                        // description lives one click away, in Edit.
+                        <p className="type-body mt-1.5 line-clamp-2 max-w-2xl text-ink-3">
                           {opportunity.description}
                         </p>
                       ) : null}
-                      {opportunity.rationale ? (
-                        <p className="type-meta mt-2 max-w-2xl text-ink-4">
-                          {opportunity.rationale}
+                    </div>
+                    {archived ? null : (
+                      <ArchiveCross
+                        action={archiveOpportunity.bind(null, opportunity.id)}
+                      />
+                    )}
+                  </div>
+
+                  <p className="type-meta mt-2.5 text-ink-4">
+                    {opportunity.score === null ? "" : `Priority ${opportunity.score} · `}
+                    {opportunity.brand.name} · {sourceLabels[opportunity.source]} ·{" "}
+                    <span className={cn(inProgress ? "text-accent-ink" : "text-ink-3")}>
+                      {statusLabel}
+                    </span>
+                  </p>
+
+                  {outputs.activeCount || outputs.archivedCount || openActions ? (
+                    <div className="mt-3 space-y-1">
+                      {outputs.activeCount ? (
+                        <p className="type-meta text-ink-2">
+                          {outputs.activeCount} active output
+                          {outputs.activeCount === 1 ? "" : "s"}
+                          {outputs.breakdown ? ` · ${outputs.breakdown}` : ""}
+                          {outputs.primary ? (
+                            <>
+                              {" · "}
+                              <Link
+                                href={`/dashboard/content/${outputs.primary.id}`}
+                                className="rounded-md text-accent-ink transition-colors hover:text-accent-strong"
+                              >
+                                View in Content
+                              </Link>
+                            </>
+                          ) : null}
+                        </p>
+                      ) : null}
+                      {outputs.archivedCount ? (
+                        <p className="type-meta text-ink-4">
+                          {outputs.archivedCount} archived output
+                          {outputs.archivedCount === 1 ? "" : "s"}
+                          {!outputs.activeCount && outputs.primary ? (
+                            <>
+                              {" · "}
+                              <Link
+                                href={`/dashboard/content/${outputs.primary.id}`}
+                                className="rounded-md text-accent-ink transition-colors hover:text-accent-strong"
+                              >
+                                View in Content
+                              </Link>
+                            </>
+                          ) : null}
+                        </p>
+                      ) : null}
+                      {openActions ? (
+                        <p className="type-meta text-ink-2">
+                          {openActions} open action{openActions === 1 ? "" : "s"}
+                          {" · "}
+                          <Link
+                            href={`/dashboard/actions?brand=${opportunity.brandId}`}
+                            className="rounded-md text-accent-ink transition-colors hover:text-accent-strong"
+                          >
+                            Open in Actions
+                          </Link>
                         </p>
                       ) : null}
                     </div>
-                    <div className="flex shrink-0 items-center gap-2">
-                      {opportunity.score === null ? null : (
-                        <span className="text-[0.9375rem] font-semibold tracking-[-0.02em] text-accent-ink">
-                          {opportunity.score}
-                        </span>
-                      )}
-                      <Badge tone={archived ? "muted" : "neutral"}>
-                        {statusLabels[opportunity.status]}
-                      </Badge>
-                    </div>
-                  </div>
+                  ) : null}
 
-                  <div className="mt-2 flex flex-wrap items-center gap-x-4">
-                    <span className="type-meta">
-                      {opportunity.brand.name} · {sourceLabels[opportunity.source]}
-                      {opportunity._count.contentAssets
-                        ? ` · ${opportunity._count.contentAssets} saved draft${opportunity._count.contentAssets === 1 ? "" : "s"}`
-                        : ""}
-                    </span>
+                  {archived ? (
                     <form
-                      action={
-                        archived
-                          ? restoreOpportunity.bind(null, opportunity.id)
-                          : archiveOpportunity.bind(null, opportunity.id)
-                      }
+                      action={restoreOpportunity.bind(null, opportunity.id)}
+                      className="mt-3 border-t border-line pt-3"
                     >
                       <Button type="submit" variant="ghost" size="sm">
-                        {archived ? "Restore" : "Archive"}
+                        Restore
                       </Button>
                     </form>
-                  </div>
+                  ) : (
+                    <div className="mt-4 border-t border-line pt-3.5">
+                      <p className="type-label">Next step</p>
+                      <div className="mt-2">
+                        {primary === "open" && outputs.primary ? (
+                          <ButtonLink
+                            href={`/dashboard/content/${outputs.primary.id}`}
+                            size="sm"
+                          >
+                            {outputs.hasActiveArticle
+                              ? "Open the article"
+                              : "Open the draft"}
+                          </ButtonLink>
+                        ) : primary === "brief" ? (
+                          <SeoBrief opportunityId={opportunity.id} brief={null} contentAsset={null} />
+                        ) : primary === "article" ? (
+                          <GenerateArticle
+                            opportunityId={opportunity.id}
+                            articleAssetId={null}
+                            emphasis="primary"
+                          />
+                        ) : (
+                          <MetaIdeas
+                            brandId={opportunity.brandId}
+                            opportunityId={opportunity.id}
+                            emphasis="primary"
+                          />
+                        )}
+                      </div>
 
-                  {opportunity.source === OpportunitySource.SEARCH &&
-                  opportunity.actionType ? (
-                    <ProposeAction
-                      opportunityId={opportunity.id}
-                      hasOpenAction={opportunity.proposedActions.length > 0}
-                    />
-                  ) : null}
+                      <Disclosure summary="More actions" className="mt-2">
+                        <div className="grid gap-2 rounded-lg bg-subtle p-4">
+                          {isSearch && opportunity.actionType ? (
+                            <ProposeAction
+                              opportunityId={opportunity.id}
+                              hasOpenAction={openActions > 0}
+                            />
+                          ) : null}
 
-                  {opportunity.source === OpportunitySource.SEARCH ? (
-                    <SeoBrief
-                      opportunityId={opportunity.id}
-                      contentAsset={(() => {
-                        const asset = opportunity.contentAssets.find(
-                          (item) => item.type === "SEO_CONTENT",
-                        );
-                        return asset
-                          ? {
-                              id: asset.id,
-                              title: asset.title,
-                              content: asset.content,
-                            }
-                          : null;
-                      })()}
-                      brief={
-                        opportunity.seoBrief
-                          ? {
-                              objective: opportunity.seoBrief.objective,
-                              targetKeyword: opportunity.seoBrief.targetKeyword,
-                              searchIntent: opportunity.seoBrief.searchIntent,
-                              recommendedAction:
-                                opportunity.seoBrief.recommendedAction,
-                              actionJustification:
-                                opportunity.seoBrief.actionJustification,
-                              recommendedTitle:
-                                opportunity.seoBrief.recommendedTitle,
-                              recommendedMetaDescription:
-                                opportunity.seoBrief.recommendedMetaDescription,
-                              outline: opportunity.seoBrief.outline,
-                              keyQuestions: opportunity.seoBrief.keyQuestions,
-                              internalLinks: opportunity.seoBrief.internalLinks,
-                              competitorInsights:
-                                opportunity.seoBrief.competitorInsights,
-                              evidenceNeeded: opportunity.seoBrief.evidenceNeeded,
-                            }
-                          : null
-                      }
-                    />
-                  ) : null}
+                          {isSearch && primary !== "brief" ? (
+                            <SeoBrief
+                              opportunityId={opportunity.id}
+                              contentAsset={null}
+                              brief={
+                                opportunity.seoBrief
+                                  ? {
+                                      objective: opportunity.seoBrief.objective,
+                                      targetKeyword: opportunity.seoBrief.targetKeyword,
+                                      searchIntent: opportunity.seoBrief.searchIntent,
+                                      recommendedAction:
+                                        opportunity.seoBrief.recommendedAction,
+                                      actionJustification:
+                                        opportunity.seoBrief.actionJustification,
+                                      recommendedTitle:
+                                        opportunity.seoBrief.recommendedTitle,
+                                      recommendedMetaDescription:
+                                        opportunity.seoBrief.recommendedMetaDescription,
+                                      outline: opportunity.seoBrief.outline,
+                                      keyQuestions: opportunity.seoBrief.keyQuestions,
+                                      internalLinks: opportunity.seoBrief.internalLinks,
+                                      competitorInsights:
+                                        opportunity.seoBrief.competitorInsights,
+                                      evidenceNeeded:
+                                        opportunity.seoBrief.evidenceNeeded,
+                                    }
+                                  : null
+                              }
+                            />
+                          ) : null}
 
-                  {publishingConfig(opportunity.brand).ok ? (
-                    <GenerateArticle
-                      opportunityId={opportunity.id}
-                      articleAssetId={
-                        opportunity.contentAssets.find(
-                          (asset) => asset.articleDraft,
-                        )?.id ?? null
-                      }
-                    />
-                  ) : null}
+                          {canPublish && primary !== "article" ? (
+                            <GenerateArticle
+                              opportunityId={opportunity.id}
+                              articleAssetId={
+                                outputs.hasActiveArticle
+                                  ? (opportunity.contentAssets.find(
+                                      (asset) =>
+                                        asset.channel === "WEBSITE" &&
+                                        asset.archivedAt === null,
+                                    )?.id ?? null)
+                                  : null
+                              }
+                            />
+                          ) : null}
 
-                  <MetaIdeas
-                    brandId={opportunity.brandId}
-                    opportunityId={opportunity.id}
-                  />
+                          {primary === "meta" ? null : (
+                            <MetaIdeas
+                              brandId={opportunity.brandId}
+                              opportunityId={opportunity.id}
+                            />
+                          )}
 
-                  <SavedDrafts
-                    drafts={opportunity.contentAssets.map((asset) => ({
-                      id: asset.id,
-                      title: asset.title,
-                      content: asset.content,
-                      status: asset.status,
-                      visual: asset.visualAsset
-                        ? {
-                            id: asset.visualAsset.id,
-                            type: asset.visualAsset.type,
-                            reason: asset.visualAsset.reason,
-                            concept: asset.visualAsset.concept,
-                            imageUrl: asset.visualAsset.imageUrl,
-                          }
-                        : null,
-                    }))}
-                  />
+                          <LinkedInDrafts opportunityId={opportunity.id} />
+                        </div>
+                      </Disclosure>
+                    </div>
+                  )}
 
-                  <LinkedInDrafts opportunityId={opportunity.id} />
-
-                  <Disclosure summary="Edit" className="mt-4">
+                  <Disclosure summary="Edit" className="mt-2">
                     <form
                       action={updateOpportunity.bind(null, opportunity.id)}
-                      className="grid max-w-2xl gap-5 rounded-xl border border-line bg-subtle p-6"
+                      className="grid max-w-2xl gap-5 rounded-lg bg-subtle p-5"
                     >
                       <Fields brands={brands} opportunity={opportunity} />
                       <div className="border-t border-line pt-5">
@@ -530,8 +615,8 @@ export default async function OpportunitiesPage({
             title={TAB_EMPTY[tab]}
             description={
               brandFilter === "all" && statusFilter === "all"
-                ? "Created opportunities will appear here."
-                : "No opportunity matches these filters."
+                ? TAB_NEXT[tab]
+                : "Nothing matches these filters. Clear them to see the rest."
             }
           />
         )}

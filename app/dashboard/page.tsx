@@ -77,7 +77,7 @@ export default async function DashboardPage({
       },
     }),
     prisma.contentAsset.findMany({
-      where: { brandId: brand.id, status: { not: "ARCHIVED" } },
+      where: { brandId: brand.id, archivedAt: null },
       orderBy: { createdAt: "desc" },
     }),
     prisma.keyword.findMany({

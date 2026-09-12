@@ -47,6 +47,7 @@ export type BrandMinAggregateOutputType = {
   googleBusinessAccountId: string | null
   googleBusinessLocationId: string | null
   googleBusinessLocationName: string | null
+  contextUpdatedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -74,6 +75,7 @@ export type BrandMaxAggregateOutputType = {
   googleBusinessAccountId: string | null
   googleBusinessLocationId: string | null
   googleBusinessLocationName: string | null
+  contextUpdatedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -101,6 +103,7 @@ export type BrandCountAggregateOutputType = {
   googleBusinessAccountId: number
   googleBusinessLocationId: number
   googleBusinessLocationName: number
+  contextUpdatedAt: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -130,6 +133,7 @@ export type BrandMinAggregateInputType = {
   googleBusinessAccountId?: true
   googleBusinessLocationId?: true
   googleBusinessLocationName?: true
+  contextUpdatedAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -157,6 +161,7 @@ export type BrandMaxAggregateInputType = {
   googleBusinessAccountId?: true
   googleBusinessLocationId?: true
   googleBusinessLocationName?: true
+  contextUpdatedAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -184,6 +189,7 @@ export type BrandCountAggregateInputType = {
   googleBusinessAccountId?: true
   googleBusinessLocationId?: true
   googleBusinessLocationName?: true
+  contextUpdatedAt?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -284,6 +290,7 @@ export type BrandGroupByOutputType = {
   googleBusinessAccountId: string | null
   googleBusinessLocationId: string | null
   googleBusinessLocationName: string | null
+  contextUpdatedAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: BrandCountAggregateOutputType | null
@@ -332,6 +339,7 @@ export type BrandWhereInput = {
   googleBusinessAccountId?: Prisma.StringNullableFilter<"Brand"> | string | null
   googleBusinessLocationId?: Prisma.StringNullableFilter<"Brand"> | string | null
   googleBusinessLocationName?: Prisma.StringNullableFilter<"Brand"> | string | null
+  contextUpdatedAt?: Prisma.DateTimeNullableFilter<"Brand"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
   workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
@@ -380,6 +388,7 @@ export type BrandOrderByWithRelationInput = {
   googleBusinessAccountId?: Prisma.SortOrderInput | Prisma.SortOrder
   googleBusinessLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
   googleBusinessLocationName?: Prisma.SortOrderInput | Prisma.SortOrder
+  contextUpdatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   workspace?: Prisma.WorkspaceOrderByWithRelationInput
@@ -432,6 +441,7 @@ export type BrandWhereUniqueInput = Prisma.AtLeast<{
   googleBusinessAccountId?: Prisma.StringNullableFilter<"Brand"> | string | null
   googleBusinessLocationId?: Prisma.StringNullableFilter<"Brand"> | string | null
   googleBusinessLocationName?: Prisma.StringNullableFilter<"Brand"> | string | null
+  contextUpdatedAt?: Prisma.DateTimeNullableFilter<"Brand"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
   workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
@@ -480,6 +490,7 @@ export type BrandOrderByWithAggregationInput = {
   googleBusinessAccountId?: Prisma.SortOrderInput | Prisma.SortOrder
   googleBusinessLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
   googleBusinessLocationName?: Prisma.SortOrderInput | Prisma.SortOrder
+  contextUpdatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.BrandCountOrderByAggregateInput
@@ -513,6 +524,7 @@ export type BrandScalarWhereWithAggregatesInput = {
   googleBusinessAccountId?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
   googleBusinessLocationId?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
   googleBusinessLocationName?: Prisma.StringNullableWithAggregatesFilter<"Brand"> | string | null
+  contextUpdatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Brand"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Brand"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Brand"> | Date | string
 }
@@ -539,6 +551,7 @@ export type BrandCreateInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -587,6 +600,7 @@ export type BrandUncheckedCreateInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -633,6 +647,7 @@ export type BrandUpdateInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -681,6 +696,7 @@ export type BrandUncheckedUpdateInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -728,6 +744,7 @@ export type BrandCreateManyInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -754,6 +771,7 @@ export type BrandUpdateManyMutationInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -781,6 +799,7 @@ export type BrandUncheckedUpdateManyInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -823,6 +842,7 @@ export type BrandCountOrderByAggregateInput = {
   googleBusinessAccountId?: Prisma.SortOrder
   googleBusinessLocationId?: Prisma.SortOrder
   googleBusinessLocationName?: Prisma.SortOrder
+  contextUpdatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -850,6 +870,7 @@ export type BrandMaxOrderByAggregateInput = {
   googleBusinessAccountId?: Prisma.SortOrder
   googleBusinessLocationId?: Prisma.SortOrder
   googleBusinessLocationName?: Prisma.SortOrder
+  contextUpdatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -877,6 +898,7 @@ export type BrandMinOrderByAggregateInput = {
   googleBusinessAccountId?: Prisma.SortOrder
   googleBusinessLocationId?: Prisma.SortOrder
   googleBusinessLocationName?: Prisma.SortOrder
+  contextUpdatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -942,6 +964,10 @@ export type EnumContentFormatFieldUpdateOperationsInput = {
 
 export type EnumPublishingModeFieldUpdateOperationsInput = {
   set?: $Enums.PublishingMode
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
 }
 
 export type BrandCreateNestedOneWithoutProfileInput = {
@@ -1246,6 +1272,7 @@ export type BrandCreateWithoutWorkspaceInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
@@ -1292,6 +1319,7 @@ export type BrandUncheckedCreateWithoutWorkspaceInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -1368,6 +1396,7 @@ export type BrandScalarWhereInput = {
   googleBusinessAccountId?: Prisma.StringNullableFilter<"Brand"> | string | null
   googleBusinessLocationId?: Prisma.StringNullableFilter<"Brand"> | string | null
   googleBusinessLocationName?: Prisma.StringNullableFilter<"Brand"> | string | null
+  contextUpdatedAt?: Prisma.DateTimeNullableFilter<"Brand"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Brand"> | Date | string
 }
@@ -1394,6 +1423,7 @@ export type BrandCreateWithoutProfileInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -1441,6 +1471,7 @@ export type BrandUncheckedCreateWithoutProfileInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
@@ -1502,6 +1533,7 @@ export type BrandUpdateWithoutProfileInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -1549,6 +1581,7 @@ export type BrandUncheckedUpdateWithoutProfileInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
@@ -1594,6 +1627,7 @@ export type BrandCreateWithoutAudiencesInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -1641,6 +1675,7 @@ export type BrandUncheckedCreateWithoutAudiencesInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -1702,6 +1737,7 @@ export type BrandUpdateWithoutAudiencesInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -1749,6 +1785,7 @@ export type BrandUncheckedUpdateWithoutAudiencesInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -1794,6 +1831,7 @@ export type BrandCreateWithoutVoiceRulesInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -1841,6 +1879,7 @@ export type BrandUncheckedCreateWithoutVoiceRulesInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -1902,6 +1941,7 @@ export type BrandUpdateWithoutVoiceRulesInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -1949,6 +1989,7 @@ export type BrandUncheckedUpdateWithoutVoiceRulesInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -1994,6 +2035,7 @@ export type BrandCreateWithoutGoldenExamplesInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -2041,6 +2083,7 @@ export type BrandUncheckedCreateWithoutGoldenExamplesInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -2102,6 +2145,7 @@ export type BrandUpdateWithoutGoldenExamplesInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -2149,6 +2193,7 @@ export type BrandUncheckedUpdateWithoutGoldenExamplesInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -2194,6 +2239,7 @@ export type BrandCreateWithoutObservationsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -2241,6 +2287,7 @@ export type BrandUncheckedCreateWithoutObservationsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -2302,6 +2349,7 @@ export type BrandUpdateWithoutObservationsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -2349,6 +2397,7 @@ export type BrandUncheckedUpdateWithoutObservationsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -2394,6 +2443,7 @@ export type BrandCreateWithoutCompetitorsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -2441,6 +2491,7 @@ export type BrandUncheckedCreateWithoutCompetitorsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -2502,6 +2553,7 @@ export type BrandUpdateWithoutCompetitorsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -2549,6 +2601,7 @@ export type BrandUncheckedUpdateWithoutCompetitorsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -2594,6 +2647,7 @@ export type BrandCreateWithoutMarketSignalsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -2641,6 +2695,7 @@ export type BrandUncheckedCreateWithoutMarketSignalsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -2702,6 +2757,7 @@ export type BrandUpdateWithoutMarketSignalsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -2749,6 +2805,7 @@ export type BrandUncheckedUpdateWithoutMarketSignalsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -2794,6 +2851,7 @@ export type BrandCreateWithoutOpportunitiesInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -2841,6 +2899,7 @@ export type BrandUncheckedCreateWithoutOpportunitiesInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -2902,6 +2961,7 @@ export type BrandUpdateWithoutOpportunitiesInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -2949,6 +3009,7 @@ export type BrandUncheckedUpdateWithoutOpportunitiesInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -2994,6 +3055,7 @@ export type BrandCreateWithoutContentAssetsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -3041,6 +3103,7 @@ export type BrandUncheckedCreateWithoutContentAssetsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -3102,6 +3165,7 @@ export type BrandUpdateWithoutContentAssetsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -3149,6 +3213,7 @@ export type BrandUncheckedUpdateWithoutContentAssetsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -3194,6 +3259,7 @@ export type BrandCreateWithoutVisualAssetsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -3241,6 +3307,7 @@ export type BrandUncheckedCreateWithoutVisualAssetsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -3302,6 +3369,7 @@ export type BrandUpdateWithoutVisualAssetsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -3349,6 +3417,7 @@ export type BrandUncheckedUpdateWithoutVisualAssetsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -3394,6 +3463,7 @@ export type BrandCreateWithoutWebsitePagesInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -3441,6 +3511,7 @@ export type BrandUncheckedCreateWithoutWebsitePagesInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -3502,6 +3573,7 @@ export type BrandUpdateWithoutWebsitePagesInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -3549,6 +3621,7 @@ export type BrandUncheckedUpdateWithoutWebsitePagesInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -3594,6 +3667,7 @@ export type BrandCreateWithoutKeywordsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -3641,6 +3715,7 @@ export type BrandUncheckedCreateWithoutKeywordsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -3702,6 +3777,7 @@ export type BrandUpdateWithoutKeywordsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -3749,6 +3825,7 @@ export type BrandUncheckedUpdateWithoutKeywordsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -3794,6 +3871,7 @@ export type BrandCreateWithoutSerpCompetitorsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -3841,6 +3919,7 @@ export type BrandUncheckedCreateWithoutSerpCompetitorsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -3902,6 +3981,7 @@ export type BrandUpdateWithoutSerpCompetitorsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -3949,6 +4029,7 @@ export type BrandUncheckedUpdateWithoutSerpCompetitorsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -3994,6 +4075,7 @@ export type BrandCreateWithoutSeoBriefsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -4041,6 +4123,7 @@ export type BrandUncheckedCreateWithoutSeoBriefsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -4102,6 +4185,7 @@ export type BrandUpdateWithoutSeoBriefsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -4149,6 +4233,7 @@ export type BrandUncheckedUpdateWithoutSeoBriefsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -4194,6 +4279,7 @@ export type BrandCreateWithoutGrowthWeekPlansInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -4241,6 +4327,7 @@ export type BrandUncheckedCreateWithoutGrowthWeekPlansInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -4302,6 +4389,7 @@ export type BrandUpdateWithoutGrowthWeekPlansInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -4349,6 +4437,7 @@ export type BrandUncheckedUpdateWithoutGrowthWeekPlansInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -4394,6 +4483,7 @@ export type BrandCreateWithoutProposedActionsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -4441,6 +4531,7 @@ export type BrandUncheckedCreateWithoutProposedActionsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -4502,6 +4593,7 @@ export type BrandUpdateWithoutProposedActionsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -4549,6 +4641,7 @@ export type BrandUncheckedUpdateWithoutProposedActionsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -4594,6 +4687,7 @@ export type BrandCreateWithoutSearchConsoleSyncsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -4641,6 +4735,7 @@ export type BrandUncheckedCreateWithoutSearchConsoleSyncsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -4702,6 +4797,7 @@ export type BrandUpdateWithoutSearchConsoleSyncsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -4749,6 +4845,7 @@ export type BrandUncheckedUpdateWithoutSearchConsoleSyncsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -4794,6 +4891,7 @@ export type BrandCreateWithoutSearchConsoleRowsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -4841,6 +4939,7 @@ export type BrandUncheckedCreateWithoutSearchConsoleRowsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -4902,6 +5001,7 @@ export type BrandUpdateWithoutSearchConsoleRowsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -4949,6 +5049,7 @@ export type BrandUncheckedUpdateWithoutSearchConsoleRowsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -4994,6 +5095,7 @@ export type BrandCreateWithoutAdsSyncsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -5041,6 +5143,7 @@ export type BrandUncheckedCreateWithoutAdsSyncsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -5102,6 +5205,7 @@ export type BrandUpdateWithoutAdsSyncsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -5149,6 +5253,7 @@ export type BrandUncheckedUpdateWithoutAdsSyncsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -5194,6 +5299,7 @@ export type BrandCreateWithoutAdsRowsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
@@ -5241,6 +5347,7 @@ export type BrandUncheckedCreateWithoutAdsRowsInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
@@ -5302,6 +5409,7 @@ export type BrandUpdateWithoutAdsRowsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
@@ -5349,6 +5457,7 @@ export type BrandUncheckedUpdateWithoutAdsRowsInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -5394,6 +5503,7 @@ export type BrandCreateManyWorkspaceInput = {
   googleBusinessAccountId?: string | null
   googleBusinessLocationId?: string | null
   googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -5420,6 +5530,7 @@ export type BrandUpdateWithoutWorkspaceInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
@@ -5466,6 +5577,7 @@ export type BrandUncheckedUpdateWithoutWorkspaceInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
@@ -5512,6 +5624,7 @@ export type BrandUncheckedUpdateManyWithoutWorkspaceInput = {
   googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -5732,6 +5845,7 @@ export type BrandSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   googleBusinessAccountId?: boolean
   googleBusinessLocationId?: boolean
   googleBusinessLocationName?: boolean
+  contextUpdatedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
@@ -5781,6 +5895,7 @@ export type BrandSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   googleBusinessAccountId?: boolean
   googleBusinessLocationId?: boolean
   googleBusinessLocationName?: boolean
+  contextUpdatedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
@@ -5809,6 +5924,7 @@ export type BrandSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   googleBusinessAccountId?: boolean
   googleBusinessLocationId?: boolean
   googleBusinessLocationName?: boolean
+  contextUpdatedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
@@ -5837,11 +5953,12 @@ export type BrandSelectScalar = {
   googleBusinessAccountId?: boolean
   googleBusinessLocationId?: boolean
   googleBusinessLocationName?: boolean
+  contextUpdatedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BrandOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspaceId" | "name" | "slug" | "websiteUrl" | "description" | "status" | "searchConsoleProperty" | "githubOwner" | "githubRepo" | "githubBranch" | "contentFormat" | "contentDirectory" | "publicRoute" | "assetsDirectory" | "defaultBranch" | "publishingMode" | "vercelProjectId" | "googleAdsCustomerId" | "googleBusinessAccountId" | "googleBusinessLocationId" | "googleBusinessLocationName" | "createdAt" | "updatedAt", ExtArgs["result"]["brand"]>
+export type BrandOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspaceId" | "name" | "slug" | "websiteUrl" | "description" | "status" | "searchConsoleProperty" | "githubOwner" | "githubRepo" | "githubBranch" | "contentFormat" | "contentDirectory" | "publicRoute" | "assetsDirectory" | "defaultBranch" | "publishingMode" | "vercelProjectId" | "googleAdsCustomerId" | "googleBusinessAccountId" | "googleBusinessLocationId" | "googleBusinessLocationName" | "contextUpdatedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["brand"]>
 export type BrandInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.Brand$profileArgs<ExtArgs>
@@ -5921,6 +6038,11 @@ export type $BrandPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     googleBusinessAccountId: string | null
     googleBusinessLocationId: string | null
     googleBusinessLocationName: string | null
+    /**
+     * Set when the brand's language, site, positioning, value proposition or
+     * voice changes: what Zuri knows about the brand is older than the brand.
+     */
+    contextUpdatedAt: Date | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["brand"]>
@@ -6389,6 +6511,7 @@ export interface BrandFieldRefs {
   readonly googleBusinessAccountId: Prisma.FieldRef<"Brand", 'String'>
   readonly googleBusinessLocationId: Prisma.FieldRef<"Brand", 'String'>
   readonly googleBusinessLocationName: Prisma.FieldRef<"Brand", 'String'>
+  readonly contextUpdatedAt: Prisma.FieldRef<"Brand", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Brand", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Brand", 'DateTime'>
 }

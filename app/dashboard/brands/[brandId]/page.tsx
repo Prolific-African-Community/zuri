@@ -17,12 +17,21 @@ import {
   listBusinessLocations,
   type BusinessLocation,
 } from "@/lib/google-business";
+import { buildFreshness } from "@/lib/brand-freshness";
+
 import { getPrisma } from "@/lib/prisma";
 import { resolveProperty } from "@/lib/search-console";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { updateBrand } from "../actions";
 import { updateBrandProfile } from "./actions";
+
+const dateTime = new Intl.DateTimeFormat("en", {
+  day: "numeric",
+  month: "short",
+  hour: "2-digit",
+  minute: "2-digit",
+});
 
 export const dynamic = "force-dynamic";
 
@@ -40,6 +49,40 @@ export default async function BrandPage({ params }: PageProps<"/dashboard/brands
     },
   });
   if (!brand) notFound();
+
+  // What the brand knows, and when each part of it was last refreshed.
+  const prisma = getPrisma();
+  const [lastPage, lastSearchConsole, lastAds, lastOpportunity] = await Promise.all([
+    prisma.websitePage.findFirst({
+      where: { brandId },
+      orderBy: { lastCrawledAt: "desc" },
+      select: { lastCrawledAt: true },
+    }),
+    prisma.searchConsoleSync.findFirst({
+      where: { brandId },
+      orderBy: { syncedAt: "desc" },
+      select: { syncedAt: true },
+    }),
+    prisma.adsSync.findFirst({
+      where: { brandId },
+      orderBy: { syncedAt: "desc" },
+      select: { syncedAt: true },
+    }),
+    prisma.opportunity.findFirst({
+      where: { brandId },
+      orderBy: { createdAt: "desc" },
+      select: { createdAt: true },
+    }),
+  ]);
+
+  const freshness = buildFreshness({
+    brandId,
+    contextUpdatedAt: brand.contextUpdatedAt,
+    lastCrawlAt: lastPage?.lastCrawledAt ?? null,
+    lastSearchConsoleAt: lastSearchConsole?.syncedAt ?? null,
+    lastAdsAt: lastAds?.syncedAt ?? null,
+    lastOpportunityAt: lastOpportunity?.createdAt ?? null,
+  });
 
   const googleConnection = await getConnection();
   const googleConnected = Boolean(googleConnection);
@@ -92,6 +135,46 @@ export default async function BrandPage({ params }: PageProps<"/dashboard/brands
           {brand.status.toLowerCase()}
         </Badge>
       </header>
+
+      {freshness.staleCount ? (
+        <Section className="mt-12">
+          <Panel>
+            <div className="flex flex-wrap items-center gap-2.5">
+              <Badge tone="accent">Brand context updated</Badge>
+              <span className="type-meta">
+                {freshness.contextUpdatedAt
+                  ? `changed ${dateTime.format(freshness.contextUpdatedAt)}`
+                  : ""}
+              </span>
+            </div>
+            <p className="type-body mt-3 max-w-2xl text-ink-2">
+              The language, site, positioning, value proposition or voice changed.
+              These are older than the brand — refresh them before trusting what
+              Zuri recommends. Nothing runs on its own.
+            </p>
+            <ul className="mt-4 space-y-2.5">
+              {freshness.items
+                .filter((item) => item.stale)
+                .map((item) => (
+                  <li key={item.label} className="flex flex-wrap items-baseline gap-x-3">
+                    <Link
+                      href={item.href}
+                      className="type-body min-w-40 rounded-md text-accent-ink transition-colors hover:text-accent-strong"
+                    >
+                      {item.label}
+                    </Link>
+                    <span className="type-body min-w-0 flex-1 text-ink-2">
+                      {item.action}
+                    </span>
+                    <span className="type-meta shrink-0 text-ink-4">
+                      {item.lastAt ? dateTime.format(item.lastAt) : "never"}
+                    </span>
+                  </li>
+                ))}
+            </ul>
+          </Panel>
+        </Section>
+      ) : null}
 
       <Section title="Fundamental information" className="mt-12">
         <Panel>

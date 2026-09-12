@@ -125,8 +125,7 @@ export type ContentType = (typeof ContentType)[keyof typeof ContentType]
 
 export const ContentStatus = {
   DRAFT: 'DRAFT',
-  APPROVED: 'APPROVED',
-  ARCHIVED: 'ARCHIVED'
+  APPROVED: 'APPROVED'
 } as const
 
 export type ContentStatus = (typeof ContentStatus)[keyof typeof ContentStatus]
@@ -137,11 +136,21 @@ export const ArticleReviewStatus = {
   READY_FOR_REVIEW: 'READY_FOR_REVIEW',
   PR_OPENED: 'PR_OPENED',
   PUBLISHED: 'PUBLISHED',
-  NEEDS_UPDATE: 'NEEDS_UPDATE',
-  ARCHIVED: 'ARCHIVED'
+  NEEDS_UPDATE: 'NEEDS_UPDATE'
 } as const
 
 export type ArticleReviewStatus = (typeof ArticleReviewStatus)[keyof typeof ArticleReviewStatus]
+
+
+export const ArticlePublicationState = {
+  NEVER_PUBLISHED: 'NEVER_PUBLISHED',
+  PUBLISHING: 'PUBLISHING',
+  PUBLISHED: 'PUBLISHED',
+  UNPUBLISHING: 'UNPUBLISHING',
+  UNPUBLISHED: 'UNPUBLISHED'
+} as const
+
+export type ArticlePublicationState = (typeof ArticlePublicationState)[keyof typeof ArticlePublicationState]
 
 
 export const ProductionStatus = {

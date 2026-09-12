@@ -25,6 +25,8 @@ export type GeneratedOpportunity = {
 
 export type BrandContext = {
   brandName: string;
+  /** BrandProfile.language, restated so the model cannot miss it. */
+  outputLanguage: string;
   profile: {
     mission: string;
     manifesto: string;
@@ -61,7 +63,23 @@ export function hasSourceMaterial(context: BrandContext) {
   );
 }
 
+/**
+ * Output language is a brand setting, not something to guess. Without this the
+ * model copies the language of whatever material it is shown, so a brand that
+ * switches language keeps producing the old one.
+ */
+const LANGUAGE_RULE = [
+  "LANGUAGE — this overrides everything below.",
+  "Write every field of every item in the language named by `outputLanguage`.",
+  "That setting is the brand's current choice and it wins. Never infer the",
+  "language from the supplied profile, pages, keywords, existing opportunities",
+  "or past content, even when all of them are in another language. Mixed-language",
+  "output is a failure: if one item is in another language, the answer is wrong.",
+  "",
+].join("\n");
+
 const SYSTEM_PROMPT = [
+  LANGUAGE_RULE,
   "You are a growth strategist working inside Zuri, a multi-brand Growth OS.",
   "You are given one brand's own recorded knowledge: its profile, audiences, voice rules,",
   "recent internal observations, and recent market signals.",
@@ -540,6 +558,7 @@ export type GeneratedSeoOpportunity = {
 
 export type SeoContext = {
   brandName: string;
+  outputLanguage: string;
   profile: BrandContext["profile"];
   pages: {
     url: string;
@@ -562,6 +581,7 @@ export type SeoContext = {
 };
 
 const SEO_SYSTEM_PROMPT = [
+  LANGUAGE_RULE,
   "You turn one brand's own SEO data into concrete, actionable opportunities.",
   "You are given its profile, every page crawled on its site, its researched keywords",
   "with live SERP results, and its competitors.",

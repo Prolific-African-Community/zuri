@@ -224,9 +224,13 @@ export async function findPullRequest(ref: RepoRef, branch: string) {
     `/repos/${ref.owner}/${ref.repo}/pulls?state=all&head=${encodeURIComponent(
       `${ref.owner}:${branch}`,
     )}`,
-  ).catch(() => null)) as { number?: number; html_url?: string }[] | null;
+  ).catch(() => null)) as
+    | { number?: number; html_url?: string; state?: string; merged_at?: string | null }[]
+    | null;
 
-  const pr = pulls?.[0];
+  // Only a pull request that is still open can be reused. A merged one would
+  // report itself as merged again and fake a publication that never happened.
+  const pr = pulls?.find((entry) => entry.state === "open" && !entry.merged_at);
   return pr?.number && pr.html_url ? { number: pr.number, url: pr.html_url } : null;
 }
 
@@ -308,4 +312,31 @@ export async function mergePullRequest(
   )) as { merged?: boolean; sha?: string; message?: string };
 
   return { merged: Boolean(result.merged), sha: result.sha ?? "" };
+}
+
+/**
+ * Removes one file from a working branch. The only deletion this bridge can
+ * perform: one path, one sha, never a directory and never on the base branch.
+ */
+export async function deleteFile(
+  ref: RepoRef,
+  branch: string,
+  path: string,
+  sha: string,
+  message: string,
+) {
+  if (!branch.startsWith("zuri/")) {
+    throw new Error("Zuri only deletes on branches prefixed with zuri/.");
+  }
+
+  await call(
+    `/repos/${ref.owner}/${ref.repo}/contents/${path
+      .split("/")
+      .map(encodeURIComponent)
+      .join("/")}`,
+    {
+      method: "DELETE",
+      body: JSON.stringify({ message, branch, sha }),
+    },
+  );
 }

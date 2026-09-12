@@ -91,10 +91,13 @@ export function MetaIdeas({
   brandId,
   opportunityId,
   assetId,
+  /** The card decides which single action leads; the rest stay secondary. */
+  emphasis = "secondary",
 }: {
   brandId: string;
   opportunityId?: string | null;
   assetId?: string | null;
+  emphasis?: "primary" | "secondary";
 }) {
   const [state, formAction, pending] = useActionState(
     generateMetaIdeasAction,
@@ -106,7 +109,12 @@ export function MetaIdeas({
       <form action={formAction} className="flex flex-wrap items-center gap-3">
         <input type="hidden" name="opportunityId" value={opportunityId ?? ""} />
         <input type="hidden" name="assetId" value={assetId ?? ""} />
-        <Button type="submit" variant="secondary" size="sm" disabled={pending}>
+        <Button
+          type="submit"
+          variant={emphasis === "primary" ? "primary" : "secondary"}
+          size="sm"
+          disabled={pending}
+        >
           {pending ? "Thinking…" : "Generate Meta ideas"}
         </Button>
         <p className="type-meta" aria-live="polite">

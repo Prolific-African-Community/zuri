@@ -38,6 +38,7 @@ export type ContentAssetMinAggregateOutputType = {
   googleBusinessPostName: string | null
   googleBusinessPublishedAt: Date | null
   googleBusinessError: string | null
+  archivedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -56,6 +57,7 @@ export type ContentAssetMaxAggregateOutputType = {
   googleBusinessPostName: string | null
   googleBusinessPublishedAt: Date | null
   googleBusinessError: string | null
+  archivedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -74,6 +76,7 @@ export type ContentAssetCountAggregateOutputType = {
   googleBusinessPostName: number
   googleBusinessPublishedAt: number
   googleBusinessError: number
+  archivedAt: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -94,6 +97,7 @@ export type ContentAssetMinAggregateInputType = {
   googleBusinessPostName?: true
   googleBusinessPublishedAt?: true
   googleBusinessError?: true
+  archivedAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -112,6 +116,7 @@ export type ContentAssetMaxAggregateInputType = {
   googleBusinessPostName?: true
   googleBusinessPublishedAt?: true
   googleBusinessError?: true
+  archivedAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -130,6 +135,7 @@ export type ContentAssetCountAggregateInputType = {
   googleBusinessPostName?: true
   googleBusinessPublishedAt?: true
   googleBusinessError?: true
+  archivedAt?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -221,6 +227,7 @@ export type ContentAssetGroupByOutputType = {
   googleBusinessPostName: string | null
   googleBusinessPublishedAt: Date | null
   googleBusinessError: string | null
+  archivedAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: ContentAssetCountAggregateOutputType | null
@@ -260,6 +267,7 @@ export type ContentAssetWhereInput = {
   googleBusinessPostName?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
   googleBusinessPublishedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
   googleBusinessError?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
+  archivedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
   brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
@@ -284,6 +292,7 @@ export type ContentAssetOrderByWithRelationInput = {
   googleBusinessPostName?: Prisma.SortOrderInput | Prisma.SortOrder
   googleBusinessPublishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   googleBusinessError?: Prisma.SortOrderInput | Prisma.SortOrder
+  archivedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   brand?: Prisma.BrandOrderByWithRelationInput
@@ -311,6 +320,7 @@ export type ContentAssetWhereUniqueInput = Prisma.AtLeast<{
   googleBusinessPostName?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
   googleBusinessPublishedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
   googleBusinessError?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
+  archivedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
   brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
@@ -335,6 +345,7 @@ export type ContentAssetOrderByWithAggregationInput = {
   googleBusinessPostName?: Prisma.SortOrderInput | Prisma.SortOrder
   googleBusinessPublishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   googleBusinessError?: Prisma.SortOrderInput | Prisma.SortOrder
+  archivedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ContentAssetCountOrderByAggregateInput
@@ -359,6 +370,7 @@ export type ContentAssetScalarWhereWithAggregatesInput = {
   googleBusinessPostName?: Prisma.StringNullableWithAggregatesFilter<"ContentAsset"> | string | null
   googleBusinessPublishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ContentAsset"> | Date | string | null
   googleBusinessError?: Prisma.StringNullableWithAggregatesFilter<"ContentAsset"> | string | null
+  archivedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ContentAsset"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ContentAsset"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ContentAsset"> | Date | string
 }
@@ -375,6 +387,7 @@ export type ContentAssetCreateInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
@@ -399,6 +412,7 @@ export type ContentAssetUncheckedCreateInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
@@ -419,6 +433,7 @@ export type ContentAssetUpdateInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
@@ -443,6 +458,7 @@ export type ContentAssetUncheckedUpdateInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
@@ -465,6 +481,7 @@ export type ContentAssetCreateManyInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -481,6 +498,7 @@ export type ContentAssetUpdateManyMutationInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -499,6 +517,7 @@ export type ContentAssetUncheckedUpdateManyInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -527,6 +546,7 @@ export type ContentAssetCountOrderByAggregateInput = {
   googleBusinessPostName?: Prisma.SortOrder
   googleBusinessPublishedAt?: Prisma.SortOrder
   googleBusinessError?: Prisma.SortOrder
+  archivedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -545,6 +565,7 @@ export type ContentAssetMaxOrderByAggregateInput = {
   googleBusinessPostName?: Prisma.SortOrder
   googleBusinessPublishedAt?: Prisma.SortOrder
   googleBusinessError?: Prisma.SortOrder
+  archivedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -563,6 +584,7 @@ export type ContentAssetMinOrderByAggregateInput = {
   googleBusinessPostName?: Prisma.SortOrder
   googleBusinessPublishedAt?: Prisma.SortOrder
   googleBusinessError?: Prisma.SortOrder
+  archivedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -673,10 +695,6 @@ export type EnumContentStatusFieldUpdateOperationsInput = {
   set?: $Enums.ContentStatus
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type ContentAssetCreateNestedOneWithoutArticleDraftInput = {
   create?: Prisma.XOR<Prisma.ContentAssetCreateWithoutArticleDraftInput, Prisma.ContentAssetUncheckedCreateWithoutArticleDraftInput>
   connectOrCreate?: Prisma.ContentAssetCreateOrConnectWithoutArticleDraftInput
@@ -749,6 +767,7 @@ export type ContentAssetCreateWithoutBrandInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   opportunity?: Prisma.OpportunityCreateNestedOneWithoutContentAssetsInput
@@ -771,6 +790,7 @@ export type ContentAssetUncheckedCreateWithoutBrandInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
@@ -822,6 +842,7 @@ export type ContentAssetScalarWhereInput = {
   googleBusinessPostName?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
   googleBusinessPublishedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
   googleBusinessError?: Prisma.StringNullableFilter<"ContentAsset"> | string | null
+  archivedAt?: Prisma.DateTimeNullableFilter<"ContentAsset"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ContentAsset"> | Date | string
 }
@@ -838,6 +859,7 @@ export type ContentAssetCreateWithoutOpportunityInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
@@ -860,6 +882,7 @@ export type ContentAssetUncheckedCreateWithoutOpportunityInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
@@ -906,6 +929,7 @@ export type ContentAssetCreateWithoutArticleDraftInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
@@ -929,6 +953,7 @@ export type ContentAssetUncheckedCreateWithoutArticleDraftInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
@@ -964,6 +989,7 @@ export type ContentAssetUpdateWithoutArticleDraftInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
@@ -987,6 +1013,7 @@ export type ContentAssetUncheckedUpdateWithoutArticleDraftInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
@@ -1006,6 +1033,7 @@ export type ContentAssetCreateWithoutMetaCreativeInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
@@ -1029,6 +1057,7 @@ export type ContentAssetUncheckedCreateWithoutMetaCreativeInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
@@ -1064,6 +1093,7 @@ export type ContentAssetUpdateWithoutMetaCreativeInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
@@ -1087,6 +1117,7 @@ export type ContentAssetUncheckedUpdateWithoutMetaCreativeInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
@@ -1106,6 +1137,7 @@ export type ContentAssetCreateWithoutVisualAssetInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
@@ -1129,6 +1161,7 @@ export type ContentAssetUncheckedCreateWithoutVisualAssetInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   articleDraft?: Prisma.ArticleDraftUncheckedCreateNestedOneWithoutContentAssetInput
@@ -1164,6 +1197,7 @@ export type ContentAssetUpdateWithoutVisualAssetInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
@@ -1187,6 +1221,7 @@ export type ContentAssetUncheckedUpdateWithoutVisualAssetInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   articleDraft?: Prisma.ArticleDraftUncheckedUpdateOneWithoutContentAssetNestedInput
@@ -1206,6 +1241,7 @@ export type ContentAssetCreateWithoutGrowthWeekItemsInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutContentAssetsInput
@@ -1229,6 +1265,7 @@ export type ContentAssetUncheckedCreateWithoutGrowthWeekItemsInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   visualAsset?: Prisma.VisualAssetUncheckedCreateNestedOneWithoutContentAssetInput
@@ -1264,6 +1301,7 @@ export type ContentAssetUpdateWithoutGrowthWeekItemsInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
@@ -1287,6 +1325,7 @@ export type ContentAssetUncheckedUpdateWithoutGrowthWeekItemsInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
@@ -1307,6 +1346,7 @@ export type ContentAssetCreateManyBrandInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1323,6 +1363,7 @@ export type ContentAssetUpdateWithoutBrandInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   opportunity?: Prisma.OpportunityUpdateOneWithoutContentAssetsNestedInput
@@ -1345,6 +1386,7 @@ export type ContentAssetUncheckedUpdateWithoutBrandInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
@@ -1366,6 +1408,7 @@ export type ContentAssetUncheckedUpdateManyWithoutBrandInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1383,6 +1426,7 @@ export type ContentAssetCreateManyOpportunityInput = {
   googleBusinessPostName?: string | null
   googleBusinessPublishedAt?: Date | string | null
   googleBusinessError?: string | null
+  archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1399,6 +1443,7 @@ export type ContentAssetUpdateWithoutOpportunityInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutContentAssetsNestedInput
@@ -1421,6 +1466,7 @@ export type ContentAssetUncheckedUpdateWithoutOpportunityInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visualAsset?: Prisma.VisualAssetUncheckedUpdateOneWithoutContentAssetNestedInput
@@ -1442,6 +1488,7 @@ export type ContentAssetUncheckedUpdateManyWithoutOpportunityInput = {
   googleBusinessPostName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleBusinessPublishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   googleBusinessError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1491,6 +1538,7 @@ export type ContentAssetSelect<ExtArgs extends runtime.Types.Extensions.Internal
   googleBusinessPostName?: boolean
   googleBusinessPublishedAt?: boolean
   googleBusinessError?: boolean
+  archivedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
@@ -1516,6 +1564,7 @@ export type ContentAssetSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   googleBusinessPostName?: boolean
   googleBusinessPublishedAt?: boolean
   googleBusinessError?: boolean
+  archivedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
@@ -1536,6 +1585,7 @@ export type ContentAssetSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   googleBusinessPostName?: boolean
   googleBusinessPublishedAt?: boolean
   googleBusinessError?: boolean
+  archivedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
@@ -1556,11 +1606,12 @@ export type ContentAssetSelectScalar = {
   googleBusinessPostName?: boolean
   googleBusinessPublishedAt?: boolean
   googleBusinessError?: boolean
+  archivedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ContentAssetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "brandId" | "opportunityId" | "channel" | "type" | "status" | "title" | "content" | "scheduledAt" | "publishedAt" | "googleBusinessPostName" | "googleBusinessPublishedAt" | "googleBusinessError" | "createdAt" | "updatedAt", ExtArgs["result"]["contentAsset"]>
+export type ContentAssetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "brandId" | "opportunityId" | "channel" | "type" | "status" | "title" | "content" | "scheduledAt" | "publishedAt" | "googleBusinessPostName" | "googleBusinessPublishedAt" | "googleBusinessError" | "archivedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["contentAsset"]>
 export type ContentAssetInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   opportunity?: boolean | Prisma.ContentAsset$opportunityArgs<ExtArgs>
@@ -1606,6 +1657,11 @@ export type $ContentAssetPayload<ExtArgs extends runtime.Types.Extensions.Intern
     googleBusinessPostName: string | null
     googleBusinessPublishedAt: Date | null
     googleBusinessError: string | null
+    /**
+     * Archive is a timestamp, not a status: it leaves `status` untouched so an
+     * approved asset comes back approved. Null means the asset is active.
+     */
+    archivedAt: Date | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["contentAsset"]>
@@ -2050,6 +2106,7 @@ export interface ContentAssetFieldRefs {
   readonly googleBusinessPostName: Prisma.FieldRef<"ContentAsset", 'String'>
   readonly googleBusinessPublishedAt: Prisma.FieldRef<"ContentAsset", 'DateTime'>
   readonly googleBusinessError: Prisma.FieldRef<"ContentAsset", 'String'>
+  readonly archivedAt: Prisma.FieldRef<"ContentAsset", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"ContentAsset", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ContentAsset", 'DateTime'>
 }

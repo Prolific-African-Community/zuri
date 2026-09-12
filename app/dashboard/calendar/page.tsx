@@ -35,7 +35,7 @@ function weekStart(date: Date) {
 
 export default async function CalendarPage() {
   const assets = await getPrisma().contentAsset.findMany({
-    where: { scheduledAt: { not: null }, status: { not: "ARCHIVED" } },
+    where: { scheduledAt: { not: null }, archivedAt: null },
     orderBy: { scheduledAt: "asc" },
     include: {
       brand: { select: { name: true } },

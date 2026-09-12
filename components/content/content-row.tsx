@@ -6,6 +6,7 @@ import {
   unscheduleContentAsset,
   updateContentAsset,
 } from "@/app/dashboard/content/actions";
+import { ArchiveCross } from "@/components/ui/archive-cross";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Disclosure } from "@/components/ui/disclosure";
@@ -24,6 +25,9 @@ export type ContentRowData = {
   brand: { name: string };
   opportunity: { id: string; title: string } | null;
   visualAsset: { type: string; imageUrl: string | null } | null;
+  /** Set for an article; PUBLISHED or NEEDS_UPDATE means it is online. */
+  archivedAt: Date | null;
+  articlePublicationState?: string | null;
 };
 
 export const dateTime = new Intl.DateTimeFormat("en", {
@@ -40,9 +44,17 @@ export function toLocalInput(date: Date | null) {
   return new Date(date.getTime() - offset).toISOString().slice(0, 16);
 }
 
+/** Plain words for the publication axis; the enum never reaches the screen. */
+const PUBLICATION_LABELS: Record<string, string> = {
+  NEVER_PUBLISHED: "draft",
+  PUBLISHING: "publishing",
+  PUBLISHED: "published",
+  UNPUBLISHING: "unpublishing",
+  UNPUBLISHED: "unpublished",
+};
+
 export function statusTone(status: string) {
   if (status === "APPROVED") return "accent" as const;
-  if (status === "ARCHIVED") return "muted" as const;
   return "neutral" as const;
 }
 
@@ -79,7 +91,13 @@ export function ScheduleForm({ asset }: { asset: ContentRowData }) {
 }
 
 export function ContentRow({ asset }: { asset: ContentRowData }) {
-  const archived = asset.status === "ARCHIVED";
+  const archived = asset.archivedAt !== null;
+  // An article that is online, or mid-flight, cannot simply vanish from Zuri:
+  // taking it down is a publishing act and belongs to the publishing workflow.
+  const live =
+    asset.articlePublicationState === "PUBLISHED" ||
+    asset.articlePublicationState === "PUBLISHING" ||
+    asset.articlePublicationState === "UNPUBLISHING";
 
   return (
     <li className="py-6 first:pt-0">
@@ -101,9 +119,25 @@ export function ContentRow({ asset }: { asset: ContentRowData }) {
           {asset.scheduledAt ? (
             <Badge tone="neutral">{dateTime.format(asset.scheduledAt)}</Badge>
           ) : null}
-          <Badge tone={statusTone(asset.status)}>
-            {asset.status.toLowerCase()}
-          </Badge>
+          {archived ? <Badge tone="muted">archived</Badge> : null}
+          {asset.articlePublicationState ? (
+            <Badge
+              tone={
+                asset.articlePublicationState === "PUBLISHED"
+                  ? "accent"
+                  : "neutral"
+              }
+            >
+              {PUBLICATION_LABELS[asset.articlePublicationState] ?? "draft"}
+            </Badge>
+          ) : (
+            <Badge tone={statusTone(asset.status)}>
+              {asset.status.toLowerCase()}
+            </Badge>
+          )}
+          {archived || live ? null : (
+            <ArchiveCross action={archiveContentAsset.bind(null, asset.id)} />
+          )}
         </div>
       </div>
 
@@ -151,17 +185,21 @@ export function ContentRow({ asset }: { asset: ContentRowData }) {
             </Button>
           </form>
         )}
-        <form
-          action={
-            archived
-              ? restoreContentAsset.bind(null, asset.id)
-              : archiveContentAsset.bind(null, asset.id)
-          }
-        >
-          <Button type="submit" variant="ghost" size="sm">
-            {archived ? "Restore" : "Archive"}
-          </Button>
-        </form>
+        {archived ? (
+          <form action={restoreContentAsset.bind(null, asset.id)}>
+            <Button type="submit" variant="ghost" size="sm">
+              Restore
+            </Button>
+          </form>
+        ) : live ? (
+          <Link
+            href={`/dashboard/content/${asset.id}`}
+            className="type-meta rounded-md transition-colors hover:text-ink"
+            title="Live articles must be unpublished before they can be archived."
+          >
+            Unpublish
+          </Link>
+        ) : null}
       </div>
 
       <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2">

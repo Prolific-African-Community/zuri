@@ -55,6 +55,9 @@ model Brand {
   googleBusinessAccountId  String?
   googleBusinessLocationId String?
   googleBusinessLocationName String?
+  /// Set when the brand's language, site, positioning, value proposition or
+  /// voice changes: what Zuri knows about the brand is older than the brand.
+  contextUpdatedAt DateTime?
   createdAt      DateTime        @default(now())
   updatedAt      DateTime        @updatedAt
   workspace      Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
@@ -262,10 +265,10 @@ enum ContentType {
   TESTIMONIAL_VIDEO_BRIEF
 }
 
+/// Editorial state only. Archiving is `ContentAsset.archivedAt`.
 enum ContentStatus {
   DRAFT
   APPROVED
-  ARCHIVED
 }
 
 model ContentAsset {
@@ -283,6 +286,9 @@ model ContentAsset {
   googleBusinessPostName String?
   googleBusinessPublishedAt DateTime?
   googleBusinessError    String?
+  /// Archive is a timestamp, not a status: it leaves `status` untouched so an
+  /// approved asset comes back approved. Null means the asset is active.
+  archivedAt    DateTime?
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
   brand         Brand          @relation(fields: [brandId], references: [id], onDelete: Cascade)
@@ -311,6 +317,9 @@ model ArticleDraft {
   metaTitle       String       @default("")
   metaDescription String       @default("")
   canonicalUrl    String?
+  /// The single source of truth for whether the article is public. Never infer
+  /// it from publishedUrl, mergedAt, reviewStatus or the asset status.
+  publicationState ArticlePublicationState @default(NEVER_PUBLISHED)
   reviewStatus    ArticleReviewStatus @default(DRAFT)
   publishingBranch String?
   prNumber         Int?
@@ -323,10 +332,22 @@ model ArticleDraft {
   publishedUrl     String?
   /// Fingerprint of what actually went live, so drift is detectable on read.
   publishedPackageHash String?
+  /// Legacy: overwritten by whichever merge happened last. The two fields
+  /// below keep the publish and unpublish commits apart.
   mergeCommitSha   String?
+  lastPublishMergeCommitSha   String?
+  lastUnpublishMergeCommitSha String?
   productionStatus ProductionStatus @default(NOT_DEPLOYED)
   productionDeploymentUrl String?
   productionDeployedAt    DateTime?
+  /// Taking an article back off the site: requested, then confirmed live.
+  unpublishRequestedAt DateTime?
+  unpublishedAt        DateTime?
+  unpublishBranch      String?
+  unpublishPrNumber    Int?
+  unpublishPrUrl       String?
+  /// What the public URL answered once the removal was deployed.
+  unpublishUrlStatus   Int?
   coverImage      Json?
   images          Json?
   internalLinks   Json?
@@ -356,13 +377,25 @@ model ArticlePublication {
 
 /// Editorial state of an article, kept apart from ContentStatus so the social
 /// workflow is untouched.
+/// Editorial readiness only. Publication lives in ArticlePublicationState.
 enum ArticleReviewStatus {
   DRAFT
   READY_FOR_REVIEW
   PR_OPENED
+  /// Legacy: publication state, not review readiness. Superseded by
+  /// ArticlePublicationState.PUBLISHED.
   PUBLISHED
   NEEDS_UPDATE
-  ARCHIVED
+}
+
+/// Whether the article is on the public site, independent of review readiness
+/// and of whether the asset sits on the archive shelf.
+enum ArticlePublicationState {
+  NEVER_PUBLISHED
+  PUBLISHING
+  PUBLISHED
+  UNPUBLISHING
+  UNPUBLISHED
 }
 
 /// Merged is not live: the site still has to build and deploy.

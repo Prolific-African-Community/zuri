@@ -92,7 +92,7 @@ export async function generateBusinessPost(
         brandId: asset.brandId,
         channel: ContentChannel.GOOGLE_BUSINESS,
         opportunityId: asset.opportunityId,
-        status: { not: ContentStatus.ARCHIVED },
+        archivedAt: null,
       },
       orderBy: { createdAt: "desc" },
       select: { id: true },

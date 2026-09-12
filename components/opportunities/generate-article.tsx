@@ -14,9 +14,12 @@ const initialState: ArticleState = { status: "idle", message: "" };
 export function GenerateArticle({
   opportunityId,
   articleAssetId,
+  /** The card decides which single action leads; the rest stay secondary. */
+  emphasis = "secondary",
 }: {
   opportunityId: string;
   articleAssetId: string | null;
+  emphasis?: "primary" | "secondary";
 }) {
   const [state, formAction, pending] = useActionState(
     generateArticleAction,
@@ -26,7 +29,12 @@ export function GenerateArticle({
   return (
     <form action={formAction} className="mt-4 flex flex-wrap items-center gap-3">
       <input type="hidden" name="opportunityId" value={opportunityId} />
-      <Button type="submit" variant="secondary" size="sm" disabled={pending}>
+      <Button
+        type="submit"
+        variant={emphasis === "primary" ? "primary" : "secondary"}
+        size="sm"
+        disabled={pending}
+      >
         {pending
           ? "Writing…"
           : articleAssetId

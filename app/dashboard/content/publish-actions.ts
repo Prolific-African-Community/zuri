@@ -1,6 +1,7 @@
 "use server";
 
 import {
+  ArticlePublicationState,
   ArticleReviewStatus,
   ProductionStatus,
 } from "@/lib/generated/prisma/enums";
@@ -25,6 +26,7 @@ import {
   isWritablePublishPath,
   packageFingerprint,
 } from "@/lib/publishing-package";
+import { finalizeUnpublish } from "@/app/dashboard/content/unpublish-actions";
 import { requireSession } from "@/lib/session";
 import { findProductionDeployment, vercelConfigured } from "@/lib/vercel";
 import { revalidatePath } from "next/cache";
@@ -307,8 +309,21 @@ export async function publishArticle(
   if (prepared.error !== null) return { status: "error", message: prepared.error };
   const { draft, hash } = prepared;
 
-  if (draft.reviewStatus === ArticleReviewStatus.PUBLISHED) {
+  // Publication truth is publicationState; reviewStatus only says whether the
+  // editorial package is ready to leave. A first publish and a republish go
+  // through exactly the same gate, so an unpublished article is never stuck.
+  if (draft.publicationState === ArticlePublicationState.PUBLISHED) {
     return { status: "error", message: "This article is already published." };
+  }
+  if (
+    draft.publicationState === ArticlePublicationState.PUBLISHING ||
+    draft.publicationState === ArticlePublicationState.UNPUBLISHING
+  ) {
+    return {
+      status: "error",
+      message:
+        "A publication change is already in flight — check the production status first.",
+    };
   }
   if (
     draft.reviewStatus !== ArticleReviewStatus.READY_FOR_REVIEW &&
@@ -329,8 +344,24 @@ export async function publishArticle(
     };
   }
 
+  // The state before this attempt, restored on every failure so nothing is
+  // ever left stuck in PUBLISHING.
+  const previous = draft.publicationState;
+  const prisma = getPrisma();
+  await prisma.articleDraft.update({
+    where: { id: draft.id },
+    data: { publicationState: ArticlePublicationState.PUBLISHING },
+  });
+
+  // A republish never reuses the branch of the publication that was taken down:
+  // that branch is already merged, and reusing it would merge nothing.
+  const republish = previous === ArticlePublicationState.UNPUBLISHED;
+  const branchOverride = republish
+    ? `zuri/blog-${prepared.pkg.article!.slug}-republish-${randomUUID().slice(0, 6)}`
+    : undefined;
+
   try {
-    const { branch, pr } = await pushPackage(prepared);
+    const { branch, pr } = await pushPackage(prepared, branchOverride);
     await persistPr(draft.id, contentAssetId, branch, pr, hash);
 
     const outcome = await mergeAndRecord(
@@ -340,13 +371,26 @@ export async function publishArticle(
       pr,
       "Published.",
     );
+    if (outcome.status === "error") await restorePublicationState(draft.id, previous);
     return outcome;
   } catch (error) {
+    await restorePublicationState(draft.id, previous);
     return {
       status: "error",
       message: error instanceof Error ? error.message : "Publishing failed.",
     };
   }
+}
+
+/** Puts the publication axis back where it was after a failed attempt. */
+async function restorePublicationState(
+  draftId: string,
+  previous: ArticlePublicationState,
+) {
+  await getPrisma().articleDraft.update({
+    where: { id: draftId },
+    data: { publicationState: previous },
+  });
 }
 
 /* -------------------------------------------------------------------------- */
@@ -407,17 +451,25 @@ export async function checkPublishingStatus(
       await prisma.articleDraft.update({
         where: { id: draft.id },
         data: {
+          // Merged, not live: production still has to confirm the deployment.
+          publicationState: ArticlePublicationState.PUBLISHING,
           reviewStatus: ArticleReviewStatus.PUBLISHED,
           mergedAt: pr.mergedAt ? new Date(pr.mergedAt) : new Date(),
           publishedUrl: pkg.destination?.publicUrl ?? null,
           publishedPackageHash: publishedHash,
           prClosedWithoutMerge: false,
+          mergeCommitSha: pr.mergeCommitSha ?? draft.mergeCommitSha,
+          lastPublishMergeCommitSha:
+            pr.mergeCommitSha ?? draft.lastPublishMergeCommitSha,
         },
       });
 
       revalidatePath(`/dashboard/content/${contentAssetId}`);
       revalidatePath("/dashboard/content");
-      return { status: "done", message: "Merged — the article is published." };
+      return {
+        status: "done",
+        message: "Merged — waiting for the production deployment.",
+      };
     }
 
     // Closed is not merged: a closed PR published nothing.
@@ -528,6 +580,8 @@ async function mergeAndRecord(
   await prisma.articleDraft.update({
     where: { id: draft.id },
     data: {
+      // PUBLISHED is granted by production verification, never by a merge.
+      publicationState: ArticlePublicationState.PUBLISHING,
       reviewStatus: ArticleReviewStatus.PUBLISHED,
       publishingBranch: branch,
       prNumber: pr.number,
@@ -538,6 +592,12 @@ async function mergeAndRecord(
       publishedPackageHash: hash,
       prClosedWithoutMerge: false,
       mergeCommitSha: confirmed.mergeCommitSha,
+      // Kept apart from the unpublish commit, which used to overwrite it.
+      lastPublishMergeCommitSha: confirmed.mergeCommitSha,
+      // The previous removal is over; its branch, PR and commit stay as history.
+      unpublishRequestedAt: null,
+      unpublishedAt: null,
+      unpublishUrlStatus: null,
       // Merged is not live: the site still has to build and deploy.
       productionStatus: ProductionStatus.WAITING_FOR_DEPLOYMENT,
       productionDeploymentUrl: null,
@@ -577,6 +637,9 @@ export async function publishUpdate(
   if (prepared.error !== null) return { status: "error", message: prepared.error };
   const { draft, pkg, hash } = prepared;
 
+  if (draft.publicationState !== ArticlePublicationState.PUBLISHED) {
+    return { status: "error", message: "Only a live article can be updated." };
+  }
   if (draft.reviewStatus !== ArticleReviewStatus.NEEDS_UPDATE) {
     return { status: "error", message: "This article has no pending update." };
   }
@@ -593,15 +656,19 @@ export async function publishUpdate(
     const branch = `zuri/blog-${pkg.article!.slug}-update-${randomUUID().slice(0, 6)}`;
     const { pr } = await pushPackage(prepared, branch);
 
-    return await mergeAndRecord(
+    const outcome = await mergeAndRecord(
       prepared,
       contentAssetId,
       branch,
       pr,
       "Update published.",
     );
+    if (outcome.status === "error") {
+      await restorePublicationState(draft.id, ArticlePublicationState.PUBLISHED);
+    }
+    return outcome;
   } catch (error) {
-    // The article stays NEEDS_UPDATE so the attempt can be repeated.
+    // The article stays NEEDS_UPDATE and live so the attempt can be repeated.
     return {
       status: "error",
       message: error instanceof Error ? error.message : "Could not publish the update.",
@@ -632,7 +699,16 @@ export async function checkProductionStatus(
   }
 
   const draft = asset.articleDraft;
-  if (!draft.mergeCommitSha) {
+
+  // Which commit proves what: a publish is verified against the publish merge,
+  // a removal against the unpublish merge. They are never interchangeable.
+  const unpublishing =
+    draft.publicationState === ArticlePublicationState.UNPUBLISHING ||
+    (draft.unpublishRequestedAt !== null && draft.unpublishedAt === null);
+  const commitSha = unpublishing
+    ? (draft.lastUnpublishMergeCommitSha ?? draft.mergeCommitSha)
+    : (draft.lastPublishMergeCommitSha ?? draft.mergeCommitSha);
+  if (!commitSha) {
     return { status: "error", message: "Nothing has been merged yet." };
   }
   if (!vercelConfigured()) {
@@ -648,7 +724,7 @@ export async function checkProductionStatus(
   }
 
   try {
-    const deployment = await findProductionDeployment(projectId, draft.mergeCommitSha);
+    const deployment = await findProductionDeployment(projectId, commitSha);
 
     if (!deployment) {
       await prisma.articleDraft.update({
@@ -695,14 +771,67 @@ export async function checkProductionStatus(
       };
     }
 
+    const deploymentUrl = deployment.inspectorUrl ?? deployment.url;
+    const deployedAt = deployment.readyAt ? new Date(deployment.readyAt) : new Date();
+
+    // A deployment that carries a removal proves the opposite of a publication.
+    if (unpublishing) {
+      await prisma.articleDraft.update({
+        where: { id: draft.id },
+        data: {
+          productionDeploymentUrl: deploymentUrl,
+          productionDeployedAt: deployedAt,
+        },
+      });
+      const outcome = await finalizeUnpublish(contentAssetId);
+      revalidatePath(`/dashboard/content/${contentAssetId}`);
+      revalidatePath("/dashboard/content");
+      return outcome?.gone
+        ? {
+            status: "done",
+            message: `Unpublished — the page now answers ${outcome.urlStatus ?? "nothing"}.`,
+          }
+        : {
+            status: "error",
+            message: `The deployment is ready but ${draft.publishedUrl} still answers ${outcome?.urlStatus}. The article stays published in Zuri.`,
+          };
+    }
+
+    // The deployment being ready is not the article being served: ask the URL.
+    const publicUrl = draft.publishedUrl;
+    const liveStatus = publicUrl
+      ? await fetch(publicUrl, { redirect: "manual" })
+          .then((response) => response.status)
+          .catch(() => null)
+      : null;
+    const live = liveStatus !== null && liveStatus >= 200 && liveStatus < 300;
+
+    if (!live) {
+      await prisma.articleDraft.update({
+        where: { id: draft.id },
+        data: {
+          productionStatus: ProductionStatus.WAITING_FOR_DEPLOYMENT,
+          productionDeploymentUrl: deploymentUrl,
+          productionDeployedAt: deployedAt,
+        },
+      });
+      revalidatePath(`/dashboard/content/${contentAssetId}`);
+      return {
+        status: "error",
+        message: publicUrl
+          ? `The deployment is ready but ${publicUrl} answers ${liveStatus ?? "nothing"}. Not marked published.`
+          : "No public URL to verify. Not marked published.",
+      };
+    }
+
     await prisma.articleDraft.update({
       where: { id: draft.id },
       data: {
+        publicationState: ArticlePublicationState.PUBLISHED,
         productionStatus: ProductionStatus.LIVE,
-        productionDeploymentUrl: deployment.inspectorUrl ?? deployment.url,
-        productionDeployedAt: deployment.readyAt
-          ? new Date(deployment.readyAt)
-          : new Date(),
+        productionDeploymentUrl: deploymentUrl,
+        productionDeployedAt: deployedAt,
+        publishedUrl: publicUrl,
       },
     });
 

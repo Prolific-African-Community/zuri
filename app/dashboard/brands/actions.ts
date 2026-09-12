@@ -2,6 +2,7 @@
 
 import { requireSession } from "@/lib/session";
 
+import { contextChanged } from "@/lib/brand-freshness";
 import { optionalText, toSlug } from "@/lib/brands";
 import {
   BrandStatus,
@@ -57,7 +58,13 @@ export async function updateBrand(brandId: string, formData: FormData) {
   if (!name || !slug || !Object.values(BrandStatus).includes(rawStatus as BrandStatus)) throw new Error("Invalid brand information.");
 
   const mission = String(formData.get("mission") ?? "").trim();
-  await getPrisma().brand.update({
+  const prisma = getPrisma();
+  const before = await prisma.brand.findUnique({
+    where: { id: brandId },
+    select: { websiteUrl: true },
+  });
+
+  await prisma.brand.update({
     where: { id: brandId },
     data: {
       name, slug, status: rawStatus as BrandStatus,
@@ -94,6 +101,17 @@ export async function updateBrand(brandId: string, formData: FormData) {
         : {}),
     },
   });
+  if (
+    contextChanged(before ?? {}, {
+      websiteUrl: optionalText(formData.get("websiteUrl")),
+    })
+  ) {
+    await prisma.brand.update({
+      where: { id: brandId },
+      data: { contextUpdatedAt: new Date() },
+    });
+  }
+
   revalidatePath("/dashboard/brands");
   revalidatePath(`/dashboard/brands/${brandId}`);
 }

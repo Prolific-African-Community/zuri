@@ -15,6 +15,7 @@ import {
   type PreviewImage,
   type PublicationView,
   type PublishedView,
+  type UnpublishView,
   type PullRequestView,
 } from "@/components/content/publishing-preview";
 import { Badge } from "@/components/ui/badge";
@@ -42,9 +43,12 @@ export function ArticleEditor({
   images,
   publishing,
   reviewStatus,
+  publicationState,
+  archived,
   pullRequest,
   published,
   publications,
+  unpublish,
   businessPost,
   publicUrl,
   bannerUrl,
@@ -57,9 +61,12 @@ export function ArticleEditor({
   images: ArticleImageView[];
   publishing: PublishingPackage;
   reviewStatus: string;
+  publicationState: string;
+  archived: boolean;
   pullRequest: PullRequestView | null;
   published: PublishedView | null;
   publications: PublicationView[];
+  unpublish: UnpublishView;
   businessPost: BusinessPostView | null;
   publicUrl: string | null;
   bannerUrl: string | null;
@@ -209,9 +216,12 @@ export function ArticleEditor({
       pkg={publishing}
       images={images as PreviewImage[]}
       reviewStatus={reviewStatus}
+      publicationState={publicationState}
+      archived={archived}
       pullRequest={pullRequest}
       published={published}
       publications={publications}
+      unpublish={unpublish}
       title={asset.title ?? "Untitled"}
       excerpt={draft.excerpt}
       />

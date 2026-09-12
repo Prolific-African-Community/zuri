@@ -37,7 +37,7 @@ export async function generateGrowthWeekAction(
           },
         },
         contentAssets: {
-          where: { status: { not: "ARCHIVED" } },
+          where: { archivedAt: null },
           orderBy: { createdAt: "desc" },
           take: 30,
         },

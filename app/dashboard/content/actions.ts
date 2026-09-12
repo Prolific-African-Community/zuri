@@ -4,7 +4,10 @@ import { requireSession } from "@/lib/session";
 
 import { resetReview } from "@/app/dashboard/content/review-actions";
 import { parseLinks, parseTags } from "@/lib/article";
-import { ContentStatus } from "@/lib/generated/prisma/enums";
+import {
+  ArticlePublicationState,
+  ContentStatus,
+} from "@/lib/generated/prisma/enums";
 import { getPrisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
@@ -46,16 +49,51 @@ export async function approveContentAsset(assetId: string) {
   await setContentStatus(assetId, ContentStatus.APPROVED);
 }
 
+/**
+ * The archive shelf, and nothing else: `archivedAt` moves, the editorial
+ * status is preserved so an approved asset comes back approved, and no
+ * publication state is ever touched. A live article cannot be shelved —
+ * taking it off the site is a separate, explicit publishing act.
+ */
 export async function archiveContentAsset(assetId: string) {
   await requireSession();
 
-  await setContentStatus(assetId, ContentStatus.ARCHIVED);
+  const prisma = getPrisma();
+  const asset = await prisma.contentAsset.findUnique({
+    where: { id: assetId },
+    include: { articleDraft: { select: { publicationState: true } } },
+  });
+  if (!asset) throw new Error("Content not found.");
+
+  const state = asset.articleDraft?.publicationState;
+  if (state === ArticlePublicationState.PUBLISHED) {
+    throw new Error("This article is currently live. Unpublish it before archiving.");
+  }
+  if (
+    state === ArticlePublicationState.PUBLISHING ||
+    state === ArticlePublicationState.UNPUBLISHING
+  ) {
+    throw new Error(
+      "A publication change is in flight. Wait for it to finish before archiving.",
+    );
+  }
+
+  await prisma.contentAsset.update({
+    where: { id: assetId },
+    data: { archivedAt: new Date() },
+  });
+  refresh(assetId);
 }
 
+/** Back on the active shelf, exactly as it was. Never republishes anything. */
 export async function restoreContentAsset(assetId: string) {
   await requireSession();
 
-  await setContentStatus(assetId, ContentStatus.DRAFT);
+  await getPrisma().contentAsset.update({
+    where: { id: assetId },
+    data: { archivedAt: null },
+  });
+  refresh(assetId);
 }
 
 /** Assigning and moving a date share this action; the form supplies both. */
