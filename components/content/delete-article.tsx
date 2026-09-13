@@ -47,8 +47,8 @@ export function DeleteArticle({
         Delete <span className="font-medium text-ink">{title}</span>?
       </p>
       <p className="type-meta mt-2">
-        Deleting it here removes the draft, its banner and its publishing history
-        from Zuri. It does not remove anything already published on the site.
+        This cannot be undone. It removes the draft and its banner from Zuri, and
+        it does not remove anything already published on the site.
       </p>
 
       {blocked ? (
@@ -60,21 +60,14 @@ export function DeleteArticle({
 
       {published && !blocked ? (
         <p className="type-body mt-4 max-w-xl text-ink-2">
-          This article is published. Deleting it from Zuri will not remove the live
-          article.
+          This article has publication history and cannot be permanently deleted.
+          Archive it instead.
         </p>
       ) : null}
 
       <form action={formAction} className="mt-5 flex flex-wrap items-center gap-3">
-        {published ? (
-          <input type="hidden" name="confirmPublished" value="yes" />
-        ) : null}
-        <Button type="submit" size="sm" disabled={pending || blocked}>
-          {pending
-            ? "Deleting…"
-            : published
-              ? "Delete anyway"
-              : "Delete article"}
+        <Button type="submit" size="sm" disabled={pending || blocked || published}>
+          {pending ? "Deleting…" : "Delete permanently"}
         </Button>
         <Button
           type="button"

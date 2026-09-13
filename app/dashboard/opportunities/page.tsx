@@ -1,6 +1,7 @@
 import { ProposeAction } from "@/components/actions/propose-action";
 import { MetaIdeas } from "@/components/content/meta-ideas";
 import { GenerateArticle } from "@/components/opportunities/generate-article";
+import { DeleteOpportunity } from "@/components/opportunities/delete-opportunity";
 import { GenerateOpportunities } from "@/components/opportunities/generate-button";
 import { LinkedInDrafts } from "@/components/opportunities/linkedin-drafts";
 import { SeoBrief } from "@/components/opportunities/seo-brief";
@@ -52,14 +53,13 @@ const chip =
 const chipActive = "bg-accent-soft font-medium text-accent-ink";
 const chipIdle = "text-ink-3 hover:bg-sunken hover:text-ink";
 
-const TABS = ["all", "search", "market", "archived"] as const;
+const TABS = ["all", "search", "market"] as const;
 type Tab = (typeof TABS)[number];
 
 const TAB_LABELS: Record<Tab, string> = {
   all: "All",
   search: "Search / SEO",
   market: "Market",
-  archived: "Archived",
 };
 
 /** What to do next when a tab is empty, rather than a dead end. */
@@ -67,26 +67,23 @@ const TAB_NEXT: Record<Tab, string> = {
   all: "Generate opportunities from this brand's own knowledge, or add one by hand.",
   search: "Crawl the site and discover keywords, then generate SEO opportunities from Search.",
   market: "Capture an observation or a market signal, then generate opportunities.",
-  archived: "Anything you archive lands here, and can be restored.",
 };
 
 const TAB_EMPTY: Record<Tab, string> = {
   all: "No opportunities",
   search: "No SEO opportunities",
   market: "No market opportunities",
-  archived: "Nothing archived",
 };
 
-type Sortable = { source: string; status: string };
+type Sortable = { source: string };
 
 /**
  * The tabs partition the list on the opportunity's own source, so it belongs
- * to exactly one of them and nothing is counted twice.
+ * to exactly one of them and nothing is counted twice. Archive is not a tab:
+ * `Opportunity.status === ARCHIVED` is the single predicate, applied by the
+ * status filter in the query, so counts and rows can never disagree.
  */
 function inTab(opportunity: Sortable, tab: Tab) {
-  const archived = opportunity.status === "ARCHIVED";
-  if (tab === "archived") return archived;
-  if (archived) return false;
   if (tab === "all") return true;
 
   // The source is the only stable thing to group on: a draft that happens to
@@ -208,8 +205,10 @@ export default async function OpportunitiesPage({
     ? await prisma.opportunity.findMany({
         where: {
           ...(brandFilter === "all" ? {} : { brandId: brandFilter }),
+          // "All" means active: archived opportunities are reached only
+          // through the Archived status filter, never through a tab.
           ...(statusFilter === "all"
-            ? {}
+            ? { status: { not: OpportunityStatus.ARCHIVED } }
             : { status: statusFilter as OpportunityStatus }),
         },
         orderBy: [{ score: "desc" }, { createdAt: "desc" }],
@@ -489,14 +488,14 @@ export default async function OpportunitiesPage({
                   ) : null}
 
                   {archived ? (
-                    <form
-                      action={restoreOpportunity.bind(null, opportunity.id)}
-                      className="mt-3 border-t border-line pt-3"
-                    >
-                      <Button type="submit" variant="ghost" size="sm">
-                        Restore
-                      </Button>
-                    </form>
+                    <div className="mt-3 flex flex-wrap items-center gap-4 border-t border-line pt-3">
+                      <form action={restoreOpportunity.bind(null, opportunity.id)}>
+                        <Button type="submit" variant="ghost" size="sm">
+                          Restore
+                        </Button>
+                      </form>
+                      <DeleteOpportunity opportunityId={opportunity.id} />
+                    </div>
                   ) : (
                     <div className="mt-4 border-t border-line pt-3.5">
                       <p className="type-label">Next step</p>

@@ -48,8 +48,24 @@ type Filterable = {
   type: string;
   status: string;
   archivedAt: Date | null;
+  googleBusinessPublishedAt: Date | null;
   articleDraft?: { publicationState: string } | null;
 };
+
+/**
+ * Published means live somewhere, not editorially approved. A channel with no
+ * real publishing integration therefore never reports anything as published.
+ */
+function isPublished(asset: Filterable) {
+  if (asset.articleDraft) {
+    return asset.articleDraft.publicationState === "PUBLISHED";
+  }
+  if (asset.channel === "GOOGLE_BUSINESS") {
+    return asset.googleBusinessPublishedAt !== null;
+  }
+  // LinkedIn, Facebook and Instagram have no publishing integration yet.
+  return false;
+}
 
 /** One rule per tab, read from the data the models already carry. */
 function inTab(asset: Filterable, tab: (typeof TABS)[number]) {
@@ -64,11 +80,7 @@ function inTab(asset: Filterable, tab: (typeof TABS)[number]) {
     case "drafts":
       return asset.status === "DRAFT";
     case "published":
-      // An article is published when publication says so; other content when
-      // it has been approved.
-      return asset.articleDraft
-        ? asset.articleDraft.publicationState === "PUBLISHED"
-        : asset.status === "APPROVED";
+      return isPublished(asset);
     case "archived":
       return false;
     default:
@@ -245,6 +257,7 @@ export default async function ContentPage({
                     ...asset,
                     articlePublicationState:
                       asset.articleDraft?.publicationState ?? null,
+                    externallyPublished: isPublished(asset),
                   } as ContentRowData
                 }
               />

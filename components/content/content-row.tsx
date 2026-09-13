@@ -9,6 +9,7 @@ import {
 import { ArchiveCross } from "@/components/ui/archive-cross";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { DeleteContent } from "@/components/content/delete-content";
 import { Disclosure } from "@/components/ui/disclosure";
 import { Field, TextArea } from "@/components/ui/field";
 import Link from "next/link";
@@ -28,6 +29,8 @@ export type ContentRowData = {
   /** Set for an article; PUBLISHED or NEEDS_UPDATE means it is online. */
   archivedAt: Date | null;
   articlePublicationState?: string | null;
+  /** Real publication somewhere, never editorial approval. */
+  externallyPublished?: boolean;
 };
 
 export const dateTime = new Intl.DateTimeFormat("en", {
@@ -120,6 +123,10 @@ export function ContentRow({ asset }: { asset: ContentRowData }) {
             <Badge tone="neutral">{dateTime.format(asset.scheduledAt)}</Badge>
           ) : null}
           {archived ? <Badge tone="muted">archived</Badge> : null}
+          {/* Editorial state always; publication state only where one exists. */}
+          <Badge tone={statusTone(asset.status)}>
+            {asset.status.toLowerCase()}
+          </Badge>
           {asset.articlePublicationState ? (
             <Badge
               tone={
@@ -130,11 +137,9 @@ export function ContentRow({ asset }: { asset: ContentRowData }) {
             >
               {PUBLICATION_LABELS[asset.articlePublicationState] ?? "draft"}
             </Badge>
-          ) : (
-            <Badge tone={statusTone(asset.status)}>
-              {asset.status.toLowerCase()}
-            </Badge>
-          )}
+          ) : asset.externallyPublished ? (
+            <Badge tone="accent">published</Badge>
+          ) : null}
           {archived || live ? null : (
             <ArchiveCross action={archiveContentAsset.bind(null, asset.id)} />
           )}
@@ -202,7 +207,8 @@ export function ContentRow({ asset }: { asset: ContentRowData }) {
         ) : null}
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+      <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+        <DeleteContent assetId={asset.id} />
         <Disclosure summary={asset.scheduledAt ? "Reschedule" : "Schedule"}>
           <ScheduleForm asset={asset} />
         </Disclosure>

@@ -362,9 +362,7 @@ export default async function ContentAssetPage({
           title={asset.title ?? "this article"}
           reviewStatus={article.reviewStatus}
           published={
-            article.reviewStatus === "PUBLISHED" ||
-            article.reviewStatus === "NEEDS_UPDATE" ||
-            publications.length > 0
+            publicationState !== "NEVER_PUBLISHED" || publications.length > 0
           }
         />
       ) : null}

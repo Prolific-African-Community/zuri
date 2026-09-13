@@ -88,6 +88,47 @@ export async function restoreOpportunity(opportunityId: string) {
   refresh();
 }
 
+export type DeleteOpportunityState = { status: "idle" | "error"; message: string };
+
+/**
+ * Permanent deletion. Content assets and proposed actions survive an
+ * opportunity being deleted (the schema sets their link to null), but they
+ * would lose the record of where they came from — so an opportunity that
+ * produced anything is refused here and has to be archived instead. The SEO
+ * brief is the opportunity's own output and goes with it.
+ */
+export async function deleteOpportunity(
+  opportunityId: string,
+  _prevState: DeleteOpportunityState,
+  _formData: FormData,
+): Promise<DeleteOpportunityState> {
+  await requireSession();
+
+  const prisma = getPrisma();
+  const opportunity = await prisma.opportunity.findUnique({
+    where: { id: opportunityId },
+    select: {
+      _count: { select: { contentAssets: true, proposedActions: true } },
+    },
+  });
+  if (!opportunity) return { status: "error", message: "Opportunity not found." };
+
+  if (
+    opportunity._count.contentAssets > 0 ||
+    opportunity._count.proposedActions > 0
+  ) {
+    return {
+      status: "error",
+      message:
+        "This opportunity has linked content or actions. Archive it instead, or remove the linked outputs first.",
+    };
+  }
+
+  await prisma.opportunity.delete({ where: { id: opportunityId } });
+  refresh();
+  return { status: "idle", message: "" };
+}
+
 /* -------------------------------------------------------------------------- */
 /* Generation                                                                 */
 /* -------------------------------------------------------------------------- */
