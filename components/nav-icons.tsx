@@ -106,3 +106,11 @@ export const SettingsIcon = (p: IconProps) => (
     <path d="M10 2.8v1.8M10 15.4v1.8M17.2 10h-1.8M4.6 10H2.8M15.1 4.9l-1.3 1.3M6.2 13.8l-1.3 1.3M15.1 15.1l-1.3-1.3M6.2 6.2 4.9 4.9" />
   </Icon>
 );
+
+export const SalesIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M3.5 15.5h13" />
+    <path d="M5.5 12.5 9 9l2.5 2.5 4-4.5" />
+    <path d="M12.8 7h2.7v2.7" />
+  </Icon>
+);

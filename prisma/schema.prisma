@@ -81,6 +81,8 @@ model Brand {
   searchConsoleRows  SearchConsoleRow[]
   adsSyncs           AdsSync[]
   adsRows            AdsRow[]
+  salesCampaigns     SalesCampaign[]
+  prospects          Prospect[]
 
   @@unique([workspaceId, slug])
   @@index([workspaceId])
@@ -792,4 +794,355 @@ model AdsRow {
   @@index([syncId])
   @@index([brandId])
   @@index([level])
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Sales Intelligence                                                         */
+/* -------------------------------------------------------------------------- */
+
+enum SalesCampaignStatus {
+  ACTIVE
+  PAUSED
+  ARCHIVED
+}
+
+enum SalesConfidence {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum ProspectPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum ProspectStatus {
+  DISCOVERED
+  QUALIFIED
+  TO_CONTACT
+  CONTACTED
+  FOLLOW_UP
+  MEETING_BOOKED
+  DISCOVERY_COMPLETED
+  PROPOSAL
+  NEGOTIATION
+  WON
+  LOST
+  DISQUALIFIED
+}
+
+enum ProspectResearchStatus {
+  NOT_RESEARCHED
+  RESEARCHING
+  COMPLETE
+  FAILED
+}
+
+/// FACT is sourced, INFERENCE is reasoned, UNKNOWN is still to qualify.
+enum EvidenceType {
+  FACT
+  INFERENCE
+  UNKNOWN
+}
+
+enum ContactDecisionRole {
+  DECISION_MAKER
+  CHAMPION
+  USER
+  INFLUENCER
+  GATEKEEPER
+  UNKNOWN
+}
+
+enum InteractionType {
+  CALL
+  EMAIL
+  MEETING
+  LINKEDIN
+  NOTE
+  OTHER
+}
+
+/// One offer aimed at one kind of company, for exactly one Brand.
+model SalesCampaign {
+  id                   String              @id @default(cuid())
+  brandId              String
+  name                 String
+  offer                String
+  description          String?
+  geography            String[]
+  industries           String[]
+  targetCompanySize    String?
+  idealCustomerProfile String              @default("")
+  painPoints           String[]
+  valueProposition     String              @default("")
+  primaryAngle         String              @default("")
+  targetTicketMin      Int?
+  targetTicketMax      Int?
+  currency             String?
+  preferredProfile     String[]
+  exclusions           String[]
+  /// Criteria and weights the research engine will score against.
+  scoringCriteria      Json                @default("[]")
+  status               SalesCampaignStatus @default(ACTIVE)
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+  brand                Brand               @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  prospects            Prospect[]
+  researchRuns         SalesResearchRun[]
+
+  @@index([brandId])
+}
+
+/// A company worth approaching for one campaign. `brandId` is stored rather
+/// than derived so every query can isolate by Brand directly.
+model Prospect {
+  id             String   @id @default(cuid())
+  campaignId     String
+  brandId        String
+  name           String
+  website        String?
+  country        String?
+  city           String?
+  industry       String?
+  description    String?
+  employeeCount  Int?
+  revenue        String?
+  fleetSize      Int?
+  activities     String[]
+  locations      String[]
+  linkedinUrl    String?
+  /// Company-level channels, as printed on the official website. People live in ProspectContact.
+  companyPhone   String?
+  /// Where the company phone was read: TEL_LINK, STRUCTURED_DATA, LABELLED_TEXT, PLAIN_TEXT, MAPS or MANUAL.
+  companyPhoneSource    String?
+  /// The official page it was printed on (null for Maps or manual entry).
+  companyPhoneSourceUrl String?
+  companyEmail   String?
+  contactPageUrl String?
+
+  digitalMaturityScore Int?
+  detectedTools        String[]
+  tms                  String?
+  erp                  String?
+  crm                  String?
+  telematics           String?
+  clientPortal         String?
+  driverApp            String?
+  visibleAutomations   String[]
+
+  fitScore       Int?
+  fitConfidence  SalesConfidence  @default(LOW)
+  fitExplanation Json?
+  priority       ProspectPriority @default(MEDIUM)
+
+  status        ProspectStatus @default(DISCOVERED)
+  lastContactAt DateTime?
+  nextAction    String?
+  nextActionAt  DateTime?
+  owner         String?
+  notes         String?
+
+  researchedAt   DateTime?
+  researchStatus ProspectResearchStatus @default(NOT_RESEARCHED)
+  /// Canonical website identity (no scheme, no www) used for deduplication.
+  normalizedDomain String?
+  /// The research run that found this prospect, when it was not added by hand.
+  researchRunId    String?
+
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+  campaign     SalesCampaign         @relation(fields: [campaignId], references: [id], onDelete: Restrict)
+  brand        Brand                 @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  researchRun  SalesResearchRun?     @relation(fields: [researchRunId], references: [id], onDelete: SetNull)
+  evidence     ProspectEvidence[]
+  contacts     ProspectContact[]
+  interactions ProspectInteraction[]
+  intelligence ProspectIntelligence?
+
+  @@index([brandId])
+  @@index([campaignId])
+  @@index([normalizedDomain])
+}
+
+/// One inspectable research statement. Never collapsed into Prospect fields.
+model ProspectEvidence {
+  id              String          @id @default(cuid())
+  prospectId      String
+  type            EvidenceType
+  category        String
+  statement       String
+  sourceUrl       String?
+  sourceName      String?
+  evidenceExcerpt String?
+  observedAt      DateTime?
+  confidence      SalesConfidence @default(MEDIUM)
+  /// How much the source itself can be trusted, independent of the statement.
+  sourceQuality   SourceQuality?
+  /// The interaction this statement was learned from, when it came from one.
+  interactionId   String?
+  /// Replaced by newer information. Kept for history; never scored.
+  supersededAt    DateTime?
+  supersededById  String?
+  /// An UNKNOWN answered by a later fact. Kept for history; never scored.
+  resolvedAt      DateTime?
+  resolvedById    String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  prospect        Prospect        @relation(fields: [prospectId], references: [id], onDelete: Cascade)
+  interaction     ProspectInteraction? @relation(fields: [interactionId], references: [id], onDelete: SetNull)
+
+  @@index([prospectId])
+}
+
+model ProspectContact {
+  id           String              @id @default(cuid())
+  prospectId   String
+  firstName    String?
+  lastName     String?
+  jobTitle     String?
+  seniority    String?
+  decisionRole ContactDecisionRole @default(UNKNOWN)
+  phone        String?
+  mobile       String?
+  email        String?
+  linkedinUrl  String?
+  sourceUrl    String?
+  sourceName   String?
+  isPrimary    Boolean             @default(false)
+  confidence   SalesConfidence     @default(MEDIUM)
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+  prospect     Prospect            @relation(fields: [prospectId], references: [id], onDelete: Cascade)
+  interactions ProspectInteraction[]
+
+  @@index([prospectId])
+}
+
+/// What actually happened with a prospect, as written at the time.
+model ProspectInteraction {
+  id                String           @id @default(cuid())
+  prospectId        String
+  contactId         String?
+  type              InteractionType
+  occurredAt        DateTime
+  rawNote           String
+  structuredSummary String?
+  createdFacts      Json?
+  previousStatus    ProspectStatus?
+  resultingStatus   ProspectStatus?
+  nextAction        String?
+  nextActionAt      DateTime?
+  analysisStatus    InteractionAnalysisStatus @default(NONE)
+  /// The proposals from analysis, each with its own id, as validated by the server.
+  analysis          Json?
+  analysisError     String?
+  analyzedAt        DateTime?
+  appliedAt         DateTime?
+  /// What applying changed: counts, and fit/confidence/pipeline before → after.
+  outcome           Json?
+  createdAt         DateTime         @default(now())
+  prospect          Prospect         @relation(fields: [prospectId], references: [id], onDelete: Cascade)
+  contact           ProspectContact? @relation(fields: [contactId], references: [id], onDelete: SetNull)
+  evidence          ProspectEvidence[]
+
+  @@index([prospectId])
+}
+
+/// The interpreted layer: what Zuri concludes from the stored evidence. It
+/// never holds evidence itself and never creates any.
+model ProspectIntelligence {
+  id                      String          @id @default(cuid())
+  prospectId              String          @unique
+  whyThisProspect         String
+  /// Ranked [{ pain, basis: FACT|INFERENCE, rationale, confidence, evidenceRefs }]
+  likelyPainPoints        Json
+  /// Ranked [{ question, whyItMatters, impact }]
+  qualificationPriorities Json
+  /// [{ contactId, relevance, priority }] plus the chosen entry point
+  decisionMakers          Json
+  recommendedContactId    String?
+  entryPointRationale     String
+  commercialAngle         String
+  discoveryQuestions      Json
+  /// { opening, ifAskedWhy }
+  gatekeeperScript        Json
+  decisionMakerOpening    String
+  /// [{ objection, response }]
+  objections              Json
+  /// [{ lever, rationale }]
+  negotiationLevers       Json
+  estimatedTicketMin      Int?
+  estimatedTicketMax      Int?
+  estimatedTicketCurrency String?
+  estimatedTicketBasis    String
+  nextBestAction          String
+  nextBestActionRationale String
+  fitScore                Int
+  fitConfidence           SalesConfidence
+  /// { factors: [{ label, points, basis, evidenceRefs, applied }], confidenceNotes }
+  fitExplanation          Json
+  model                   String
+  generatedAt             DateTime
+  /// Hash of every input, so a stale brief is visible without regenerating.
+  sourceFingerprint       String
+  createdAt               DateTime        @default(now())
+  updatedAt               DateTime        @updatedAt
+  prospect                Prospect        @relation(fields: [prospectId], references: [id], onDelete: Cascade)
+}
+
+enum SourceQuality {
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum SalesResearchRunStatus {
+  RUNNING
+  COMPLETE
+  /// Usable prospects, but a significant share of discovery searches failed.
+  DEGRADED
+  FAILED
+}
+
+/// One "Find prospects" run. Counters are updated as it goes so progress is
+/// visible without any job infrastructure.
+model SalesResearchRun {
+  id                String                 @id @default(cuid())
+  campaignId        String
+  requestedCount    Int
+  geographyOverride String?
+  industryOverride  String?
+  discoveredCount   Int                    @default(0)
+  researchedCount   Int                    @default(0)
+  savedCount        Int                    @default(0)
+  duplicateCount    Int                    @default(0)
+  plannedSearches    Int                   @default(0)
+  successfulSearches Int                   @default(0)
+  failedSearches     Int                   @default(0)
+  /// Share of planned searches that succeeded, 0–1.
+  coverageRatio      Float?
+  status            SalesResearchRunStatus @default(RUNNING)
+  /// What the run is doing right now, in plain words.
+  stage             String                 @default("Starting")
+  startedAt         DateTime               @default(now())
+  completedAt       DateTime?
+  error             String?
+  /// Queries, and one line per candidate with its outcome.
+  summary           Json?
+  campaign          SalesCampaign          @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  prospects         Prospect[]
+
+  @@index([campaignId])
+}
+
+enum InteractionAnalysisStatus {
+  NONE
+  PROPOSED
+  APPLIED
+  DISMISSED
+  FAILED
 }

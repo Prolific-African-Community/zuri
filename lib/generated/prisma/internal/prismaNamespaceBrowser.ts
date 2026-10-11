@@ -79,7 +79,14 @@ export const ModelName = {
   SearchConsoleSync: 'SearchConsoleSync',
   SearchConsoleRow: 'SearchConsoleRow',
   AdsSync: 'AdsSync',
-  AdsRow: 'AdsRow'
+  AdsRow: 'AdsRow',
+  SalesCampaign: 'SalesCampaign',
+  Prospect: 'Prospect',
+  ProspectEvidence: 'ProspectEvidence',
+  ProspectContact: 'ProspectContact',
+  ProspectInteraction: 'ProspectInteraction',
+  ProspectIntelligence: 'ProspectIntelligence',
+  SalesResearchRun: 'SalesResearchRun'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -615,6 +622,215 @@ export const AdsRowScalarFieldEnum = {
 } as const
 
 export type AdsRowScalarFieldEnum = (typeof AdsRowScalarFieldEnum)[keyof typeof AdsRowScalarFieldEnum]
+
+
+export const SalesCampaignScalarFieldEnum = {
+  id: 'id',
+  brandId: 'brandId',
+  name: 'name',
+  offer: 'offer',
+  description: 'description',
+  geography: 'geography',
+  industries: 'industries',
+  targetCompanySize: 'targetCompanySize',
+  idealCustomerProfile: 'idealCustomerProfile',
+  painPoints: 'painPoints',
+  valueProposition: 'valueProposition',
+  primaryAngle: 'primaryAngle',
+  targetTicketMin: 'targetTicketMin',
+  targetTicketMax: 'targetTicketMax',
+  currency: 'currency',
+  preferredProfile: 'preferredProfile',
+  exclusions: 'exclusions',
+  scoringCriteria: 'scoringCriteria',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SalesCampaignScalarFieldEnum = (typeof SalesCampaignScalarFieldEnum)[keyof typeof SalesCampaignScalarFieldEnum]
+
+
+export const ProspectScalarFieldEnum = {
+  id: 'id',
+  campaignId: 'campaignId',
+  brandId: 'brandId',
+  name: 'name',
+  website: 'website',
+  country: 'country',
+  city: 'city',
+  industry: 'industry',
+  description: 'description',
+  employeeCount: 'employeeCount',
+  revenue: 'revenue',
+  fleetSize: 'fleetSize',
+  activities: 'activities',
+  locations: 'locations',
+  linkedinUrl: 'linkedinUrl',
+  companyPhone: 'companyPhone',
+  companyPhoneSource: 'companyPhoneSource',
+  companyPhoneSourceUrl: 'companyPhoneSourceUrl',
+  companyEmail: 'companyEmail',
+  contactPageUrl: 'contactPageUrl',
+  digitalMaturityScore: 'digitalMaturityScore',
+  detectedTools: 'detectedTools',
+  tms: 'tms',
+  erp: 'erp',
+  crm: 'crm',
+  telematics: 'telematics',
+  clientPortal: 'clientPortal',
+  driverApp: 'driverApp',
+  visibleAutomations: 'visibleAutomations',
+  fitScore: 'fitScore',
+  fitConfidence: 'fitConfidence',
+  fitExplanation: 'fitExplanation',
+  priority: 'priority',
+  status: 'status',
+  lastContactAt: 'lastContactAt',
+  nextAction: 'nextAction',
+  nextActionAt: 'nextActionAt',
+  owner: 'owner',
+  notes: 'notes',
+  researchedAt: 'researchedAt',
+  researchStatus: 'researchStatus',
+  normalizedDomain: 'normalizedDomain',
+  researchRunId: 'researchRunId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProspectScalarFieldEnum = (typeof ProspectScalarFieldEnum)[keyof typeof ProspectScalarFieldEnum]
+
+
+export const ProspectEvidenceScalarFieldEnum = {
+  id: 'id',
+  prospectId: 'prospectId',
+  type: 'type',
+  category: 'category',
+  statement: 'statement',
+  sourceUrl: 'sourceUrl',
+  sourceName: 'sourceName',
+  evidenceExcerpt: 'evidenceExcerpt',
+  observedAt: 'observedAt',
+  confidence: 'confidence',
+  sourceQuality: 'sourceQuality',
+  interactionId: 'interactionId',
+  supersededAt: 'supersededAt',
+  supersededById: 'supersededById',
+  resolvedAt: 'resolvedAt',
+  resolvedById: 'resolvedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProspectEvidenceScalarFieldEnum = (typeof ProspectEvidenceScalarFieldEnum)[keyof typeof ProspectEvidenceScalarFieldEnum]
+
+
+export const ProspectContactScalarFieldEnum = {
+  id: 'id',
+  prospectId: 'prospectId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  jobTitle: 'jobTitle',
+  seniority: 'seniority',
+  decisionRole: 'decisionRole',
+  phone: 'phone',
+  mobile: 'mobile',
+  email: 'email',
+  linkedinUrl: 'linkedinUrl',
+  sourceUrl: 'sourceUrl',
+  sourceName: 'sourceName',
+  isPrimary: 'isPrimary',
+  confidence: 'confidence',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProspectContactScalarFieldEnum = (typeof ProspectContactScalarFieldEnum)[keyof typeof ProspectContactScalarFieldEnum]
+
+
+export const ProspectInteractionScalarFieldEnum = {
+  id: 'id',
+  prospectId: 'prospectId',
+  contactId: 'contactId',
+  type: 'type',
+  occurredAt: 'occurredAt',
+  rawNote: 'rawNote',
+  structuredSummary: 'structuredSummary',
+  createdFacts: 'createdFacts',
+  previousStatus: 'previousStatus',
+  resultingStatus: 'resultingStatus',
+  nextAction: 'nextAction',
+  nextActionAt: 'nextActionAt',
+  analysisStatus: 'analysisStatus',
+  analysis: 'analysis',
+  analysisError: 'analysisError',
+  analyzedAt: 'analyzedAt',
+  appliedAt: 'appliedAt',
+  outcome: 'outcome',
+  createdAt: 'createdAt'
+} as const
+
+export type ProspectInteractionScalarFieldEnum = (typeof ProspectInteractionScalarFieldEnum)[keyof typeof ProspectInteractionScalarFieldEnum]
+
+
+export const ProspectIntelligenceScalarFieldEnum = {
+  id: 'id',
+  prospectId: 'prospectId',
+  whyThisProspect: 'whyThisProspect',
+  likelyPainPoints: 'likelyPainPoints',
+  qualificationPriorities: 'qualificationPriorities',
+  decisionMakers: 'decisionMakers',
+  recommendedContactId: 'recommendedContactId',
+  entryPointRationale: 'entryPointRationale',
+  commercialAngle: 'commercialAngle',
+  discoveryQuestions: 'discoveryQuestions',
+  gatekeeperScript: 'gatekeeperScript',
+  decisionMakerOpening: 'decisionMakerOpening',
+  objections: 'objections',
+  negotiationLevers: 'negotiationLevers',
+  estimatedTicketMin: 'estimatedTicketMin',
+  estimatedTicketMax: 'estimatedTicketMax',
+  estimatedTicketCurrency: 'estimatedTicketCurrency',
+  estimatedTicketBasis: 'estimatedTicketBasis',
+  nextBestAction: 'nextBestAction',
+  nextBestActionRationale: 'nextBestActionRationale',
+  fitScore: 'fitScore',
+  fitConfidence: 'fitConfidence',
+  fitExplanation: 'fitExplanation',
+  model: 'model',
+  generatedAt: 'generatedAt',
+  sourceFingerprint: 'sourceFingerprint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProspectIntelligenceScalarFieldEnum = (typeof ProspectIntelligenceScalarFieldEnum)[keyof typeof ProspectIntelligenceScalarFieldEnum]
+
+
+export const SalesResearchRunScalarFieldEnum = {
+  id: 'id',
+  campaignId: 'campaignId',
+  requestedCount: 'requestedCount',
+  geographyOverride: 'geographyOverride',
+  industryOverride: 'industryOverride',
+  discoveredCount: 'discoveredCount',
+  researchedCount: 'researchedCount',
+  savedCount: 'savedCount',
+  duplicateCount: 'duplicateCount',
+  plannedSearches: 'plannedSearches',
+  successfulSearches: 'successfulSearches',
+  failedSearches: 'failedSearches',
+  coverageRatio: 'coverageRatio',
+  status: 'status',
+  stage: 'stage',
+  startedAt: 'startedAt',
+  completedAt: 'completedAt',
+  error: 'error',
+  summary: 'summary'
+} as const
+
+export type SalesResearchRunScalarFieldEnum = (typeof SalesResearchRunScalarFieldEnum)[keyof typeof SalesResearchRunScalarFieldEnum]
 
 
 export const SortOrder = {

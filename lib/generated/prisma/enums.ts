@@ -257,3 +257,121 @@ export const AdsLevel = {
 } as const
 
 export type AdsLevel = (typeof AdsLevel)[keyof typeof AdsLevel]
+
+
+export const SalesCampaignStatus = {
+  ACTIVE: 'ACTIVE',
+  PAUSED: 'PAUSED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type SalesCampaignStatus = (typeof SalesCampaignStatus)[keyof typeof SalesCampaignStatus]
+
+
+export const SalesConfidence = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+} as const
+
+export type SalesConfidence = (typeof SalesConfidence)[keyof typeof SalesConfidence]
+
+
+export const ProspectPriority = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+} as const
+
+export type ProspectPriority = (typeof ProspectPriority)[keyof typeof ProspectPriority]
+
+
+export const ProspectStatus = {
+  DISCOVERED: 'DISCOVERED',
+  QUALIFIED: 'QUALIFIED',
+  TO_CONTACT: 'TO_CONTACT',
+  CONTACTED: 'CONTACTED',
+  FOLLOW_UP: 'FOLLOW_UP',
+  MEETING_BOOKED: 'MEETING_BOOKED',
+  DISCOVERY_COMPLETED: 'DISCOVERY_COMPLETED',
+  PROPOSAL: 'PROPOSAL',
+  NEGOTIATION: 'NEGOTIATION',
+  WON: 'WON',
+  LOST: 'LOST',
+  DISQUALIFIED: 'DISQUALIFIED'
+} as const
+
+export type ProspectStatus = (typeof ProspectStatus)[keyof typeof ProspectStatus]
+
+
+export const ProspectResearchStatus = {
+  NOT_RESEARCHED: 'NOT_RESEARCHED',
+  RESEARCHING: 'RESEARCHING',
+  COMPLETE: 'COMPLETE',
+  FAILED: 'FAILED'
+} as const
+
+export type ProspectResearchStatus = (typeof ProspectResearchStatus)[keyof typeof ProspectResearchStatus]
+
+
+export const EvidenceType = {
+  FACT: 'FACT',
+  INFERENCE: 'INFERENCE',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type EvidenceType = (typeof EvidenceType)[keyof typeof EvidenceType]
+
+
+export const ContactDecisionRole = {
+  DECISION_MAKER: 'DECISION_MAKER',
+  CHAMPION: 'CHAMPION',
+  USER: 'USER',
+  INFLUENCER: 'INFLUENCER',
+  GATEKEEPER: 'GATEKEEPER',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type ContactDecisionRole = (typeof ContactDecisionRole)[keyof typeof ContactDecisionRole]
+
+
+export const InteractionType = {
+  CALL: 'CALL',
+  EMAIL: 'EMAIL',
+  MEETING: 'MEETING',
+  LINKEDIN: 'LINKEDIN',
+  NOTE: 'NOTE',
+  OTHER: 'OTHER'
+} as const
+
+export type InteractionType = (typeof InteractionType)[keyof typeof InteractionType]
+
+
+export const SourceQuality = {
+  HIGH: 'HIGH',
+  MEDIUM: 'MEDIUM',
+  LOW: 'LOW'
+} as const
+
+export type SourceQuality = (typeof SourceQuality)[keyof typeof SourceQuality]
+
+
+export const SalesResearchRunStatus = {
+  RUNNING: 'RUNNING',
+  COMPLETE: 'COMPLETE',
+  DEGRADED: 'DEGRADED',
+  FAILED: 'FAILED'
+} as const
+
+export type SalesResearchRunStatus = (typeof SalesResearchRunStatus)[keyof typeof SalesResearchRunStatus]
+
+
+export const InteractionAnalysisStatus = {
+  NONE: 'NONE',
+  PROPOSED: 'PROPOSED',
+  APPLIED: 'APPLIED',
+  DISMISSED: 'DISMISSED',
+  FAILED: 'FAILED'
+} as const
+
+export type InteractionAnalysisStatus = (typeof InteractionAnalysisStatus)[keyof typeof InteractionAnalysisStatus]

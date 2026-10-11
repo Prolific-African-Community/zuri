@@ -100,7 +100,14 @@ async function call(path: string, body: unknown): Promise<unknown> {
 
   const task = payload.tasks?.[0];
   if (!task) throw new Error("DataForSEO returned no task.");
-  if (task.status_code !== 20000) {
+  // "Completed with partial results" still carries usable results: keep them
+  // rather than discarding a whole query over a few unreachable SERP pages.
+  const partial =
+    task.status_code !== 20000 &&
+    /partial results/i.test(task.status_message ?? "") &&
+    Array.isArray(task.result) &&
+    task.result.length > 0;
+  if (task.status_code !== 20000 && !partial) {
     console.error("DataForSEO task error", path, task.status_code, task.status_message);
     throw new Error(
       `DataForSEO: ${task.status_message ?? "task failed"}`.slice(0, 160),
@@ -149,12 +156,14 @@ export async function fetchKeywordMetrics(
 export async function fetchSerp(
   keyword: string,
   depth = 10,
+  /** Overrides the env defaults, e.g. { location: "Luxembourg", language: "French" }. */
+  market?: { location?: string; language?: string },
 ): Promise<SerpResult[]> {
   const result = (await call("/serp/google/organic/live/advanced", [
     {
       keyword,
-      location_name: seoLocation(),
-      language_name: seoLanguage(),
+      location_name: market?.location || seoLocation(),
+      language_name: market?.language || seoLanguage(),
       depth,
     },
   ])) as
@@ -217,4 +226,56 @@ export function priorityScore(metrics: {
           : 0;
 
   return Math.max(0, Math.min(100, volumePoints + difficultyPoints + intentPoints));
+}
+
+export type MapsResult = {
+  title: string;
+  domain: string | null;
+  url: string | null;
+  phone: string | null;
+  address: string | null;
+  category: string | null;
+};
+
+/**
+ * Local businesses from Google Maps for a category-style keyword. Small
+ * regional operators that rank poorly in organic results are often listed
+ * here with their own website. Discovery input only.
+ */
+export async function fetchMaps(
+  keyword: string,
+  depth = 40,
+  market?: { location?: string; language?: string },
+): Promise<MapsResult[]> {
+  const result = (await call("/serp/google/maps/live/advanced", [
+    {
+      keyword,
+      location_name: market?.location || seoLocation(),
+      language_name: market?.language || seoLanguage(),
+      depth,
+    },
+  ])) as
+    | {
+        items?: {
+          type?: string;
+          title?: string;
+          domain?: string;
+          url?: string;
+          address?: string;
+          category?: string;
+          phone?: string;
+        }[];
+      }[]
+    | null;
+
+  return (result?.[0]?.items ?? [])
+    .filter((item) => item.type === "maps_search" && item.title)
+    .map((item) => ({
+      title: item.title as string,
+      domain: item.domain ?? null,
+      url: item.url ?? null,
+      address: item.address ?? null,
+      category: item.category ?? null,
+      phone: item.phone ?? null,
+    }));
 }

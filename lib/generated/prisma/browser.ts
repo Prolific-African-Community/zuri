@@ -170,3 +170,41 @@ export type AdsSync = Prisma.AdsSyncModel
  * 
  */
 export type AdsRow = Prisma.AdsRowModel
+/**
+ * Model SalesCampaign
+ * One offer aimed at one kind of company, for exactly one Brand.
+ */
+export type SalesCampaign = Prisma.SalesCampaignModel
+/**
+ * Model Prospect
+ * A company worth approaching for one campaign. `brandId` is stored rather
+ * than derived so every query can isolate by Brand directly.
+ */
+export type Prospect = Prisma.ProspectModel
+/**
+ * Model ProspectEvidence
+ * One inspectable research statement. Never collapsed into Prospect fields.
+ */
+export type ProspectEvidence = Prisma.ProspectEvidenceModel
+/**
+ * Model ProspectContact
+ * 
+ */
+export type ProspectContact = Prisma.ProspectContactModel
+/**
+ * Model ProspectInteraction
+ * What actually happened with a prospect, as written at the time.
+ */
+export type ProspectInteraction = Prisma.ProspectInteractionModel
+/**
+ * Model ProspectIntelligence
+ * The interpreted layer: what Zuri concludes from the stored evidence. It
+ * never holds evidence itself and never creates any.
+ */
+export type ProspectIntelligence = Prisma.ProspectIntelligenceModel
+/**
+ * Model SalesResearchRun
+ * One "Find prospects" run. Counters are updated as it goes so progress is
+ * visible without any job infrastructure.
+ */
+export type SalesResearchRun = Prisma.SalesResearchRunModel

@@ -4,7 +4,7 @@ import Link from "next/link";
 export type TabItem = {
   label: string;
   value: string;
-  count: number;
+  count?: number;
   href: string;
 };
 
@@ -34,14 +34,14 @@ export function TabNav({ tabs, active }: { tabs: TabItem[]; active: string }) {
             )}
           >
             {tab.label}
-            <span
+            {tab.count === undefined ? null : <span
               className={cn(
                 "ml-2 tabular-nums",
                 current ? "text-accent-ink" : "text-ink-4",
               )}
             >
               {tab.count}
-            </span>
+            </span>}
           </Link>
         );
       })}

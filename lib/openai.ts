@@ -140,7 +140,7 @@ function isGenerated(value: unknown): value is GeneratedOpportunity {
 }
 
 /** The one HTTP call. Both generators go through here. */
-async function callOpenAi(
+export async function callOpenAi(
   systemPrompt: string,
   context: unknown,
   schemaName: string,
