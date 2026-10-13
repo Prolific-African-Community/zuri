@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/ui/button";
 import { ZuriMark } from "@/components/zuri-logo";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -43,9 +44,16 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="type-meta flex items-center justify-between border-t border-line pt-6 text-ink-4">
+      <footer className="type-meta flex flex-col gap-3 border-t border-line pt-6 text-ink-4 sm:flex-row sm:items-center sm:justify-between">
         <span>Zuri</span>
-        <span>Multi-brand Growth OS</span>
+        <nav aria-label="Legal" className="flex items-center gap-5">
+          <Link className="rounded-sm transition-colors hover:text-ink" href="/privacy">
+            Privacy
+          </Link>
+          <Link className="rounded-sm transition-colors hover:text-ink" href="/terms">
+            Terms
+          </Link>
+        </nav>
       </footer>
     </main>
   );
