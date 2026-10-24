@@ -208,3 +208,18 @@ export type ProspectIntelligence = Prisma.ProspectIntelligenceModel
  * visible without any job infrastructure.
  */
 export type SalesResearchRun = Prisma.SalesResearchRunModel
+/**
+ * Model BillingCompany
+ * 
+ */
+export type BillingCompany = Prisma.BillingCompanyModel
+/**
+ * Model BillingCustomer
+ * 
+ */
+export type BillingCustomer = Prisma.BillingCustomerModel
+/**
+ * Model BillingDocument
+ * 
+ */
+export type BillingDocument = Prisma.BillingDocumentModel

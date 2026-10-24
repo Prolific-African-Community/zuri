@@ -365,6 +365,7 @@ export type BrandWhereInput = {
   adsRows?: Prisma.AdsRowListRelationFilter
   salesCampaigns?: Prisma.SalesCampaignListRelationFilter
   prospects?: Prisma.ProspectListRelationFilter
+  billingDocuments?: Prisma.BillingDocumentListRelationFilter
 }
 
 export type BrandOrderByWithRelationInput = {
@@ -416,10 +417,12 @@ export type BrandOrderByWithRelationInput = {
   adsRows?: Prisma.AdsRowOrderByRelationAggregateInput
   salesCampaigns?: Prisma.SalesCampaignOrderByRelationAggregateInput
   prospects?: Prisma.ProspectOrderByRelationAggregateInput
+  billingDocuments?: Prisma.BillingDocumentOrderByRelationAggregateInput
 }
 
 export type BrandWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  id_workspaceId?: Prisma.BrandIdWorkspaceIdCompoundUniqueInput
   workspaceId_slug?: Prisma.BrandWorkspaceIdSlugCompoundUniqueInput
   AND?: Prisma.BrandWhereInput | Prisma.BrandWhereInput[]
   OR?: Prisma.BrandWhereInput[]
@@ -471,7 +474,8 @@ export type BrandWhereUniqueInput = Prisma.AtLeast<{
   adsRows?: Prisma.AdsRowListRelationFilter
   salesCampaigns?: Prisma.SalesCampaignListRelationFilter
   prospects?: Prisma.ProspectListRelationFilter
-}, "id" | "workspaceId_slug">
+  billingDocuments?: Prisma.BillingDocumentListRelationFilter
+}, "id" | "id_workspaceId" | "workspaceId_slug">
 
 export type BrandOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -583,6 +587,7 @@ export type BrandCreateInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateInput = {
@@ -633,6 +638,7 @@ export type BrandUncheckedCreateInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUpdateInput = {
@@ -683,6 +689,7 @@ export type BrandUpdateInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateInput = {
@@ -733,6 +740,7 @@ export type BrandUncheckedUpdateInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateManyInput = {
@@ -826,6 +834,11 @@ export type BrandListRelationFilter = {
 
 export type BrandOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type BrandIdWorkspaceIdCompoundUniqueInput = {
+  id: string
+  workspaceId: string
 }
 
 export type BrandWorkspaceIdSlugCompoundUniqueInput = {
@@ -1292,6 +1305,20 @@ export type BrandUpdateOneRequiredWithoutProspectsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutProspectsInput, Prisma.BrandUpdateWithoutProspectsInput>, Prisma.BrandUncheckedUpdateWithoutProspectsInput>
 }
 
+export type BrandCreateNestedOneWithoutBillingDocumentsInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutBillingDocumentsInput, Prisma.BrandUncheckedCreateWithoutBillingDocumentsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutBillingDocumentsInput
+  connect?: Prisma.BrandWhereUniqueInput
+}
+
+export type BrandUpdateOneRequiredWithoutBillingDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.BrandCreateWithoutBillingDocumentsInput, Prisma.BrandUncheckedCreateWithoutBillingDocumentsInput>
+  connectOrCreate?: Prisma.BrandCreateOrConnectWithoutBillingDocumentsInput
+  upsert?: Prisma.BrandUpsertWithoutBillingDocumentsInput
+  connect?: Prisma.BrandWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BrandUpdateToOneWithWhereWithoutBillingDocumentsInput, Prisma.BrandUpdateWithoutBillingDocumentsInput>, Prisma.BrandUncheckedUpdateWithoutBillingDocumentsInput>
+}
+
 export type BrandCreateWithoutWorkspaceInput = {
   id?: string
   name: string
@@ -1339,6 +1366,7 @@ export type BrandCreateWithoutWorkspaceInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutWorkspaceInput = {
@@ -1388,6 +1416,7 @@ export type BrandUncheckedCreateWithoutWorkspaceInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutWorkspaceInput = {
@@ -1494,6 +1523,7 @@ export type BrandCreateWithoutProfileInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutProfileInput = {
@@ -1543,6 +1573,7 @@ export type BrandUncheckedCreateWithoutProfileInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutProfileInput = {
@@ -1608,6 +1639,7 @@ export type BrandUpdateWithoutProfileInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutProfileInput = {
@@ -1657,6 +1689,7 @@ export type BrandUncheckedUpdateWithoutProfileInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutAudiencesInput = {
@@ -1706,6 +1739,7 @@ export type BrandCreateWithoutAudiencesInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutAudiencesInput = {
@@ -1755,6 +1789,7 @@ export type BrandUncheckedCreateWithoutAudiencesInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutAudiencesInput = {
@@ -1820,6 +1855,7 @@ export type BrandUpdateWithoutAudiencesInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutAudiencesInput = {
@@ -1869,6 +1905,7 @@ export type BrandUncheckedUpdateWithoutAudiencesInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutVoiceRulesInput = {
@@ -1918,6 +1955,7 @@ export type BrandCreateWithoutVoiceRulesInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutVoiceRulesInput = {
@@ -1967,6 +2005,7 @@ export type BrandUncheckedCreateWithoutVoiceRulesInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutVoiceRulesInput = {
@@ -2032,6 +2071,7 @@ export type BrandUpdateWithoutVoiceRulesInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutVoiceRulesInput = {
@@ -2081,6 +2121,7 @@ export type BrandUncheckedUpdateWithoutVoiceRulesInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutGoldenExamplesInput = {
@@ -2130,6 +2171,7 @@ export type BrandCreateWithoutGoldenExamplesInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutGoldenExamplesInput = {
@@ -2179,6 +2221,7 @@ export type BrandUncheckedCreateWithoutGoldenExamplesInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutGoldenExamplesInput = {
@@ -2244,6 +2287,7 @@ export type BrandUpdateWithoutGoldenExamplesInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutGoldenExamplesInput = {
@@ -2293,6 +2337,7 @@ export type BrandUncheckedUpdateWithoutGoldenExamplesInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutObservationsInput = {
@@ -2342,6 +2387,7 @@ export type BrandCreateWithoutObservationsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutObservationsInput = {
@@ -2391,6 +2437,7 @@ export type BrandUncheckedCreateWithoutObservationsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutObservationsInput = {
@@ -2456,6 +2503,7 @@ export type BrandUpdateWithoutObservationsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutObservationsInput = {
@@ -2505,6 +2553,7 @@ export type BrandUncheckedUpdateWithoutObservationsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutCompetitorsInput = {
@@ -2554,6 +2603,7 @@ export type BrandCreateWithoutCompetitorsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutCompetitorsInput = {
@@ -2603,6 +2653,7 @@ export type BrandUncheckedCreateWithoutCompetitorsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutCompetitorsInput = {
@@ -2668,6 +2719,7 @@ export type BrandUpdateWithoutCompetitorsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutCompetitorsInput = {
@@ -2717,6 +2769,7 @@ export type BrandUncheckedUpdateWithoutCompetitorsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutMarketSignalsInput = {
@@ -2766,6 +2819,7 @@ export type BrandCreateWithoutMarketSignalsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutMarketSignalsInput = {
@@ -2815,6 +2869,7 @@ export type BrandUncheckedCreateWithoutMarketSignalsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutMarketSignalsInput = {
@@ -2880,6 +2935,7 @@ export type BrandUpdateWithoutMarketSignalsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutMarketSignalsInput = {
@@ -2929,6 +2985,7 @@ export type BrandUncheckedUpdateWithoutMarketSignalsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutOpportunitiesInput = {
@@ -2978,6 +3035,7 @@ export type BrandCreateWithoutOpportunitiesInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutOpportunitiesInput = {
@@ -3027,6 +3085,7 @@ export type BrandUncheckedCreateWithoutOpportunitiesInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutOpportunitiesInput = {
@@ -3092,6 +3151,7 @@ export type BrandUpdateWithoutOpportunitiesInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutOpportunitiesInput = {
@@ -3141,6 +3201,7 @@ export type BrandUncheckedUpdateWithoutOpportunitiesInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutContentAssetsInput = {
@@ -3190,6 +3251,7 @@ export type BrandCreateWithoutContentAssetsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutContentAssetsInput = {
@@ -3239,6 +3301,7 @@ export type BrandUncheckedCreateWithoutContentAssetsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutContentAssetsInput = {
@@ -3304,6 +3367,7 @@ export type BrandUpdateWithoutContentAssetsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutContentAssetsInput = {
@@ -3353,6 +3417,7 @@ export type BrandUncheckedUpdateWithoutContentAssetsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutVisualAssetsInput = {
@@ -3402,6 +3467,7 @@ export type BrandCreateWithoutVisualAssetsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutVisualAssetsInput = {
@@ -3451,6 +3517,7 @@ export type BrandUncheckedCreateWithoutVisualAssetsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutVisualAssetsInput = {
@@ -3516,6 +3583,7 @@ export type BrandUpdateWithoutVisualAssetsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutVisualAssetsInput = {
@@ -3565,6 +3633,7 @@ export type BrandUncheckedUpdateWithoutVisualAssetsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutWebsitePagesInput = {
@@ -3614,6 +3683,7 @@ export type BrandCreateWithoutWebsitePagesInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutWebsitePagesInput = {
@@ -3663,6 +3733,7 @@ export type BrandUncheckedCreateWithoutWebsitePagesInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutWebsitePagesInput = {
@@ -3728,6 +3799,7 @@ export type BrandUpdateWithoutWebsitePagesInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutWebsitePagesInput = {
@@ -3777,6 +3849,7 @@ export type BrandUncheckedUpdateWithoutWebsitePagesInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutKeywordsInput = {
@@ -3826,6 +3899,7 @@ export type BrandCreateWithoutKeywordsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutKeywordsInput = {
@@ -3875,6 +3949,7 @@ export type BrandUncheckedCreateWithoutKeywordsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutKeywordsInput = {
@@ -3940,6 +4015,7 @@ export type BrandUpdateWithoutKeywordsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutKeywordsInput = {
@@ -3989,6 +4065,7 @@ export type BrandUncheckedUpdateWithoutKeywordsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutSerpCompetitorsInput = {
@@ -4038,6 +4115,7 @@ export type BrandCreateWithoutSerpCompetitorsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutSerpCompetitorsInput = {
@@ -4087,6 +4165,7 @@ export type BrandUncheckedCreateWithoutSerpCompetitorsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutSerpCompetitorsInput = {
@@ -4152,6 +4231,7 @@ export type BrandUpdateWithoutSerpCompetitorsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutSerpCompetitorsInput = {
@@ -4201,6 +4281,7 @@ export type BrandUncheckedUpdateWithoutSerpCompetitorsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutSeoBriefsInput = {
@@ -4250,6 +4331,7 @@ export type BrandCreateWithoutSeoBriefsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutSeoBriefsInput = {
@@ -4299,6 +4381,7 @@ export type BrandUncheckedCreateWithoutSeoBriefsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutSeoBriefsInput = {
@@ -4364,6 +4447,7 @@ export type BrandUpdateWithoutSeoBriefsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutSeoBriefsInput = {
@@ -4413,6 +4497,7 @@ export type BrandUncheckedUpdateWithoutSeoBriefsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutGrowthWeekPlansInput = {
@@ -4462,6 +4547,7 @@ export type BrandCreateWithoutGrowthWeekPlansInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutGrowthWeekPlansInput = {
@@ -4511,6 +4597,7 @@ export type BrandUncheckedCreateWithoutGrowthWeekPlansInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutGrowthWeekPlansInput = {
@@ -4576,6 +4663,7 @@ export type BrandUpdateWithoutGrowthWeekPlansInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutGrowthWeekPlansInput = {
@@ -4625,6 +4713,7 @@ export type BrandUncheckedUpdateWithoutGrowthWeekPlansInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutProposedActionsInput = {
@@ -4674,6 +4763,7 @@ export type BrandCreateWithoutProposedActionsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutProposedActionsInput = {
@@ -4723,6 +4813,7 @@ export type BrandUncheckedCreateWithoutProposedActionsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutProposedActionsInput = {
@@ -4788,6 +4879,7 @@ export type BrandUpdateWithoutProposedActionsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutProposedActionsInput = {
@@ -4837,6 +4929,7 @@ export type BrandUncheckedUpdateWithoutProposedActionsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutSearchConsoleSyncsInput = {
@@ -4886,6 +4979,7 @@ export type BrandCreateWithoutSearchConsoleSyncsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutSearchConsoleSyncsInput = {
@@ -4935,6 +5029,7 @@ export type BrandUncheckedCreateWithoutSearchConsoleSyncsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutSearchConsoleSyncsInput = {
@@ -5000,6 +5095,7 @@ export type BrandUpdateWithoutSearchConsoleSyncsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutSearchConsoleSyncsInput = {
@@ -5049,6 +5145,7 @@ export type BrandUncheckedUpdateWithoutSearchConsoleSyncsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutSearchConsoleRowsInput = {
@@ -5098,6 +5195,7 @@ export type BrandCreateWithoutSearchConsoleRowsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutSearchConsoleRowsInput = {
@@ -5147,6 +5245,7 @@ export type BrandUncheckedCreateWithoutSearchConsoleRowsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutSearchConsoleRowsInput = {
@@ -5212,6 +5311,7 @@ export type BrandUpdateWithoutSearchConsoleRowsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutSearchConsoleRowsInput = {
@@ -5261,6 +5361,7 @@ export type BrandUncheckedUpdateWithoutSearchConsoleRowsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutAdsSyncsInput = {
@@ -5310,6 +5411,7 @@ export type BrandCreateWithoutAdsSyncsInput = {
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutAdsSyncsInput = {
@@ -5359,6 +5461,7 @@ export type BrandUncheckedCreateWithoutAdsSyncsInput = {
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutAdsSyncsInput = {
@@ -5424,6 +5527,7 @@ export type BrandUpdateWithoutAdsSyncsInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutAdsSyncsInput = {
@@ -5473,6 +5577,7 @@ export type BrandUncheckedUpdateWithoutAdsSyncsInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutAdsRowsInput = {
@@ -5522,6 +5627,7 @@ export type BrandCreateWithoutAdsRowsInput = {
   adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutAdsRowsInput = {
@@ -5571,6 +5677,7 @@ export type BrandUncheckedCreateWithoutAdsRowsInput = {
   adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutAdsRowsInput = {
@@ -5636,6 +5743,7 @@ export type BrandUpdateWithoutAdsRowsInput = {
   adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutAdsRowsInput = {
@@ -5685,6 +5793,7 @@ export type BrandUncheckedUpdateWithoutAdsRowsInput = {
   adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutSalesCampaignsInput = {
@@ -5734,6 +5843,7 @@ export type BrandCreateWithoutSalesCampaignsInput = {
   adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutSalesCampaignsInput = {
@@ -5783,6 +5893,7 @@ export type BrandUncheckedCreateWithoutSalesCampaignsInput = {
   adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutSalesCampaignsInput = {
@@ -5848,6 +5959,7 @@ export type BrandUpdateWithoutSalesCampaignsInput = {
   adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutSalesCampaignsInput = {
@@ -5897,6 +6009,7 @@ export type BrandUncheckedUpdateWithoutSalesCampaignsInput = {
   adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateWithoutProspectsInput = {
@@ -5946,6 +6059,7 @@ export type BrandCreateWithoutProspectsInput = {
   adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
   adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutBrandInput
 }
 
 export type BrandUncheckedCreateWithoutProspectsInput = {
@@ -5995,6 +6109,7 @@ export type BrandUncheckedCreateWithoutProspectsInput = {
   adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
   adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutBrandInput
 }
 
 export type BrandCreateOrConnectWithoutProspectsInput = {
@@ -6060,6 +6175,7 @@ export type BrandUpdateWithoutProspectsInput = {
   adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutProspectsInput = {
@@ -6109,6 +6225,223 @@ export type BrandUncheckedUpdateWithoutProspectsInput = {
   adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandCreateWithoutBillingDocumentsInput = {
+  id?: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutBrandsInput
+  profile?: Prisma.BrandProfileCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowCreateNestedManyWithoutBrandInput
+  salesCampaigns?: Prisma.SalesCampaignCreateNestedManyWithoutBrandInput
+  prospects?: Prisma.ProspectCreateNestedManyWithoutBrandInput
+}
+
+export type BrandUncheckedCreateWithoutBillingDocumentsInput = {
+  id?: string
+  workspaceId: string
+  name: string
+  slug: string
+  websiteUrl?: string | null
+  description?: string | null
+  status?: $Enums.BrandStatus
+  searchConsoleProperty?: string | null
+  githubOwner?: string | null
+  githubRepo?: string | null
+  githubBranch?: string | null
+  contentFormat?: $Enums.ContentFormat
+  contentDirectory?: string | null
+  publicRoute?: string | null
+  assetsDirectory?: string | null
+  defaultBranch?: string | null
+  publishingMode?: $Enums.PublishingMode
+  vercelProjectId?: string | null
+  googleAdsCustomerId?: string | null
+  googleBusinessAccountId?: string | null
+  googleBusinessLocationId?: string | null
+  googleBusinessLocationName?: string | null
+  contextUpdatedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutBrandInput
+  audiences?: Prisma.AudienceUncheckedCreateNestedManyWithoutBrandInput
+  voiceRules?: Prisma.VoiceRuleUncheckedCreateNestedManyWithoutBrandInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedCreateNestedManyWithoutBrandInput
+  observations?: Prisma.ObservationUncheckedCreateNestedManyWithoutBrandInput
+  competitors?: Prisma.CompetitorUncheckedCreateNestedManyWithoutBrandInput
+  marketSignals?: Prisma.MarketSignalUncheckedCreateNestedManyWithoutBrandInput
+  opportunities?: Prisma.OpportunityUncheckedCreateNestedManyWithoutBrandInput
+  contentAssets?: Prisma.ContentAssetUncheckedCreateNestedManyWithoutBrandInput
+  visualAssets?: Prisma.VisualAssetUncheckedCreateNestedManyWithoutBrandInput
+  websitePages?: Prisma.WebsitePageUncheckedCreateNestedManyWithoutBrandInput
+  keywords?: Prisma.KeywordUncheckedCreateNestedManyWithoutBrandInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedCreateNestedManyWithoutBrandInput
+  seoBriefs?: Prisma.SeoBriefUncheckedCreateNestedManyWithoutBrandInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedCreateNestedManyWithoutBrandInput
+  proposedActions?: Prisma.ProposedActionUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedCreateNestedManyWithoutBrandInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedCreateNestedManyWithoutBrandInput
+  adsSyncs?: Prisma.AdsSyncUncheckedCreateNestedManyWithoutBrandInput
+  adsRows?: Prisma.AdsRowUncheckedCreateNestedManyWithoutBrandInput
+  salesCampaigns?: Prisma.SalesCampaignUncheckedCreateNestedManyWithoutBrandInput
+  prospects?: Prisma.ProspectUncheckedCreateNestedManyWithoutBrandInput
+}
+
+export type BrandCreateOrConnectWithoutBillingDocumentsInput = {
+  where: Prisma.BrandWhereUniqueInput
+  create: Prisma.XOR<Prisma.BrandCreateWithoutBillingDocumentsInput, Prisma.BrandUncheckedCreateWithoutBillingDocumentsInput>
+}
+
+export type BrandUpsertWithoutBillingDocumentsInput = {
+  update: Prisma.XOR<Prisma.BrandUpdateWithoutBillingDocumentsInput, Prisma.BrandUncheckedUpdateWithoutBillingDocumentsInput>
+  create: Prisma.XOR<Prisma.BrandCreateWithoutBillingDocumentsInput, Prisma.BrandUncheckedCreateWithoutBillingDocumentsInput>
+  where?: Prisma.BrandWhereInput
+}
+
+export type BrandUpdateToOneWithWhereWithoutBillingDocumentsInput = {
+  where?: Prisma.BrandWhereInput
+  data: Prisma.XOR<Prisma.BrandUpdateWithoutBillingDocumentsInput, Prisma.BrandUncheckedUpdateWithoutBillingDocumentsInput>
+}
+
+export type BrandUpdateWithoutBillingDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutBrandsNestedInput
+  profile?: Prisma.BrandProfileUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
+  salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
+  prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+}
+
+export type BrandUncheckedUpdateWithoutBillingDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBrandStatusFieldUpdateOperationsInput | $Enums.BrandStatus
+  searchConsoleProperty?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubOwner?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubRepo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contentFormat?: Prisma.EnumContentFormatFieldUpdateOperationsInput | $Enums.ContentFormat
+  contentDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicRoute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetsDirectory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishingMode?: Prisma.EnumPublishingModeFieldUpdateOperationsInput | $Enums.PublishingMode
+  vercelProjectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleAdsCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleBusinessLocationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.BrandProfileUncheckedUpdateOneWithoutBrandNestedInput
+  audiences?: Prisma.AudienceUncheckedUpdateManyWithoutBrandNestedInput
+  voiceRules?: Prisma.VoiceRuleUncheckedUpdateManyWithoutBrandNestedInput
+  goldenExamples?: Prisma.GoldenExampleUncheckedUpdateManyWithoutBrandNestedInput
+  observations?: Prisma.ObservationUncheckedUpdateManyWithoutBrandNestedInput
+  competitors?: Prisma.CompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  marketSignals?: Prisma.MarketSignalUncheckedUpdateManyWithoutBrandNestedInput
+  opportunities?: Prisma.OpportunityUncheckedUpdateManyWithoutBrandNestedInput
+  contentAssets?: Prisma.ContentAssetUncheckedUpdateManyWithoutBrandNestedInput
+  visualAssets?: Prisma.VisualAssetUncheckedUpdateManyWithoutBrandNestedInput
+  websitePages?: Prisma.WebsitePageUncheckedUpdateManyWithoutBrandNestedInput
+  keywords?: Prisma.KeywordUncheckedUpdateManyWithoutBrandNestedInput
+  serpCompetitors?: Prisma.SerpCompetitorUncheckedUpdateManyWithoutBrandNestedInput
+  seoBriefs?: Prisma.SeoBriefUncheckedUpdateManyWithoutBrandNestedInput
+  growthWeekPlans?: Prisma.GrowthWeekPlanUncheckedUpdateManyWithoutBrandNestedInput
+  proposedActions?: Prisma.ProposedActionUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleSyncs?: Prisma.SearchConsoleSyncUncheckedUpdateManyWithoutBrandNestedInput
+  searchConsoleRows?: Prisma.SearchConsoleRowUncheckedUpdateManyWithoutBrandNestedInput
+  adsSyncs?: Prisma.AdsSyncUncheckedUpdateManyWithoutBrandNestedInput
+  adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
+  salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
+  prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandCreateManyWorkspaceInput = {
@@ -6185,6 +6518,7 @@ export type BrandUpdateWithoutWorkspaceInput = {
   adsRows?: Prisma.AdsRowUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateWithoutWorkspaceInput = {
@@ -6234,6 +6568,7 @@ export type BrandUncheckedUpdateWithoutWorkspaceInput = {
   adsRows?: Prisma.AdsRowUncheckedUpdateManyWithoutBrandNestedInput
   salesCampaigns?: Prisma.SalesCampaignUncheckedUpdateManyWithoutBrandNestedInput
   prospects?: Prisma.ProspectUncheckedUpdateManyWithoutBrandNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutBrandNestedInput
 }
 
 export type BrandUncheckedUpdateManyWithoutWorkspaceInput = {
@@ -6290,6 +6625,7 @@ export type BrandCountOutputType = {
   adsRows: number
   salesCampaigns: number
   prospects: number
+  billingDocuments: number
 }
 
 export type BrandCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -6314,6 +6650,7 @@ export type BrandCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   adsRows?: boolean | BrandCountOutputTypeCountAdsRowsArgs
   salesCampaigns?: boolean | BrandCountOutputTypeCountSalesCampaignsArgs
   prospects?: boolean | BrandCountOutputTypeCountProspectsArgs
+  billingDocuments?: boolean | BrandCountOutputTypeCountBillingDocumentsArgs
 }
 
 /**
@@ -6473,6 +6810,13 @@ export type BrandCountOutputTypeCountProspectsArgs<ExtArgs extends runtime.Types
   where?: Prisma.ProspectWhereInput
 }
 
+/**
+ * BrandCountOutputType without action
+ */
+export type BrandCountOutputTypeCountBillingDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BillingDocumentWhereInput
+}
+
 
 export type BrandSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -6523,6 +6867,7 @@ export type BrandSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   adsRows?: boolean | Prisma.Brand$adsRowsArgs<ExtArgs>
   salesCampaigns?: boolean | Prisma.Brand$salesCampaignsArgs<ExtArgs>
   prospects?: boolean | Prisma.Brand$prospectsArgs<ExtArgs>
+  billingDocuments?: boolean | Prisma.Brand$billingDocumentsArgs<ExtArgs>
   _count?: boolean | Prisma.BrandCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["brand"]>
 
@@ -6637,6 +6982,7 @@ export type BrandInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   adsRows?: boolean | Prisma.Brand$adsRowsArgs<ExtArgs>
   salesCampaigns?: boolean | Prisma.Brand$salesCampaignsArgs<ExtArgs>
   prospects?: boolean | Prisma.Brand$prospectsArgs<ExtArgs>
+  billingDocuments?: boolean | Prisma.Brand$billingDocumentsArgs<ExtArgs>
   _count?: boolean | Prisma.BrandCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BrandIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -6672,6 +7018,7 @@ export type $BrandPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     adsRows: Prisma.$AdsRowPayload<ExtArgs>[]
     salesCampaigns: Prisma.$SalesCampaignPayload<ExtArgs>[]
     prospects: Prisma.$ProspectPayload<ExtArgs>[]
+    billingDocuments: Prisma.$BillingDocumentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -7120,6 +7467,7 @@ export interface Prisma__BrandClient<T, Null = never, ExtArgs extends runtime.Ty
   adsRows<T extends Prisma.Brand$adsRowsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$adsRowsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AdsRowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   salesCampaigns<T extends Prisma.Brand$salesCampaignsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$salesCampaignsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalesCampaignPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   prospects<T extends Prisma.Brand$prospectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$prospectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProspectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  billingDocuments<T extends Prisma.Brand$billingDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Brand$billingDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BillingDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8095,6 +8443,30 @@ export type Brand$prospectsArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.ProspectScalarFieldEnum | Prisma.ProspectScalarFieldEnum[]
+}
+
+/**
+ * Brand.billingDocuments
+ */
+export type Brand$billingDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BillingDocument
+   */
+  select?: Prisma.BillingDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BillingDocument
+   */
+  omit?: Prisma.BillingDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BillingDocumentInclude<ExtArgs> | null
+  where?: Prisma.BillingDocumentWhereInput
+  orderBy?: Prisma.BillingDocumentOrderByWithRelationInput | Prisma.BillingDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.BillingDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BillingDocumentScalarFieldEnum | Prisma.BillingDocumentScalarFieldEnum[]
 }
 
 /**

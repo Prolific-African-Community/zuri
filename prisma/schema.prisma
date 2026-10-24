@@ -30,6 +30,9 @@ model Workspace {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   brands    Brand[]
+  billingCompanies BillingCompany[]
+  billingCustomers BillingCustomer[]
+  billingDocuments BillingDocument[]
 }
 
 model Brand {
@@ -83,6 +86,9 @@ model Brand {
   adsRows            AdsRow[]
   salesCampaigns     SalesCampaign[]
   prospects          Prospect[]
+  billingDocuments BillingDocument[]
+
+  @@unique([id, workspaceId])
 
   @@unique([workspaceId, slug])
   @@index([workspaceId])
@@ -1145,4 +1151,62 @@ enum InteractionAnalysisStatus {
   APPLIED
   DISMISSED
   FAILED
+}
+
+// Legal entities are separate from commercial brands. Composite foreign keys
+// enforce tenant consistency even outside the application.
+model BillingCompany {
+  id          String            @id @default(cuid())
+  workspaceId String
+  name        String
+  profile     Json
+  prefix      String            @default("FAC")
+  nextInvoice Int               @default(1)
+  nextQuote   Int               @default(1)
+  revision    Int               @default(0)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  workspace   Workspace         @relation(fields: [workspaceId], references: [id], onDelete: Restrict)
+  documents   BillingDocument[]
+
+  @@unique([id, workspaceId])
+  @@index([workspaceId])
+}
+
+model BillingCustomer {
+  id          String    @id @default(cuid())
+  workspaceId String
+  name        String
+  details     Json
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Restrict)
+
+  @@index([workspaceId])
+}
+
+model BillingDocument {
+  id            String         @id @default(cuid())
+  workspaceId   String
+  brandId       String
+  companyId     String
+  type          String
+  status        String         @default("DRAFT")
+  number        String?
+  issueDate     String
+  customerName  String
+  payload       Json
+  snapshot      Json?
+  pdfBytes      Bytes?
+  revision      Int            @default(0)
+  sourceQuoteId String?        @unique
+  issuedAt      DateTime?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  workspace     Workspace      @relation(fields: [workspaceId], references: [id], onDelete: Restrict)
+  brand         Brand          @relation(fields: [brandId, workspaceId], references: [id, workspaceId], onDelete: Restrict)
+  company       BillingCompany @relation(fields: [companyId, workspaceId], references: [id, workspaceId], onDelete: Restrict)
+
+  @@unique([companyId, number])
+  @@index([workspaceId, issueDate])
 }

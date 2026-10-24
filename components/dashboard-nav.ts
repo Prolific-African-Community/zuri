@@ -42,6 +42,7 @@ export const navigation: NavGroup[] = [
       { label: "Actions", href: "/dashboard/actions", icon: ActionsIcon, enabled: true },
       { label: "Content", href: "/dashboard/content", icon: ContentIcon, enabled: true },
       { label: "Sales", href: "/dashboard/sales", icon: SalesIcon, enabled: true },
+      { label: "Facturation", href: "/dashboard/billing", icon: ContentIcon, enabled: true },
       { label: "Search", href: "/dashboard/search", icon: SearchIcon, enabled: true },
       { label: "Ads", href: "/dashboard/ads", icon: AdsIcon, enabled: true },
       { label: "Calendar", href: "/dashboard/calendar", icon: CalendarIcon, enabled: true },

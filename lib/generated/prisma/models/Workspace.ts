@@ -175,6 +175,9 @@ export type WorkspaceWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   brands?: Prisma.BrandListRelationFilter
+  billingCompanies?: Prisma.BillingCompanyListRelationFilter
+  billingCustomers?: Prisma.BillingCustomerListRelationFilter
+  billingDocuments?: Prisma.BillingDocumentListRelationFilter
 }
 
 export type WorkspaceOrderByWithRelationInput = {
@@ -183,6 +186,9 @@ export type WorkspaceOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   brands?: Prisma.BrandOrderByRelationAggregateInput
+  billingCompanies?: Prisma.BillingCompanyOrderByRelationAggregateInput
+  billingCustomers?: Prisma.BillingCustomerOrderByRelationAggregateInput
+  billingDocuments?: Prisma.BillingDocumentOrderByRelationAggregateInput
 }
 
 export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
@@ -194,6 +200,9 @@ export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   brands?: Prisma.BrandListRelationFilter
+  billingCompanies?: Prisma.BillingCompanyListRelationFilter
+  billingCustomers?: Prisma.BillingCustomerListRelationFilter
+  billingDocuments?: Prisma.BillingDocumentListRelationFilter
 }, "id">
 
 export type WorkspaceOrderByWithAggregationInput = {
@@ -222,6 +231,9 @@ export type WorkspaceCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   brands?: Prisma.BrandCreateNestedManyWithoutWorkspaceInput
+  billingCompanies?: Prisma.BillingCompanyCreateNestedManyWithoutWorkspaceInput
+  billingCustomers?: Prisma.BillingCustomerCreateNestedManyWithoutWorkspaceInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateInput = {
@@ -230,6 +242,9 @@ export type WorkspaceUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   brands?: Prisma.BrandUncheckedCreateNestedManyWithoutWorkspaceInput
+  billingCompanies?: Prisma.BillingCompanyUncheckedCreateNestedManyWithoutWorkspaceInput
+  billingCustomers?: Prisma.BillingCustomerUncheckedCreateNestedManyWithoutWorkspaceInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUpdateInput = {
@@ -238,6 +253,9 @@ export type WorkspaceUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brands?: Prisma.BrandUpdateManyWithoutWorkspaceNestedInput
+  billingCompanies?: Prisma.BillingCompanyUpdateManyWithoutWorkspaceNestedInput
+  billingCustomers?: Prisma.BillingCustomerUpdateManyWithoutWorkspaceNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateInput = {
@@ -246,6 +264,9 @@ export type WorkspaceUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brands?: Prisma.BrandUncheckedUpdateManyWithoutWorkspaceNestedInput
+  billingCompanies?: Prisma.BillingCompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
+  billingCustomers?: Prisma.BillingCustomerUncheckedUpdateManyWithoutWorkspaceNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateManyInput = {
@@ -317,11 +338,56 @@ export type WorkspaceUpdateOneRequiredWithoutBrandsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutBrandsInput, Prisma.WorkspaceUpdateWithoutBrandsInput>, Prisma.WorkspaceUncheckedUpdateWithoutBrandsInput>
 }
 
+export type WorkspaceCreateNestedOneWithoutBillingCompaniesInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingCompaniesInput, Prisma.WorkspaceUncheckedCreateWithoutBillingCompaniesInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutBillingCompaniesInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutBillingCompaniesNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingCompaniesInput, Prisma.WorkspaceUncheckedCreateWithoutBillingCompaniesInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutBillingCompaniesInput
+  upsert?: Prisma.WorkspaceUpsertWithoutBillingCompaniesInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutBillingCompaniesInput, Prisma.WorkspaceUpdateWithoutBillingCompaniesInput>, Prisma.WorkspaceUncheckedUpdateWithoutBillingCompaniesInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutBillingCustomersInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingCustomersInput, Prisma.WorkspaceUncheckedCreateWithoutBillingCustomersInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutBillingCustomersInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutBillingCustomersNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingCustomersInput, Prisma.WorkspaceUncheckedCreateWithoutBillingCustomersInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutBillingCustomersInput
+  upsert?: Prisma.WorkspaceUpsertWithoutBillingCustomersInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutBillingCustomersInput, Prisma.WorkspaceUpdateWithoutBillingCustomersInput>, Prisma.WorkspaceUncheckedUpdateWithoutBillingCustomersInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutBillingDocumentsInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingDocumentsInput, Prisma.WorkspaceUncheckedCreateWithoutBillingDocumentsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutBillingDocumentsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutBillingDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingDocumentsInput, Prisma.WorkspaceUncheckedCreateWithoutBillingDocumentsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutBillingDocumentsInput
+  upsert?: Prisma.WorkspaceUpsertWithoutBillingDocumentsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutBillingDocumentsInput, Prisma.WorkspaceUpdateWithoutBillingDocumentsInput>, Prisma.WorkspaceUncheckedUpdateWithoutBillingDocumentsInput>
+}
+
 export type WorkspaceCreateWithoutBrandsInput = {
   id?: string
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  billingCompanies?: Prisma.BillingCompanyCreateNestedManyWithoutWorkspaceInput
+  billingCustomers?: Prisma.BillingCustomerCreateNestedManyWithoutWorkspaceInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutBrandsInput = {
@@ -329,6 +395,9 @@ export type WorkspaceUncheckedCreateWithoutBrandsInput = {
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  billingCompanies?: Prisma.BillingCompanyUncheckedCreateNestedManyWithoutWorkspaceInput
+  billingCustomers?: Prisma.BillingCustomerUncheckedCreateNestedManyWithoutWorkspaceInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutBrandsInput = {
@@ -352,6 +421,9 @@ export type WorkspaceUpdateWithoutBrandsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  billingCompanies?: Prisma.BillingCompanyUpdateManyWithoutWorkspaceNestedInput
+  billingCustomers?: Prisma.BillingCustomerUpdateManyWithoutWorkspaceNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutBrandsInput = {
@@ -359,6 +431,177 @@ export type WorkspaceUncheckedUpdateWithoutBrandsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  billingCompanies?: Prisma.BillingCompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
+  billingCustomers?: Prisma.BillingCustomerUncheckedUpdateManyWithoutWorkspaceNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutBillingCompaniesInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brands?: Prisma.BrandCreateNestedManyWithoutWorkspaceInput
+  billingCustomers?: Prisma.BillingCustomerCreateNestedManyWithoutWorkspaceInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutBillingCompaniesInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brands?: Prisma.BrandUncheckedCreateNestedManyWithoutWorkspaceInput
+  billingCustomers?: Prisma.BillingCustomerUncheckedCreateNestedManyWithoutWorkspaceInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutBillingCompaniesInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingCompaniesInput, Prisma.WorkspaceUncheckedCreateWithoutBillingCompaniesInput>
+}
+
+export type WorkspaceUpsertWithoutBillingCompaniesInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutBillingCompaniesInput, Prisma.WorkspaceUncheckedUpdateWithoutBillingCompaniesInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingCompaniesInput, Prisma.WorkspaceUncheckedCreateWithoutBillingCompaniesInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutBillingCompaniesInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutBillingCompaniesInput, Prisma.WorkspaceUncheckedUpdateWithoutBillingCompaniesInput>
+}
+
+export type WorkspaceUpdateWithoutBillingCompaniesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brands?: Prisma.BrandUpdateManyWithoutWorkspaceNestedInput
+  billingCustomers?: Prisma.BillingCustomerUpdateManyWithoutWorkspaceNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutBillingCompaniesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brands?: Prisma.BrandUncheckedUpdateManyWithoutWorkspaceNestedInput
+  billingCustomers?: Prisma.BillingCustomerUncheckedUpdateManyWithoutWorkspaceNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutBillingCustomersInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brands?: Prisma.BrandCreateNestedManyWithoutWorkspaceInput
+  billingCompanies?: Prisma.BillingCompanyCreateNestedManyWithoutWorkspaceInput
+  billingDocuments?: Prisma.BillingDocumentCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutBillingCustomersInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brands?: Prisma.BrandUncheckedCreateNestedManyWithoutWorkspaceInput
+  billingCompanies?: Prisma.BillingCompanyUncheckedCreateNestedManyWithoutWorkspaceInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutBillingCustomersInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingCustomersInput, Prisma.WorkspaceUncheckedCreateWithoutBillingCustomersInput>
+}
+
+export type WorkspaceUpsertWithoutBillingCustomersInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutBillingCustomersInput, Prisma.WorkspaceUncheckedUpdateWithoutBillingCustomersInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingCustomersInput, Prisma.WorkspaceUncheckedCreateWithoutBillingCustomersInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutBillingCustomersInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutBillingCustomersInput, Prisma.WorkspaceUncheckedUpdateWithoutBillingCustomersInput>
+}
+
+export type WorkspaceUpdateWithoutBillingCustomersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brands?: Prisma.BrandUpdateManyWithoutWorkspaceNestedInput
+  billingCompanies?: Prisma.BillingCompanyUpdateManyWithoutWorkspaceNestedInput
+  billingDocuments?: Prisma.BillingDocumentUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutBillingCustomersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brands?: Prisma.BrandUncheckedUpdateManyWithoutWorkspaceNestedInput
+  billingCompanies?: Prisma.BillingCompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
+  billingDocuments?: Prisma.BillingDocumentUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutBillingDocumentsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brands?: Prisma.BrandCreateNestedManyWithoutWorkspaceInput
+  billingCompanies?: Prisma.BillingCompanyCreateNestedManyWithoutWorkspaceInput
+  billingCustomers?: Prisma.BillingCustomerCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutBillingDocumentsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  brands?: Prisma.BrandUncheckedCreateNestedManyWithoutWorkspaceInput
+  billingCompanies?: Prisma.BillingCompanyUncheckedCreateNestedManyWithoutWorkspaceInput
+  billingCustomers?: Prisma.BillingCustomerUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutBillingDocumentsInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingDocumentsInput, Prisma.WorkspaceUncheckedCreateWithoutBillingDocumentsInput>
+}
+
+export type WorkspaceUpsertWithoutBillingDocumentsInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutBillingDocumentsInput, Prisma.WorkspaceUncheckedUpdateWithoutBillingDocumentsInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutBillingDocumentsInput, Prisma.WorkspaceUncheckedCreateWithoutBillingDocumentsInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutBillingDocumentsInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutBillingDocumentsInput, Prisma.WorkspaceUncheckedUpdateWithoutBillingDocumentsInput>
+}
+
+export type WorkspaceUpdateWithoutBillingDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brands?: Prisma.BrandUpdateManyWithoutWorkspaceNestedInput
+  billingCompanies?: Prisma.BillingCompanyUpdateManyWithoutWorkspaceNestedInput
+  billingCustomers?: Prisma.BillingCustomerUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutBillingDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brands?: Prisma.BrandUncheckedUpdateManyWithoutWorkspaceNestedInput
+  billingCompanies?: Prisma.BillingCompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
+  billingCustomers?: Prisma.BillingCustomerUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 
@@ -368,10 +611,16 @@ export type WorkspaceUncheckedUpdateWithoutBrandsInput = {
 
 export type WorkspaceCountOutputType = {
   brands: number
+  billingCompanies: number
+  billingCustomers: number
+  billingDocuments: number
 }
 
 export type WorkspaceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   brands?: boolean | WorkspaceCountOutputTypeCountBrandsArgs
+  billingCompanies?: boolean | WorkspaceCountOutputTypeCountBillingCompaniesArgs
+  billingCustomers?: boolean | WorkspaceCountOutputTypeCountBillingCustomersArgs
+  billingDocuments?: boolean | WorkspaceCountOutputTypeCountBillingDocumentsArgs
 }
 
 /**
@@ -391,6 +640,27 @@ export type WorkspaceCountOutputTypeCountBrandsArgs<ExtArgs extends runtime.Type
   where?: Prisma.BrandWhereInput
 }
 
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountBillingCompaniesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BillingCompanyWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountBillingCustomersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BillingCustomerWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountBillingDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BillingDocumentWhereInput
+}
+
 
 export type WorkspaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -398,6 +668,9 @@ export type WorkspaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   createdAt?: boolean
   updatedAt?: boolean
   brands?: boolean | Prisma.Workspace$brandsArgs<ExtArgs>
+  billingCompanies?: boolean | Prisma.Workspace$billingCompaniesArgs<ExtArgs>
+  billingCustomers?: boolean | Prisma.Workspace$billingCustomersArgs<ExtArgs>
+  billingDocuments?: boolean | Prisma.Workspace$billingDocumentsArgs<ExtArgs>
   _count?: boolean | Prisma.WorkspaceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["workspace"]>
 
@@ -425,6 +698,9 @@ export type WorkspaceSelectScalar = {
 export type WorkspaceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["workspace"]>
 export type WorkspaceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   brands?: boolean | Prisma.Workspace$brandsArgs<ExtArgs>
+  billingCompanies?: boolean | Prisma.Workspace$billingCompaniesArgs<ExtArgs>
+  billingCustomers?: boolean | Prisma.Workspace$billingCustomersArgs<ExtArgs>
+  billingDocuments?: boolean | Prisma.Workspace$billingDocumentsArgs<ExtArgs>
   _count?: boolean | Prisma.WorkspaceCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type WorkspaceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -434,6 +710,9 @@ export type $WorkspacePayload<ExtArgs extends runtime.Types.Extensions.InternalA
   name: "Workspace"
   objects: {
     brands: Prisma.$BrandPayload<ExtArgs>[]
+    billingCompanies: Prisma.$BillingCompanyPayload<ExtArgs>[]
+    billingCustomers: Prisma.$BillingCustomerPayload<ExtArgs>[]
+    billingDocuments: Prisma.$BillingDocumentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -835,6 +1114,9 @@ readonly fields: WorkspaceFieldRefs;
 export interface Prisma__WorkspaceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   brands<T extends Prisma.Workspace$brandsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$brandsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  billingCompanies<T extends Prisma.Workspace$billingCompaniesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$billingCompaniesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BillingCompanyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  billingCustomers<T extends Prisma.Workspace$billingCustomersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$billingCustomersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  billingDocuments<T extends Prisma.Workspace$billingDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$billingDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BillingDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1282,6 +1564,78 @@ export type Workspace$brandsArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.BrandScalarFieldEnum | Prisma.BrandScalarFieldEnum[]
+}
+
+/**
+ * Workspace.billingCompanies
+ */
+export type Workspace$billingCompaniesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BillingCompany
+   */
+  select?: Prisma.BillingCompanySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BillingCompany
+   */
+  omit?: Prisma.BillingCompanyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BillingCompanyInclude<ExtArgs> | null
+  where?: Prisma.BillingCompanyWhereInput
+  orderBy?: Prisma.BillingCompanyOrderByWithRelationInput | Prisma.BillingCompanyOrderByWithRelationInput[]
+  cursor?: Prisma.BillingCompanyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BillingCompanyScalarFieldEnum | Prisma.BillingCompanyScalarFieldEnum[]
+}
+
+/**
+ * Workspace.billingCustomers
+ */
+export type Workspace$billingCustomersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BillingCustomer
+   */
+  select?: Prisma.BillingCustomerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BillingCustomer
+   */
+  omit?: Prisma.BillingCustomerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BillingCustomerInclude<ExtArgs> | null
+  where?: Prisma.BillingCustomerWhereInput
+  orderBy?: Prisma.BillingCustomerOrderByWithRelationInput | Prisma.BillingCustomerOrderByWithRelationInput[]
+  cursor?: Prisma.BillingCustomerWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BillingCustomerScalarFieldEnum | Prisma.BillingCustomerScalarFieldEnum[]
+}
+
+/**
+ * Workspace.billingDocuments
+ */
+export type Workspace$billingDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BillingDocument
+   */
+  select?: Prisma.BillingDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BillingDocument
+   */
+  omit?: Prisma.BillingDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BillingDocumentInclude<ExtArgs> | null
+  where?: Prisma.BillingDocumentWhereInput
+  orderBy?: Prisma.BillingDocumentOrderByWithRelationInput | Prisma.BillingDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.BillingDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BillingDocumentScalarFieldEnum | Prisma.BillingDocumentScalarFieldEnum[]
 }
 
 /**
