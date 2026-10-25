@@ -90,7 +90,8 @@ test("PDF en-tête long : hauteur réelle et aucune prestation dans le pied de p
     bank: "",
     paymentTerms: "",
   };
-  await assert.rejects(() => renderPdf(s), /description dépasse une page/);
+  // The removed brand heading now leaves enough room for this full row.
+  assert.ok((await PDFDocument.load(await renderPdf(s))).getPageCount() > 0);
   s.document.lines[0].description =
     "Prestation de conception détaillée ".repeat(60);
   s.totals = calculate(s.document.lines, s.document.vatMode);

@@ -155,9 +155,15 @@ export function parseCompany(value: unknown): CompanyProfile {
       "bank",
       "paymentTerms",
       "logo",
-    ].map((k) => [k, str(p[k], k === "logo" ? 3000000 : 1200)]),
+    ].map((k) => [
+      k,
+      str(
+        k === "legalForm" ? (p[k] ?? "") : p[k],
+        k === "logo" ? 3000000 : 1200,
+      ),
+    ]),
   ) as Omit<CompanyProfile, "vatStatus">;
-  for (const k of ["name", "legalForm", "address", "country"] as const)
+  for (const k of ["name", "address", "country"] as const)
     requireValue(profile[k], `${k} obligatoire.`);
   requireValue(
     p.vatStatus !== "NORMAL" || profile.vatNumber,
@@ -220,7 +226,7 @@ export function parseDraft(value: unknown): Draft {
     companyId: required(p.companyId, "Société"),
     customer: parseParty(p.customer),
     issueDate: date(p.issueDate),
-    serviceDate: date(p.serviceDate),
+    serviceDate: date(p.serviceDate ?? p.issueDate),
     dueDate: date(p.dueDate),
     currency,
     subject: str(p.subject, 1200),

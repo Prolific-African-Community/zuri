@@ -280,11 +280,10 @@ export function DocumentEditor({
             </Button>
           </Section>
           <Section title="Références">
-            <div className="grid gap-5 sm:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-2">
               {(
                 [
                   ["issueDate", "Date d’émission"],
-                  ["serviceDate", "Date de prestation"],
                   [
                     "dueDate",
                     d.type === "QUOTE" ? "Valable jusqu’au" : "Échéance",

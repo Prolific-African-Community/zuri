@@ -10,7 +10,7 @@ const W = 595.28,
   BOTTOM = 66;
 const ink = rgb(0.09, 0.12, 0.17),
   muted = rgb(0.38, 0.42, 0.47),
-  accent = rgb(0.25, 0.3, 0.6),
+  accent = rgb(0.28, 0.19, 0.13),
   line = rgb(0.87, 0.89, 0.92);
 // Measurement uses the embedded font, including long tokens and explicit newlines.
 export function wrap(text: string, font: PDFFont, size: number, width: number) {
@@ -50,10 +50,9 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
   );
   const supported = new Set(font.getCharacterSet());
   const renderedValues = [
-    snapshot.brand.name,
     snapshot.number,
     ...Object.entries(c)
-      .filter(([key]) => key !== "logo" && key !== "logoBlobUrl")
+      .filter(([key]) => !["logo", "logoBlobUrl", "legalForm"].includes(key))
       .map(([, value]) => value),
     ...Object.values(d.customer),
     d.subject,
@@ -80,7 +79,7 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
   );
   let page: PDFPage,
     y = 0;
-  let contentStart = 125;
+  let contentStart = 94;
   const text = (s: string, x: number, top: number, size = 9, color = ink) =>
     page.drawText(s, { x, y: H - top - size, size, font, color });
   const right = (
@@ -108,8 +107,8 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
     size = 9,
   ) => {
     const rows = wrap(s, font, size, width);
-    rows.forEach((r, i) => text(r, x, top + i * (size + 4), size));
-    return rows.length * (size + 4);
+    rows.forEach((r, i) => text(r, x, top + i * (size + 3), size));
+    return rows.length * (size + 3);
   };
   let logo: Awaited<ReturnType<typeof pdf.embedPng>> | undefined;
   if (c.logo) {
@@ -128,24 +127,31 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
       color: accent,
     });
     text(d.type === "INVOICE" ? "FACTURE" : "DEVIS", M, 44, 25);
-    right(draft ? "BROUILLON · NON ÉMIS" : snapshot.number, W - M, 51, 10);
-    const nameHeight = block(
-      `${snapshot.brand.name} · ${c.name}`,
-      M,
-      85,
-      W - 2 * M - 80,
-      9,
-    );
+    const reference =
+      d.reference || (snapshot.number === "BROUILLON" ? "" : snapshot.number);
+    let referenceBottom = draft ? 56 : 48;
+    if (draft) right("BROUILLON · NON ÉMIS", W - M, 39, 8);
+    if (reference) {
+      const rows = wrap(reference, font, 15, 220);
+      rows.forEach((row, i) => right(row, W - M, referenceBottom + i * 18, 15));
+      referenceBottom += rows.length * 18;
+    }
+    if (!draft && reference !== snapshot.number) {
+      right(snapshot.number, W - M, referenceBottom + 2, 9);
+      referenceBottom += 15;
+    }
     if (logo) {
       const scale = Math.min(65 / logo.width, 30 / logo.height);
+      referenceBottom += 8;
       page.drawImage(logo, {
         x: W - M - logo.width * scale,
-        y: H - 113,
+        y: H - referenceBottom - logo.height * scale,
         width: logo.width * scale,
         height: logo.height * scale,
       });
+      referenceBottom += logo.height * scale;
     }
-    y = Math.max(125, 92 + nameHeight);
+    y = Math.max(94, referenceBottom + 16);
     contentStart = y;
   };
   const tableHeader = () => {
@@ -166,7 +172,6 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
   newPage();
   const emitter = [
     c.name,
-    c.legalForm,
     c.address,
     c.country,
     c.rcs && `R.C.S. Luxembourg ${c.rcs}`,
@@ -191,22 +196,28 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
     .join("\n");
   text("ÉMETTEUR", M, y, 8, muted);
   text("CLIENT", 315, y, 8, muted);
-  y += 20;
+  y += 16;
   const emitterRows = wrap(emitter, font, 9, 240),
     clientRows = wrap(client, font, 9, W - M - 315);
   requireValue(
-    Math.max(emitterRows.length, clientRows.length) * 13 < 420 &&
-      y + Math.max(emitterRows.length, clientRows.length) * 13 + 20 <=
+    Math.max(emitterRows.length, clientRows.length) * 12 < 420 &&
+      y + Math.max(emitterRows.length, clientRows.length) * 12 + 16 <=
         H - BOTTOM,
     "Les coordonnées sont trop longues pour l’en-tête A4. Raccourcissez les champs du profil ou du client.",
   );
   y +=
     Math.max(block(emitter, M, y, 240), block(client, 315, y, W - M - 315)) +
-    20;
-  const refs = `Émission : ${d.issueDate}    Prestation : ${d.serviceDate}\n${d.type === "QUOTE" ? "Validité" : "Échéance"} : ${d.dueDate}    Devise : ${d.currency}${d.reference ? `\nRéférence : ${d.reference}` : ""}${d.subject ? `\nObjet : ${d.subject}` : ""}`;
-  const refsHeight = wrap(refs, font, 9, W - 2 * M).length * 13;
-  if (y + refsHeight + 24 > H - BOTTOM) newPage();
-  y += block(refs, M, y, W - 2 * M) + 24;
+    16;
+  const formatDate = (value: string) => value.split("-").reverse().join("/");
+  const refs = `Émission : ${formatDate(d.issueDate)}${d.dueDate ? `    ${d.type === "QUOTE" ? "Validité" : "Échéance"} : ${formatDate(d.dueDate)}` : ""}`;
+  const refsHeight = wrap(refs, font, 9, W - 2 * M).length * 12;
+  if (y + refsHeight + 16 > H - BOTTOM) newPage();
+  y += block(refs, M, y, W - 2 * M) + 16;
+  if (d.subject) {
+    const subjectHeight = wrap(d.subject, font, 10, W - 2 * M).length * 13;
+    if (y + subjectHeight + 12 > H - BOTTOM) newPage();
+    y += block(d.subject, M, y, W - 2 * M, 10) + 12;
+  }
   let needsTableHeader = true;
   for (let i = 0; i < d.lines.length; i++) {
     const l = d.lines[i];
@@ -245,7 +256,7 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
     y += height;
     rule(y);
   }
-  y += 24;
+  y += 18;
   const legal = [
     d.vatMode === "EXEMPT" ? exemption : "",
     d.vatMode === "REVERSE" ? `Autoliquidation — ${d.reverseBasis}` : "",

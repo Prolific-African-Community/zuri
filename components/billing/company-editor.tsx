@@ -104,7 +104,6 @@ export function CompanyEditor({
         <Section title="Identité légale">
           <div className="grid gap-5 sm:grid-cols-2">
             {field("name", "Raison sociale", true)}
-            {field("legalForm", "Forme juridique", true)}
             <TextArea
               label="Adresse complète du siège"
               required
