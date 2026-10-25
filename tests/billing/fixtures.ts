@@ -36,7 +36,6 @@ export const draft: Draft = {
   dueDate: "2026-11-23",
   currency: "EUR",
   subject: "Accompagnement et création",
-  reference: "Projet 2026-10",
   notes: "Merci pour votre confiance.",
   vatMode: "NORMAL",
   reverseBasis: "",

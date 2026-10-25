@@ -99,3 +99,18 @@ test("conversion conserve client et lignes et crée une facture brouillon", () =
   assert.deepEqual(invoice.customer, quote.customer);
   assert.throws(() => conversionDraft(draft));
 });
+
+test("Profil bancaire compatible et ancienne référence manuelle ignorée", () => {
+  assert.equal(parseCompany(company).bankAddress, "");
+  assert.equal(
+    parseCompany({
+      ...company,
+      bankAddress: "12 boulevard de la Banque\nLuxembourg",
+    }).bankAddress,
+    "12 boulevard de la Banque\nLuxembourg",
+  );
+  assert.equal(
+    "reference" in parseDraft({ ...draft, reference: "INV-5" }),
+    false,
+  );
+});

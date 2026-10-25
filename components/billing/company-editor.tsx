@@ -22,6 +22,7 @@ export const blankCompany: CompanyProfile = {
   iban: "",
   bic: "",
   bank: "",
+  bankAddress: "",
   paymentTerms: "Paiement par virement à l’échéance indiquée.",
   logo: "",
 };
@@ -154,6 +155,20 @@ export function CompanyEditor({
             {field("iban", "IBAN")}
             {field("bic", "BIC")}
             {field("bank", "Banque")}
+            <Field
+              label="Bénéficiaire"
+              value={profile.name}
+              readOnly
+              hint="Raison sociale de la société"
+            />
+            <TextArea
+              label="Adresse de la banque"
+              value={profile.bankAddress ?? ""}
+              rows={2}
+              onChange={(e) =>
+                setProfile({ ...profile, bankAddress: e.target.value })
+              }
+            />
             <Field
               label="Préfixe de numérotation"
               required

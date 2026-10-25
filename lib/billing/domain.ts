@@ -27,6 +27,7 @@ export type CompanyProfile = {
   iban: string;
   bic: string;
   bank: string;
+  bankAddress?: string;
   paymentTerms: string;
   logo: string;
   logoBlobUrl?: string;
@@ -48,7 +49,6 @@ export type Draft = {
   dueDate: string;
   currency: string;
   subject: string;
-  reference: string;
   notes: string;
   vatMode: "NORMAL" | "EXEMPT" | "REVERSE";
   reverseBasis: string;
@@ -176,6 +176,8 @@ export function parseCompany(value: unknown): CompanyProfile {
   );
   return {
     ...profile,
+    bankAddress:
+      typeof p.bankAddress === "string" ? str(p.bankAddress, 1200) : "",
     logoBlobUrl:
       typeof p.logoBlobUrl === "string" ? str(p.logoBlobUrl, 1200) : "",
     vatStatus: p.vatStatus,
@@ -230,7 +232,6 @@ export function parseDraft(value: unknown): Draft {
     dueDate: date(p.dueDate),
     currency,
     subject: str(p.subject, 1200),
-    reference: str(p.reference),
     notes: str(p.notes, 10000),
     vatMode: p.vatMode as Draft["vatMode"],
     reverseBasis: str(p.reverseBasis, 1200),

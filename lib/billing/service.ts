@@ -256,14 +256,17 @@ export async function previewDocument(workspaceId: string, id: string) {
   requireValue(doc, "Document introuvable.");
   if (doc.pdfBytes && doc.status !== "DRAFT") return Buffer.from(doc.pdfBytes);
   const d = parseDraft(doc.payload);
-  const { profile, brand } = await context(db, workspaceId, d);
+  const { profile, brand, company } = await context(db, workspaceId, d);
   return renderPdf(
     {
       version: 1,
       document: d,
       company: profile,
       brand: { name: brand.name, website: brand.websiteUrl ?? "" },
-      number: doc.number ?? "BROUILLON",
+      // Preview only: do not reserve or increment the company's sequence.
+      number:
+        doc.number ??
+        `${company.prefix}-${d.type === "QUOTE" ? "DEV-" : ""}${String(d.type === "INVOICE" ? company.nextInvoice : company.nextQuote).padStart(6, "0")}`,
       totals: calculate(d.lines, d.vatMode),
     },
     true,

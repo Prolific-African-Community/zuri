@@ -300,16 +300,11 @@ export function DocumentEditor({
                 />
               ))}
             </div>
-            <div className="mt-5 grid gap-5 sm:grid-cols-2">
+            <div className="mt-5">
               <Field
                 label="Objet"
                 value={d.subject}
                 onChange={(e) => change({ subject: e.target.value })}
-              />
-              <Field
-                label="Référence"
-                value={d.reference}
-                onChange={(e) => change({ reference: e.target.value })}
               />
             </div>
           </Section>

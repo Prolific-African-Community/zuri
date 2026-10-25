@@ -56,7 +56,6 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
       .map(([, value]) => value),
     ...Object.values(d.customer),
     d.subject,
-    d.reference,
     d.notes,
     d.reverseBasis,
     ...d.lines.flatMap((l) => Object.values(l)),
@@ -77,8 +76,8 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
   pdf.setTitle(
     `${d.type === "INVOICE" ? "Facture" : "Devis"} ${snapshot.number}`,
   );
-  let page: PDFPage,
-    y = 0;
+  let page!: PDFPage;
+  let y = 0;
   let contentStart = 94;
   const text = (s: string, x: number, top: number, size = 9, color = ink) =>
     page.drawText(s, { x, y: H - top - size, size, font, color });
@@ -127,18 +126,13 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
       color: accent,
     });
     text(d.type === "INVOICE" ? "FACTURE" : "DEVIS", M, 44, 25);
-    const reference =
-      d.reference || (snapshot.number === "BROUILLON" ? "" : snapshot.number);
+    const reference = snapshot.number === "BROUILLON" ? "" : snapshot.number;
     let referenceBottom = draft ? 56 : 48;
     if (draft) right("BROUILLON · NON ÉMIS", W - M, 39, 8);
     if (reference) {
       const rows = wrap(reference, font, 15, 220);
       rows.forEach((row, i) => right(row, W - M, referenceBottom + i * 18, 15));
       referenceBottom += rows.length * 18;
-    }
-    if (!draft && reference !== snapshot.number) {
-      right(snapshot.number, W - M, referenceBottom + 2, 9);
-      referenceBottom += 15;
     }
     if (logo) {
       const scale = Math.min(65 / logo.width, 30 / logo.height);
@@ -256,30 +250,41 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
     y += height;
     rule(y);
   }
-  y += 18;
-  const legal = [
-    d.vatMode === "EXEMPT" ? exemption : "",
-    d.vatMode === "REVERSE" ? `Autoliquidation — ${d.reverseBasis}` : "",
-    c.paymentTerms,
-    c.iban && `IBAN : ${c.iban} · BIC : ${c.bic} · ${c.bank}`,
-    d.notes,
-  ].filter(Boolean);
-  for (const paragraph of legal) {
-    const rows = wrap(paragraph, font, 8, W - 2 * M);
-    for (const row of rows) {
-      if (y + 13 > H - BOTTOM) newPage();
-      text(row, M, y, 8, muted);
-      y += 12;
-    }
-    y += 9;
-  }
-  const totalsHeight = 94 + t.taxes.length * 18;
+  const taxMention =
+    d.vatMode === "EXEMPT"
+      ? exemption
+      : d.vatMode === "REVERSE"
+        ? `Autoliquidation — ${d.reverseBasis}`
+        : "";
+  const taxRows = taxMention ? wrap(taxMention, font, 8, W - 2 * M) : [];
+  const paymentFields = [
+    ["CONDITIONS", c.paymentTerms],
+    ["BÉNÉFICIAIRE", c.name],
+    ["IBAN", c.iban],
+    ["BIC", c.bic],
+    ["BANQUE", c.bank],
+    ["ADRESSE BANQUE", c.bankAddress ?? ""],
+  ]
+    .filter(([, value]) => Boolean(value))
+    .map(([label, value]) => {
+      const rows = wrap(value, font, 9, W - 2 * M - 132);
+      return { label, rows, height: Math.max(14, rows.length * 12) + 8 };
+    });
+  const paymentHeight =
+    48 + paymentFields.reduce((sum, field) => sum + field.height, 0);
+  const totalsHeight = 94 + t.taxes.length * 18 + taxRows.length * 11;
+  const pageCapacity = H - BOTTOM - contentStart;
   requireValue(
-    totalsHeight <= H - BOTTOM - contentStart,
+    totalsHeight <= pageCapacity,
     "Le bloc de ventilation TVA dépasse une page A4. Regroupez les taux applicables avant l’émission.",
   );
-  if (y + totalsHeight > H - BOTTOM) newPage();
-  else y += 22;
+  // Keep totals and payment together when both fit on one page.
+  const reserved =
+    totalsHeight + paymentHeight + 14 <= pageCapacity
+      ? totalsHeight + paymentHeight + 14
+      : totalsHeight;
+  if (y + 18 + reserved > H - BOTTOM) newPage();
+  else y += 18;
   text("Total HT", M, y);
   right(`${t.net} ${d.currency}`, W - M, y);
   y += 22;
@@ -288,22 +293,69 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
     right(`${g.vat} ${d.currency}`, W - M, y, 8);
     y += 18;
   }
+  for (const row of taxRows) {
+    text(row, M, y, 8, muted);
+    y += 11;
+  }
   rule(y + 5);
   y += 19;
   text("TOTAL TTC", M, y, 11, accent);
-  right(`${t.gross} ${d.currency}`, W - M, y, 14);
-  y += 45;
+  right(`${t.gross} ${d.currency}`, W - M, y, 17);
+  y += 39;
+
+  let fieldIndex = 0;
+  while (fieldIndex < paymentFields.length) {
+    if (y + 48 + paymentFields[fieldIndex].height > H - BOTTOM) newPage();
+    let height = 48,
+      end = fieldIndex;
+    while (
+      end < paymentFields.length &&
+      y + height + paymentFields[end].height <= H - BOTTOM
+    ) {
+      height += paymentFields[end].height;
+      end++;
+    }
+    requireValue(
+      end > fieldIndex,
+      "Les informations de paiement sont trop longues pour une page A4.",
+    );
+    page.drawRectangle({
+      x: M,
+      y: H - y - height,
+      width: W - 2 * M,
+      height,
+      color: rgb(0.985, 0.978, 0.965),
+      borderColor: rgb(0.88, 0.85, 0.81),
+      borderWidth: 0.6,
+    });
+    text(
+      fieldIndex === 0 ? "PAIEMENT" : "PAIEMENT · SUITE",
+      M + 16,
+      y + 13,
+      9,
+      accent,
+    );
+    let rowY = y + 36;
+    for (const field of paymentFields.slice(fieldIndex, end)) {
+      text(field.label, M + 16, rowY + 1, 7, muted);
+      field.rows.forEach((row, n) => text(row, M + 116, rowY + n * 12, 9));
+      rowY += field.height;
+    }
+    y += height + 16;
+    fieldIndex = end;
+    if (fieldIndex < paymentFields.length) newPage();
+  }
+  if (d.notes) {
+    for (const row of wrap(d.notes, font, 8, W - 2 * M)) {
+      if (y + 13 > H - BOTTOM) newPage();
+      text(row, M, y, 8, muted);
+      y += 12;
+    }
+  }
   const pages = pdf.getPages();
   pages.forEach((p, i) => {
     page = p;
     rule(H - 48);
-    text(
-      `${draft ? "BROUILLON" : snapshot.number} · ${d.currency}`,
-      M,
-      H - 36,
-      8,
-      muted,
-    );
     right(`${i + 1} / ${pages.length}`, W - M, H - 36, 8);
   });
   return Buffer.from(await pdf.save({ useObjectStreams: false }));

@@ -81,7 +81,6 @@ export async function BillingEditorPage({ id }: { id?: string }) {
         dueDate: today,
         currency: "EUR",
         subject: "",
-        reference: "",
         notes: "",
         vatMode: profile.vatStatus,
         reverseBasis: "",
