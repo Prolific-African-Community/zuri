@@ -7,7 +7,8 @@ import { exemption, requireValue, type Snapshot } from "./domain";
 const W = 595.28,
   H = 841.89,
   M = 42,
-  BOTTOM = 66;
+  BOTTOM = 66,
+  CONTINUATION_START = 60;
 const ink = rgb(0.09, 0.12, 0.17),
   muted = rgb(0.38, 0.42, 0.47),
   accent = rgb(0.28, 0.19, 0.13),
@@ -78,7 +79,6 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
   );
   let page!: PDFPage;
   let y = 0;
-  let contentStart = 94;
   const text = (s: string, x: number, top: number, size = 9, color = ink) =>
     page.drawText(s, { x, y: H - top - size, size, font, color });
   const right = (
@@ -118,6 +118,13 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
   }
   const newPage = () => {
     page = pdf.addPage([W, H]);
+    if (pdf.getPageCount() > 1) {
+      text(snapshot.number, M, 30, 8, muted);
+      if (draft) right("BROUILLON · NON ÉMIS", W - M, 30, 7);
+      rule(46);
+      y = CONTINUATION_START;
+      return;
+    }
     page.drawRectangle({
       x: M,
       y: H - 32,
@@ -146,7 +153,6 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
       referenceBottom += logo.height * scale;
     }
     y = Math.max(94, referenceBottom + 16);
-    contentStart = y;
   };
   const tableHeader = () => {
     page.drawRectangle({
@@ -215,7 +221,7 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
   let needsTableHeader = true;
   for (let i = 0; i < d.lines.length; i++) {
     const l = d.lines[i];
-    const maxRowHeight = H - BOTTOM - contentStart - 31;
+    const maxRowHeight = H - BOTTOM - CONTINUATION_START - 31;
     let size = 9;
     let rows = wrap(l.description, font, size, 235);
     // Keep a service row atomic. A physically oversized row receives a useful
@@ -272,18 +278,19 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
     });
   const paymentHeight =
     48 + paymentFields.reduce((sum, field) => sum + field.height, 0);
-  const totalsHeight = 94 + t.taxes.length * 18 + taxRows.length * 11;
-  const pageCapacity = H - BOTTOM - contentStart;
+  const totalTextHeight = Math.max(
+    font.heightAtSize(11),
+    font.heightAtSize(17),
+  );
+  const totalsHeight =
+    22 + t.taxes.length * 18 + taxRows.length * 11 + 19 + totalTextHeight;
+  const pageCapacity = H - BOTTOM - CONTINUATION_START;
   requireValue(
     totalsHeight <= pageCapacity,
     "Le bloc de ventilation TVA dépasse une page A4. Regroupez les taux applicables avant l’émission.",
   );
-  // Keep totals and payment together when both fit on one page.
-  const reserved =
-    totalsHeight + paymentHeight + 14 <= pageCapacity
-      ? totalsHeight + paymentHeight + 14
-      : totalsHeight;
-  if (y + 18 + reserved > H - BOTTOM) newPage();
+  // Only the totals must remain together; payment never pushes them forward.
+  if (y + 18 + totalsHeight > H - BOTTOM) newPage();
   else y += 18;
   text("Total HT", M, y);
   right(`${t.net} ${d.currency}`, W - M, y);
@@ -301,8 +308,12 @@ export async function renderPdf(snapshot: Snapshot, draft = false) {
   y += 19;
   text("TOTAL TTC", M, y, 11, accent);
   right(`${t.gross} ${d.currency}`, W - M, y, 17);
-  y += 39;
+  y += totalTextHeight + 16;
 
+  // Move the complete payment card only if it does not fit after the totals.
+  // Oversized cards retain the existing field-by-field continuation behavior.
+  if (paymentHeight <= pageCapacity && y + paymentHeight > H - BOTTOM)
+    newPage();
   let fieldIndex = 0;
   while (fieldIndex < paymentFields.length) {
     if (y + 48 + paymentFields[fieldIndex].height > H - BOTTOM) newPage();
